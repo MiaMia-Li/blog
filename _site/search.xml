@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+    <entry>
+      <title><![CDATA[网易2018校招编程合集]]></title>
+      <url>/%E7%AE%97%E6%B3%95/2018/09/18/interview-ntes/</url>
+      <content type="text"><![CDATA[题目来源于牛客网，网易2018校园招聘编程题真题集合。魔法币题目小易准备去魔法王国采购魔法神器,购买魔法神器需要使用魔法币,但是小易现在一枚魔法币都没有,但是小易有两台魔法机器可以通过投入x(x可以为0)个魔法币产生更多的魔法币。魔法机器1:如果投入x个魔法币,魔法机器会将其变为2x+1个魔法币魔法机器2:如果投入x个魔法币,魔法机器会将其变为2x+2个魔法币小易采购魔法神器总共需要n个魔法币,所以小易只能通过两台魔法机器产生恰好n个魔法币,小易需要你帮他设计一个投入方案使他最后恰好拥有n个魔法币。 输入描述:  输入包括一行,包括一个正整数n(1 ≤ n ≤ 10^9),表示小易需要的魔法币数量。输出描述:  输出一个字符串,每个字符表示该次小易选取投入的魔法机器。其中只包含字符’1’和’2’。思路这个很简单啦，机器1产生奇数，机器2产生偶数，从n按奇偶不断回推到0即可。function deal(n) {    var res=[];    while(n){        if(n%2==0){            res.push(2);            n=(n-2)/2;        }else{            res.push(1);            n=(n-1)/2;        }    }    return (res.reverse().join(""));}相反数题目为了得到一个数的”相反数”,我们将这个数的数字顺序颠倒,然后再加上原先的数得到”相反数”。例如,为了得到1325的”相反数”,首先我们将该数的数字顺序颠倒,我们得到5231,之后再加上原先的数,我们得到5231+1325=6556.如果颠倒之后的数字有前缀零,前缀零将会被忽略。例如n = 100, 颠倒之后是1. 输入描述:  输入包括一个整数n,(1 ≤ n ≤ 10^5)输出描述:  输出一个整数,表示n的相反数思路太简单了…水题 :see_no_evil:function deal(str) {    var num1=parseInt(str);    var restr=str.split("").reverse().join("");    var num2=parseInt(restr);    return (num1+num2);}字符串碎片题目一个由小写字母组成的字符串可以看成一些同一字母的最大碎片组成的。例如,”aaabbaaac”是由下面碎片组成的:’aaa’,’bb’,’c’。牛牛现在给定一个字符串,请你帮助计算这个字符串的所有碎片的平均长度是多少。输入描述:  输入包括一个字符串s,字符串s的长度length(1 ≤ length ≤ 50),s只含小写字母(‘a’-‘z’)输出描述:  输出一个整数,表示所有碎片的平均长度,四舍五入保留两位小数。  如样例所示: s = “aaabbaaac”所有碎片的平均长度 = (3 + 2 + 3 + 1) / 4 = 2.25思路碎片的平均长度=字符串长度/相同字母团构成的字符串的个数，通过遍历字符串比较前后两个位置字符是否相等，记录去重长度。function deal(str) {    var num=1;    var temp=str[0];    for(var i=1;i&lt;str.length;i++){        if(str[i]!=temp){            num++;        }        temp=str[i];    }    return ((str.length/num).toFixed(2));}游历魔法王国题目魔法王国一共有n个城市,编号为0~n-1号,n个城市之间的道路连接起来恰好构成一棵树。小易现在在0号城市,每次行动小易会从当前所在的城市走到与其相邻的一个城市,小易最多能行动L次。如果小易到达过某个城市就视为小易游历过这个城市了,小易现在要制定好的旅游计划使他能游历最多的城市,请你帮他计算一下他最多能游历过多少个城市(注意0号城市已经游历了,游历过的城市不重复计算)。输入描述:  输入包括两行,第一行包括两个正整数n(2 ≤ n ≤ 50)和L(1 ≤ L ≤ 100),表示城市个数和小易能行动的次数。第二行包括n-1个整数parenti, 对于每个合法的i(0 ≤ i ≤ n - 2),在(i+1)号城市和parent[i]间有一条道路连接。输出描述:  输出一个整数,表示小易最多能游历的城市数量。思路首先考虑二叉树的深度遍历，但数组序列化为二叉树没写出来。题目重点在第二行，即0——i-1的节点各自对应的父节点，且父节点值&lt;字节点。用动态规划求解。递归方程dp[i]=dp[i-1]+1分两种情况，最长树链maxLen，步数L(1) L&lt;=MaxLen,城市数量(L+1)  (2) L&gt;MaxLen,城市数量Math.min(n, maxLen + (L - maxLen) / 2 + 1)function deal(n,l,arr){    var maxLen=0;    var dp=[];    dp[0]=0;    for(var i=0;i&lt;n-1;i++){        dp[i+1]=dp[arr[i]]+1;        maxLen=Math.max(dp[i+1],maxLen);    }    if(l&lt;=maxLen){        return (l+1);    }else{        return Math.min(n,maxLen + Math.floor((l- maxLen) / 2) + 1)    }}重排数列题目小易有一个长度为N的正整数数列A = {A[1], A[2], A[3]…, A[N]}。牛博士给小易出了一个难题:对数列A进行重新排列,使数列A满足所有的A[i] * Ai + 1都是4的倍数。小易现在需要判断一个数列是否可以重排之后满足牛博士的要求。 输入描述:  输入的第一行为数列的个数t(1 ≤ t ≤ 10),接下来每两行描述一个数列A,第一行为数列长度n(1 ≤ n ≤ 10^5)第二行为n个正整数Ai输出描述:  对于每个数列输出一行表示是否可以满足牛博士要求,如果可以输出Yes,否则输出No。思路找规律题～～但考虑不要太过详细。数列满足要求有以下三种情况(1) 全部能被2整除(2) 能被4整除的数&gt;=数列个数的一半，剩下的数插空法补足数列(3) 奇数的个数-1&lt;=能被4整除的个数，一个能被4整除的数最多带一个奇数，即（能被2整除+能被4整除）&gt;=数列长度。function deal(arr){    var count4=0,count2=0;    for(var i=0;i&lt;arr.length;i++){        if(arr[i]%4==0){            count4++;        }        if(arr[i]%2==0){            count2++;        }    }    if(count2==arr.length||count4&gt;=parseInt(arr.length/2)||count2+count4&gt;=arr.length){        return 'Yes';    }else{        return 'No';    }}最长公共子括号序列题目一个合法的括号匹配序列被定义为:1.空串” “是合法的括号序列 2.如果”X”和”Y”是合法的序列,那么”XY”也是一个合法的括号序列3.如果”X”是一个合法的序列,那么”(X)”也是一个合法的括号序列4.每个合法的括号序列都可以由上面的规则生成例如””, “()”, “()()()”, “(()())”, “(((()))”都是合法的。从一个字符串S中移除零个或者多个字符得到的序列称为S的子序列。例如”abcde”的子序列有”abe”,””,”abcde”等。定义LCS(S,T)为字符串S和字符串T最长公共子序列的长度,即一个最长的序列W既是S的子序列也是T的子序列的长度。小易给出一个合法的括号匹配序列s,小易希望你能找出具有以下特征的括号序列t:1、t跟s不同,但是长度相同2、t也是一个合法的括号匹配序列3、LCS(s, t)是满足上述两个条件的t中最大的因为这样的t可能存在多个,小易需要你计算出满足条件的t有多少个。如样例所示: s = “(())()”,跟字符串s长度相同的合法括号匹配序列有:“()(())”, “((()))”, “()()()”, “(()())”,其中LCS( “(())()”, “()(())” )为4,其他三个都为5,所以输出3.输入描述:                    输入包括字符串s(4 ≤        s        ≤ 50,        s        表示字符串长度),保证s是一个合法的括号匹配序列。            输出描述:  输出一个正整数,满足条件的t的个数。思路这道题的题干太长了，但其实没那么复杂。参考Leetcode22 括号生成  给出 n 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且有效的括号组合/** * @param {number} n * @return {string[]} */var generateParenthesis = function(n) {    var ans=new Set();       generate(n,0,0,"",ans);    return Array.from(ans);};function generate(n,left,right,ret,ans){    if(left+right==2*n){        ans.add(ret);        return ;    }    if(left&lt;n){        generate(n,left+1,right,ret+"(",ans)        if(right&lt;left){            generate(n,left,right+1,ret+")",ans);        }    }else{        generate(n,left,right+1,ret+")",ans);    }}合唱题目小Q和牛博士合唱一首歌曲,这首歌曲由n个音调组成,每个音调由一个正整数表示。对于每个音调要么由小Q演唱要么由牛博士演唱,对于一系列音调演唱的难度等于所有相邻音调变化幅度之和, 例如一个音调序列是8, 8, 13, 12, 那么它的难度等于|8 - 8| + |13 - 8| + |12 - 13| = 6(其中||表示绝对值)。现在要对把这n个音调分配给小Q或牛博士,让他们演唱的难度之和最小,请你算算最小的难度和是多少。如样例所示: 小Q选择演唱{5, 6}难度为1, 牛博士选择演唱{1, 2, 1}难度为2,难度之和为3,这一个是最小难度和的方案了。输入描述:  输入包括两行,第一行一个正整数n(1 ≤ n ≤ 2000) 第二行n个整数vi, 表示每个音调。输出描述:  输出一个整数,表示小Q和牛博士演唱最小的难度和是多少。###题目小易正在玩一款新出的射击游戏,这个射击游戏在一个二维平面进行,小易在坐标原点(0,0),平面上有n只怪物,每个怪物有所在的坐标(x[i], y[i])。小易进行一次射击会把x轴和y轴上(包含坐标原点)的怪物一次性消灭。小易是这个游戏的VIP玩家,他拥有两项特权操作:1、让平面内的所有怪物同时向任意同一方向移动任意同一距离2、让平面内的所有怪物同时对于小易(0,0)旋转任意同一角度小易要进行一次射击。小易在进行射击前,可以使用这两项特权操作任意次。小易想知道在他射击的时候最多可以同时消灭多少只怪物,请你帮帮小易。如样例所示:所有点对于坐标原点(0,0)顺时针或者逆时针旋转45°,可以让所有点都在坐标轴上,所以5个怪物都可以消灭。输入描述:  输入包括三行。第一行中有一个正整数n(1 ≤ n ≤ 50),表示平面内的怪物数量。第二行包括n个整数xi,表示每只怪物所在坐标的横坐标,以空格分割。第二行包括n个整数yi,表示每只怪物所在坐标的纵坐标,以空格分割。输出描述:  输出一个整数表示小易最多能消灭多少只怪物。]]></content>
+      <categories>
+        
+          <category> 算法 </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> 网易 </tag>
+        
+          <tag> 动态规划 </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[ES6-箭头函数及定时器this指向]]></title>
+      <url>/es6/2018/09/16/ES6-func/</url>
+      <content type="text"><![CDATA[箭头函数注意点  函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。  不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。  不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。  不可以使用yield命令，因此箭头函数不能用作 Generator 函数。this  this对象的指向是可变的，但在箭头函数中，是固定的。绑定定义时所在的作用域，而不是指向运行时所在的作用域。          非箭头函数的this指向运行时调用它的对象，即foo。        var a=11;var foo={a:22,say:function(){  console.log(this.a)}}foo.say();//22;                      箭头函数的this是继承自父执行上下文中的this。箭头函数say本身在对象foo中，而foo的执行上下文this指向全局window。        var a=11;var foo={a:22,say:()=&gt;{  console.log(this.a)}}foo.say();//11;                      实际原因是箭头函数根本没有自己的this，导致内部的this就是外层代码块的this。正是因为它没有this，所以也就不能用作构造函数。// ES6function foo() {  setTimeout(() =&gt; {    console.log('id:', this.id);  }, 100);}// ES5function foo() {  var _this = this;  setTimeout(function () {    console.log('id:', _this.id);  }, 100);}定时器var num=11;function F(){    this.num=22;    this.getNum=function(){        console.log(this.num);    },    this.getNumLater=function(){        setTimeout(function(){            console.log(this.num);        },1000)    }}var foo=new F();foo.getNum(); //22foo.getNumLater(); //11问题原因setTimeout中函数内的this是指向了window对象，这是由于setTimeout()调用的代码运行在与所在函数完全分离的执行环境上。参考 MDN setTimeout解决方法  将当前this保存为一个变量    var num=11;function F(){ var _this=this; this.num=22; this.getNum=function(){     console.log(this.num); }, this.getNumLater=function(){     setTimeout(function(){         console.log(_this.num);     },1000) }}var foo=new F();foo.getNum(); //22foo.getNumLater(); //22        使用箭头函数，箭头函数的this指向外层（父级）调用者，也就是F();    function F(){ this.num=22; this.getNum=function(){     console.log(this.num); }, this.getNumLater=function(){     setTimeout(()=&gt;{         console.log(this.num);     },1000) }}var foo=new F();foo.getNum(); //22foo.getNumLater(); //22        利用bind。当被绑定函数执行时，bind方法会创建一个新函数，并将第一个参数作为新函数运行时的this。参考MDN bind    var num=11;function F(){ this.num=22; this.getNum=function(){     console.log(this.num); }, this.getNumLater=function(){     setTimeout(function(){         console.log(this.num);     }.bind(this),1000) }}var foo=new F();foo.getNum(); //22foo.getNumLater(); //22      ]]></content>
+      <categories>
+        
+          <category> ES6 </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> ES6 </tag>
+        
+          <tag> 箭头函数 </tag>
+        
+          <tag> 定时器 </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[JavaScript 运行机制详解——Event Loop]]></title>
+      <url>/js%E5%9F%BA%E7%A1%80/2018/09/15/js-eventloop/</url>
+      <content type="text"><![CDATA[JavaScript是非阻塞单线程语言JavaScript的单线程，与它的用途有关。作为浏览器脚本语言，JavaScript的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。比如，假定JavaScript同时有两个线程，一个线程在某个DOM节点上添加内容，另一个线程删除了这个节点.这时浏览器应该以哪个线程为准？任务队列单线程就意味着，所有任务需要排队，前一个任务结束，才会执行后一个任务。如果前一个任务耗时很长，后一个任务就不得不一直等着。于是，所有任务可以分成两种，一种是同步任务（synchronous），另一种是异步任务（asynchronous）。同步任务指的是，在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务；异步任务指的是，不进入主线程、而进入”任务队列”（task queue）的任务，只有”任务队列”通知主线程，某个异步任务可以执行了，该任务才会进入主线程执行。具体来说，异步执行的运行机制如下。  所有同步任务都在主线程上执行，形成一个执行栈（execution context stack）。  主线程之外，还存在一个”任务队列”（task queue）。  只要异步任务有了运行结果，就在”任务队列”之中放置一个事件。  一旦”执行栈”中的所有同步任务执行完毕，系统就会读取”任务队列”，  看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。  主线程不断重复上面的第三步。Event Loopconsole.log('script start');setTimeout(function() {  console.log('setTimeout');}, 0);console.log('script end');以上代码虽然 setTimeout 延时为 0，其实还是异步。这是因为 HTML5 标准规定这个函数第二个参数不得小于 4 毫秒，不足会自动增加。所以 setTimeout 还是会在 script end 之后打印。不同的任务源会被分配到不同的 Task 队列中，任务源可以分为 微任务（microtask） 和 宏任务（macrotask）。在 ES6 规范中，microtask 称为 jobs，macrotask 称为 task. 微任务包括 process.nextTick ，promise ，Object.observe ，MutationObserver宏任务包括 script ， setTimeout ，setInterval ，setImmediate ，I/O ，UI rendering 假设 macro-task队列包含任务: a1, a2 , a3 micro-task队列包含任务: b1, b2 , b3执行顺序为，首先执行marco-task队列开头的任务，也就是 a1 任务，执行完毕后，在执行micro-task队列里的所有任务，也就是依次执行b1, b2 , b3，执行完后清空micro-task中的任务，接着执行marco-task中的第二个任务，依次循环。  由此我们得到的执行顺序应该为：script(主程序代码)—&gt;process.nextTick—&gt;Promises…——&gt;setTimeout——&gt;setInterval——&gt;setImmediate——&gt; I/O——&gt;UI renderingconsole.log('script start');setTimeout(function() {  console.log('setTimeout');}, 0);new Promise((resolve) =&gt; {    console.log('Promise')    resolve()}).then(function() {  console.log('promise1');}).then(function() {  console.log('promise2');});console.log('script end');// script start =&gt; Promise =&gt; script end =&gt; // promise1 =&gt; promise2 =&gt; setTimeout这里要注意的一点在定义promise的时候，promise构造部分是同步执行的.setTimeout(function(){console.log(1)},0);new Promise(function(resolve,reject){   console.log(2);   resolve();}).then(function(){console.log(3)}).then(function(){console.log(4)});process.nextTick(function(){console.log(5)});console.log(6);//输出2,6,5,3,4,1]]></content>
+      <categories>
+        
+          <category> JS基础 </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> JS </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[斐波那契数列]]></title>
+      <url>/%E7%AE%97%E6%B3%95/2018/09/14/jianzhi-fb/</url>
+      <content type="text"><![CDATA[斐波那契数列大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项（从0开始，第0项为0）。n&lt;=39function Fibonacci(n){    if(n==0){        return 0;    }    if(n==1||n==2){        return 1;    }    var f1=1,f2=1,f3=0;    for(var i=3;i&lt;=n;i++){        f3=f1+f2;        f1=f2;        f2=f3;    }    return f3;}跳台阶一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。递归公式f(n)=f(n-1)+f(n-2)function jumpFloor(number){    if(number&lt;=3){        return number;    }    var f1=2,f2=3,f3=0;    for(var i=4;i&lt;=number;i++){        f3=f1+f2;        f1=f2;        f2=f3;    }    return f3;}变态跳台阶一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。function jumpFloorII(number){    if(number==0||number==1){        return 1;    }    return 2* jumpFloorII(number-1);}矩形覆盖我们可以用21的小矩形横着或者竖着去覆盖更大的矩形。请问用n个21的小矩形无重叠地覆盖一个2*n的大矩形，总共有多少种方法？function rectCover(number){    if(number&lt;=2){        return number;    }    var f1=1,f2=2,f3=0;    for(var i=3;i&lt;=number;i++){        f3=f1+f2;        f1=f2;        f2=f3;    }    return f3;}]]></content>
+      <categories>
+        
+          <category> 算法 </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> 剑指offer </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[二叉树相关]]></title>
+      <url>/%E7%AE%97%E6%B3%95/2018/09/14/jianzhi-2cs/</url>
+      <content type="text"><![CDATA[思路  二叉树多用递归思想，确定边界条件。  二叉树相关性质。重建二叉树输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。/* function TreeNode(x) {    this.val = x;    this.left = null;    this.right = null;} */function reConstructBinaryTree(pre, vin){    if(!pre||pre.length==0){        return;    }    var treeNode={        val:pre[0]    }    for(var i=0;i&lt;pre.length;i++){        if(vin[i]==pre[0]){            treeNode.left=reConstructBinaryTree(pre.slice(1,i+1), vin.slice(0,i));            treeNode.right=reConstructBinaryTree(pre.slice(i+1), vin.slice(i+1));        }    }    return treeNode}二叉树的镜像  /* function TreeNode(x) {      this.val = x;      this.left = null;      this.right = null;  } */  function Mirror(root)  {      if(!root){          return false;      }      var temp=root.left;      root.left=root.right;      root.right=temp;      Mirror(root.left);      Mirror(root.right);  }平衡二叉树输入一棵二叉树，判断该二叉树是否是平衡二叉树。二叉树的每个节点的左子树和右子树的深度不大于1/* function TreeNode(x) {    this.val = x;    this.left = null;    this.right = null;} */function IsBalanced_Solution(pRoot){    if(pRoot==null){        return true;    }    return Math.abs(deep(pRoot.left)-deep(pRoot.right))&lt;=1?true:false;}function deep(root){    if(!root){        return 0;    }    return Math.max(deep(root.left),deep(root.right))+1;}对称二叉树请实现一个函数，用来判断一颗二叉树是不是对称的。注意，如果一个二叉树同此二叉树的镜像是同样的，定义其为对称的。/* function TreeNode(x) {    this.val = x;    this.left = null;    this.right = null;} */function isSymmetrical(pRoot){    return isSym(pRoot,pRoot);}function isSym(root1,root2){     if(root1 == null &amp;&amp; root2 == null){        return true;    }    if(root1 == null || root2 == null){        return false;    }    if(root1.val != root2.val){        return false;    }    return isSym(root1.left, root2.right) &amp;&amp; isSym(root1.right, root2.left);    }二叉搜索树的后序遍历序列输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。如果是则输出Yes,否则输出No。假设输入的数组的任意两个数字都互不相同。分治思想非递归也是一个基于递归的思想：左子树一定比右子树小，因此去掉根后，数字分为left，right两部分，right部分的最后一个数字是右子树的根他也比左子树所有值大，因此我们可以每次只看有子树是否符合条件即可。function VerifySquenceOfBST(sequence){    if(sequence.length==0){        return false;    }    var n=sequence.length;    var i=0;    while(n--){        while(sequence[i]&lt;sequence[n]){            i++        }        while(sequence[i]&gt;sequence[n]){            i++;        }        if(i&lt;n){            return false;        }        i=0;    }    return true;}]]></content>
+      <categories>
+        
+          <category> 算法 </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> 剑指offer </tag>
+        
+          <tag> 二叉树 </tag>
+        
+          <tag> leetcode </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[leetcode3 无重复最长子串]]></title>
+      <url>/%E7%AE%97%E6%B3%95/2018/09/13/leetcode3/</url>
+      <content type="text"><![CDATA[题目Given a string, find the length of the longest substring without repeating characters.Examples:  Given “abcabcbb”, the answer is “abc”, which the length is 3.  Given “bbbbb”, the answer is “b”, with the length of 1.  Given “pwwkew”, the answer is “wke”, with the length of 3. Note that the answer must be a substring, “pwke” is a subsequence and not a substring.思路设置一个滑动窗口，两个指针i，j，i 遍历字符串，j 记录无重复子串的位置起点。map保存无重复字符，并更新其index。/** * @param {string} s * @return {number} */var lengthOfLongestSubstring = function(s) {    if(s==""){        return 0;    }    var maxL=0;    var list=new Map();    for(var i=0,j=0;i&lt;s.length;i++){        if(list.has(s[i])){            j=Math.max(j,list.get(s[i])+1);        }        list.set(s[i],i);        maxL=Math.max(maxL,i-j+1);    }    return maxL;}  ]]></content>
+      <categories>
+        
+          <category> 算法 </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> leetcode </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[猫眼面经]]></title>
+      <url>/%E9%9D%A2%E8%AF%95/2018/08/30/interview-maoyan/</url>
+      <content type="text"><![CDATA[水平垂直居中布局  flex    .box{ display: flex; align-items: center;  /*垂直*/ justify-content: center; /*水平*/ height: 100vh; /*视口高度*/}        table    .box{ display: table;    /* 让div以表格的形式渲染 */ width: 100%; height: 100vh;}.content{ display: table-cell;  /* 让子元素以表格的单元格形式渲染 */ text-align: center; vertical-align: middle;}        relative+absolute    .box{ position: relative; height: 100vh;}.content{position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);}      盒模型标准模型中，盒模型的宽高只是内容（content）的宽高，而在IE模型中盒模型的宽高是内容(content)+填充(padding)+边框(border)的总宽高。/* 标准模型 */box-sizing:content-box; /*IE模型*/box-sizing:border-box;  CSS-position  static 正常文档流，忽略left，top，right，bottom，z-index  relative 相对于原本位置的定义，对周围元素没有任何影响  absolute 脱离文档流，绝对定位，相对于 static 定位以外的第一个父元素进行定位。 元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。  fixed 相对于浏览器窗口，脱离文档流  sticky 粘性定位，该定位基于用户滚动的位置。它的行为就像 position:relative; 而当页面滚动   超出目标区域时，它的表现就像 position:fixed;它会固定在目标位置。元素未滚动，top不生效，margin有效。元素滚动：top有效，margin失效。块级、行内元素  块级元素 自动换行，可设置高度 div p h1~h6 ul ol dl li dd table hr blockquote address table menu pre header section aside footer  行内元素 span br a  em b i  strong sub sup  行块级元素 有内在尺寸，可设置高宽，无法自动换行 img  input  td  textareaUl增加多个Li  文档碎片documentFragment    var fragment=document.createDocumentFragment();var ul=document.getElementById("myList");var li=null;for(var i=0;i&lt;n,i++){  li=document.createElement("li");  li.appendChild(document.createTextNode("item"+(i+1)));  fragment.appendChild(li);}ul.appendChild(fragment);        innerHTML类型判断typeof 是一个一元运算，放在一个运算数之前，运算数可以是任意类型。它返回值是一个字符串，该字符串说明运算数的类型。包括：number、boolean、string、object、undefined、function等6种数据类型。typeof (null) //”object”instanceof 运算符用来测试一个对象在其原型链中是否存在一个构造函数的 prototype 属性。语法：object instanceof constructorObject.prototype.toString.call(value) 方法去调用对象，得到对象的构造函数名。可以解决instanceof的跨框架问题，缺点是对用户自定义的类型，它只会返回[object Object]数组遍历//数组遍历,都不会修改数组中包含的值//对数组每一项运行给定的函数//every 如果该函数对每一项都返回true，则返回true//some 如果该函数对任一项返回true，则返回truevar nums=[1,2,4,5,2,8,9];var everyResult=nums.every(function(item,index,arr){    return(item&gt;2);})//falsevar someResult=nums.some(function(item,index,arr){    return(item&gt;2);})//truevar filterResult=nums.filter(function(item,index,arr){    return(item&gt;2)})//[4,5,8,9]var mapResult=nums.map(function(item,index,arr){    return item*2})//[2,4,8,10,4,16,18]nums.forEach(function(item,index,arr){    //执行某些操作})两个有序数组，一升一降，返回第k大function findMax(a,b,k){	var maxK,n=0;	var i=a.length-1,j=0;	while(j&lt;a.length&amp;&amp;i&gt;=0){		if(a[i]&lt;b[j]){			maxK=b[j];			j++;			n++;		}else if(a[i]==b[j]){			j++;		}else{			maxK=a[i];			i--;			n++;		}		if(n==k){			return maxK;		}	}}字符串压缩 aaabbcaadd—a3b2c1a2d2function compress(str){	if(!str||str.length==0){		return false;	}	str=str.trim();	var cur=str[0];	var marks='';	var count=1;	for(var i=0;i&lt;str.length;i++){		if(str[i]==cur){			count++;		}else{			marks+=cur+count;			cur=str[i];			count=1;		}	}	return marks+cur+count;}]]></content>
+      <categories>
+        
+          <category> 面试 </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> CSS布局 </tag>
+        
+          <tag> DOM操作 </tag>
+        
+          <tag> 数组方法 </tag>
+        
+          <tag> 字符串 </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[阿里面经]]></title>
+      <url>/%E9%9D%A2%E8%AF%95/2018/08/20/interview-ali/</url>
+      <content type="text"><![CDATA[两栏布局  float+margin-left    aside{ background: yellow; width: 200px; float: left;}div{ margin-left: 210px;/*大于aside的宽度*/ width: auto; background: red;}        float+overflow：hidden（形成BFC）    div{ overflow:hidden; width: auto; background: red; height: 400px;}        flex    body{ display: flex;}aside{ background: yellow; flex:0 0 200px;}div{ flex:1 1 auto; background: red;}        grid    body{  display: grid;  grid-template-columns: 200px auto;}        table    aside{   width: 200px;   display: table-cell;   background: yellow;}div{ display: table-cell; background: red;}      meta标签元素可提供有关页面的元信息（meta-information）            属性      值      描述                  charset（#）      character_set      定义文档的字符编码。              content      text      定义与 http-equiv 或 name 属性相关的元信息。              http-equiv      content-typ edefault-style refresh      把 content 属性关联到 HTTP 头部。              name      application-nam eauthor description generator keywords      把 content 属性关联到一个名称。              scheme      format/URI      HTML5不支持。定义用于翻译 content 属性值的格式。      name属性name属性主要用于描述网页，与之对应的属性值为content，content中的内容主要是便于搜索引擎机器人查找信息和分类信息用的。meta标签的name属性语法格式是：&lt;meta name="参数" content="具体的参数值"&gt;。其中name属性主要有以下几种参数：Keywords（关键字）说明：keywords用来告诉搜索引擎你网页的关键字是什么。举例 &lt;meta name ="keywords" content="science human culture"&gt;description（网站内容描述)说明：description用来告诉搜索引擎你的网站主要内容。 网站内容描述（description）的设计要点:  网页描述为自然语言而不是罗列关键词（与keywords设计正好相反）；  尽可能准确地描述网页的核心内容，通常为网页内容的摘要信息，也就是希望搜索引擎在检索结果中展示的摘要信息；  网页描述中含有有效关键词；  网页描述内容与网页标题内容有高度相关性；  网页描述内容与网页主体内容有高度相关性；  网页描述的文字不必太多，一般不超过搜索引擎检索结果摘要信息的最多字数（通常在100中文字之内，不同搜索引擎略有差异）。robots（机器人向导）说明：robots用来告诉搜索机器人哪些页面需要索引，哪些页面不需要索引。content的参数有all,none,index,noindex,follow,nofollow。默认是all。举例 &lt;meta name="robots" content="none"&gt;author（作者）说明：标注网页的作者http-equiv属性http-equiv顾名思义，相当于http的文件头作用，它可以向浏览器传回一些有用的信息，以帮助正确和精确地显示网页内容，与之对应的属性值为content，content中的内容其实就是各个参数的变量值。meta标签的http-equiv属性语法格式是：&lt;meta http-equiv="参数" content="参数变量值"&gt; 其中http-equiv属性主要有以下几种参数：Expires（期限）说明：可以用于设定网页的到期时间。一旦网页过期，必须到服务器上重新传输。用法：&lt;meta http-equiv="expires" content="Fri,12 Jan 2001 18:18:18 GMT"&gt;注意：必须使用GMT的时间格式。Pragma(cache模式）说明：禁止浏览器从本地计算机的缓存中访问页面内容。用法：&lt;meta http-equiv="Pragma" content="no-cache"&gt;注意：这样设定，访问者将无法脱机浏览。Refresh（刷新）说明：自动刷新并转到新页面。用法：&lt;meta http-equiv="Refresh" content="2;URL"&gt;（注意后面的分号，分别在秒数的前面和网址的后面，URL可为空）注意：其中的2是指停留2秒钟后自动刷新到URL网址。Set-Cookie(cookie设定）说明：如果网页过期，那么存盘的cookie将被删除。用法：&lt;meta http-equiv="Set-Cookie" content="cookievalue=xxx; expires=Friday,12-Jan-2001 18:18:18 GMT; path=/"&gt;注意：必须使用GMT的时间格式。Window-target（显示窗口的设定）说明：强制页面在当前窗口以独立页面显示。用法：&lt;meta http-equiv="Window-target" content="_top"&gt;注意：用来防止别人在框架里调用自己的页面。content-Type（显示字符集的设定）说明：设定页面使用的字符集。用法：&lt;meta http-equiv="content-Type" content="text/html; charset=gb2312"&gt;content-Language（显示语言的设定）用法：&lt;meta http-equiv="Content-Language" content="zh-cn" /&gt;功能  帮助主页被各大搜索引擎登录  定义页面的使用语言  自动刷新并指向新的页面put/post区别最根本的区别就是：POST方法不是幂等的，而PUT方法则有幂等性。一个幂等操作的特点就是其任意多次执行所产生的影响均与依次一次执行的影响相同。POST在请求的时候，服务器会每次都创建一个文件，但是在PUT方法的时候只是简单地更新，而不是去重新创建。因此PUT是幂等的。假如我们发送两个/blog/post/Sample请求，服务器端是什么样的行为？如果产生了两个博客帖子，那就说明这个服务不是idempotent的，因为多次使用产生了副作用了嘛；如果后一个请求把第一个请求覆盖掉了，那这个服务就是idempotent的。前一种情况，每次返回结果不一样的时候，应该使用POST方法，后一种情况，应该使用PUT方法。http状态码  202状态码：服务器已接受请求，但尚未处理；  301状态码：被请求的资源已永久移动到新位置。服务器返回此响应（对 GET 或 HEAD 请求的响应）时，会自动将请求者转到新位置。永久重定向  302状态码：请求的资源临时从不同的URI响应请求，但请求者应继续使用原有位置来进行以后的请求。暂时重定向  304自从上次请求后，请求的网页未修改过。服务器返回此响应时，不会返回网页内容。 如果网页自请求者上次请求后再也没有更改过，您应将服务器配置为返回此响应(称为 If-Modified-Since HTTP 标头)。  401状态码：请求要求身份验证。 对于需要登录的网页，服务器可能返回此响应。  403状态码：服务器已经理解请求，但是拒绝执行它。与401响应不同的是，身份验证并不能提供任何帮助，而且这个请求也不应该被重复提交。  404状态码：请求失败，请求所希望得到的资源未被在服务器上发现。没有信息能够告诉用户这个状况到底是暂时的还是永久的。假如服务器知道情况的话，应当使用410状态码来告知旧资源因为某些内部的配置机制问题，已经永久的不可用，而且没有任何可以跳转的地址。404这个状态码被广泛应用于当服务器不想揭示到底为何请求被拒绝或者没有其他适合的响应可用的情况下。  500状态码：服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理。一般来说，这个问题都会在服务器的程序码出错时出现。  503状态码：由于临时的服务器维护或者过载，服务器当前无法处理请求。通常，这个是暂时状态，一段时间会恢复。跨域JSONP利用&lt;script&gt;标签没有跨域限制的漏洞，通过&lt;script&gt;标签指向一个需要访问的地址并提供一个回调函数来接收数据当需要通讯时。JSONP 使用简单且兼容性不错，但是只限于 get 请求。&lt;script src="http://domain/api?param1=a&amp;param2=b&amp;callback=jsonp"&gt;&lt;/script&gt; 在开发中可能会遇到多个 JSONP 请求的回调函数名是相同的，这时候就需要自己 封装一个 JSONP，以下是简单实现。function jsonp(url, jsonpCallback, success) {	let script = document.createElement("script");	script.src = url;	script.async = true;	script.type = "text/javascript";	window[jsonpCallback] = function(data) {		success &amp; success(data);	};	document.body.appendChild(script);}jsonp(	"http://xxx",	"callback",	function(value) {		console.log(value);	}); CORS浏览器会自动进行 CORS 通信，实现CORS通信的关键是后端。只要后端实现了 CORS，就实现了跨域。 服务端设置 Access-Control-Allow-Origin 就可以开启 CORS。 该属性表示哪些 域名可以访问资源，如果设置通配符则表示所有网站都可以访问资源。document.domain该方式只能用于二级域名相同的情况下，比如 a.test.com 和 b.test.com 适用于 该方式。 只需要给页面添加 document.domain = ‘test.com’ 表示二级域名都相同就可以实现跨域postMessage这种方式通常用于获取嵌入页面中的第三方页面数据。一个页面发送消息，另一个页面判断来源并接收消息 。// 发送消息端window.parent.postMessage('message', 'http://test.com'); // 接收消息端var mc = new MessageChannel(); mc.addEventListener('message', (event) =&gt; { 	var origin = event.origin || event.originalEvent.origin;	if (origin === 'http://test.com') {		console.log('验证通过')	} }); 数组去重  新建一新数组，遍历传入数组，值不在新数组就push进该新数组中（IE8以下不支持数组的indexOf方法）    function uniq1(arr){ var temp=[]; for(var i=0;i&lt;arr.length;i++){     if(temp.indexOf(arr[i])==-1){         temp.push(arr[i]);     } } return temp;}        对象键值对该方法执行的速度比其他任何方法都快， 就是占用的内存大一些。注意点：判断是否为js对象键时，会自动对传入的键执行toString()    function uniq2(arr){ var obj={},r=[],type,val; for(var i=0;i&lt;arr.length;i++){     val=arr[i];     type=typeof val;     if(!obj[val]){         obj[val]=[type];         r.push(val);     }else if(obj[val].indexOf(type)&lt;0){         obj[val].push(type);         r.push(val);     } } console.log(obj); return r;}        ES6数组去重（无法判断对象重复）向 Set 加入值的时候，不会发生类型转换，所以 5 和 ‘5’ 是两个不同的值。 Set 内部判断两个值是否相同，使用的算法是 “Same-value equality”，它类似于精确相等运算符（===）。主要的区别是 NaN等于自身，而精确运算符认为 NaN 不等于自身。两个对象总是不相等的，所以无法达到对象重复去重    function uniq3(arr){ return Array.from(new Set(arr));}        排序后遍历数组    function uniq4(arr){ var temp=[arr[0]]; arr.sort(); console.log(arr); for(var i=1;i&lt;arr.length;i++){     if(arr[i]!==temp[temp.length-1]){         temp.push(arr[i]);     } } return temp;}        map 值-值    function uniq5(arr){ var map=new Map(); for(var i=0;i&lt;arr.length;i++){     var temp=arr[i];     if(!map.has(temp)){         map.set(temp,1);     }else{         continue;     } } console.log(map) return [...map.keys()];}        ES6 Generate    vue双向绑定    vue生命周期  ]]></content>
+      <categories>
+        
+          <category> 面试 </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> CSS布局 </tag>
+        
+          <tag> Http </tag>
+        
+          <tag> 数组方法 </tag>
+        
+          <tag> ES6 </tag>
+        
+          <tag> Vue </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[猿辅导面经]]></title>
+      <url>/%E9%9D%A2%E8%AF%95/2018/08/17/interview-yfd/</url>
+      <content type="text"><![CDATA[http请求头  Accept：告诉服务器，客户端支持的数据类型。  Accept-Charset：告诉服务器，客户端采用的编码。  Accept-Encoding：告诉服务器，客户机支持的数据压缩格式。  Accept-Language：告诉服务器，客户机的语言环境。  Host：客户机通过这个头告诉服务器，想访问的主机名。  If-Modified-Since:客户机通过这个头告诉服务器，资源的缓存时间。  Referer:客户机通过这个头告诉服务器，它是从哪个资源来访问服务器的。（一般用于防盗链  User-Agent:客户机通过这个头告诉服务器，客户机的软件环境。  Cookie：客户机通过这个头告诉服务器，可以向服务器带数据。  Connection：客户机通过这个头告诉服务器，请求完后是关闭还是保持链接。  Date：客户机通过这个头告诉服务器，客户机当前请求时间。http状态码            状态码      响应类别      响应类别                  1XX      信息性状态码（Informational）      服务器正在处理请求              2XX      成功状态码（Success）      请求已正常处理完毕              3XX      重定向状态码（Redirection）      需要进行额外操作以完成请求              4XX      客户端错误状态码（Client Error）      客户端原因导致服务器无法处理请求              5XX      服务器错误状态码（Server Error）      服务器原因导致处理请求出错        200 OK 请求正常处理完毕  204 No Content 请求成功处理，没有实体的主体返回  206 Partial Content GET范围请求已成功处理  301 Moved Permanently 永久重定向，资源已永久分配新URI  302 Found 临时重定向，资源已临时分配新URI  303 See Other 临时重定向，期望使用GET定向获取  304 Not Modified 发送的附带条件请求未满足  307 Temporary Redirect 临时重定向，POST不会变成GET  400 Bad Request 请求报文语法错误或参数错误  401 Unauthorized 需要通过HTTP认证，或认证失败  403 Forbidden 请求资源被拒绝  404 Not Found 无法找到请求资源（服务器无理由拒绝）  500 Internal Server Error 服务器故障或Web应用故障  503 Service Unavailable 服务器超负载或停机维护一个完整的URL假设这是一个url地址http://localhost:8080/a/b/c?a=1&amp;b=2#abc，里面包含的部分：  protocol: ‘http:’,//协议  host: ‘localhost:8080’,  port: ‘8080’,//端口  hostname: ‘localhost’,域名  hash: ‘#abc’,锚点  search: ‘?a=1&amp;b=2’ 等于 ?query: ‘a=1&amp;b=2’,  pathname: ‘/a/b/c’,  path: ‘/a/b/c?a=1&amp;b=2’,  href: ‘http://localhost:8080/a/b/c?a=1&amp;b=2#abc’获得URL中key对应的val值function getVal(url,key){	var start=url.indexOf("?");	var end=url.indexOf("#");	if(start&lt;0){		return null;	}	var query=end&lt;0?url.slice(start+1):url.slice(start+1,end);	var pairs=query.split("&amp;");	var args={};	for(var i=0;i&lt;pairs.length;i++){		var pos=pairs[i].indexOf("=");		if(pos==-1){			continue;		}		var argname=pairs[i].substring(0,pos);		var value=decodeURIComponent(pairs[i].substring(pos+1));		args[argname]=value;	}	return args[key];}js小数相加function add(){	var args=arguments,	    d=0,//小数位数;	    sum=0;	for(var key in args){ //遍历所有参数，取最大小数位数		var str=""+args[key];		if(str.indexOf(".")!=-1){			var temp=str.split(".")[1].length;			d=d&lt;temp?temp:d;		}	}	var m=Math.pow(10,d);	for(var key in args){		sum+=args[key]*m;	}	return sum/m;}a-z对应1-26，输入123输出abc，aw，lcfunction splitNumber(num){	var obj={		1:"a",		2:"b",		3:"c",		12:"l",		23:"w",	}	var res=[];	var temp=[];	var str="";	for(var i=1;i&lt;num.length;i++){		temp.push(num.substring(0,i),num.substring(i));	}	for(var j=0;j&lt;temp.length;j+=2){		res.push(obj[temp[j]]+obj[temp[j+1]]);	}	var str="";	for(var k=0;k&lt;num.length;k++){		str+=obj[num.charAt(k)];	}	res.push(str);	return res;	}]]></content>
+      <categories>
+        
+          <category> 面试 </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> Http </tag>
+        
+          <tag> 数组方法 </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+</search>

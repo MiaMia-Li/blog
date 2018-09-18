@@ -1,0 +1,1129 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Http,数组方法," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Lemon" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="http请求头 Accept：告诉服务器，客户端支持的数据类型。 Accept-Charset：告诉服务器，客户端采用的编码。 Accept-Encoding：告诉服务器，客户机支持的数据压缩格式。 Accept-Language：告诉服务器，客户机的语言环境。 Host：客户机通过这个头告诉服务器，想访问的主机名。 If-Modified-Since:客户机通过这个头告诉服务器，资源的缓存时间。 Referer:客户机通过这个头告诉服务器，它是从哪个资源来访问服务器的。（一般用于防盗链 User-Agent:客户机通过这个头告诉服务器，客户机的软件环境。 Cookie：客户机通过这个头告诉服务器，可以向服务器带数据。 Connection：客户机通过这个头告诉服务器，请求完后是关闭还是保持链接。 Date：客户机通过这个头告诉服务器，客户机当前请求时间。">
+<meta name="keywords" content="Http, 数组方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="猿辅导面经">
+<meta property="og:url" content="http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/08/17/interview-yfd/">
+<meta property="og:site_name" content="Lemon">
+<meta property="og:description" content="http请求头 Accept：告诉服务器，客户端支持的数据类型。 Accept-Charset：告诉服务器，客户端采用的编码。 Accept-Encoding：告诉服务器，客户机支持的数据压缩格式。 Accept-Language：告诉服务器，客户机的语言环境。 Host：客户机通过这个头告诉服务器，想访问的主机名。 If-Modified-Since:客户机通过这个头告诉服务器，资源的缓存时间。 Referer:客户机通过这个头告诉服务器，它是从哪个资源来访问服务器的。（一般用于防盗链 User-Agent:客户机通过这个头告诉服务器，客户机的软件环境。 Cookie：客户机通过这个头告诉服务器，可以向服务器带数据。 Connection：客户机通过这个头告诉服务器，请求完后是关闭还是保持链接。 Date：客户机通过这个头告诉服务器，客户机当前请求时间。">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="猿辅导面经">
+<meta name="twitter:description" content="http请求头 Accept：告诉服务器，客户端支持的数据类型。 Accept-Charset：告诉服务器，客户端采用的编码。 Accept-Encoding：告诉服务器，客户机支持的数据压缩格式。 Accept-Language：告诉服务器，客户机的语言环境。 Host：客户机通过这个头告诉服务器，想访问的主机名。 If-Modified-Since:客户机通过这个头告诉服务器，资源的缓存时间。 Referer:客户机通过这个头告诉服务器，它是从哪个资源来访问服务器的。（一般用于防盗链 User-Agent:客户机通过这个头告诉服务器，客户机的软件环境。 Cookie：客户机通过这个头告诉服务器，可以向服务器带数据。 Connection：客户机通过这个头告诉服务器，请求完后是关闭还是保持链接。 Date：客户机通过这个头告诉服务器，客户机当前请求时间。">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/"/>
+
+
+
+
+
+  <title>猿辅导面经 | Lemon</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lemon</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">前端学习的总结～</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/08/17/interview-yfd/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lemon">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            猿辅导面经
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-17T00:00:00+08:00">
+                2018-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/%E9%9D%A2%E8%AF%95" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <h3 id="http请求头">http请求头</h3>
+<ul>
+  <li>Accept：告诉服务器，客户端支持的数据类型。</li>
+  <li>Accept-Charset：告诉服务器，客户端采用的编码。</li>
+  <li>Accept-Encoding：告诉服务器，客户机支持的数据压缩格式。</li>
+  <li>Accept-Language：告诉服务器，客户机的语言环境。</li>
+  <li>Host：客户机通过这个头告诉服务器，想访问的主机名。</li>
+  <li>If-Modified-Since:客户机通过这个头告诉服务器，资源的缓存时间。</li>
+  <li>Referer:客户机通过这个头告诉服务器，它是从哪个资源来访问服务器的。（一般用于防盗链</li>
+  <li>User-Agent:客户机通过这个头告诉服务器，客户机的软件环境。</li>
+  <li>Cookie：客户机通过这个头告诉服务器，可以向服务器带数据。</li>
+  <li>Connection：客户机通过这个头告诉服务器，请求完后是关闭还是保持链接。</li>
+  <li>Date：客户机通过这个头告诉服务器，客户机当前请求时间。</li>
+</ul>
+
+<h3 id="http状态码">http状态码</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>状态码</th>
+      <th>响应类别</th>
+      <th>响应类别</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1XX</td>
+      <td>信息性状态码（Informational）</td>
+      <td>服务器正在处理请求</td>
+    </tr>
+    <tr>
+      <td>2XX</td>
+      <td>成功状态码（Success）</td>
+      <td>请求已正常处理完毕</td>
+    </tr>
+    <tr>
+      <td>3XX</td>
+      <td>重定向状态码（Redirection）</td>
+      <td>需要进行额外操作以完成请求</td>
+    </tr>
+    <tr>
+      <td>4XX</td>
+      <td>客户端错误状态码（Client Error）</td>
+      <td>客户端原因导致服务器无法处理请求</td>
+    </tr>
+    <tr>
+      <td>5XX</td>
+      <td>服务器错误状态码（Server Error）</td>
+      <td>服务器原因导致处理请求出错</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>200 OK 请求正常处理完毕</li>
+  <li>204 No Content 请求成功处理，没有实体的主体返回</li>
+  <li>206 Partial Content GET范围请求已成功处理</li>
+  <li>301 Moved Permanently 永久重定向，资源已永久分配新URI</li>
+  <li>302 Found 临时重定向，资源已临时分配新URI</li>
+  <li>303 See Other 临时重定向，期望使用GET定向获取</li>
+  <li>304 Not Modified 发送的附带条件请求未满足</li>
+  <li>307 Temporary Redirect 临时重定向，POST不会变成GET</li>
+  <li>400 Bad Request 请求报文语法错误或参数错误</li>
+  <li>401 Unauthorized 需要通过HTTP认证，或认证失败</li>
+  <li>403 Forbidden 请求资源被拒绝</li>
+  <li>404 Not Found 无法找到请求资源（服务器无理由拒绝）</li>
+  <li>500 Internal Server Error 服务器故障或Web应用故障</li>
+  <li>503 Service Unavailable 服务器超负载或停机维护</li>
+</ul>
+
+<h3 id="一个完整的url">一个完整的URL</h3>
+<p>假设这是一个url地址http://localhost:8080/a/b/c?a=1&amp;b=2#abc，里面包含的部分：</p>
+<ul>
+  <li>protocol: ‘http:’,//协议</li>
+  <li>host: ‘localhost:8080’,</li>
+  <li>port: ‘8080’,//端口</li>
+  <li>hostname: ‘localhost’,域名</li>
+  <li>hash: ‘#abc’,锚点</li>
+  <li>search: ‘?a=1&amp;b=2’ 等于 ?query: ‘a=1&amp;b=2’,</li>
+  <li>pathname: ‘/a/b/c’,</li>
+  <li>path: ‘/a/b/c?a=1&amp;b=2’,</li>
+  <li>href: ‘http://localhost:8080/a/b/c?a=1&amp;b=2#abc’</li>
+</ul>
+
+<h3 id="获得url中key对应的val值">获得URL中key对应的val值</h3>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20</pre></td><td class="code"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">getVal</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="nx">key</span><span class="p">){</span>
+	<span class="kd">var</span> <span class="nx">start</span><span class="o">=</span><span class="nx">url</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">"?"</span><span class="p">);</span>
+	<span class="kd">var</span> <span class="nx">end</span><span class="o">=</span><span class="nx">url</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">"#"</span><span class="p">);</span>
+	<span class="k">if</span><span class="p">(</span><span class="nx">start</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">){</span>
+		<span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="kd">var</span> <span class="nx">query</span><span class="o">=</span><span class="nx">end</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">?</span><span class="nx">url</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">start</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span><span class="nx">url</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">start</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="nx">end</span><span class="p">);</span>
+	<span class="kd">var</span> <span class="nx">pairs</span><span class="o">=</span><span class="nx">query</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">"&amp;"</span><span class="p">);</span>
+	<span class="kd">var</span> <span class="nx">args</span><span class="o">=</span><span class="p">{};</span>
+	<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">pairs</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="kd">var</span> <span class="nx">pos</span><span class="o">=</span><span class="nx">pairs</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">"="</span><span class="p">);</span>
+		<span class="k">if</span><span class="p">(</span><span class="nx">pos</span><span class="o">==-</span><span class="mi">1</span><span class="p">){</span>
+			<span class="k">continue</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="kd">var</span> <span class="nx">argname</span><span class="o">=</span><span class="nx">pairs</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nx">pos</span><span class="p">);</span>
+		<span class="kd">var</span> <span class="nx">value</span><span class="o">=</span><span class="nb">decodeURIComponent</span><span class="p">(</span><span class="nx">pairs</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">substring</span><span class="p">(</span><span class="nx">pos</span><span class="o">+</span><span class="mi">1</span><span class="p">));</span>
+		<span class="nx">args</span><span class="p">[</span><span class="nx">argname</span><span class="p">]</span><span class="o">=</span><span class="nx">value</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">args</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+</div>
+
+<h3 id="js小数相加">js小数相加</h3>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17</pre></td><td class="code"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">add</span><span class="p">(){</span>
+	<span class="kd">var</span> <span class="nx">args</span><span class="o">=</span><span class="nx">arguments</span><span class="p">,</span>
+	    <span class="nx">d</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="c1">//小数位数;</span>
+	    <span class="nx">sum</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+	<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">args</span><span class="p">){</span> <span class="c1">//遍历所有参数，取最大小数位数</span>
+		<span class="kd">var</span> <span class="nx">str</span><span class="o">=</span><span class="s2">""</span><span class="o">+</span><span class="nx">args</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+		<span class="k">if</span><span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">"."</span><span class="p">)</span><span class="o">!=-</span><span class="mi">1</span><span class="p">){</span>
+			<span class="kd">var</span> <span class="nx">temp</span><span class="o">=</span><span class="nx">str</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">"."</span><span class="p">)[</span><span class="mi">1</span><span class="p">].</span><span class="nx">length</span><span class="p">;</span>
+			<span class="nx">d</span><span class="o">=</span><span class="nx">d</span><span class="o">&lt;</span><span class="nx">temp</span><span class="p">?</span><span class="nx">temp</span><span class="p">:</span><span class="nx">d</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="kd">var</span> <span class="nx">m</span><span class="o">=</span><span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="nx">d</span><span class="p">);</span>
+	<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">args</span><span class="p">){</span>
+		<span class="nx">sum</span><span class="o">+=</span><span class="nx">args</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span><span class="o">*</span><span class="nx">m</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">sum</span><span class="o">/</span><span class="nx">m</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+</div>
+
+<h3 id="a-z对应1-26输入123输出abcawlc">a-z对应1-26，输入123输出abc，aw，lc</h3>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25</pre></td><td class="code"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">splitNumber</span><span class="p">(</span><span class="nx">num</span><span class="p">){</span>
+	<span class="kd">var</span> <span class="nx">obj</span><span class="o">=</span><span class="p">{</span>
+		<span class="mi">1</span><span class="p">:</span><span class="s2">"a"</span><span class="p">,</span>
+		<span class="mi">2</span><span class="p">:</span><span class="s2">"b"</span><span class="p">,</span>
+		<span class="mi">3</span><span class="p">:</span><span class="s2">"c"</span><span class="p">,</span>
+		<span class="mi">12</span><span class="p">:</span><span class="s2">"l"</span><span class="p">,</span>
+		<span class="mi">23</span><span class="p">:</span><span class="s2">"w"</span><span class="p">,</span>
+	<span class="p">}</span>
+	<span class="kd">var</span> <span class="nx">res</span><span class="o">=</span><span class="p">[];</span>
+	<span class="kd">var</span> <span class="nx">temp</span><span class="o">=</span><span class="p">[];</span>
+	<span class="kd">var</span> <span class="nx">str</span><span class="o">=</span><span class="s2">""</span><span class="p">;</span>
+	<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">num</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="nx">temp</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">num</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nx">i</span><span class="p">),</span><span class="nx">num</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">i</span><span class="p">));</span>
+	<span class="p">}</span>
+	<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">j</span><span class="o">&lt;</span><span class="nx">temp</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">j</span><span class="o">+=</span><span class="mi">2</span><span class="p">){</span>
+		<span class="nx">res</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">obj</span><span class="p">[</span><span class="nx">temp</span><span class="p">[</span><span class="nx">j</span><span class="p">]]</span><span class="o">+</span><span class="nx">obj</span><span class="p">[</span><span class="nx">temp</span><span class="p">[</span><span class="nx">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]]);</span>
+	<span class="p">}</span>
+	<span class="kd">var</span> <span class="nx">str</span><span class="o">=</span><span class="s2">""</span><span class="p">;</span>
+	<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">k</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">k</span><span class="o">&lt;</span><span class="nx">num</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">k</span><span class="o">++</span><span class="p">){</span>
+		<span class="nx">str</span><span class="o">+=</span><span class="nx">obj</span><span class="p">[</span><span class="nx">num</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="nx">k</span><span class="p">)];</span>
+	<span class="p">}</span>
+	<span class="nx">res</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+	<span class="k">return</span> <span class="nx">res</span><span class="p">;</span>
+	
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/assets/images/alipay-reward-image.jpg" alt="Lmy Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/Http" rel="tag"># Http</a>
+          
+            
+            <a href="/tag/#/%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95" rel="tag"># 数组方法</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/%E9%9D%A2%E8%AF%95/2018/08/20/interview-ali/" rel="next" title="阿里面经">
+                <i class="fa fa-chevron-left"></i> 阿里面经
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/avatar.jpg"
+               alt="Lmy" />
+          <p class="site-author-name" itemprop="name">Lmy</p>
+           
+              <p class="site-description motion-element" itemprop="description">对社会有所创造，为他人付出过，完善自己。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://github.com/supersui" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/cherry" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2887635897" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/xue-xiao-yao" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-link"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-3"> <a class="nav-link" href="#http请求头"> <span class="nav-number">1</span> <span class="nav-text">http请求头</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#http状态码"> <span class="nav-number">2</span> <span class="nav-text">http状态码</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#一个完整的url"> <span class="nav-number">3</span> <span class="nav-text">一个完整的URL</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#获得url中key对应的val值"> <span class="nav-number">4</span> <span class="nav-text">获得URL中key对应的val值</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#js小数相加"> <span class="nav-number">5</span> <span class="nav-text">js小数相加</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#a-z对应1-26输入123输出abcawlc"> <span class="nav-number">6</span> <span class="nav-text">a-z对应1-26，输入123输出abc，aw，lc</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lmy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://jekyllrb.com">Jekyll</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+

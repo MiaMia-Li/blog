@@ -1,0 +1,1303 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CSS布局,Http,数组方法,ES6,Vue," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Lemon" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="两栏布局 float+margin-left aside{ background: yellow; width: 200px; float: left; } div{ margin-left: 210px;/*大于aside的宽度*/ width: auto; background: red; } float+overflow：hidden（形成BFC） div{ overflow:hidden; width: auto; background: red; height: 400px; } flex body{ display: flex; } aside{ background: yellow; flex:0 0 200px; } div{ flex:1 1 auto; background: red; } grid body{ display: grid; grid-template-columns: 200px auto; } table aside{ width: 200px; display: table-cell; background: yellow; } div{ display: table-cell; background: red; }">
+<meta name="keywords" content="CSS布局, Http, 数组方法, ES6, Vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里面经">
+<meta property="og:url" content="http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/08/20/interview-ali/">
+<meta property="og:site_name" content="Lemon">
+<meta property="og:description" content="两栏布局 float+margin-left aside{ background: yellow; width: 200px; float: left; } div{ margin-left: 210px;/*大于aside的宽度*/ width: auto; background: red; } float+overflow：hidden（形成BFC） div{ overflow:hidden; width: auto; background: red; height: 400px; } flex body{ display: flex; } aside{ background: yellow; flex:0 0 200px; } div{ flex:1 1 auto; background: red; } grid body{ display: grid; grid-template-columns: 200px auto; } table aside{ width: 200px; display: table-cell; background: yellow; } div{ display: table-cell; background: red; }">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="阿里面经">
+<meta name="twitter:description" content="两栏布局 float+margin-left aside{ background: yellow; width: 200px; float: left; } div{ margin-left: 210px;/*大于aside的宽度*/ width: auto; background: red; } float+overflow：hidden（形成BFC） div{ overflow:hidden; width: auto; background: red; height: 400px; } flex body{ display: flex; } aside{ background: yellow; flex:0 0 200px; } div{ flex:1 1 auto; background: red; } grid body{ display: grid; grid-template-columns: 200px auto; } table aside{ width: 200px; display: table-cell; background: yellow; } div{ display: table-cell; background: red; }">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/"/>
+
+
+
+
+
+  <title>阿里面经 | Lemon</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lemon</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">前端学习的总结～</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/08/20/interview-ali/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lemon">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            阿里面经
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-20T00:00:00+08:00">
+                2018-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/%E9%9D%A2%E8%AF%95" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <h3 id="两栏布局">两栏布局</h3>
+<ol>
+  <li><strong>float+margin-left</strong>
+    <div class="language-css highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10</pre></td><td class="code"><pre class="highlight"><code><span class="nt">aside</span><span class="p">{</span>
+ <span class="nl">background</span><span class="p">:</span> <span class="no">yellow</span><span class="p">;</span>
+ <span class="nl">width</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+ <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">div</span><span class="p">{</span>
+ <span class="nl">margin-left</span><span class="p">:</span> <span class="m">210px</span><span class="p">;</span><span class="c">/*大于aside的宽度*/</span>
+ <span class="nl">width</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+ <span class="nl">background</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+    </div>
+  </li>
+  <li><strong>float+overflow：hidden（形成BFC）</strong>
+    <div class="language-css highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6</pre></td><td class="code"><pre class="highlight"><code><span class="nt">div</span><span class="p">{</span>
+ <span class="nl">overflow</span><span class="p">:</span><span class="nb">hidden</span><span class="p">;</span>
+ <span class="nl">width</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+ <span class="nl">background</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+ <span class="nl">height</span><span class="p">:</span> <span class="m">400px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+    </div>
+  </li>
+  <li><strong>flex</strong>
+    <div class="language-css highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11</pre></td><td class="code"><pre class="highlight"><code><span class="nt">body</span><span class="p">{</span>
+ <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">aside</span><span class="p">{</span>
+ <span class="nl">background</span><span class="p">:</span> <span class="no">yellow</span><span class="p">;</span>
+ <span class="nl">flex</span><span class="p">:</span><span class="m">0</span> <span class="m">0</span> <span class="m">200px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">div</span><span class="p">{</span>
+ <span class="nl">flex</span><span class="p">:</span><span class="m">1</span> <span class="m">1</span> <span class="nb">auto</span><span class="p">;</span>
+ <span class="nl">background</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+    </div>
+  </li>
+  <li><strong>grid</strong>
+    <div class="language-css highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4</pre></td><td class="code"><pre class="highlight"><code><span class="nt">body</span><span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">grid</span><span class="p">;</span>
+  <span class="py">grid-template-columns</span><span class="p">:</span> <span class="m">200px</span> <span class="nb">auto</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+    </div>
+  </li>
+  <li><strong>table</strong>
+    <div class="language-css highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9</pre></td><td class="code"><pre class="highlight"><code><span class="nt">aside</span><span class="p">{</span>
+   <span class="nl">width</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+   <span class="nl">display</span><span class="p">:</span> <span class="nb">table-cell</span><span class="p">;</span>
+   <span class="nl">background</span><span class="p">:</span> <span class="no">yellow</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">div</span><span class="p">{</span>
+ <span class="nl">display</span><span class="p">:</span> <span class="nb">table-cell</span><span class="p">;</span>
+ <span class="nl">background</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+    </div>
+  </li>
+</ol>
+
+<h3 id="meta标签">meta标签</h3>
+<meta />
+<p>元素可提供有关页面的元信息（meta-information）</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>属性</th>
+      <th>值</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>charset（#）</td>
+      <td>character_set</td>
+      <td>定义文档的字符编码。</td>
+    </tr>
+    <tr>
+      <td>content</td>
+      <td>text</td>
+      <td>定义与 http-equiv 或 name 属性相关的元信息。</td>
+    </tr>
+    <tr>
+      <td>http-equiv</td>
+      <td>content-typ edefault-style refresh</td>
+      <td>把 content 属性关联到 HTTP 头部。</td>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>application-nam eauthor description generator keywords</td>
+      <td>把 content 属性关联到一个名称。</td>
+    </tr>
+    <tr>
+      <td>scheme</td>
+      <td>format/URI</td>
+      <td>HTML5不支持。定义用于翻译 content 属性值的格式。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="name属性">name属性</h4>
+<p>name属性主要用于描述网页，与之对应的属性值为content，content中的内容主要是便于搜索引擎机器人查找信息和分类信息用的。<br />
+meta标签的name属性语法格式是：<code class="highlighter-rouge">&lt;meta name="参数" content="具体的参数值"&gt;。</code><br />
+其中name属性主要有以下几种参数：</p>
+<h5 id="keywords关键字">Keywords（关键字）</h5>
+<p>说明：keywords用来告诉搜索引擎你网页的关键字是什么。<br />
+举例 <code class="highlighter-rouge">&lt;meta name ="keywords" content="science human culture"&gt;</code></p>
+<h5 id="description网站内容描述">description（网站内容描述)</h5>
+<p>说明：description用来告诉搜索引擎你的网站主要内容。 <br />
+网站内容描述（description）的设计要点:</p>
+<ol>
+  <li>网页描述为自然语言而不是罗列关键词（与keywords设计正好相反）；</li>
+  <li>尽可能准确地描述网页的核心内容，通常为网页内容的摘要信息，也就是希望搜索引擎在检索结果中展示的摘要信息；</li>
+  <li>网页描述中含有有效关键词；</li>
+  <li>网页描述内容与网页标题内容有高度相关性；</li>
+  <li>网页描述内容与网页主体内容有高度相关性；</li>
+  <li>网页描述的文字不必太多，一般不超过搜索引擎检索结果摘要信息的最多字数（通常在100中文字之内，不同搜索引擎略有差异）。</li>
+</ol>
+
+<h5 id="robots机器人向导">robots（机器人向导）</h5>
+<p>说明：robots用来告诉搜索机器人哪些页面需要索引，哪些页面不需要索引。content的参数有all,none,index,noindex,follow,nofollow。默认是all。<br />
+举例 <code class="highlighter-rouge">&lt;meta name="robots" content="none"&gt;</code></p>
+
+<h5 id="author作者">author（作者）</h5>
+<p>说明：标注网页的作者</p>
+
+<h4 id="http-equiv属性">http-equiv属性</h4>
+<p>http-equiv顾名思义，相当于http的文件头作用，它可以向浏览器传回一些有用的信息，以帮助正确和精确地显示网页内容，与之对应的属性值为content，content中的内容其实就是各个参数的变量值。<br />
+meta标签的http-equiv属性语法格式是：<code class="highlighter-rouge">&lt;meta http-equiv="参数" content="参数变量值"&gt; </code><br />
+其中http-equiv属性主要有以下几种参数：</p>
+
+<h5 id="expires期限">Expires（期限）</h5>
+<p>说明：可以用于设定网页的到期时间。一旦网页过期，必须到服务器上重新传输。<br />
+用法：<code class="highlighter-rouge">&lt;meta http-equiv="expires" content="Fri,12 Jan 2001 18:18:18 GMT"&gt;</code><br />
+注意：必须使用GMT的时间格式。</p>
+<h5 id="pragmacache模式">Pragma(cache模式）</h5>
+<p>说明：禁止浏览器从本地计算机的缓存中访问页面内容。<br />
+用法：<code class="highlighter-rouge">&lt;meta http-equiv="Pragma" content="no-cache"&gt;</code><br />
+注意：这样设定，访问者将无法脱机浏览。</p>
+<h5 id="refresh刷新">Refresh（刷新）</h5>
+<p>说明：自动刷新并转到新页面。<br />
+用法：<code class="highlighter-rouge">&lt;meta http-equiv="Refresh" content="2;URL"&gt;</code>（注意后面的分号，分别在秒数的前面和网址的后面，URL可为空）<br />
+注意：其中的2是指停留2秒钟后自动刷新到URL网址。</p>
+<h5 id="set-cookiecookie设定">Set-Cookie(cookie设定）</h5>
+<p>说明：如果网页过期，那么存盘的cookie将被删除。<br />
+用法：<code class="highlighter-rouge">&lt;meta http-equiv="Set-Cookie" content="cookievalue=xxx; expires=Friday,12-Jan-2001 18:18:18 GMT; path=/"&gt;</code><br />
+注意：必须使用GMT的时间格式。</p>
+<h5 id="window-target显示窗口的设定">Window-target（显示窗口的设定）</h5>
+<p>说明：强制页面在当前窗口以独立页面显示。<br />
+用法：<code class="highlighter-rouge">&lt;meta http-equiv="Window-target" content="_top"&gt;</code><br />
+注意：用来防止别人在框架里调用自己的页面。</p>
+<h5 id="content-type显示字符集的设定">content-Type（显示字符集的设定）</h5>
+<p>说明：设定页面使用的字符集。<br />
+用法：<code class="highlighter-rouge">&lt;meta http-equiv="content-Type" content="text/html; charset=gb2312"&gt;</code></p>
+<h5 id="content-language显示语言的设定">content-Language（显示语言的设定）</h5>
+<p>用法：<code class="highlighter-rouge">&lt;meta http-equiv="Content-Language" content="zh-cn" /&gt;</code></p>
+
+<h4 id="功能">功能</h4>
+<ul>
+  <li>帮助主页被各大搜索引擎登录</li>
+  <li>定义页面的使用语言</li>
+  <li>自动刷新并指向新的页面</li>
+</ul>
+
+<h3 id="putpost区别">put/post区别</h3>
+<p><strong>最根本的区别就是：POST方法不是幂等的，而PUT方法则有幂等性。</strong></p>
+
+<p>一个幂等操作的特点就是其任意多次执行所产生的影响均与依次一次执行的影响相同。
+POST在请求的时候，服务器会每次都创建一个文件，但是在PUT方法的时候只是简单地更新，而不是去重新创建。因此PUT是幂等的。</p>
+
+<p>假如我们发送两个/blog/post/Sample请求，服务器端是什么样的行为？如果产生了两个博客帖子，那就说明这个服务不是idempotent的，因为多次使用产生了副作用了嘛；如果后一个请求把第一个请求覆盖掉了，那这个服务就是idempotent的。前一种情况，每次返回结果不一样的时候，应该使用POST方法，后一种情况，应该使用PUT方法。</p>
+
+<h3 id="http状态码">http状态码</h3>
+<ul>
+  <li><strong>202</strong>状态码：服务器已接受请求，但尚未处理；</li>
+  <li><strong>301</strong>状态码：被请求的资源已永久移动到新位置。服务器返回此响应（对 GET 或 HEAD 请求的响应）时，会自动将请求者转到新位置。永久重定向</li>
+  <li><strong>302</strong>状态码：请求的资源临时从不同的URI响应请求，但请求者应继续使用原有位置来进行以后的请求。暂时重定向</li>
+  <li><strong>304</strong>自从上次请求后，请求的网页未修改过。服务器返回此响应时，不会返回网页内容。 如果网页自请求者上次请求后再也没有更改过，您应将服务器配置为返回此响应(称为 If-Modified-Since HTTP 标头)。</li>
+  <li><strong>401</strong>状态码：请求要求身份验证。 对于需要登录的网页，服务器可能返回此响应。</li>
+  <li><strong>403</strong>状态码：服务器已经理解请求，但是拒绝执行它。与401响应不同的是，身份验证并不能提供任何帮助，而且这个请求也不应该被重复提交。</li>
+  <li><strong>404</strong>状态码：请求失败，请求所希望得到的资源未被在服务器上发现。没有信息能够告诉用户这个状况到底是暂时的还是永久的。假如服务器知道情况的话，应当使用410状态码来告知旧资源因为某些内部的配置机制问题，已经永久的不可用，而且没有任何可以跳转的地址。404这个状态码被广泛应用于当服务器不想揭示到底为何请求被拒绝或者没有其他适合的响应可用的情况下。</li>
+  <li><strong>500</strong>状态码：服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理。一般来说，这个问题都会在服务器的程序码出错时出现。</li>
+  <li><strong>503</strong>状态码：由于临时的服务器维护或者过载，服务器当前无法处理请求。通常，这个是暂时状态，一段时间会恢复。</li>
+</ul>
+
+<h3 id="跨域">跨域</h3>
+
+<h4 id="jsonp">JSONP</h4>
+<p>利用<code class="highlighter-rouge">&lt;script&gt;</code>标签没有跨域限制的漏洞，通过<code class="highlighter-rouge">&lt;script&gt;</code>标签指向一个需要访问的地址并提供一个回调函数来接收数据当需要通讯时。JSONP 使用简单且兼容性不错，但是只限于 get 请求。<br />
+<code class="highlighter-rouge">&lt;script src="http://domain/api?param1=a&amp;param2=b&amp;callback=jsonp"&gt;&lt;/script&gt;</code> <br />
+在开发中可能会遇到多个 JSONP 请求的回调函数名是相同的，这时候就需要自己 封装一个 JSONP，以下是简单实现。</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17</pre></td><td class="code"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">jsonp</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">jsonpCallback</span><span class="p">,</span> <span class="nx">success</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kd">let</span> <span class="nx">script</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"script"</span><span class="p">);</span>
+	<span class="nx">script</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">url</span><span class="p">;</span>
+	<span class="nx">script</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+	<span class="nx">script</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s2">"text/javascript"</span><span class="p">;</span>
+	<span class="nb">window</span><span class="p">[</span><span class="nx">jsonpCallback</span><span class="p">]</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">success</span> <span class="o">&amp;</span> <span class="nx">success</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+	<span class="p">};</span>
+	<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">jsonp</span><span class="p">(</span>
+	<span class="s2">"http://xxx"</span><span class="p">,</span>
+	<span class="s2">"callback"</span><span class="p">,</span>
+	<span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">);</span> 
+</code></pre></td></tr></tbody></table></div>
+</div>
+<h4 id="cors">CORS</h4>
+<p>浏览器会自动进行 CORS 通信，实现CORS通信的关键是后端。只要后端实现了 CORS，就实现了跨域。 <br />
+服务端设置 Access-Control-Allow-Origin 就可以开启 CORS。 该属性表示哪些 域名可以访问资源，如果设置通配符则表示所有网站都可以访问资源。</p>
+
+<h4 id="documentdomain">document.domain</h4>
+<p>该方式只能用于二级域名相同的情况下，比如 a.test.com 和 b.test.com 适用于 该方式。 
+只需要给页面添加 document.domain = ‘test.com’ 表示二级域名都相同就可以实现跨域</p>
+
+<h4 id="postmessage">postMessage</h4>
+<p>这种方式通常用于获取嵌入页面中的第三方页面数据。一个页面发送消息，另一个页面判断来源并接收消息 。</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10</pre></td><td class="code"><pre class="highlight"><code><span class="c1">// 发送消息端</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">parent</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span> <span class="s1">'http://test.com'</span><span class="p">);</span> 
+<span class="c1">// 接收消息端</span>
+<span class="kd">var</span> <span class="nx">mc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MessageChannel</span><span class="p">();</span> 
+<span class="nx">mc</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> 
+	<span class="kd">var</span> <span class="nx">origin</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">origin</span> <span class="o">||</span> <span class="nx">event</span><span class="p">.</span><span class="nx">originalEvent</span><span class="p">.</span><span class="nx">origin</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="nx">origin</span> <span class="o">===</span> <span class="s1">'http://test.com'</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'验证通过'</span><span class="p">)</span>
+	<span class="p">}</span> 
+<span class="p">});</span> 
+</code></pre></td></tr></tbody></table></div>
+</div>
+<h3 id="数组去重">数组去重</h3>
+<ol>
+  <li>新建一新数组，遍历传入数组，值不在新数组就push进该新数组中（IE8以下不支持数组的indexOf方法）
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9</pre></td><td class="code"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">uniq1</span><span class="p">(</span><span class="nx">arr</span><span class="p">){</span>
+ <span class="kd">var</span> <span class="nx">temp</span><span class="o">=</span><span class="p">[];</span>
+ <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+     <span class="k">if</span><span class="p">(</span><span class="nx">temp</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span><span class="o">==-</span><span class="mi">1</span><span class="p">){</span>
+         <span class="nx">temp</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+ <span class="k">return</span> <span class="nx">temp</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+    </div>
+  </li>
+  <li>对象键值对<br />
+该方法执行的速度比其他任何方法都快， 就是占用的内存大一些。
+<strong>注意点</strong>：判断是否为js对象键时，会自动对传入的键执行<code class="highlighter-rouge">toString()</code>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16</pre></td><td class="code"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">uniq2</span><span class="p">(</span><span class="nx">arr</span><span class="p">){</span>
+ <span class="kd">var</span> <span class="nx">obj</span><span class="o">=</span><span class="p">{},</span><span class="nx">r</span><span class="o">=</span><span class="p">[],</span><span class="nx">type</span><span class="p">,</span><span class="nx">val</span><span class="p">;</span>
+ <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+     <span class="nx">val</span><span class="o">=</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+     <span class="nx">type</span><span class="o">=</span><span class="k">typeof</span> <span class="nx">val</span><span class="p">;</span>
+     <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">obj</span><span class="p">[</span><span class="nx">val</span><span class="p">]){</span>
+         <span class="nx">obj</span><span class="p">[</span><span class="nx">val</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="nx">type</span><span class="p">];</span>
+         <span class="nx">r</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
+     <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">obj</span><span class="p">[</span><span class="nx">val</span><span class="p">].</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">type</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">){</span>
+         <span class="nx">obj</span><span class="p">[</span><span class="nx">val</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="nx">type</span><span class="p">);</span>
+         <span class="nx">r</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+ <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+ <span class="k">return</span> <span class="nx">r</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+    </div>
+  </li>
+  <li>ES6数组去重（无法判断对象重复）<br />
+向 Set 加入值的时候，不会发生类型转换，所以 5 和 ‘5’ 是两个不同的值。 Set 内部判断两个值是否相同，使用的算法是 “Same-value equality”，它类似于精确相等运算符（===）。主要的区别是 NaN等于自身，而精确运算符认为 NaN 不等于自身。两个对象总是不相等的，所以无法达到对象重复去重
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3</pre></td><td class="code"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">uniq3</span><span class="p">(</span><span class="nx">arr</span><span class="p">){</span>
+ <span class="k">return</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="k">new</span> <span class="nx">Set</span><span class="p">(</span><span class="nx">arr</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+    </div>
+  </li>
+  <li>排序后遍历数组
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11</pre></td><td class="code"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">uniq4</span><span class="p">(</span><span class="nx">arr</span><span class="p">){</span>
+ <span class="kd">var</span> <span class="nx">temp</span><span class="o">=</span><span class="p">[</span><span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]];</span>
+ <span class="nx">arr</span><span class="p">.</span><span class="nx">sort</span><span class="p">();</span>
+ <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span>
+ <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+     <span class="k">if</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="o">!==</span><span class="nx">temp</span><span class="p">[</span><span class="nx">temp</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">]){</span>
+         <span class="nx">temp</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+ <span class="k">return</span> <span class="nx">temp</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+    </div>
+  </li>
+  <li>map 值-值
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13</pre></td><td class="code"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">uniq5</span><span class="p">(</span><span class="nx">arr</span><span class="p">){</span>
+ <span class="kd">var</span> <span class="nx">map</span><span class="o">=</span><span class="k">new</span> <span class="nx">Map</span><span class="p">();</span>
+ <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+     <span class="kd">var</span> <span class="nx">temp</span><span class="o">=</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+     <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">map</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">temp</span><span class="p">)){</span>
+         <span class="nx">map</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">temp</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+     <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+         <span class="k">continue</span><span class="p">;</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+ <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">map</span><span class="p">)</span>
+ <span class="k">return</span> <span class="p">[...</span><span class="nx">map</span><span class="p">.</span><span class="nx">keys</span><span class="p">()];</span>
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+    </div>
+    <h3 id="es6-generate">ES6 Generate</h3>
+    <h3 id="vue双向绑定">vue双向绑定</h3>
+    <h3 id="vue生命周期">vue生命周期</h3>
+  </li>
+</ol>
+
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/assets/images/alipay-reward-image.jpg" alt="Lmy Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/CSS%E5%B8%83%E5%B1%80" rel="tag"># CSS布局</a>
+          
+            
+            <a href="/tag/#/Http" rel="tag"># Http</a>
+          
+            
+            <a href="/tag/#/%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95" rel="tag"># 数组方法</a>
+          
+            
+            <a href="/tag/#/ES6" rel="tag"># ES6</a>
+          
+            
+            <a href="/tag/#/Vue" rel="tag"># Vue</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/%E9%9D%A2%E8%AF%95/2018/08/30/interview-maoyan/" rel="next" title="猫眼面经">
+                <i class="fa fa-chevron-left"></i> 猫眼面经
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/%E9%9D%A2%E8%AF%95/2018/08/17/interview-yfd/" rel="prev" title="猿辅导面经">
+                猿辅导面经 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/avatar.jpg"
+               alt="Lmy" />
+          <p class="site-author-name" itemprop="name">Lmy</p>
+           
+              <p class="site-description motion-element" itemprop="description">对社会有所创造，为他人付出过，完善自己。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://github.com/supersui" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/cherry" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2887635897" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/xue-xiao-yao" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-link"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-3"> <a class="nav-link" href="#两栏布局"> <span class="nav-number">1</span> <span class="nav-text">两栏布局</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#meta标签"> <span class="nav-number">2</span> <span class="nav-text">meta标签</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#name属性"> <span class="nav-number">2.1</span> <span class="nav-text">name属性</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-5"> <a class="nav-link" href="#keywords关键字"> <span class="nav-number">2.1.1</span> <span class="nav-text">Keywords（关键字）</span> </a> </li> <li class="nav-item nav-level-5"> <a class="nav-link" href="#description网站内容描述"> <span class="nav-number">2.1.2</span> <span class="nav-text">description（网站内容描述)</span> </a> </li> <li class="nav-item nav-level-5"> <a class="nav-link" href="#robots机器人向导"> <span class="nav-number">2.1.3</span> <span class="nav-text">robots（机器人向导）</span> </a> </li> <li class="nav-item nav-level-5"> <a class="nav-link" href="#author作者"> <span class="nav-number">2.1.4</span> <span class="nav-text">author（作者）</span> </a> </li> </ol> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#http-equiv属性"> <span class="nav-number">2.2</span> <span class="nav-text">http-equiv属性</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-5"> <a class="nav-link" href="#expires期限"> <span class="nav-number">2.2.1</span> <span class="nav-text">Expires（期限）</span> </a> </li> <li class="nav-item nav-level-5"> <a class="nav-link" href="#pragmacache模式"> <span class="nav-number">2.2.2</span> <span class="nav-text">Pragma(cache模式）</span> </a> </li> <li class="nav-item nav-level-5"> <a class="nav-link" href="#refresh刷新"> <span class="nav-number">2.2.3</span> <span class="nav-text">Refresh（刷新）</span> </a> </li> <li class="nav-item nav-level-5"> <a class="nav-link" href="#set-cookiecookie设定"> <span class="nav-number">2.2.4</span> <span class="nav-text">Set-Cookie(cookie设定）</span> </a> </li> <li class="nav-item nav-level-5"> <a class="nav-link" href="#window-target显示窗口的设定"> <span class="nav-number">2.2.5</span> <span class="nav-text">Window-target（显示窗口的设定）</span> </a> </li> <li class="nav-item nav-level-5"> <a class="nav-link" href="#content-type显示字符集的设定"> <span class="nav-number">2.2.6</span> <span class="nav-text">content-Type（显示字符集的设定）</span> </a> </li> <li class="nav-item nav-level-5"> <a class="nav-link" href="#content-language显示语言的设定"> <span class="nav-number">2.2.7</span> <span class="nav-text">content-Language（显示语言的设定）</span> </a> </li> </ol> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#功能"> <span class="nav-number">2.3</span> <span class="nav-text">功能</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#putpost区别"> <span class="nav-number">3</span> <span class="nav-text">put/post区别</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#http状态码"> <span class="nav-number">4</span> <span class="nav-text">http状态码</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#跨域"> <span class="nav-number">5</span> <span class="nav-text">跨域</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#jsonp"> <span class="nav-number">5.1</span> <span class="nav-text">JSONP</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#cors"> <span class="nav-number">5.2</span> <span class="nav-text">CORS</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#documentdomain"> <span class="nav-number">5.3</span> <span class="nav-text">document.domain</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#postmessage"> <span class="nav-number">5.4</span> <span class="nav-text">postMessage</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#数组去重"> <span class="nav-number">6</span> <span class="nav-text">数组去重</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#es6-generate"> <span class="nav-number">7</span> <span class="nav-text">ES6 Generate</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#vue双向绑定"> <span class="nav-number">8</span> <span class="nav-text">vue双向绑定</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#vue生命周期"> <span class="nav-number">9</span> <span class="nav-text">vue生命周期</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lmy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://jekyllrb.com">Jekyll</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+
