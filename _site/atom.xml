@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.2">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-09-19T01:59:34+08:00</updated><id>http://localhost:4000/</id><title type="html">Lemon</title><subtitle>对社会有所创造，为他人付出过，完善自己。</subtitle><author><name>Lmy</name></author><entry><title type="html">网易2018校招编程合集</title><link href="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/18/interview-ntes/" rel="alternate" type="text/html" title="网易2018校招编程合集" /><published>2018-09-18T00:00:00+08:00</published><updated>2018-09-18T00:00:00+08:00</updated><id>http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/18/interview-ntes</id><content type="html" xml:base="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/18/interview-ntes/">&lt;p&gt;题目来源于牛客网，&lt;a href=&quot;https://www.nowcoder.com/test/6910869/summary&quot;&gt;网易2018校园招聘编程题真题集合&lt;/a&gt;。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.2">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-09-20T23:29:01+08:00</updated><id>http://localhost:4000/</id><title type="html">Lemon</title><subtitle>对社会有所创造，为他人付出过，完善自己。</subtitle><author><name>Lmy</name></author><entry><title type="html">网易2018校招编程合集</title><link href="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/18/interview-ntes/" rel="alternate" type="text/html" title="网易2018校招编程合集" /><published>2018-09-18T00:00:00+08:00</published><updated>2018-09-18T00:00:00+08:00</updated><id>http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/18/interview-ntes</id><content type="html" xml:base="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/18/interview-ntes/">&lt;p&gt;题目来源于牛客网，&lt;a href=&quot;https://www.nowcoder.com/test/6910869/summary&quot;&gt;网易2018校园招聘编程题真题集合&lt;/a&gt;。&lt;/p&gt;
 
 &lt;h3 id=&quot;魔法币&quot;&gt;魔法币&lt;/h3&gt;
 &lt;h4 id=&quot;题目&quot;&gt;题目&lt;/h4&gt;
@@ -177,22 +177,12 @@
 
 &lt;h3 id=&quot;最长公共子括号序列&quot;&gt;最长公共子括号序列&lt;/h3&gt;
 &lt;h4 id=&quot;题目-5&quot;&gt;题目&lt;/h4&gt;
-&lt;p&gt;一个合法的括号匹配序列被定义为:&lt;br /&gt;
-1.空串” “是合法的括号序列 &lt;br /&gt;
-2.如果”X”和”Y”是合法的序列,那么”XY”也是一个合法的括号序列&lt;br /&gt;
-3.如果”X”是一个合法的序列,那么”(X)”也是一个合法的括号序列&lt;br /&gt;
-4.每个合法的括号序列都可以由上面的规则生成&lt;br /&gt;
-例如””, “()”, “()()()”, “(()())”, “(((()))”都是合法的。
-从一个字符串S中移除零个或者多个字符得到的序列称为S的子序列。
-例如”abcde”的子序列有”abe”,””,”abcde”等。
-定义LCS(S,T)为字符串S和字符串T最长公共子序列的长度,即一个最长的序列W既是S的子序列也是T的子序列的长度。
-小易给出一个合法的括号匹配序列s,小易希望你能找出具有以下特征的括号序列t:&lt;br /&gt;
+&lt;p&gt;小易给出一个合法的括号匹配序列s,小易希望你能找出具有以下特征的括号序列t:&lt;br /&gt;
 1、t跟s不同,但是长度相同&lt;br /&gt;
 2、t也是一个合法的括号匹配序列&lt;br /&gt;
 3、LCS(s, t)是满足上述两个条件的t中最大的
-因为这样的t可能存在多个,小易需要你计算出满足条件的t有多少个。&lt;/p&gt;
-
-&lt;p&gt;如样例所示: s = “(())()”,跟字符串s长度相同的合法括号匹配序列有:
+因为这样的t可能存在多个,小易需要你计算出满足条件的t有多少个。&lt;br /&gt;
+如样例所示: s = “(())()”,跟字符串s长度相同的合法括号匹配序列有:
 “()(())”, “((()))”, “()()()”, “(()())”,其中LCS( “(())()”, “()(())” )为4,其他三个都为5,所以输出3.&lt;/p&gt;
 
 &lt;p&gt;输入描述:&lt;/p&gt;
@@ -216,7 +206,42 @@
 &lt;/blockquote&gt;
 
 &lt;h4 id=&quot;思路-5&quot;&gt;思路&lt;/h4&gt;
-&lt;p&gt;这道题的题干太长了，但其实没那么复杂。参考&lt;a href=&quot;https://leetcode-cn.com/problems/generate-parentheses/description/&quot;&gt;Leetcode22 括号生成&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这道题的题干太长了，但其实没那么复杂。根据题意，要想使得 LCS 最大，
+删去任意一个字符即可获得 LCS = |s| - 1 ，再把该字符插到与原来不同的任意位置可以维持原长度，而不影响 LCS 的计算。&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;deal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+	    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+	    &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;splice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+	        &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;splice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;vaild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)){&lt;/span&gt;
+	            &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+	        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	        &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;splice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;has&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)){&lt;/span&gt;
+		&lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;vaild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;(&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;(&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;stack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;参考&lt;a href=&quot;https://leetcode-cn.com/problems/generate-parentheses/description/&quot;&gt;Leetcode22 括号生成&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;给出 n 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且有效的括号组合&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -251,10 +276,9 @@
 &lt;h4 id=&quot;题目-6&quot;&gt;题目&lt;/h4&gt;
 &lt;p&gt;小Q和牛博士合唱一首歌曲,这首歌曲由n个音调组成,每个音调由一个正整数表示。
 对于每个音调要么由小Q演唱要么由牛博士演唱,对于一系列音调演唱的难度等于所有相邻音调变化幅度之和, 例如一个音调序列是8, 8, 13, 12, 那么它的难度等于|8 - 8| + |13 - 8| + |12 - 13| = 6(其中||表示绝对值)。
-现在要对把这n个音调分配给小Q或牛博士,让他们演唱的难度之和最小,请你算算最小的难度和是多少。
-如样例所示: 小Q选择演唱{5, 6}难度为1, 牛博士选择演唱{1, 2, 1}难度为2,难度之和为3,这一个是最小难度和的方案了。&lt;/p&gt;
-
-&lt;p&gt;输入描述:&lt;/p&gt;
+现在要对把这n个音调分配给小Q或牛博士,让他们演唱的难度之和最小,请你算算最小的难度和是多少。&lt;br /&gt;
+如样例所示: 小Q选择演唱{5, 6}难度为1, 牛博士选择演唱{1, 2, 1}难度为2,难度之和为3,这一个是最小难度和的方案了。 &lt;br /&gt;
+输入描述:&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;输入包括两行,第一行一个正整数n(1 ≤ n ≤ 2000) 第二行n个整数v&lt;a href=&quot;1 ≤ v[i] ≤ 10^6&quot;&gt;i&lt;/a&gt;, 表示每个音调。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -264,17 +288,35 @@
   &lt;p&gt;输出一个整数,表示小Q和牛博士演唱最小的难度和是多少。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;###&lt;/p&gt;
+&lt;h4 id=&quot;思路-6&quot;&gt;思路&lt;/h4&gt;
+&lt;h4 id=&quot;贪心算法&quot;&gt;贪心算法&lt;/h4&gt;
+&lt;p&gt;第一个人唱低音，第二个人唱高音，先把数组排个序，然后选择前一部分作为低音，后一部分作为高音。
+分割的标准是两个元素间隔最大的地方。不过这样做只能通过60%的样例。&lt;/p&gt;
+&lt;h4 id=&quot;动态规划&quot;&gt;动态规划&lt;/h4&gt;
+&lt;p&gt;(1)dp[i][j]（永远有i &amp;gt; j）表示某一个人最近唱的音为第i个，另一个人最近唱的是第j个时最小的难度&lt;br /&gt;
+(2)由于只由一个人唱完肯定不是最优解。因此先在一个for循环内确定以下两种情况的初值
+dp[i][0]：第二个人唱第一个音，第一个人唱后面所有音
+dp[i][i-1]：第一个人唱最近的一个音，第二个人唱前面所有音&lt;br /&gt;
+(3)dp[i][j]转移方程,每当交换唱歌次序，两人最近一次唱的音符一定是相邻的，所以底下分相邻和不相邻讨论：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;当j == i - 1，即交换唱歌次序，dp[i][i-1]时，表明第一个人上一个音可能在第k个音（0 &amp;lt;= k &amp;lt; i-1）,由唱了最近的第i个，第二个人仍然留在第i-1个音。
+dp[i][i-1] = 对所有k求min(dp[i-1][k] + abs(arr[i] - arr[k]) ) 其中（0 &amp;lt;= k &amp;lt; i-1）&lt;/li&gt;
+  &lt;li&gt;当j &amp;lt; i - 1，即不交换唱歌次序时，只可能由唱到i-1音符的人续唱
+dp[i][j] = dp[i-1][j] + abs(arr[i] - arr[i-1])&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(4)最后求出所有dp[len-1][]里的最小值即为全局最优解&lt;/p&gt;
+
+&lt;h3 id=&quot;射击游戏&quot;&gt;射击游戏&lt;/h3&gt;
 &lt;h4 id=&quot;题目-7&quot;&gt;题目&lt;/h4&gt;
 &lt;p&gt;小易正在玩一款新出的射击游戏,这个射击游戏在一个二维平面进行,小易在坐标原点(0,0),平面上有n只怪物,每个怪物有所在的坐标(x[i], y[i])。小易进行一次射击会把x轴和y轴上(包含坐标原点)的怪物一次性消灭。
 小易是这个游戏的VIP玩家,他拥有两项特权操作:
 1、让平面内的所有怪物同时向任意同一方向移动任意同一距离
 2、让平面内的所有怪物同时对于小易(0,0)旋转任意同一角度
 小易要进行一次射击。小易在进行射击前,可以使用这两项特权操作任意次。
-小易想知道在他射击的时候最多可以同时消灭多少只怪物,请你帮帮小易。&lt;/p&gt;
-
-&lt;p&gt;如样例所示:
-&lt;img src=&quot;https://uploadfiles.nowcoder.net/images/20170908/906271_1504858526319_5919175DAEBEFEF2DD7B449C60B277DF&quot; /&gt;
+小易想知道在他射击的时候最多可以同时消灭多少只怪物,请你帮帮小易。&lt;br /&gt;
+如样例所示:
+&lt;img src=&quot;https://uploadfiles.nowcoder.net/images/20170908/906271_1504858526319_5919175DAEBEFEF2DD7B449C60B277DF&quot; alt=&quot;&quot; /&gt;
 所有点对于坐标原点(0,0)顺时针或者逆时针旋转45°,可以让所有点都在坐标轴上,所以5个怪物都可以消灭。&lt;/p&gt;
 
 &lt;p&gt;输入描述:&lt;/p&gt;
@@ -288,7 +330,121 @@
 &lt;p&gt;输出描述:&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;输出一个整数表示小易最多能消灭多少只怪物。&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>Lmy</name></author><category term="网易" /><category term="动态规划" /><summary type="html">题目来源于牛客网，网易2018校园招聘编程题真题集合。</summary></entry><entry><title type="html">ES6-箭头函数及定时器this指向</title><link href="http://localhost:4000/es6/2018/09/16/ES6-func/" rel="alternate" type="text/html" title="ES6-箭头函数及定时器this指向" /><published>2018-09-16T00:00:00+08:00</published><updated>2018-09-16T00:00:00+08:00</updated><id>http://localhost:4000/es6/2018/09/16/ES6-func</id><content type="html" xml:base="http://localhost:4000/es6/2018/09/16/ES6-func/">&lt;h3 id=&quot;箭头函数&quot;&gt;箭头函数&lt;/h3&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;挖个坑&quot;&gt;挖个坑&lt;/h3&gt;
+&lt;p&gt;后两道感觉挺难的，呜呜呜先参考大神思路，代码再再补上。:sob: :sob: :sob:&lt;/p&gt;</content><author><name>Lmy</name></author><category term="网易" /><category term="动态规划" /><category term="leetcode" /><summary type="html">题目来源于牛客网，网易2018校园招聘编程题真题集合。</summary></entry><entry><title type="html">从输入URL到页面加载的过程</title><link href="http://localhost:4000/http/2018/09/17/http-url/" rel="alternate" type="text/html" title="从输入URL到页面加载的过程" /><published>2018-09-17T00:00:00+08:00</published><updated>2018-09-17T00:00:00+08:00</updated><id>http://localhost:4000/http/2018/09/17/http-url</id><content type="html" xml:base="http://localhost:4000/http/2018/09/17/http-url/">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;p&gt;经典面试题，但方方面面的很多东西，要答好也不简单。通过对这道题的分析，希望梳理出一个前端向的知识体系 :dancers:&lt;br /&gt;
+主要包括：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;从浏览器接收url到开启网络请求线程&lt;/li&gt;
+  &lt;li&gt;开启网络线程到发出一个完整的http请求&lt;/li&gt;
+  &lt;li&gt;从服务器接收到请求到对应后台接收到请求&lt;/li&gt;
+  &lt;li&gt;后台和前台的http交互&lt;/li&gt;
+  &lt;li&gt;缓存问题，&lt;a href=&quot;2018-8-18-http-huancun.md&quot;&gt;http的缓存&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;解析页面流程&lt;/li&gt;
+  &lt;li&gt;CSS的可视化格式模型&lt;/li&gt;
+  &lt;li&gt;JS引擎解析过程&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;从浏览器接收url到开启网络请求线程&quot;&gt;从浏览器接收url到开启网络请求线程&lt;/h2&gt;
+&lt;h3 id=&quot;线程与进程&quot;&gt;线程与进程&lt;/h3&gt;
+&lt;p&gt;进程和线程的对比网上大多是概念性的解释，要真正理解进程与线程中的时间片和其他精彩的“调度概念”之前，
+建立一个类比，首先来说明线程和进程是如何工作的。&lt;/p&gt;
+&lt;h4 id=&quot;作为房子&quot;&gt;作为房子&lt;/h4&gt;
+&lt;p&gt;使用常规的日常对象 - 房子来对进程和线程进行类比。&lt;br /&gt;
+房子实际上是一个容器，具有某些属性（例如占地面积，卧室数量等）。房子本身并没有主动做 任何事情 - 这是一个被动的对象。这实际上是一个进程。  &lt;br /&gt;
+住在房子里的人是活跃的对象 - 他们是使用各种房间，看电视，做饭，洗澡等等。线程的行为方式。&lt;/p&gt;
+&lt;h4 id=&quot;单线程&quot;&gt;单线程&lt;/h4&gt;
+&lt;p&gt;如果你住在自己的房子里，那么你可以在任何时间做任何事，因为房子里没有其他人。
+你可以打开电视，使用洗手间，吃晚餐等等，只需要继续操作即可。&lt;/p&gt;
+&lt;h4 id=&quot;多线程&quot;&gt;多线程&lt;/h4&gt;
+&lt;p&gt;当把另一个人加入房子时，你不能在任何一个点上进入洗手间，你需要先检查一下，洗手间有没有人。&lt;br /&gt;
+如果有两个负责任的成年人住在一个​​房子里，一般来说可以合理地对“安全”松懈，你知道另一个成年人会尊重你的空间，不会让厨房着火等等。
+现在，把几个孩子扔进去，事情变得更加复杂。&lt;/p&gt;
+&lt;h4 id=&quot;回到线程与进程&quot;&gt;回到线程与进程&lt;/h4&gt;
+&lt;p&gt;在macOS系统中，可以打开活动监视器查看后台进程与线程，和内存资源信息和CPU占有率。&lt;br /&gt;
+&lt;img src=&quot;../assets/images/2018-9-17-http-url/MacProcesses.jpg&quot; alt=&quot;&quot; /&gt;&lt;br /&gt;
+&lt;strong&gt;进程&lt;/strong&gt;&lt;br /&gt;
+进程是一个具有一定独立功能的程序在一个数据集上的一次动态执行的过程，是操作系统进行资源分配和调度的一个独立单位，是应用程序运行的载体。&lt;br /&gt;
+&lt;strong&gt;线程&lt;/strong&gt;&lt;br /&gt;
+由于进程对于CPU的使用是轮流的，那么就存在进程的切换，但是由于现在的程序都比较大，切换的开销很大会浪费CPU的资源，于是就发明了线程，把一个大的进程分解成多个线程共同执行。&lt;br /&gt;
+&lt;strong&gt;区别&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;进程是操作系统分配资源的最小单位，线程是程序执行的最小单位。&lt;/li&gt;
+  &lt;li&gt;一个进程由一个或多个线程组成，线程是一个进程中代码的不同执行路线；&lt;/li&gt;
+  &lt;li&gt;进程之间相互独立，但同一进程下的各个线程之间共享程序的内存空间(包括代码段、数据集、堆等)及一些进程级的资源(如打开文件和信号)。&lt;/li&gt;
+  &lt;li&gt;调度和切换：线程上下文切换比进程上下文切换要快得多。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;浏览器是多进程的&quot;&gt;浏览器是多进程的&lt;/h3&gt;
+&lt;p&gt;浏览器是多进程的，有一个主控进程，以及每一个tab页面都会新开一个进程（某些情况下多个tab会合并进程）。
+如图，查看chrome任务管理器。
+&lt;img src=&quot;../assets/images/2018-9-17-http-url/chromePro.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;浏览器进程包括&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Browser进程：浏览器的主进程（负责协调、主控），只有一个&lt;/li&gt;
+  &lt;li&gt;第三方插件进程：每种类型的插件对应一个进程，仅当使用该插件时才创建&lt;/li&gt;
+  &lt;li&gt;GPU进程：最多一个，用于3D绘制&lt;/li&gt;
+  &lt;li&gt;浏览器渲染进程（内核）：默认每个Tab页面一个进程，互不影响，控制页面渲染，脚本执行，事件处理等（有时候会优化，如多个空白tab会合并成一个进程）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;浏览器内核是多线程&quot;&gt;浏览器内核是多线程&lt;/h3&gt;
+&lt;h4 id=&quot;浏览器内核&quot;&gt;浏览器内核&lt;/h4&gt;
+&lt;p&gt;简单来说浏览器内核是通过取得页面内容、整理信息（应用CSS）、计算和组合最终输出可视化的图像结果，通常也被称为渲染引擎。
+从上面我们可以知道，Chrome浏览器为每个tab页面单独启用进程，因此每个tab网页都有由其独立的渲染引擎实例。&lt;br /&gt;
+浏览器内核是多线程，在内核控制下各线程相互配合以保持同步，一个浏览器通常由以下常驻线程组成：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;GUI 渲染线程（图形用户界面）&lt;/li&gt;
+  &lt;li&gt;JavaScript引擎线程&lt;/li&gt;
+  &lt;li&gt;事件触发线程&lt;/li&gt;
+  &lt;li&gt;定时触发器线程&lt;/li&gt;
+  &lt;li&gt;异步http请求线程&lt;br /&gt;
+&lt;img src=&quot;https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_inner_thread.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;gui-渲染线程&quot;&gt;GUI 渲染线程&lt;/h4&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GUI渲染线程&lt;/code&gt;负责渲染浏览器界面，解析HTML，CSS，构建DOM树和RenderObject树，布局和绘制等。
+当界面需要重绘(Repaint)或由于某种操作引发回流(reflow)时,该线程就会执行。&lt;br /&gt;
+&lt;strong&gt;GUI渲染线程与JS引擎线程是互斥的&lt;/strong&gt; 在Javascript引擎运行脚本期间,GUI渲染线程都是处于挂起状态的,也就是说被”冻结”了.&lt;/p&gt;
+&lt;h4 id=&quot;javascript引擎线程&quot;&gt;JavaScript引擎线程&lt;/h4&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Javascript引擎&lt;/code&gt;可以称为JS内核，主要负责处理Javascript脚本程序，例如V8引擎。Javascript引擎线程理所当然是负责解析Javascript脚本，运行代码。&lt;br /&gt;
+一个Tab页（renderer进程）中无论什么时候都只有一个JS线程在运行JS程序。&lt;/p&gt;
+&lt;h4 id=&quot;javascript是单线程的&quot;&gt;Javascript是单线程的&lt;/h4&gt;
+&lt;p&gt;Javascript是单线程的, 那么为什么Javascript要是单线程的？
+这是因为Javascript这门脚本语言诞生的使命所致：JavaScript为处理页面中用户的交互，以及操作DOM树、CSS样式树来给用户呈现一份动态而丰富的交互体验和服务器逻辑的交互处理。
+如果JavaScript是多线程的方式来操作这些UI DOM，则可能出现UI操作的冲突； 如果Javascript是多线程的话，在多线程的交互下，处于UI中的DOM节点就可能成为一个临界资源，
+假设存在两个线程同时操作一个DOM，一个负责修改一个负责删除，那么这个时候就需要浏览器来裁决如何生效哪个线程的执行结果。
+当然我们可以通过锁来解决上面的问题。但为了避免因为引入了锁而带来更大的复杂性，Javascript在最初就选择了单线程执行。&lt;/p&gt;
+&lt;h4 id=&quot;事件触发线程&quot;&gt;事件触发线程&lt;/h4&gt;
+&lt;p&gt;当一个事件被触发时该线程会把事件添加到待处理队列的队尾，等待JS引擎的处理。这些事件可以是当前执行的代码块如定时任务、
+也可来自浏览器内核的其他线程如鼠标点击、AJAX异步请求等，但由于JS的单线程关系所有这些事件都得排队等待JS引擎处理。&lt;/p&gt;
+&lt;h4 id=&quot;定时触发器线程&quot;&gt;定时触发器线程&lt;/h4&gt;
+&lt;p&gt;浏览器定时计数器并不是由JavaScript引擎计数的, 因为JavaScript引擎是单线程的, 
+如果处于阻塞线程状态就会影响记计时的准确, 因此通过单独线程来计时并触发定时是更为合理的方案。&lt;br /&gt;
+setInterval与setTimeout所在线程，W3C在HTML标准中规定，规定要求setTimeout中低于4ms的时间间隔算为4ms。&lt;/p&gt;
+&lt;h4 id=&quot;异步http请求线程&quot;&gt;异步http请求线程&lt;/h4&gt;
+&lt;p&gt;在XMLHttpRequest在连接后是通过浏览器新开一个线程请求， 将检测到状态变更时，如果设置有回调函数，异步线程就产生状态变更事件放到 JavaScript引擎的处理队列中等待处理。&lt;/p&gt;
+
+&lt;h4 id=&quot;gui-渲染线程-与-javascript引擎线程互斥&quot;&gt;GUI 渲染线程 与 JavaScript引擎线程互斥&lt;/h4&gt;
+&lt;p&gt;由于JavaScript是可操纵DOM的，如果在修改这些元素属性同时渲染界面（即JavaScript线程和UI线程同时运行），那么渲染线程前后获得的元素数据就可能不一致了。
+因此为了防止渲染出现不可预期的结果，浏览器设置GUI渲染线程与JavaScript引擎为互斥的关系，当JavaScript引擎执行时GUI线程会被挂起，GUI更新会被保存在一个队列中等到引擎线程空闲时立即被执行。&lt;/p&gt;
+
+&lt;h2 id=&quot;开启网络线程到发出一个完整的http请求&quot;&gt;开启网络线程到发出一个完整的http请求&lt;/h2&gt;
+&lt;h2 id=&quot;从服务器接收到请求到对应后台接收到请求&quot;&gt;从服务器接收到请求到对应后台接收到请求&lt;/h2&gt;
+&lt;h2 id=&quot;后台和前台的http交互&quot;&gt;后台和前台的http交互&lt;/h2&gt;
+&lt;h2 id=&quot;缓存问题&quot;&gt;缓存问题&lt;/h2&gt;
+&lt;h2 id=&quot;解析页面流程&quot;&gt;解析页面流程&lt;/h2&gt;
+&lt;h2 id=&quot;css的可视化格式模型&quot;&gt;CSS的可视化格式模型&lt;/h2&gt;
+&lt;h2 id=&quot;js引擎解析过程&quot;&gt;JS引擎解析过程&lt;/h2&gt;
+
+&lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;http://www.dailichun.com/2018/03/12/whenyouenteraurl.html&lt;/li&gt;
+  &lt;li&gt;http://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_procs.html&lt;/li&gt;
+  &lt;li&gt;http://www.imweb.io/topic/58e3bfa845e5c13468f567d5&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Lmy</name></author><category term="计算机通识" /><summary type="html">前言 经典面试题，但方方面面的很多东西，要答好也不简单。通过对这道题的分析，希望梳理出一个前端向的知识体系 :dancers: 主要包括： 从浏览器接收url到开启网络请求线程 开启网络线程到发出一个完整的http请求 从服务器接收到请求到对应后台接收到请求 后台和前台的http交互 缓存问题，http的缓存 解析页面流程 CSS的可视化格式模型 JS引擎解析过程</summary></entry><entry><title type="html">ES6-箭头函数及定时器this指向</title><link href="http://localhost:4000/es6/2018/09/16/ES6-func/" rel="alternate" type="text/html" title="ES6-箭头函数及定时器this指向" /><published>2018-09-16T00:00:00+08:00</published><updated>2018-09-16T00:00:00+08:00</updated><id>http://localhost:4000/es6/2018/09/16/ES6-func</id><content type="html" xml:base="http://localhost:4000/es6/2018/09/16/ES6-func/">&lt;h3 id=&quot;箭头函数&quot;&gt;箭头函数&lt;/h3&gt;
 &lt;h4 id=&quot;注意点&quot;&gt;注意点&lt;/h4&gt;
 &lt;ol&gt;
   &lt;li&gt;函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。&lt;/li&gt;
@@ -451,7 +607,7 @@
   &lt;li&gt;主线程不断重复上面的第三步。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://www.ruanyifeng.com/blogimg/asset/2014/bg2014100801.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://www.ruanyifeng.com/blogimg/asset/2014/bg2014100801.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;event-loop&quot;&gt;Event Loop&lt;/h3&gt;
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'script start'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
@@ -511,7 +667,12 @@ micro-task队列包含任务: b1, b2 , b3&lt;br /&gt;
 &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;//输出2,6,5,3,4,1&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>Lmy</name></author><category term="JS" /><summary type="html">JavaScript是非阻塞单线程语言 JavaScript的单线程，与它的用途有关。 作为浏览器脚本语言，JavaScript的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。 比如，假定JavaScript同时有两个线程，一个线程在某个DOM节点上添加内容，另一个线程删除了这个节点.这时浏览器应该以哪个线程为准？</summary></entry><entry><title type="html">斐波那契数列</title><link href="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/14/jianzhi-fb/" rel="alternate" type="text/html" title="斐波那契数列" /><published>2018-09-14T00:00:00+08:00</published><updated>2018-09-14T00:00:00+08:00</updated><id>http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/14/jianzhi-fb</id><content type="html" xml:base="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/14/jianzhi-fb/">&lt;h3 id=&quot;斐波那契数列&quot;&gt;斐波那契数列&lt;/h3&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;参考&quot;&gt;参考&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2014/10/event-loop.html&quot;&gt;JavaScript 运行机制详解：再谈Event Loop(阮一峰)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Lmy</name></author><category term="JS" /><summary type="html">JavaScript是非阻塞单线程语言 JavaScript的单线程，与它的用途有关。 作为浏览器脚本语言，JavaScript的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。 比如，假定JavaScript同时有两个线程，一个线程在某个DOM节点上添加内容，另一个线程删除了这个节点.这时浏览器应该以哪个线程为准？</summary></entry><entry><title type="html">斐波那契数列</title><link href="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/14/jianzhi-fb/" rel="alternate" type="text/html" title="斐波那契数列" /><published>2018-09-14T00:00:00+08:00</published><updated>2018-09-14T00:00:00+08:00</updated><id>http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/14/jianzhi-fb</id><content type="html" xml:base="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/14/jianzhi-fb/">&lt;h3 id=&quot;斐波那契数列&quot;&gt;斐波那契数列&lt;/h3&gt;
 &lt;p&gt;大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项（从0开始，第0项为0）。
 n&amp;lt;=39&lt;/p&gt;
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Fibonacci&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -1226,161 +1387,4 @@ POST在请求的时候，服务器会每次都创建一个文件，但是在PUT�
     &lt;h3 id=&quot;vue双向绑定&quot;&gt;vue双向绑定&lt;/h3&gt;
     &lt;h3 id=&quot;vue生命周期&quot;&gt;vue生命周期&lt;/h3&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Lmy</name></author><category term="CSS布局" /><category term="Http" /><category term="数组方法" /><category term="ES6" /><category term="Vue" /><summary type="html">两栏布局 float+margin-left aside{ background: yellow; width: 200px; float: left; } div{ margin-left: 210px;/*大于aside的宽度*/ width: auto; background: red; } float+overflow：hidden（形成BFC） div{ overflow:hidden; width: auto; background: red; height: 400px; } flex body{ display: flex; } aside{ background: yellow; flex:0 0 200px; } div{ flex:1 1 auto; background: red; } grid body{ display: grid; grid-template-columns: 200px auto; } table aside{ width: 200px; display: table-cell; background: yellow; } div{ display: table-cell; background: red; }</summary></entry><entry><title type="html">猿辅导面经</title><link href="http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/08/17/interview-yfd/" rel="alternate" type="text/html" title="猿辅导面经" /><published>2018-08-17T00:00:00+08:00</published><updated>2018-08-17T00:00:00+08:00</updated><id>http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/08/17/interview-yfd</id><content type="html" xml:base="http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/08/17/interview-yfd/">&lt;h3 id=&quot;http请求头&quot;&gt;http请求头&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Accept：告诉服务器，客户端支持的数据类型。&lt;/li&gt;
-  &lt;li&gt;Accept-Charset：告诉服务器，客户端采用的编码。&lt;/li&gt;
-  &lt;li&gt;Accept-Encoding：告诉服务器，客户机支持的数据压缩格式。&lt;/li&gt;
-  &lt;li&gt;Accept-Language：告诉服务器，客户机的语言环境。&lt;/li&gt;
-  &lt;li&gt;Host：客户机通过这个头告诉服务器，想访问的主机名。&lt;/li&gt;
-  &lt;li&gt;If-Modified-Since:客户机通过这个头告诉服务器，资源的缓存时间。&lt;/li&gt;
-  &lt;li&gt;Referer:客户机通过这个头告诉服务器，它是从哪个资源来访问服务器的。（一般用于防盗链&lt;/li&gt;
-  &lt;li&gt;User-Agent:客户机通过这个头告诉服务器，客户机的软件环境。&lt;/li&gt;
-  &lt;li&gt;Cookie：客户机通过这个头告诉服务器，可以向服务器带数据。&lt;/li&gt;
-  &lt;li&gt;Connection：客户机通过这个头告诉服务器，请求完后是关闭还是保持链接。&lt;/li&gt;
-  &lt;li&gt;Date：客户机通过这个头告诉服务器，客户机当前请求时间。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;http状态码&quot;&gt;http状态码&lt;/h3&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;状态码&lt;/th&gt;
-      &lt;th&gt;响应类别&lt;/th&gt;
-      &lt;th&gt;响应类别&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;1XX&lt;/td&gt;
-      &lt;td&gt;信息性状态码（Informational）&lt;/td&gt;
-      &lt;td&gt;服务器正在处理请求&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2XX&lt;/td&gt;
-      &lt;td&gt;成功状态码（Success）&lt;/td&gt;
-      &lt;td&gt;请求已正常处理完毕&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3XX&lt;/td&gt;
-      &lt;td&gt;重定向状态码（Redirection）&lt;/td&gt;
-      &lt;td&gt;需要进行额外操作以完成请求&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;4XX&lt;/td&gt;
-      &lt;td&gt;客户端错误状态码（Client Error）&lt;/td&gt;
-      &lt;td&gt;客户端原因导致服务器无法处理请求&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;5XX&lt;/td&gt;
-      &lt;td&gt;服务器错误状态码（Server Error）&lt;/td&gt;
-      &lt;td&gt;服务器原因导致处理请求出错&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;200 OK 请求正常处理完毕&lt;/li&gt;
-  &lt;li&gt;204 No Content 请求成功处理，没有实体的主体返回&lt;/li&gt;
-  &lt;li&gt;206 Partial Content GET范围请求已成功处理&lt;/li&gt;
-  &lt;li&gt;301 Moved Permanently 永久重定向，资源已永久分配新URI&lt;/li&gt;
-  &lt;li&gt;302 Found 临时重定向，资源已临时分配新URI&lt;/li&gt;
-  &lt;li&gt;303 See Other 临时重定向，期望使用GET定向获取&lt;/li&gt;
-  &lt;li&gt;304 Not Modified 发送的附带条件请求未满足&lt;/li&gt;
-  &lt;li&gt;307 Temporary Redirect 临时重定向，POST不会变成GET&lt;/li&gt;
-  &lt;li&gt;400 Bad Request 请求报文语法错误或参数错误&lt;/li&gt;
-  &lt;li&gt;401 Unauthorized 需要通过HTTP认证，或认证失败&lt;/li&gt;
-  &lt;li&gt;403 Forbidden 请求资源被拒绝&lt;/li&gt;
-  &lt;li&gt;404 Not Found 无法找到请求资源（服务器无理由拒绝）&lt;/li&gt;
-  &lt;li&gt;500 Internal Server Error 服务器故障或Web应用故障&lt;/li&gt;
-  &lt;li&gt;503 Service Unavailable 服务器超负载或停机维护&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;一个完整的url&quot;&gt;一个完整的URL&lt;/h3&gt;
-&lt;p&gt;假设这是一个url地址http://localhost:8080/a/b/c?a=1&amp;amp;b=2#abc，里面包含的部分：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;protocol: ‘http:’,//协议&lt;/li&gt;
-  &lt;li&gt;host: ‘localhost:8080’,&lt;/li&gt;
-  &lt;li&gt;port: ‘8080’,//端口&lt;/li&gt;
-  &lt;li&gt;hostname: ‘localhost’,域名&lt;/li&gt;
-  &lt;li&gt;hash: ‘#abc’,锚点&lt;/li&gt;
-  &lt;li&gt;search: ‘?a=1&amp;amp;b=2’ 等于 ?query: ‘a=1&amp;amp;b=2’,&lt;/li&gt;
-  &lt;li&gt;pathname: ‘/a/b/c’,&lt;/li&gt;
-  &lt;li&gt;path: ‘/a/b/c?a=1&amp;amp;b=2’,&lt;/li&gt;
-  &lt;li&gt;href: ‘http://localhost:8080/a/b/c?a=1&amp;amp;b=2#abc’&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;获得url中key对应的val值&quot;&gt;获得URL中key对应的val值&lt;/h3&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getVal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-	&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;indexOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;?&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;indexOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;slice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;slice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pairs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;amp;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pairs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-		&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pos&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pairs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;indexOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;=&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pos&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-			&lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-		&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;argname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pairs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;substring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-		&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;decodeURIComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pairs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;substring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pos&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-		&lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;argname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;js小数相加&quot;&gt;js小数相加&lt;/h3&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-	&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arguments&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-	    &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//小数位数;&lt;/span&gt;
-	    &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//遍历所有参数，取最大小数位数&lt;/span&gt;
-		&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;indexOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!=-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-			&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-			&lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-		&lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;a-z对应1-26输入123输出abcawlc&quot;&gt;a-z对应1-26，输入123输出abc，aw，lc&lt;/h3&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;splitNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-	&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-		&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;b&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-		&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;c&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-		&lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-		&lt;span class=&quot;mi&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;w&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
-	&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
-	&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-		&lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;substring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;substring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-		&lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]);&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-		&lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;charAt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)];&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	&lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>Lmy</name></author><category term="Http" /><category term="数组方法" /><summary type="html">http请求头 Accept：告诉服务器，客户端支持的数据类型。 Accept-Charset：告诉服务器，客户端采用的编码。 Accept-Encoding：告诉服务器，客户机支持的数据压缩格式。 Accept-Language：告诉服务器，客户机的语言环境。 Host：客户机通过这个头告诉服务器，想访问的主机名。 If-Modified-Since:客户机通过这个头告诉服务器，资源的缓存时间。 Referer:客户机通过这个头告诉服务器，它是从哪个资源来访问服务器的。（一般用于防盗链 User-Agent:客户机通过这个头告诉服务器，客户机的软件环境。 Cookie：客户机通过这个头告诉服务器，可以向服务器带数据。 Connection：客户机通过这个头告诉服务器，请求完后是关闭还是保持链接。 Date：客户机通过这个头告诉服务器，客户机当前请求时间。</summary></entry></feed>
+&lt;/ol&gt;</content><author><name>Lmy</name></author><category term="CSS布局" /><category term="Http" /><category term="数组方法" /><category term="ES6" /><category term="Vue" /><summary type="html">两栏布局 float+margin-left aside{ background: yellow; width: 200px; float: left; } div{ margin-left: 210px;/*大于aside的宽度*/ width: auto; background: red; } float+overflow：hidden（形成BFC） div{ overflow:hidden; width: auto; background: red; height: 400px; } flex body{ display: flex; } aside{ background: yellow; flex:0 0 200px; } div{ flex:1 1 auto; background: red; } grid body{ display: grid; grid-template-columns: 200px auto; } table aside{ width: 200px; display: table-cell; background: yellow; } div{ display: table-cell; background: red; }</summary></entry><entry><title type="html">Http Huancun</title><link href="http://localhost:4000/2018/08/18/http-huancun/" rel="alternate" type="text/html" title="Http Huancun" /><published>2018-08-18T00:00:00+08:00</published><updated>2018-08-18T00:00:00+08:00</updated><id>http://localhost:4000/2018/08/18/http-huancun</id><content type="html" xml:base="http://localhost:4000/2018/08/18/http-huancun/"></content><author><name>Lmy</name></author><summary type="html"></summary></entry></feed>

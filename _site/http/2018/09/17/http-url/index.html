@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="计算机通识,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Lemon" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言 经典面试题，但方方面面的很多东西，要答好也不简单。通过对这道题的分析，希望梳理出一个前端向的知识体系 :dancers: 主要包括： 从浏览器接收url到开启网络请求线程 开启网络线程到发出一个完整的http请求 从服务器接收到请求到对应后台接收到请求 后台和前台的http交互 缓存问题，http的缓存 解析页面流程 CSS的可视化格式模型 JS引擎解析过程">
+<meta name="keywords" content="计算机通识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从输入URL到页面加载的过程">
+<meta property="og:url" content="http://localhost:4000/http/2018/09/17/http-url/">
+<meta property="og:site_name" content="Lemon">
+<meta property="og:description" content="前言 经典面试题，但方方面面的很多东西，要答好也不简单。通过对这道题的分析，希望梳理出一个前端向的知识体系 :dancers: 主要包括： 从浏览器接收url到开启网络请求线程 开启网络线程到发出一个完整的http请求 从服务器接收到请求到对应后台接收到请求 后台和前台的http交互 缓存问题，http的缓存 解析页面流程 CSS的可视化格式模型 JS引擎解析过程">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="../assets/images/2018-9-17-http-url/MacProcesses.jpg">
+<meta property="og:image" content="../assets/images/2018-9-17-http-url/chromePro.png">
+<meta property="og:image" content="https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_inner_thread.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从输入URL到页面加载的过程">
+<meta name="twitter:description" content="前言 经典面试题，但方方面面的很多东西，要答好也不简单。通过对这道题的分析，希望梳理出一个前端向的知识体系 :dancers: 主要包括： 从浏览器接收url到开启网络请求线程 开启网络线程到发出一个完整的http请求 从服务器接收到请求到对应后台接收到请求 后台和前台的http交互 缓存问题，http的缓存 解析页面流程 CSS的可视化格式模型 JS引擎解析过程">
+<meta name="twitter:image" content="../assets/images/2018-9-17-http-url/MacProcesses.jpg">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/">
+
+
+
+
+
+  <title>从输入URL到页面加载的过程 | Lemon</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lemon</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">前端学习的总结～</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/http/2018/09/17/http-url/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lemon">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            从输入URL到页面加载的过程
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-17T00:00:00+08:00">
+                2018-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/Http" itemprop="url" rel="index">
+                    <span itemprop="name">Http</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 id="前言">前言</h2>
+<p>经典面试题，但方方面面的很多东西，要答好也不简单。通过对这道题的分析，希望梳理出一个前端向的知识体系 <img class="emoji" title=":dancers:" alt=":dancers:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f46f.png" height="20" width="20" align="absmiddle"><br>
+主要包括：</p>
+<ul>
+  <li>从浏览器接收url到开启网络请求线程</li>
+  <li>开启网络线程到发出一个完整的http请求</li>
+  <li>从服务器接收到请求到对应后台接收到请求</li>
+  <li>后台和前台的http交互</li>
+  <li>缓存问题，<a href="2018-8-18-http-huancun.md">http的缓存</a>
+</li>
+  <li>解析页面流程</li>
+  <li>CSS的可视化格式模型</li>
+  <li>JS引擎解析过程</li>
+</ul>
+
+<h2 id="从浏览器接收url到开启网络请求线程">从浏览器接收url到开启网络请求线程</h2>
+<h3 id="线程与进程">线程与进程</h3>
+<p>进程和线程的对比网上大多是概念性的解释，要真正理解进程与线程中的时间片和其他精彩的“调度概念”之前，
+建立一个类比，首先来说明线程和进程是如何工作的。</p>
+<h4 id="作为房子">作为房子</h4>
+<p>使用常规的日常对象 - 房子来对进程和线程进行类比。<br>
+房子实际上是一个容器，具有某些属性（例如占地面积，卧室数量等）。房子本身并没有主动做 任何事情 - 这是一个被动的对象。这实际上是一个进程。  <br>
+住在房子里的人是活跃的对象 - 他们是使用各种房间，看电视，做饭，洗澡等等。线程的行为方式。</p>
+<h4 id="单线程">单线程</h4>
+<p>如果你住在自己的房子里，那么你可以在任何时间做任何事，因为房子里没有其他人。
+你可以打开电视，使用洗手间，吃晚餐等等，只需要继续操作即可。</p>
+<h4 id="多线程">多线程</h4>
+<p>当把另一个人加入房子时，你不能在任何一个点上进入洗手间，你需要先检查一下，洗手间有没有人。<br>
+如果有两个负责任的成年人住在一个​​房子里，一般来说可以合理地对“安全”松懈，你知道另一个成年人会尊重你的空间，不会让厨房着火等等。
+现在，把几个孩子扔进去，事情变得更加复杂。</p>
+<h4 id="回到线程与进程">回到线程与进程</h4>
+<p>在macOS系统中，可以打开活动监视器查看后台进程与线程，和内存资源信息和CPU占有率。<br>
+<img src="../assets/images/2018-9-17-http-url/MacProcesses.jpg" alt=""><br>
+<strong>进程</strong><br>
+进程是一个具有一定独立功能的程序在一个数据集上的一次动态执行的过程，是操作系统进行资源分配和调度的一个独立单位，是应用程序运行的载体。<br>
+<strong>线程</strong><br>
+由于进程对于CPU的使用是轮流的，那么就存在进程的切换，但是由于现在的程序都比较大，切换的开销很大会浪费CPU的资源，于是就发明了线程，把一个大的进程分解成多个线程共同执行。<br>
+<strong>区别</strong></p>
+<ul>
+  <li>进程是操作系统分配资源的最小单位，线程是程序执行的最小单位。</li>
+  <li>一个进程由一个或多个线程组成，线程是一个进程中代码的不同执行路线；</li>
+  <li>进程之间相互独立，但同一进程下的各个线程之间共享程序的内存空间(包括代码段、数据集、堆等)及一些进程级的资源(如打开文件和信号)。</li>
+  <li>调度和切换：线程上下文切换比进程上下文切换要快得多。</li>
+</ul>
+
+<h3 id="浏览器是多进程的">浏览器是多进程的</h3>
+<p>浏览器是多进程的，有一个主控进程，以及每一个tab页面都会新开一个进程（某些情况下多个tab会合并进程）。
+如图，查看chrome任务管理器。
+<img src="../assets/images/2018-9-17-http-url/chromePro.png" alt=""></p>
+
+<p><strong>浏览器进程包括</strong></p>
+<ul>
+  <li>Browser进程：浏览器的主进程（负责协调、主控），只有一个</li>
+  <li>第三方插件进程：每种类型的插件对应一个进程，仅当使用该插件时才创建</li>
+  <li>GPU进程：最多一个，用于3D绘制</li>
+  <li>浏览器渲染进程（内核）：默认每个Tab页面一个进程，互不影响，控制页面渲染，脚本执行，事件处理等（有时候会优化，如多个空白tab会合并成一个进程）</li>
+</ul>
+
+<h3 id="浏览器内核是多线程">浏览器内核是多线程</h3>
+<h4 id="浏览器内核">浏览器内核</h4>
+<p>简单来说浏览器内核是通过取得页面内容、整理信息（应用CSS）、计算和组合最终输出可视化的图像结果，通常也被称为渲染引擎。
+从上面我们可以知道，Chrome浏览器为每个tab页面单独启用进程，因此每个tab网页都有由其独立的渲染引擎实例。<br>
+浏览器内核是多线程，在内核控制下各线程相互配合以保持同步，一个浏览器通常由以下常驻线程组成：</p>
+<ul>
+  <li>GUI 渲染线程（图形用户界面）</li>
+  <li>JavaScript引擎线程</li>
+  <li>事件触发线程</li>
+  <li>定时触发器线程</li>
+  <li>异步http请求线程<br>
+<img src="https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_inner_thread.png" alt="">
+</li>
+</ul>
+
+<h4 id="gui-渲染线程">GUI 渲染线程</h4>
+<p><code class="highlighter-rouge">GUI渲染线程</code>负责渲染浏览器界面，解析HTML，CSS，构建DOM树和RenderObject树，布局和绘制等。
+当界面需要重绘(Repaint)或由于某种操作引发回流(reflow)时,该线程就会执行。<br>
+<strong>GUI渲染线程与JS引擎线程是互斥的</strong> 在Javascript引擎运行脚本期间,GUI渲染线程都是处于挂起状态的,也就是说被”冻结”了.</p>
+<h4 id="javascript引擎线程">JavaScript引擎线程</h4>
+<p><code class="highlighter-rouge">Javascript引擎</code>可以称为JS内核，主要负责处理Javascript脚本程序，例如V8引擎。Javascript引擎线程理所当然是负责解析Javascript脚本，运行代码。<br>
+一个Tab页（renderer进程）中无论什么时候都只有一个JS线程在运行JS程序。</p>
+<h4 id="javascript是单线程的">Javascript是单线程的</h4>
+<p>Javascript是单线程的, 那么为什么Javascript要是单线程的？
+这是因为Javascript这门脚本语言诞生的使命所致：JavaScript为处理页面中用户的交互，以及操作DOM树、CSS样式树来给用户呈现一份动态而丰富的交互体验和服务器逻辑的交互处理。
+如果JavaScript是多线程的方式来操作这些UI DOM，则可能出现UI操作的冲突； 如果Javascript是多线程的话，在多线程的交互下，处于UI中的DOM节点就可能成为一个临界资源，
+假设存在两个线程同时操作一个DOM，一个负责修改一个负责删除，那么这个时候就需要浏览器来裁决如何生效哪个线程的执行结果。
+当然我们可以通过锁来解决上面的问题。但为了避免因为引入了锁而带来更大的复杂性，Javascript在最初就选择了单线程执行。</p>
+<h4 id="事件触发线程">事件触发线程</h4>
+<p>当一个事件被触发时该线程会把事件添加到待处理队列的队尾，等待JS引擎的处理。这些事件可以是当前执行的代码块如定时任务、
+也可来自浏览器内核的其他线程如鼠标点击、AJAX异步请求等，但由于JS的单线程关系所有这些事件都得排队等待JS引擎处理。</p>
+<h4 id="定时触发器线程">定时触发器线程</h4>
+<p>浏览器定时计数器并不是由JavaScript引擎计数的, 因为JavaScript引擎是单线程的, 
+如果处于阻塞线程状态就会影响记计时的准确, 因此通过单独线程来计时并触发定时是更为合理的方案。<br>
+setInterval与setTimeout所在线程，W3C在HTML标准中规定，规定要求setTimeout中低于4ms的时间间隔算为4ms。</p>
+<h4 id="异步http请求线程">异步http请求线程</h4>
+<p>在XMLHttpRequest在连接后是通过浏览器新开一个线程请求， 将检测到状态变更时，如果设置有回调函数，异步线程就产生状态变更事件放到 JavaScript引擎的处理队列中等待处理。</p>
+
+<h4 id="gui-渲染线程-与-javascript引擎线程互斥">GUI 渲染线程 与 JavaScript引擎线程互斥</h4>
+<p>由于JavaScript是可操纵DOM的，如果在修改这些元素属性同时渲染界面（即JavaScript线程和UI线程同时运行），那么渲染线程前后获得的元素数据就可能不一致了。
+因此为了防止渲染出现不可预期的结果，浏览器设置GUI渲染线程与JavaScript引擎为互斥的关系，当JavaScript引擎执行时GUI线程会被挂起，GUI更新会被保存在一个队列中等到引擎线程空闲时立即被执行。</p>
+
+<h2 id="开启网络线程到发出一个完整的http请求">开启网络线程到发出一个完整的http请求</h2>
+<h2 id="从服务器接收到请求到对应后台接收到请求">从服务器接收到请求到对应后台接收到请求</h2>
+<h2 id="后台和前台的http交互">后台和前台的http交互</h2>
+<h2 id="缓存问题">缓存问题</h2>
+<h2 id="解析页面流程">解析页面流程</h2>
+<h2 id="css的可视化格式模型">CSS的可视化格式模型</h2>
+<h2 id="js引擎解析过程">JS引擎解析过程</h2>
+
+<h2 id="参考">参考</h2>
+<ul>
+  <li>http://www.dailichun.com/2018/03/12/whenyouenteraurl.html</li>
+  <li>http://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_procs.html</li>
+  <li>http://www.imweb.io/topic/58e3bfa845e5c13468f567d5</li>
+</ul>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/assets/images/alipay-reward-image.jpg" alt="Lmy Alipay">
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%80%9A%E8%AF%86" rel="tag"># 计算机通识</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/%E7%AE%97%E6%B3%95/2018/09/18/interview-ntes/" rel="next" title="网易2018校招编程合集">
+                <i class="fa fa-chevron-left"></i> 网易2018校招编程合集
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/es6/2018/09/16/ES6-func/" rel="prev" title="ES6-箭头函数及定时器this指向">
+                ES6-箭头函数及定时器this指向 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/assets/images/avatar.jpg" alt="Lmy">
+          <p class="site-author-name" itemprop="name">Lmy</p>
+           
+              <p class="site-description motion-element" itemprop="description">对社会有所创造，为他人付出过，完善自己。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://github.com/supersui" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/cherry" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2887635897" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/xue-xiao-yao" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-link"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class="nav">
+      <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E5%89%8D%E8%A8%80"> <span class="nav-number">1</span> <span class="nav-text">前言</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8E%A5%E6%94%B6url%E5%88%B0%E5%BC%80%E5%90%AF%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2</span> <span class="nav-text">从浏览器接收url到开启网络请求线程</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B"> <span class="nav-number">2.1</span> <span class="nav-text">线程与进程</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E4%BD%9C%E4%B8%BA%E6%88%BF%E5%AD%90"> <span class="nav-number">2.1.1</span> <span class="nav-text">作为房子</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E5%8D%95%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.1.2</span> <span class="nav-text">单线程</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.1.3</span> <span class="nav-text">多线程</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E5%9B%9E%E5%88%B0%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B"> <span class="nav-number">2.1.4</span> <span class="nav-text">回到线程与进程</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%AF%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%9A%84"> <span class="nav-number">2.2</span> <span class="nav-text">浏览器是多进程的</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E6%98%AF%E5%A4%9A%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.3</span> <span class="nav-text">浏览器内核是多线程</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8"> <span class="nav-number">2.3.1</span> <span class="nav-text">浏览器内核</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#gui-%E6%B8%B2%E6%9F%93%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.3.2</span> <span class="nav-text">GUI 渲染线程</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#javascript%E5%BC%95%E6%93%8E%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.3.3</span> <span class="nav-text">JavaScript引擎线程</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#javascript%E6%98%AF%E5%8D%95%E7%BA%BF%E7%A8%8B%E7%9A%84"> <span class="nav-number">2.3.4</span> <span class="nav-text">Javascript是单线程的</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E8%A7%A6%E5%8F%91%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.3.5</span> <span class="nav-text">事件触发线程</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E5%AE%9A%E6%97%B6%E8%A7%A6%E5%8F%91%E5%99%A8%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.3.6</span> <span class="nav-text">定时触发器线程</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E5%BC%82%E6%AD%A5http%E8%AF%B7%E6%B1%82%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.3.7</span> <span class="nav-text">异步http请求线程</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#gui-%E6%B8%B2%E6%9F%93%E7%BA%BF%E7%A8%8B-%E4%B8%8E-javascript%E5%BC%95%E6%93%8E%E7%BA%BF%E7%A8%8B%E4%BA%92%E6%96%A5"> <span class="nav-number">2.3.8</span> <span class="nav-text">GUI 渲染线程 与 JavaScript引擎线程互斥</span> </a> </li> </ol> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E5%BC%80%E5%90%AF%E7%BD%91%E7%BB%9C%E7%BA%BF%E7%A8%8B%E5%88%B0%E5%8F%91%E5%87%BA%E4%B8%80%E4%B8%AA%E5%AE%8C%E6%95%B4%E7%9A%84http%E8%AF%B7%E6%B1%82"> <span class="nav-number">3</span> <span class="nav-text">开启网络线程到发出一个完整的http请求</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A5%E6%94%B6%E5%88%B0%E8%AF%B7%E6%B1%82%E5%88%B0%E5%AF%B9%E5%BA%94%E5%90%8E%E5%8F%B0%E6%8E%A5%E6%94%B6%E5%88%B0%E8%AF%B7%E6%B1%82"> <span class="nav-number">4</span> <span class="nav-text">从服务器接收到请求到对应后台接收到请求</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E5%90%8E%E5%8F%B0%E5%92%8C%E5%89%8D%E5%8F%B0%E7%9A%84http%E4%BA%A4%E4%BA%92"> <span class="nav-number">5</span> <span class="nav-text">后台和前台的http交互</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98"> <span class="nav-number">6</span> <span class="nav-text">缓存问题</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E9%A1%B5%E9%9D%A2%E6%B5%81%E7%A8%8B"> <span class="nav-number">7</span> <span class="nav-text">解析页面流程</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#css%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E6%A0%BC%E5%BC%8F%E6%A8%A1%E5%9E%8B"> <span class="nav-number">8</span> <span class="nav-text">CSS的可视化格式模型</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#js%E5%BC%95%E6%93%8E%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B"> <span class="nav-number">9</span> <span class="nav-text">JS引擎解析过程</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E5%8F%82%E8%80%83"> <span class="nav-number">10</span> <span class="nav-text">参考</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  
+  © 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lmy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://jekyllrb.com">Jekyll</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

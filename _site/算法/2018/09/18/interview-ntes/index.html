@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="UTF-8">
@@ -69,7 +69,7 @@
 <link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="网易,动态规划,">
+  <meta name="keywords" content="网易,动态规划,leetcode,">
 
 
 
@@ -98,7 +98,7 @@
 
 
 <meta name="description" content="题目来源于牛客网，网易2018校园招聘编程题真题集合。">
-<meta name="keywords" content="网易, 动态规划">
+<meta name="keywords" content="网易, 动态规划, leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网易2018校招编程合集">
 <meta property="og:url" content="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/18/interview-ntes/">
@@ -116,7 +116,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '',
-    scheme: 'Pisces',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
@@ -609,22 +609,12 @@
 
 <h3 id="最长公共子括号序列">最长公共子括号序列</h3>
 <h4 id="题目-5">题目</h4>
-<p>一个合法的括号匹配序列被定义为:<br>
-1.空串” “是合法的括号序列 <br>
-2.如果”X”和”Y”是合法的序列,那么”XY”也是一个合法的括号序列<br>
-3.如果”X”是一个合法的序列,那么”(X)”也是一个合法的括号序列<br>
-4.每个合法的括号序列都可以由上面的规则生成<br>
-例如””, “()”, “()()()”, “(()())”, “(((()))”都是合法的。
-从一个字符串S中移除零个或者多个字符得到的序列称为S的子序列。
-例如”abcde”的子序列有”abe”,””,”abcde”等。
-定义LCS(S,T)为字符串S和字符串T最长公共子序列的长度,即一个最长的序列W既是S的子序列也是T的子序列的长度。
-小易给出一个合法的括号匹配序列s,小易希望你能找出具有以下特征的括号序列t:<br>
+<p>小易给出一个合法的括号匹配序列s,小易希望你能找出具有以下特征的括号序列t:<br>
 1、t跟s不同,但是长度相同<br>
 2、t也是一个合法的括号匹配序列<br>
 3、LCS(s, t)是满足上述两个条件的t中最大的
-因为这样的t可能存在多个,小易需要你计算出满足条件的t有多少个。</p>
-
-<p>如样例所示: s = “(())()”,跟字符串s长度相同的合法括号匹配序列有:
+因为这样的t可能存在多个,小易需要你计算出满足条件的t有多少个。<br>
+如样例所示: s = “(())()”,跟字符串s长度相同的合法括号匹配序列有:
 “()(())”, “((()))”, “()()()”, “(()())”,其中LCS( “(())()”, “()(())” )为4,其他三个都为5,所以输出3.</p>
 
 <p>输入描述:</p>
@@ -648,7 +638,46 @@
 </blockquote>
 
 <h4 id="思路-5">思路</h4>
-<p>这道题的题干太长了，但其实没那么复杂。参考<a href="https://leetcode-cn.com/problems/generate-parentheses/description/">Leetcode22 括号生成</a></p>
+<p>这道题的题干太长了，但其实没那么复杂。根据题意，要想使得 LCS 最大，
+删去任意一个字符即可获得 LCS = |s| - 1 ，再把该字符插到与原来不同的任意位置可以维持原长度，而不影响 LCS 的计算。</p>
+<div class="language-javascript highlighter-rouge">
+<div class="highlight"><table style="margin: 0px"><tbody><tr>
+<td class="gutter"><pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30</pre></td>
+<td class="code"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">deal</span><span class="p">(</span><span class="nx">str</span><span class="p">){</span>
+	<span class="kd">var</span> <span class="nx">res</span><span class="o">=</span><span class="k">new</span> <span class="nx">Set</span><span class="p">();</span>
+	<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">2</span><span class="p">;</span><span class="nx">i</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">--</span><span class="p">){</span>
+	    <span class="kd">var</span> <span class="nx">arr</span><span class="o">=</span><span class="nx">str</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+	    <span class="kd">var</span> <span class="nx">temp</span><span class="o">=</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+	    <span class="nx">arr</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+	    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">j</span><span class="o">=</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="nx">j</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span><span class="nx">j</span><span class="o">--</span><span class="p">){</span>
+	        <span class="nx">arr</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">j</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nx">temp</span><span class="p">);</span>
+	        <span class="k">if</span><span class="p">(</span><span class="nx">vaild</span><span class="p">(</span><span class="nx">arr</span><span class="p">)){</span>
+	            <span class="nx">res</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">arr</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">""</span><span class="p">))</span>
+	        <span class="p">}</span>
+	        <span class="nx">arr</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">j</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+	    <span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">if</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">str</span><span class="p">)){</span>
+		<span class="nx">res</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">size</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">vaild</span><span class="p">(</span><span class="nx">a</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">stack</span><span class="o">=</span><span class="p">[];</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">k</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">k</span><span class="o">&lt;</span><span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">k</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span><span class="o">==</span><span class="s2">"("</span><span class="p">){</span>
+            <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">"("</span><span class="p">);</span>
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+            <span class="nx">stack</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">stack</span><span class="p">.</span><span class="nx">length</span><span class="o">==</span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td>
+</tr></tbody></table></div>
+</div>
+
+<p>参考<a href="https://leetcode-cn.com/problems/generate-parentheses/description/">Leetcode22 括号生成</a></p>
 <blockquote>
   <p>给出 n 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且有效的括号组合</p>
 </blockquote>
@@ -687,10 +716,9 @@
 <h4 id="题目-6">题目</h4>
 <p>小Q和牛博士合唱一首歌曲,这首歌曲由n个音调组成,每个音调由一个正整数表示。
 对于每个音调要么由小Q演唱要么由牛博士演唱,对于一系列音调演唱的难度等于所有相邻音调变化幅度之和, 例如一个音调序列是8, 8, 13, 12, 那么它的难度等于|8 - 8| + |13 - 8| + |12 - 13| = 6(其中||表示绝对值)。
-现在要对把这n个音调分配给小Q或牛博士,让他们演唱的难度之和最小,请你算算最小的难度和是多少。
-如样例所示: 小Q选择演唱{5, 6}难度为1, 牛博士选择演唱{1, 2, 1}难度为2,难度之和为3,这一个是最小难度和的方案了。</p>
-
-<p>输入描述:</p>
+现在要对把这n个音调分配给小Q或牛博士,让他们演唱的难度之和最小,请你算算最小的难度和是多少。<br>
+如样例所示: 小Q选择演唱{5, 6}难度为1, 牛博士选择演唱{1, 2, 1}难度为2,难度之和为3,这一个是最小难度和的方案了。 <br>
+输入描述:</p>
 <blockquote>
   <p>输入包括两行,第一行一个正整数n(1 ≤ n ≤ 2000) 第二行n个整数v<a href="1%20%E2%89%A4%20v%5Bi%5D%20%E2%89%A4%2010%5E6">i</a>, 表示每个音调。</p>
 </blockquote>
@@ -700,17 +728,35 @@
   <p>输出一个整数,表示小Q和牛博士演唱最小的难度和是多少。</p>
 </blockquote>
 
-<p>###</p>
+<h4 id="思路-6">思路</h4>
+<h4 id="贪心算法">贪心算法</h4>
+<p>第一个人唱低音，第二个人唱高音，先把数组排个序，然后选择前一部分作为低音，后一部分作为高音。
+分割的标准是两个元素间隔最大的地方。不过这样做只能通过60%的样例。</p>
+<h4 id="动态规划">动态规划</h4>
+<p>(1)dp[i][j]（永远有i &gt; j）表示某一个人最近唱的音为第i个，另一个人最近唱的是第j个时最小的难度<br>
+(2)由于只由一个人唱完肯定不是最优解。因此先在一个for循环内确定以下两种情况的初值
+dp[i][0]：第二个人唱第一个音，第一个人唱后面所有音
+dp[i][i-1]：第一个人唱最近的一个音，第二个人唱前面所有音<br>
+(3)dp[i][j]转移方程,每当交换唱歌次序，两人最近一次唱的音符一定是相邻的，所以底下分相邻和不相邻讨论：</p>
+<ul>
+  <li>当j == i - 1，即交换唱歌次序，dp[i][i-1]时，表明第一个人上一个音可能在第k个音（0 &lt;= k &lt; i-1）,由唱了最近的第i个，第二个人仍然留在第i-1个音。
+dp[i][i-1] = 对所有k求min(dp[i-1][k] + abs(arr[i] - arr[k]) ) 其中（0 &lt;= k &lt; i-1）</li>
+  <li>当j &lt; i - 1，即不交换唱歌次序时，只可能由唱到i-1音符的人续唱
+dp[i][j] = dp[i-1][j] + abs(arr[i] - arr[i-1])</li>
+</ul>
+
+<p>(4)最后求出所有dp[len-1][]里的最小值即为全局最优解</p>
+
+<h3 id="射击游戏">射击游戏</h3>
 <h4 id="题目-7">题目</h4>
 <p>小易正在玩一款新出的射击游戏,这个射击游戏在一个二维平面进行,小易在坐标原点(0,0),平面上有n只怪物,每个怪物有所在的坐标(x[i], y[i])。小易进行一次射击会把x轴和y轴上(包含坐标原点)的怪物一次性消灭。
 小易是这个游戏的VIP玩家,他拥有两项特权操作:
 1、让平面内的所有怪物同时向任意同一方向移动任意同一距离
 2、让平面内的所有怪物同时对于小易(0,0)旋转任意同一角度
 小易要进行一次射击。小易在进行射击前,可以使用这两项特权操作任意次。
-小易想知道在他射击的时候最多可以同时消灭多少只怪物,请你帮帮小易。</p>
-
-<p>如样例所示:
-<img src="https://uploadfiles.nowcoder.net/images/20170908/906271_1504858526319_5919175DAEBEFEF2DD7B449C60B277DF">
+小易想知道在他射击的时候最多可以同时消灭多少只怪物,请你帮帮小易。<br>
+如样例所示:
+<img src="https://uploadfiles.nowcoder.net/images/20170908/906271_1504858526319_5919175DAEBEFEF2DD7B449C60B277DF" alt="">
 所有点对于坐标原点(0,0)顺时针或者逆时针旋转45°,可以让所有点都在坐标轴上,所以5个怪物都可以消灭。</p>
 
 <p>输入描述:</p>
@@ -726,6 +772,8 @@
   <p>输出一个整数表示小易最多能消灭多少只怪物。</p>
 </blockquote>
 
+<h3 id="挖个坑">挖个坑</h3>
+<p>后两道感觉挺难的，呜呜呜先参考大神思路，代码再再补上。<img class="emoji" title=":sob:" alt=":sob:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f62d.png" height="20" width="20" align="absmiddle"> <img class="emoji" title=":sob:" alt=":sob:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f62d.png" height="20" width="20" align="absmiddle"> <img class="emoji" title=":sob:" alt=":sob:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f62d.png" height="20" width="20" align="absmiddle"></p>
 
 
       
@@ -778,6 +826,9 @@
             
             <a href="/tag/#/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92" rel="tag"># 动态规划</a>
           
+            
+            <a href="/tag/#/leetcode" rel="tag"># leetcode</a>
+          
         </div>
       
 
@@ -798,8 +849,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/es6/2018/09/16/ES6-func/" rel="prev" title="ES6-箭头函数及定时器this指向">
-                ES6-箭头函数及定时器this指向 <i class="fa fa-chevron-right"></i>
+              <a href="/http/2018/09/17/http-url/" rel="prev" title="从输入URL到页面加载的过程">
+                从输入URL到页面加载的过程 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -879,7 +930,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -890,7 +941,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -901,7 +952,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1001,7 +1052,7 @@
             
               <div class="post-toc-content">
     <ol class="nav">
-      <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E9%AD%94%E6%B3%95%E5%B8%81"> <span class="nav-number">1</span> <span class="nav-text">魔法币</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E9%A2%98%E7%9B%AE"> <span class="nav-number">1.1</span> <span class="nav-text">题目</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E6%80%9D%E8%B7%AF"> <span class="nav-number">1.2</span> <span class="nav-text">思路</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E7%9B%B8%E5%8F%8D%E6%95%B0"> <span class="nav-number">2</span> <span class="nav-text">相反数</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E9%A2%98%E7%9B%AE-1"> <span class="nav-number">2.1</span> <span class="nav-text">题目</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E6%80%9D%E8%B7%AF-1"> <span class="nav-number">2.2</span> <span class="nav-text">思路</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%A2%8E%E7%89%87"> <span class="nav-number">3</span> <span class="nav-text">字符串碎片</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E9%A2%98%E7%9B%AE-2"> <span class="nav-number">3.1</span> <span class="nav-text">题目</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E6%80%9D%E8%B7%AF-2"> <span class="nav-number">3.2</span> <span class="nav-text">思路</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E6%B8%B8%E5%8E%86%E9%AD%94%E6%B3%95%E7%8E%8B%E5%9B%BD"> <span class="nav-number">4</span> <span class="nav-text">游历魔法王国</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E9%A2%98%E7%9B%AE-3"> <span class="nav-number">4.1</span> <span class="nav-text">题目</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E6%80%9D%E8%B7%AF-3"> <span class="nav-number">4.2</span> <span class="nav-text">思路</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E9%87%8D%E6%8E%92%E6%95%B0%E5%88%97"> <span class="nav-number">5</span> <span class="nav-text">重排数列</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E9%A2%98%E7%9B%AE-4"> <span class="nav-number">5.1</span> <span class="nav-text">题目</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E6%80%9D%E8%B7%AF-4"> <span class="nav-number">5.2</span> <span class="nav-text">思路</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97"> <span class="nav-number">6</span> <span class="nav-text">最长公共子括号序列</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E9%A2%98%E7%9B%AE-5"> <span class="nav-number">6.1</span> <span class="nav-text">题目</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E6%80%9D%E8%B7%AF-5"> <span class="nav-number">6.2</span> <span class="nav-text">思路</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E5%90%88%E5%94%B1"> <span class="nav-number">7</span> <span class="nav-text">合唱</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E9%A2%98%E7%9B%AE-6"> <span class="nav-number">7.1</span> <span class="nav-text">题目</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E9%A2%98%E7%9B%AE-7"> <span class="nav-number">7.2</span> <span class="nav-text">题目</span> </a> </li> </ol> </li>
+      <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E9%AD%94%E6%B3%95%E5%B8%81"> <span class="nav-number">1</span> <span class="nav-text">魔法币</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E9%A2%98%E7%9B%AE"> <span class="nav-number">1.1</span> <span class="nav-text">题目</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E6%80%9D%E8%B7%AF"> <span class="nav-number">1.2</span> <span class="nav-text">思路</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E7%9B%B8%E5%8F%8D%E6%95%B0"> <span class="nav-number">2</span> <span class="nav-text">相反数</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E9%A2%98%E7%9B%AE-1"> <span class="nav-number">2.1</span> <span class="nav-text">题目</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E6%80%9D%E8%B7%AF-1"> <span class="nav-number">2.2</span> <span class="nav-text">思路</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%A2%8E%E7%89%87"> <span class="nav-number">3</span> <span class="nav-text">字符串碎片</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E9%A2%98%E7%9B%AE-2"> <span class="nav-number">3.1</span> <span class="nav-text">题目</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E6%80%9D%E8%B7%AF-2"> <span class="nav-number">3.2</span> <span class="nav-text">思路</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E6%B8%B8%E5%8E%86%E9%AD%94%E6%B3%95%E7%8E%8B%E5%9B%BD"> <span class="nav-number">4</span> <span class="nav-text">游历魔法王国</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E9%A2%98%E7%9B%AE-3"> <span class="nav-number">4.1</span> <span class="nav-text">题目</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E6%80%9D%E8%B7%AF-3"> <span class="nav-number">4.2</span> <span class="nav-text">思路</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E9%87%8D%E6%8E%92%E6%95%B0%E5%88%97"> <span class="nav-number">5</span> <span class="nav-text">重排数列</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E9%A2%98%E7%9B%AE-4"> <span class="nav-number">5.1</span> <span class="nav-text">题目</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E6%80%9D%E8%B7%AF-4"> <span class="nav-number">5.2</span> <span class="nav-text">思路</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97"> <span class="nav-number">6</span> <span class="nav-text">最长公共子括号序列</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E9%A2%98%E7%9B%AE-5"> <span class="nav-number">6.1</span> <span class="nav-text">题目</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E6%80%9D%E8%B7%AF-5"> <span class="nav-number">6.2</span> <span class="nav-text">思路</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E5%90%88%E5%94%B1"> <span class="nav-number">7</span> <span class="nav-text">合唱</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E9%A2%98%E7%9B%AE-6"> <span class="nav-number">7.1</span> <span class="nav-text">题目</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E6%80%9D%E8%B7%AF-6"> <span class="nav-number">7.2</span> <span class="nav-text">思路</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"> <span class="nav-number">7.3</span> <span class="nav-text">贪心算法</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"> <span class="nav-number">7.4</span> <span class="nav-text">动态规划</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E5%B0%84%E5%87%BB%E6%B8%B8%E6%88%8F"> <span class="nav-number">8</span> <span class="nav-text">射击游戏</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E9%A2%98%E7%9B%AE-7"> <span class="nav-number">8.1</span> <span class="nav-text">题目</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E6%8C%96%E4%B8%AA%E5%9D%91"> <span class="nav-number">9</span> <span class="nav-text">挖个坑</span> </a> </li>
     </ol>
   </div>
             
@@ -1041,7 +1092,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
-    NexT.Pisces
+    NexT.Muse
   </a>
 </div>
 
@@ -1165,13 +1216,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/assets/js/src/affix.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/assets/js/src/schemes/pisces.js?v=5.1.1"></script>
-
-
 
   <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>

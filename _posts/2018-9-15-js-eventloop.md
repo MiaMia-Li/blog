@@ -23,7 +23,7 @@ JavaScript的单线程，与它的用途有关。
 4. 主线程不断重复上面的第三步。  
 
 
-<img src="http://www.ruanyifeng.com/blogimg/asset/2014/bg2014100801.jpg">  
+![](http://www.ruanyifeng.com/blogimg/asset/2014/bg2014100801.jpg)
 
 ### Event Loop
 ````javascript
@@ -83,6 +83,9 @@ process.nextTick(function(){console.log(5)});
 
 console.log(6);
 //输出2,6,5,3,4,1
-````
+````  
+
+### 参考  
+- [JavaScript 运行机制详解：再谈Event Loop(阮一峰)](http://www.ruanyifeng.com/blog/2014/10/event-loop.html)
  
 
