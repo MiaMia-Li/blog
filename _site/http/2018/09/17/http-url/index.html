@@ -97,21 +97,21 @@
 
 
 
-<meta name="description" content="前言 经典面试题，但方方面面的很多东西，要答好也不简单。通过对这道题的分析，希望梳理出一个前端向的知识体系 :dancers: 主要包括： 从浏览器接收url到开启网络请求线程 开启网络线程到发出一个完整的http请求 从服务器接收到请求到对应后台接收到请求 后台和前台的http交互 缓存问题，http的缓存 解析页面流程 CSS的可视化格式模型 JS引擎解析过程">
+<meta name="description" content="前言 经典面试题，但方方面面的很多东西，要答好也不简单。通过对这道题的分析，希望梳理出一个前端向的知识体系 :dancers: :dancers: :dancers: 主要包括： 从浏览器接收url到开启网络请求线程 开启网络线程到发出一个完整的http请求 从服务器接收到请求到对应后台接收到请求 后台和前台的http交互 缓存问题，http的缓存 解析页面流程 CSS的可视化格式模型 JS引擎解析过程">
 <meta name="keywords" content="计算机通识">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从输入URL到页面加载的过程">
 <meta property="og:url" content="http://localhost:4000/http/2018/09/17/http-url/">
 <meta property="og:site_name" content="Lemon">
-<meta property="og:description" content="前言 经典面试题，但方方面面的很多东西，要答好也不简单。通过对这道题的分析，希望梳理出一个前端向的知识体系 :dancers: 主要包括： 从浏览器接收url到开启网络请求线程 开启网络线程到发出一个完整的http请求 从服务器接收到请求到对应后台接收到请求 后台和前台的http交互 缓存问题，http的缓存 解析页面流程 CSS的可视化格式模型 JS引擎解析过程">
+<meta property="og:description" content="前言 经典面试题，但方方面面的很多东西，要答好也不简单。通过对这道题的分析，希望梳理出一个前端向的知识体系 :dancers: :dancers: :dancers: 主要包括： 从浏览器接收url到开启网络请求线程 开启网络线程到发出一个完整的http请求 从服务器接收到请求到对应后台接收到请求 后台和前台的http交互 缓存问题，http的缓存 解析页面流程 CSS的可视化格式模型 JS引擎解析过程">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="../assets/images/2018-9-17-http-url/MacProcesses.jpg">
-<meta property="og:image" content="../assets/images/2018-9-17-http-url/chromePro.png">
+<meta property="og:image" content="http://localhost:4000/assets/images/2018-9-17-http-url/MacProcesses.jpg">
+<meta property="og:image" content="http://localhost:4000/assets/images/2018-9-17-http-url/chromePro.png">
 <meta property="og:image" content="https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_inner_thread.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从输入URL到页面加载的过程">
-<meta name="twitter:description" content="前言 经典面试题，但方方面面的很多东西，要答好也不简单。通过对这道题的分析，希望梳理出一个前端向的知识体系 :dancers: 主要包括： 从浏览器接收url到开启网络请求线程 开启网络线程到发出一个完整的http请求 从服务器接收到请求到对应后台接收到请求 后台和前台的http交互 缓存问题，http的缓存 解析页面流程 CSS的可视化格式模型 JS引擎解析过程">
-<meta name="twitter:image" content="../assets/images/2018-9-17-http-url/MacProcesses.jpg">
+<meta name="twitter:description" content="前言 经典面试题，但方方面面的很多东西，要答好也不简单。通过对这道题的分析，希望梳理出一个前端向的知识体系 :dancers: :dancers: :dancers: 主要包括： 从浏览器接收url到开启网络请求线程 开启网络线程到发出一个完整的http请求 从服务器接收到请求到对应后台接收到请求 后台和前台的http交互 缓存问题，http的缓存 解析页面流程 CSS的可视化格式模型 JS引擎解析过程">
+<meta name="twitter:image" content="http://localhost:4000/assets/images/2018-9-17-http-url/MacProcesses.jpg">
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -413,14 +413,14 @@
 
 
   <h2 id="前言">前言</h2>
-<p>经典面试题，但方方面面的很多东西，要答好也不简单。通过对这道题的分析，希望梳理出一个前端向的知识体系 <img class="emoji" title=":dancers:" alt=":dancers:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f46f.png" height="20" width="20" align="absmiddle"><br>
+<p>经典面试题，但方方面面的很多东西，要答好也不简单。通过对这道题的分析，希望梳理出一个前端向的知识体系 <img class="emoji" title=":dancers:" alt=":dancers:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f46f.png" height="20" width="20" align="absmiddle"> <img class="emoji" title=":dancers:" alt=":dancers:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f46f.png" height="20" width="20" align="absmiddle"> <img class="emoji" title=":dancers:" alt=":dancers:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f46f.png" height="20" width="20" align="absmiddle"><br>
 主要包括：</p>
 <ul>
   <li>从浏览器接收url到开启网络请求线程</li>
   <li>开启网络线程到发出一个完整的http请求</li>
   <li>从服务器接收到请求到对应后台接收到请求</li>
   <li>后台和前台的http交互</li>
-  <li>缓存问题，<a href="2018-8-18-http-huancun.md">http的缓存</a>
+  <li>缓存问题，<a href="http://localhost:4000/http/2018/08/18/http-huancun/">http的缓存</a>
 </li>
   <li>解析页面流程</li>
   <li>CSS的可视化格式模型</li>
@@ -444,7 +444,7 @@
 现在，把几个孩子扔进去，事情变得更加复杂。</p>
 <h4 id="回到线程与进程">回到线程与进程</h4>
 <p>在macOS系统中，可以打开活动监视器查看后台进程与线程，和内存资源信息和CPU占有率。<br>
-<img src="../assets/images/2018-9-17-http-url/MacProcesses.jpg" alt=""><br>
+<img src="http://localhost:4000/assets/images/2018-9-17-http-url/MacProcesses.jpg" alt=""><br>
 <strong>进程</strong><br>
 进程是一个具有一定独立功能的程序在一个数据集上的一次动态执行的过程，是操作系统进行资源分配和调度的一个独立单位，是应用程序运行的载体。<br>
 <strong>线程</strong><br>
@@ -460,7 +460,7 @@
 <h3 id="浏览器是多进程的">浏览器是多进程的</h3>
 <p>浏览器是多进程的，有一个主控进程，以及每一个tab页面都会新开一个进程（某些情况下多个tab会合并进程）。
 如图，查看chrome任务管理器。
-<img src="../assets/images/2018-9-17-http-url/chromePro.png" alt=""></p>
+<img src="http://localhost:4000/assets/images/2018-9-17-http-url/chromePro.png" alt=""></p>
 
 <p><strong>浏览器进程包括</strong></p>
 <ul>
@@ -522,7 +522,7 @@ setInterval与setTimeout所在线程，W3C在HTML标准中规定，规定要求s
 
 <h2 id="参考">参考</h2>
 <ul>
-  <li>http://www.dailichun.com/2018/03/12/whenyouenteraurl.html</li>
+  <li>&lt;http://www.dailichun.com/2018/03/12/whenyouenteraurl.html</li>
   <li>http://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_procs.html</li>
   <li>http://www.imweb.io/topic/58e3bfa845e5c13468f567d5</li>
 </ul>
@@ -680,7 +680,7 @@ setInterval与setTimeout所在线程，W3C在HTML标准中规定，规定要求s
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

@@ -293,6 +293,258 @@
   
 
   <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/21/leetcode5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lemon">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+                
+                <a class="post-title-link" href="/%E7%AE%97%E6%B3%95/2018/09/21/leetcode5/" itemprop="url">
+                leetcode5 最长回文子串
+              </a>
+            
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-21T00:00:00+08:00">
+                2018-09-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/%E7%AE%97%E6%B3%95" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <h3 id="题目">题目</h3>
+<p>给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为1000。<br>
+示例 1：<br>
+输入: “babad” <br>
+输出: “bab”
+注意: “aba”也是一个有效答案。<br>
+示例 2：<br>
+输入: “cbbd” <br>
+输出: “bb”</p>
+<h3 id="思路">思路</h3>
+<h4 id="动态规划">动态规划</h4>
+<p>初始化一字母和二字母的回文，然后找到所有三字母回文，并依此类推。
+<script type="math/tex">dp(i,j)=(dp(i+1,j-1)andS_i==S_j)\\
+dp(i,i)=true\\
+dp(i,i+1)=(S_i==S_j)</script></p>
+<div class="language-javascript highlighter-rouge">
+<div class="highlight"><table style="margin: 0px"><tbody><tr>
+<td class="gutter"><pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31</pre></td>
+<td class="code"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">longestPalindrome</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">start</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">maxLength</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">len</span><span class="o">=</span><span class="nx">s</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">length</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">){</span>
+        <span class="k">return</span> <span class="nx">s</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">var</span> <span class="nx">dp</span><span class="o">=</span><span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">len</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">k</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">k</span><span class="o">&lt;</span><span class="nx">dp</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">k</span><span class="o">++</span><span class="p">){</span>
+        <span class="nx">dp</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span><span class="o">=</span><span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">len</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">len</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="nx">dp</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">i</span><span class="p">]</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">len</span><span class="o">-</span><span class="mi">1</span><span class="o">&amp;&amp;</span><span class="nx">s</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span><span class="o">==</span><span class="nx">s</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)){</span>
+            <span class="nx">dp</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+            <span class="nx">start</span><span class="o">=</span><span class="nx">i</span><span class="p">;</span>
+            <span class="nx">maxLength</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">strlen</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span><span class="nx">strlen</span><span class="o">&lt;</span><span class="nx">len</span><span class="p">;</span><span class="nx">strlen</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;=</span><span class="nx">len</span><span class="o">-</span><span class="nx">strlen</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+            <span class="kd">var</span> <span class="nx">j</span><span class="o">=</span><span class="nx">i</span><span class="o">+</span><span class="nx">strlen</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">dp</span><span class="p">[</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="nx">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">&amp;&amp;</span><span class="nx">s</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span><span class="o">==</span><span class="nx">s</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="nx">j</span><span class="p">)){</span>
+                <span class="nx">dp</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">j</span><span class="p">]</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+                <span class="nx">start</span><span class="o">=</span><span class="nx">i</span><span class="p">;</span>
+                <span class="nx">maxLength</span><span class="o">=</span><span class="nx">strlen</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">s</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span><span class="nx">start</span><span class="o">+</span><span class="nx">maxLength</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td>
+</tr></tbody></table></div>
+</div>
+<h4 id="中心扩展算法">中心扩展算法</h4>
+<p>回文中心的两侧互为镜像，所以回文可以从他的中心展开，有<code class="highlighter-rouge">2n-1</code>个这样的中心。（包括字母和字母之间）
+截取的字符串再去判断是否满足回文。</p>
+<div class="language-javascript highlighter-rouge">
+<div class="highlight"><table style="margin: 0px"><tbody><tr>
+<td class="gutter"><pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24</pre></td>
+<td class="code"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">longestPalindrome</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">s</span> <span class="o">===</span> <span class="s1">''</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">''</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">let</span> <span class="nx">start</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">end</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">len1</span> <span class="o">=</span> <span class="nx">calc</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">i</span><span class="p">);</span>
+        <span class="kd">let</span> <span class="nx">len2</span> <span class="o">=</span> <span class="nx">calc</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="kd">let</span> <span class="nx">len</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="nx">len1</span><span class="p">,</span> <span class="nx">len2</span><span class="p">);</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="nx">len</span> <span class="o">&gt;</span> <span class="nx">end</span> <span class="o">-</span> <span class="nx">start</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">start</span> <span class="o">=</span> <span class="nx">i</span> <span class="o">-</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">((</span><span class="nx">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+            <span class="nx">end</span> <span class="o">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">len</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">s</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">end</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="kd">function</span> <span class="nx">calc</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">length</span> <span class="o">&amp;&amp;</span> <span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">===</span> <span class="nx">s</span><span class="p">[</span><span class="nx">j</span><span class="p">])</span> <span class="p">{</span>
+        <span class="o">--</span><span class="nx">i</span><span class="p">;</span>
+        <span class="o">++</span><span class="nx">j</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">j</span> <span class="o">-</span> <span class="nx">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td>
+</tr></tbody></table></div>
+</div>
+
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/%E7%AE%97%E6%B3%95/2018/09/21/leetcode5/#" rel="contents">
+              阅读全文 »
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+        
+        
+        
+        
+          <div class="post-eof"></div>
+        
+      
+    </footer>
+  </article>
+
+  
+    
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/18/interview-ntes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -576,14 +828,14 @@
 
 
   <h2 id="前言">前言</h2>
-<p>经典面试题，但方方面面的很多东西，要答好也不简单。通过对这道题的分析，希望梳理出一个前端向的知识体系 <img class="emoji" title=":dancers:" alt=":dancers:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f46f.png" height="20" width="20" align="absmiddle"><br>
+<p>经典面试题，但方方面面的很多东西，要答好也不简单。通过对这道题的分析，希望梳理出一个前端向的知识体系 <img class="emoji" title=":dancers:" alt=":dancers:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f46f.png" height="20" width="20" align="absmiddle"> <img class="emoji" title=":dancers:" alt=":dancers:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f46f.png" height="20" width="20" align="absmiddle"> <img class="emoji" title=":dancers:" alt=":dancers:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f46f.png" height="20" width="20" align="absmiddle"><br>
 主要包括：</p>
 <ul>
   <li>从浏览器接收url到开启网络请求线程</li>
   <li>开启网络线程到发出一个完整的http请求</li>
   <li>从服务器接收到请求到对应后台接收到请求</li>
   <li>后台和前台的http交互</li>
-  <li>缓存问题，<a href="2018-8-18-http-huancun.md">http的缓存</a>
+  <li>缓存问题，<a href="http://localhost:4000/http/2018/08/18/http-huancun/">http的缓存</a>
 </li>
   <li>解析页面流程</li>
   <li>CSS的可视化格式模型</li>
@@ -797,23 +1049,14 @@
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="p">)</span>
 <span class="p">}</span>
 <span class="p">}</span>
-<span class="nx">foo</span><span class="p">.</span><span class="nx">say</span><span class="p">();</span><span class="c1">//11;</span>
+<span class="nx">foo</span><span class="p">.</span><span class="nx">say</span><span class="p">();</span><span class="c1">//11; </span>
 </code></pre></td>
 </tr></tbody></table></div>
         </div>
       </li>
     </ul>
   </li>
-  <li>实际原因是箭头函数根本没有自己的this，导致内部的this就是外层代码块的this。正是因为它没有this，所以也就不能用作构造函数。</li>
 </ol>
-
-<p>````javascript
-// ES6
-function foo() {
-  setTimeout(() =&gt; {
-    console.log(‘id:’, this.id);
-  }, 100);
-}</p>
 
 
 
@@ -2049,151 +2292,6 @@ n&lt;=39</p>
         
         
         
-          <div class="post-eof"></div>
-        
-      
-    </footer>
-  </article>
-
-  
-    
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2018/08/18/http-huancun/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lmy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lemon">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-                
-                <a class="post-title-link" href="/2018/08/18/http-huancun/" itemprop="url">
-                Http Huancun
-              </a>
-            
-          
-        </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-18T00:00:00+08:00">
-                2018-08-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/18/http-huancun/#" rel="contents">
-              阅读全文 »
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-        
-        
-        
-        
       
     </footer>
   </article>
@@ -2253,7 +2351,7 @@ n&lt;=39</p>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

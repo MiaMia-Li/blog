@@ -111,17 +111,17 @@
 
 
 
-<meta name="description" content="箭头函数 注意点 函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。 不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。 不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。 不可以使用yield命令，因此箭头函数不能用作 Generator 函数。 this this对象的指向是可变的，但在箭头函数中，是固定的。绑定定义时所在的作用域，而不是指向运行时所在的作用域。 非箭头函数的this指向运行时调用它的对象，即foo。 var a=11; var foo={ a:22, say:function(){ console.log(this.a) } } foo.say();//22; 箭头函数的this是继承自父执行上下文中的this。箭头函数say本身在对象foo中，而foo的执行上下文this指向全局window。 var a=11; var foo={ a:22, say:()=&amp;gt;{ console.log(this.a) } } foo.say();//11; 实际原因是箭头函数根本没有自己的this，导致内部的this就是外层代码块的this。正是因为它没有this，所以也就不能用作构造函数。 ````javascript // ES6 function foo() { setTimeout(() =&amp;gt; { console.log(‘id:’, this.id); }, 100); }">
+<meta name="description" content="箭头函数 注意点 函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。 不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。 不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。 不可以使用yield命令，因此箭头函数不能用作 Generator 函数。 this this对象的指向是可变的，但在箭头函数中，是固定的。绑定定义时所在的作用域，而不是指向运行时所在的作用域。 非箭头函数的this指向运行时调用它的对象，即foo。 var a=11; var foo={ a:22, say:function(){ console.log(this.a) } } foo.say();//22; 箭头函数的this是继承自父执行上下文中的this。箭头函数say本身在对象foo中，而foo的执行上下文this指向全局window。 var a=11; var foo={ a:22, say:()=&amp;gt;{ console.log(this.a) } } foo.say();//11;">
 <meta name="keywords" content="ES6, 箭头函数, 定时器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6-箭头函数及定时器this指向">
 <meta property="og:url" content="http://localhost:4000/es6/2018/09/16/ES6-func/">
 <meta property="og:site_name" content="Lemon">
-<meta property="og:description" content="箭头函数 注意点 函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。 不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。 不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。 不可以使用yield命令，因此箭头函数不能用作 Generator 函数。 this this对象的指向是可变的，但在箭头函数中，是固定的。绑定定义时所在的作用域，而不是指向运行时所在的作用域。 非箭头函数的this指向运行时调用它的对象，即foo。 var a=11; var foo={ a:22, say:function(){ console.log(this.a) } } foo.say();//22; 箭头函数的this是继承自父执行上下文中的this。箭头函数say本身在对象foo中，而foo的执行上下文this指向全局window。 var a=11; var foo={ a:22, say:()=&amp;gt;{ console.log(this.a) } } foo.say();//11; 实际原因是箭头函数根本没有自己的this，导致内部的this就是外层代码块的this。正是因为它没有this，所以也就不能用作构造函数。 ````javascript // ES6 function foo() { setTimeout(() =&amp;gt; { console.log(‘id:’, this.id); }, 100); }">
+<meta property="og:description" content="箭头函数 注意点 函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。 不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。 不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。 不可以使用yield命令，因此箭头函数不能用作 Generator 函数。 this this对象的指向是可变的，但在箭头函数中，是固定的。绑定定义时所在的作用域，而不是指向运行时所在的作用域。 非箭头函数的this指向运行时调用它的对象，即foo。 var a=11; var foo={ a:22, say:function(){ console.log(this.a) } } foo.say();//22; 箭头函数的this是继承自父执行上下文中的this。箭头函数say本身在对象foo中，而foo的执行上下文this指向全局window。 var a=11; var foo={ a:22, say:()=&amp;gt;{ console.log(this.a) } } foo.say();//11;">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6-箭头函数及定时器this指向">
-<meta name="twitter:description" content="箭头函数 注意点 函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。 不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。 不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。 不可以使用yield命令，因此箭头函数不能用作 Generator 函数。 this this对象的指向是可变的，但在箭头函数中，是固定的。绑定定义时所在的作用域，而不是指向运行时所在的作用域。 非箭头函数的this指向运行时调用它的对象，即foo。 var a=11; var foo={ a:22, say:function(){ console.log(this.a) } } foo.say();//22; 箭头函数的this是继承自父执行上下文中的this。箭头函数say本身在对象foo中，而foo的执行上下文this指向全局window。 var a=11; var foo={ a:22, say:()=&amp;gt;{ console.log(this.a) } } foo.say();//11; 实际原因是箭头函数根本没有自己的this，导致内部的this就是外层代码块的this。正是因为它没有this，所以也就不能用作构造函数。 ````javascript // ES6 function foo() { setTimeout(() =&amp;gt; { console.log(‘id:’, this.id); }, 100); }">
+<meta name="twitter:description" content="箭头函数 注意点 函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。 不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。 不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。 不可以使用yield命令，因此箭头函数不能用作 Generator 函数。 this this对象的指向是可变的，但在箭头函数中，是固定的。绑定定义时所在的作用域，而不是指向运行时所在的作用域。 非箭头函数的this指向运行时调用它的对象，即foo。 var a=11; var foo={ a:22, say:function(){ console.log(this.a) } } foo.say();//22; 箭头函数的this是继承自父执行上下文中的this。箭头函数say本身在对象foo中，而foo的执行上下文this指向全局window。 var a=11; var foo={ a:22, say:()=&amp;gt;{ console.log(this.a) } } foo.say();//11;">
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -455,7 +455,7 @@
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="p">)</span>
 <span class="p">}</span>
 <span class="p">}</span>
-<span class="nx">foo</span><span class="p">.</span><span class="nx">say</span><span class="p">();</span><span class="c1">//11;</span>
+<span class="nx">foo</span><span class="p">.</span><span class="nx">say</span><span class="p">();</span><span class="c1">//11; </span>
 </code></pre></td></tr></tbody></table></div>
         </div>
       </li>
@@ -728,7 +728,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
