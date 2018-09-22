@@ -111,17 +111,17 @@
 
 
 
-<meta name="description" content="题目 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为1000。 示例 1： 输入: “babad” 输出: “bab” 注意: “aba”也是一个有效答案。 示例 2： 输入: “cbbd” 输出: “bb” 思路 动态规划 初始化一字母和二字母的回文，然后找到所有三字母回文，并依此类推。 var longestPalindrome = function(s) { var start=0; var maxLength=1; var len=s.length; if(s.length&amp;lt;2){ return s; } var dp=new Array(len); for(var k=0;k&amp;lt;dp.length;k++){ dp[k]=new Array(len); } for(var i=0;i&amp;lt;len;i++){ dp[i][i]=true; if(i&amp;lt;len-1&amp;amp;&amp;amp;s.charAt(i)==s.charAt(i+1)){ dp[i][i+1]=true; start=i; maxLength=2; } } for(var strlen=3;strlen&amp;lt;len;strlen++){ for(var i=0;i&amp;lt;=len-strlen;i++){ var j=i+strlen-1; if(dp[i+1][j-1]&amp;amp;&amp;amp;s.charAt(i)==s.charAt(j)){ dp[i][j]=true; start=i; maxLength=strlen; } } } return s.substring(start,start+maxLength); } 中心扩展算法 回文中心的两侧互为镜像，所以回文可以从他的中心展开，有2n-1个这样的中心。（包括字母和字母之间） 截取的字符串再去判断是否满足回文。 var longestPalindrome = function(s) { if (s === &apos;&apos;) { return &apos;&apos;; } let start = 0, end = 0; for (let i = 0; i &amp;lt; s.length; i++) { let len1 = calc(s, i, i); let len2 = calc(s, i, i + 1); let len = Math.max(len1, len2); if (len &amp;gt; end - start) { start = i - Math.floor((len - 1) / 2); end = i + Math.floor(len / 2); } } return s.substring(start, end + 1); }; function calc(s, i, j) { while (i &amp;gt; -1 &amp;amp;&amp;amp; j &amp;lt; s.length &amp;amp;&amp;amp; s[i] === s[j]) { --i; ++j; } return j - i - 1; }">
+<meta name="description" content="题目 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为1000。 示例 1： 输入: “babad” 输出: “bab” 注意: “aba”也是一个有效答案。 示例 2： 输入: “cbbd” 输出: “bb” 思路 动态规划 初始化一字母和二字母的回文，然后找到所有三字母回文，并依此类推。 var longestPalindrome = function(s) { var start=0; var maxLength=1; var len=s.length; if(s.length&amp;lt;2){ return s; } var dp=new Array(len); for(var k=0;k&amp;lt;dp.length;k++){ dp[k]=new Array(len); } for(var i=0;i&amp;lt;len;i++){ dp[i][i]=true; if(i&amp;lt;len-1&amp;amp;&amp;amp;s.charAt(i)==s.charAt(i+1)){ dp[i][i+1]=true; start=i; maxLength=2; } } for(var strlen=3;strlen&amp;lt;len;strlen++){ for(var i=0;i&amp;lt;=len-strlen;i++){ var j=i+strlen-1; if(dp[i+1][j-1]&amp;amp;&amp;amp;s.charAt(i)==s.charAt(j)){ dp[i][j]=true; start=i; maxLength=strlen; } } } return s.substring(start,start+maxLength); } 中心扩展算法 回文中心的两侧互为镜像，所以回文可以从他的中心展开，有$2n-1$个这样的中心（包括字母和字母之间） 取中心点向两边扩散的字符串求出其满足回文的长度。 var longestPalindrome = function(s) { if (s === &apos;&apos;) { return &apos;&apos;; } let start = 0, end = 0; for (let i = 0; i &amp;lt; s.length; i++) { let len1 = calc(s, i, i); let len2 = calc(s, i, i + 1); let len = Math.max(len1, len2); if (len &amp;gt; end - start) { start = i - Math.floor((len - 1) / 2); end = i + Math.floor(len / 2); } } return s.substring(start, end + 1); }; function calc(s, i, j) { while (i &amp;gt; -1 &amp;amp;&amp;amp; j &amp;lt; s.length &amp;amp;&amp;amp; s[i] === s[j]) { --i; ++j; } return j - i - 1; }">
 <meta name="keywords" content="leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode5 最长回文子串">
 <meta property="og:url" content="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/21/leetcode5/">
 <meta property="og:site_name" content="Lemon">
-<meta property="og:description" content="题目 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为1000。 示例 1： 输入: “babad” 输出: “bab” 注意: “aba”也是一个有效答案。 示例 2： 输入: “cbbd” 输出: “bb” 思路 动态规划 初始化一字母和二字母的回文，然后找到所有三字母回文，并依此类推。 var longestPalindrome = function(s) { var start=0; var maxLength=1; var len=s.length; if(s.length&amp;lt;2){ return s; } var dp=new Array(len); for(var k=0;k&amp;lt;dp.length;k++){ dp[k]=new Array(len); } for(var i=0;i&amp;lt;len;i++){ dp[i][i]=true; if(i&amp;lt;len-1&amp;amp;&amp;amp;s.charAt(i)==s.charAt(i+1)){ dp[i][i+1]=true; start=i; maxLength=2; } } for(var strlen=3;strlen&amp;lt;len;strlen++){ for(var i=0;i&amp;lt;=len-strlen;i++){ var j=i+strlen-1; if(dp[i+1][j-1]&amp;amp;&amp;amp;s.charAt(i)==s.charAt(j)){ dp[i][j]=true; start=i; maxLength=strlen; } } } return s.substring(start,start+maxLength); } 中心扩展算法 回文中心的两侧互为镜像，所以回文可以从他的中心展开，有2n-1个这样的中心。（包括字母和字母之间） 截取的字符串再去判断是否满足回文。 var longestPalindrome = function(s) { if (s === &apos;&apos;) { return &apos;&apos;; } let start = 0, end = 0; for (let i = 0; i &amp;lt; s.length; i++) { let len1 = calc(s, i, i); let len2 = calc(s, i, i + 1); let len = Math.max(len1, len2); if (len &amp;gt; end - start) { start = i - Math.floor((len - 1) / 2); end = i + Math.floor(len / 2); } } return s.substring(start, end + 1); }; function calc(s, i, j) { while (i &amp;gt; -1 &amp;amp;&amp;amp; j &amp;lt; s.length &amp;amp;&amp;amp; s[i] === s[j]) { --i; ++j; } return j - i - 1; }">
+<meta property="og:description" content="题目 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为1000。 示例 1： 输入: “babad” 输出: “bab” 注意: “aba”也是一个有效答案。 示例 2： 输入: “cbbd” 输出: “bb” 思路 动态规划 初始化一字母和二字母的回文，然后找到所有三字母回文，并依此类推。 var longestPalindrome = function(s) { var start=0; var maxLength=1; var len=s.length; if(s.length&amp;lt;2){ return s; } var dp=new Array(len); for(var k=0;k&amp;lt;dp.length;k++){ dp[k]=new Array(len); } for(var i=0;i&amp;lt;len;i++){ dp[i][i]=true; if(i&amp;lt;len-1&amp;amp;&amp;amp;s.charAt(i)==s.charAt(i+1)){ dp[i][i+1]=true; start=i; maxLength=2; } } for(var strlen=3;strlen&amp;lt;len;strlen++){ for(var i=0;i&amp;lt;=len-strlen;i++){ var j=i+strlen-1; if(dp[i+1][j-1]&amp;amp;&amp;amp;s.charAt(i)==s.charAt(j)){ dp[i][j]=true; start=i; maxLength=strlen; } } } return s.substring(start,start+maxLength); } 中心扩展算法 回文中心的两侧互为镜像，所以回文可以从他的中心展开，有$2n-1$个这样的中心（包括字母和字母之间） 取中心点向两边扩散的字符串求出其满足回文的长度。 var longestPalindrome = function(s) { if (s === &apos;&apos;) { return &apos;&apos;; } let start = 0, end = 0; for (let i = 0; i &amp;lt; s.length; i++) { let len1 = calc(s, i, i); let len2 = calc(s, i, i + 1); let len = Math.max(len1, len2); if (len &amp;gt; end - start) { start = i - Math.floor((len - 1) / 2); end = i + Math.floor(len / 2); } } return s.substring(start, end + 1); }; function calc(s, i, j) { while (i &amp;gt; -1 &amp;amp;&amp;amp; j &amp;lt; s.length &amp;amp;&amp;amp; s[i] === s[j]) { --i; ++j; } return j - i - 1; }">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode5 最长回文子串">
-<meta name="twitter:description" content="题目 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为1000。 示例 1： 输入: “babad” 输出: “bab” 注意: “aba”也是一个有效答案。 示例 2： 输入: “cbbd” 输出: “bb” 思路 动态规划 初始化一字母和二字母的回文，然后找到所有三字母回文，并依此类推。 var longestPalindrome = function(s) { var start=0; var maxLength=1; var len=s.length; if(s.length&amp;lt;2){ return s; } var dp=new Array(len); for(var k=0;k&amp;lt;dp.length;k++){ dp[k]=new Array(len); } for(var i=0;i&amp;lt;len;i++){ dp[i][i]=true; if(i&amp;lt;len-1&amp;amp;&amp;amp;s.charAt(i)==s.charAt(i+1)){ dp[i][i+1]=true; start=i; maxLength=2; } } for(var strlen=3;strlen&amp;lt;len;strlen++){ for(var i=0;i&amp;lt;=len-strlen;i++){ var j=i+strlen-1; if(dp[i+1][j-1]&amp;amp;&amp;amp;s.charAt(i)==s.charAt(j)){ dp[i][j]=true; start=i; maxLength=strlen; } } } return s.substring(start,start+maxLength); } 中心扩展算法 回文中心的两侧互为镜像，所以回文可以从他的中心展开，有2n-1个这样的中心。（包括字母和字母之间） 截取的字符串再去判断是否满足回文。 var longestPalindrome = function(s) { if (s === &apos;&apos;) { return &apos;&apos;; } let start = 0, end = 0; for (let i = 0; i &amp;lt; s.length; i++) { let len1 = calc(s, i, i); let len2 = calc(s, i, i + 1); let len = Math.max(len1, len2); if (len &amp;gt; end - start) { start = i - Math.floor((len - 1) / 2); end = i + Math.floor(len / 2); } } return s.substring(start, end + 1); }; function calc(s, i, j) { while (i &amp;gt; -1 &amp;amp;&amp;amp; j &amp;lt; s.length &amp;amp;&amp;amp; s[i] === s[j]) { --i; ++j; } return j - i - 1; }">
+<meta name="twitter:description" content="题目 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为1000。 示例 1： 输入: “babad” 输出: “bab” 注意: “aba”也是一个有效答案。 示例 2： 输入: “cbbd” 输出: “bb” 思路 动态规划 初始化一字母和二字母的回文，然后找到所有三字母回文，并依此类推。 var longestPalindrome = function(s) { var start=0; var maxLength=1; var len=s.length; if(s.length&amp;lt;2){ return s; } var dp=new Array(len); for(var k=0;k&amp;lt;dp.length;k++){ dp[k]=new Array(len); } for(var i=0;i&amp;lt;len;i++){ dp[i][i]=true; if(i&amp;lt;len-1&amp;amp;&amp;amp;s.charAt(i)==s.charAt(i+1)){ dp[i][i+1]=true; start=i; maxLength=2; } } for(var strlen=3;strlen&amp;lt;len;strlen++){ for(var i=0;i&amp;lt;=len-strlen;i++){ var j=i+strlen-1; if(dp[i+1][j-1]&amp;amp;&amp;amp;s.charAt(i)==s.charAt(j)){ dp[i][j]=true; start=i; maxLength=strlen; } } } return s.substring(start,start+maxLength); } 中心扩展算法 回文中心的两侧互为镜像，所以回文可以从他的中心展开，有$2n-1$个这样的中心（包括字母和字母之间） 取中心点向两边扩散的字符串求出其满足回文的长度。 var longestPalindrome = function(s) { if (s === &apos;&apos;) { return &apos;&apos;; } let start = 0, end = 0; for (let i = 0; i &amp;lt; s.length; i++) { let len1 = calc(s, i, i); let len2 = calc(s, i, i + 1); let len = Math.max(len1, len2); if (len &amp;gt; end - start) { start = i - Math.floor((len - 1) / 2); end = i + Math.floor(len / 2); } } return s.substring(start, end + 1); }; function calc(s, i, j) { while (i &amp;gt; -1 &amp;amp;&amp;amp; j &amp;lt; s.length &amp;amp;&amp;amp; s[i] === s[j]) { --i; ++j; } return j - i - 1; }">
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -433,7 +433,7 @@
 输出: “bb”</p>
 <h3 id="思路">思路</h3>
 <h4 id="动态规划">动态规划</h4>
-<p>初始化一字母和二字母的回文，然后找到所有三字母回文，并依此类推。
+<p>初始化一字母和二字母的回文，然后找到所有三字母回文，并依此类推。<br />
 <script type="math/tex">dp(i,j)=(dp(i+1,j-1)andS_i==S_j)\\
 dp(i,i)=true\\
 dp(i,i+1)=(S_i==S_j)</script></p>
@@ -471,8 +471,8 @@ dp(i,i+1)=(S_i==S_j)</script></p>
 </code></pre></td></tr></tbody></table></div>
 </div>
 <h4 id="中心扩展算法">中心扩展算法</h4>
-<p>回文中心的两侧互为镜像，所以回文可以从他的中心展开，有<code class="highlighter-rouge">2n-1</code>个这样的中心。（包括字母和字母之间）
-截取的字符串再去判断是否满足回文。</p>
+<p>回文中心的两侧互为镜像，所以回文可以从他的中心展开，有$2n-1$个这样的中心（包括字母和字母之间）<br />
+取中心点向两边扩散的字符串求出其满足回文的长度。</p>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24</pre></td><td class="code"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">longestPalindrome</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">s</span> <span class="o">===</span> <span class="s1">''</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="s1">''</span><span class="p">;</span>
@@ -568,7 +568,7 @@ dp(i,i+1)=(S_i==S_j)</script></p>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/%E7%AE%97%E6%B3%95/2018/09/18/interview-ntes/" rel="prev" title="网易2018校招编程合集">
+              <a href="/%E7%AE%97%E6%B3%95/2018/09/18/test-ntes/" rel="prev" title="网易2018校招编程合集">
                 网易2018校招编程合集 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -651,7 +651,7 @@ dp(i,i+1)=(S_i==S_j)</script></p>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -673,7 +673,7 @@ dp(i,i+1)=(S_i==S_j)</script></p>
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

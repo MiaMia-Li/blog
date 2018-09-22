@@ -101,7 +101,7 @@
 <meta name="keywords" content="网易, 动态规划, leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网易2018校招编程合集">
-<meta property="og:url" content="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/18/interview-ntes/">
+<meta property="og:url" content="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/18/test-ntes/">
 <meta property="og:site_name" content="Lemon">
 <meta property="og:description" content="题目来源于牛客网，网易2018校园招聘编程题真题集合。">
 <meta property="og:locale" content="zh-Hans">
@@ -292,7 +292,7 @@
   
 
   <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/18/interview-ntes/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/18/test-ntes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lmy">
@@ -536,7 +536,7 @@
 <h4 id="思路-3">思路</h4>
 <p>首先考虑二叉树的深度遍历，但数组序列化为二叉树没写出来。题目重点在第二行，
 即0——i-1的节点各自对应的父节点，且父节点值&lt;字节点。<br>
-用<strong>动态规划</strong>求解。递归方程<code class="highlighter-rouge">dp[i]=dp[i-1]+1</code>
+用<strong>动态规划</strong>求解。递归方程$dp[i]=dp[i-1]+1$
 分两种情况，最长树链maxLen，步数L<br>
 (1) L&lt;=MaxLen,城市数量(L+1)  <br>
 (2) L&gt;MaxLen,城市数量Math.min(n, maxLen + (L - maxLen) / 2 + 1)</p>
@@ -619,17 +619,7 @@
 
 <p>输入描述:</p>
 <blockquote>
-  <table>
-    <tbody>
-      <tr>
-        <td>输入包括字符串s(4 ≤</td>
-        <td>s</td>
-        <td>≤ 50,</td>
-        <td>s</td>
-        <td>表示字符串长度),保证s是一个合法的括号匹配序列。</td>
-      </tr>
-    </tbody>
-  </table>
+  <p>输入包括字符串s(4 ≤ s.length ≤ 50),保证s是一个合法的括号匹配序列。</p>
 </blockquote>
 
 <p>输出描述:</p>
@@ -639,7 +629,7 @@
 
 <h4 id="思路-5">思路</h4>
 <p>这道题的题干太长了，但其实没那么复杂。根据题意，要想使得 LCS 最大，
-删去任意一个字符即可获得 LCS = |s| - 1 ，再把该字符插到与原来不同的任意位置可以维持原长度，而不影响 LCS 的计算。</p>
+删去任意一个字符即可获得 $LCS = |s| - 1$ ，再把该字符插到与原来不同的任意位置可以维持原长度，而不影响 LCS 的计算。</p>
 <div class="language-javascript highlighter-rouge">
 <div class="highlight"><table style="margin: 0px"><tbody><tr>
 <td class="gutter"><pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30</pre></td>
@@ -733,19 +723,18 @@
 <p>第一个人唱低音，第二个人唱高音，先把数组排个序，然后选择前一部分作为低音，后一部分作为高音。
 分割的标准是两个元素间隔最大的地方。不过这样做只能通过60%的样例。</p>
 <h4 id="动态规划">动态规划</h4>
-<p>(1)dp[i][j]（永远有i &gt; j）表示某一个人最近唱的音为第i个，另一个人最近唱的是第j个时最小的难度<br>
+<p>(1)$dp[i][j]$（永远有i &gt; j）表示某一个人最近唱的音为第i个，另一个人最近唱的是第j个时最小的难度<br>
 (2)由于只由一个人唱完肯定不是最优解。因此先在一个for循环内确定以下两种情况的初值
-dp[i][0]：第二个人唱第一个音，第一个人唱后面所有音
-dp[i][i-1]：第一个人唱最近的一个音，第二个人唱前面所有音<br>
-(3)dp[i][j]转移方程,每当交换唱歌次序，两人最近一次唱的音符一定是相邻的，所以底下分相邻和不相邻讨论：</p>
+$dp[i][0]$第二个人唱第一个音，第一个人唱后面所有音
+$dp[i][i-1]$第一个人唱最近的一个音，第二个人唱前面所有音<br>
+(3)$dp[i][j]$转移方程,每当交换唱歌次序，两人最近一次唱的音符一定是相邻的，所以底下分相邻和不相邻讨论：</p>
 <ul>
-  <li>当j == i - 1，即交换唱歌次序，dp[i][i-1]时，表明第一个人上一个音可能在第k个音（0 &lt;= k &lt; i-1）,由唱了最近的第i个，第二个人仍然留在第i-1个音。
-dp[i][i-1] = 对所有k求min(dp[i-1][k] + abs(arr[i] - arr[k]) ) 其中（0 &lt;= k &lt; i-1）</li>
-  <li>当j &lt; i - 1，即不交换唱歌次序时，只可能由唱到i-1音符的人续唱
-dp[i][j] = dp[i-1][j] + abs(arr[i] - arr[i-1])</li>
+  <li>当$j == i - 1$，即交换唱歌次序，$dp[i][i-1]$时，表明第一个人上一个音可能在第k个音$(0&lt;=k&lt;i-1)$,由唱了最近的第$i$个，第二个人仍然留在第$i-1$个音。
+$dp[i][i-1]=$ 对所有k求$min(dp[i-1][k] + abs(arr[i] - arr[k]))$ 其中（$0&lt;= k&lt;i-1$）</li>
+  <li>当$j&lt;i-1$，即不交换唱歌次序时，只可能由唱到$i-1$音符的人续唱$dp[i][j] = dp[i-1][j] + abs(arr[i] - arr[i-1])$</li>
 </ul>
 
-<p>(4)最后求出所有dp[len-1][]里的最小值即为全局最优解</p>
+<p>(4)最后求出所有$dp[len-1][]$里的最小值即为全局最优解</p>
 
 <h3 id="射击游戏">射击游戏</h3>
 <h4 id="题目-7">题目</h4>
@@ -754,7 +743,7 @@ dp[i][j] = dp[i-1][j] + abs(arr[i] - arr[i-1])</li>
 1、让平面内的所有怪物同时向任意同一方向移动任意同一距离
 2、让平面内的所有怪物同时对于小易(0,0)旋转任意同一角度
 小易要进行一次射击。小易在进行射击前,可以使用这两项特权操作任意次。
-小易想知道在他射击的时候最多可以同时消灭多少只怪物,请你帮帮小易。<br>
+小易想知道在他射击的时候最多可以同时消灭多少只怪物,请你帮帮小易。
 如样例所示:
 <img src="https://uploadfiles.nowcoder.net/images/20170908/906271_1504858526319_5919175DAEBEFEF2DD7B449C60B277DF" alt="">
 所有点对于坐标原点(0,0)顺时针或者逆时针旋转45°,可以让所有点都在坐标轴上,所以5个怪物都可以消灭。</p>
@@ -934,7 +923,7 @@ dp[i][j] = dp[i-1][j] + abs(arr[i] - arr[i-1])</li>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -956,7 +945,7 @@ dp[i][j] = dp[i-1][j] + abs(arr[i] - arr[i-1])</li>
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

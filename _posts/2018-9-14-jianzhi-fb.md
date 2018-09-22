@@ -28,7 +28,7 @@ function Fibonacci(n)
 ````    
 ### 跳台阶  
 一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。  
-递归公式`f(n)=f(n-1)+f(n-2)`  
+递归公式 $f(n)=f(n-1)+f(n-2)$ 
 ````javascript
 function jumpFloor(number)
 {
@@ -47,6 +47,12 @@ function jumpFloor(number)
 
 ### 变态跳台阶  
 一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。  
+$$Fib(n)=\begin{cases}
+1 \quad n=0\\
+1 \quad n=1\\
+2*Fib(n-1) \quad n>2\\
+\end{cases}
+$$
 ````javascript
 function jumpFloorII(number)
 {
@@ -58,7 +64,8 @@ function jumpFloorII(number)
 ````
 
 ### 矩形覆盖  
-我们可以用2*1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2*1的小矩形无重叠地覆盖一个2*n的大矩形，总共有多少种方法？
+我们可以用2*1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2*1的小矩形无重叠地覆盖一个2*n的大矩形，总共有多少种方法？  
+$rect(n)=rect(n-1)+rect(n-2)$
 ````javascript
 function rectCover(number)
 {

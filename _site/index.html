@@ -417,7 +417,7 @@
 输出: “bb”</p>
 <h3 id="思路">思路</h3>
 <h4 id="动态规划">动态规划</h4>
-<p>初始化一字母和二字母的回文，然后找到所有三字母回文，并依此类推。
+<p>初始化一字母和二字母的回文，然后找到所有三字母回文，并依此类推。<br>
 <script type="math/tex">dp(i,j)=(dp(i+1,j-1)andS_i==S_j)\\
 dp(i,i)=true\\
 dp(i,i+1)=(S_i==S_j)</script></p>
@@ -459,8 +459,8 @@ dp(i,i+1)=(S_i==S_j)</script></p>
 </tr></tbody></table></div>
 </div>
 <h4 id="中心扩展算法">中心扩展算法</h4>
-<p>回文中心的两侧互为镜像，所以回文可以从他的中心展开，有<code class="highlighter-rouge">2n-1</code>个这样的中心。（包括字母和字母之间）
-截取的字符串再去判断是否满足回文。</p>
+<p>回文中心的两侧互为镜像，所以回文可以从他的中心展开，有$2n-1$个这样的中心（包括字母和字母之间）<br>
+取中心点向两边扩散的字符串求出其满足回文的长度。</p>
 <div class="language-javascript highlighter-rouge">
 <div class="highlight"><table style="margin: 0px"><tbody><tr>
 <td class="gutter"><pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24</pre></td>
@@ -545,7 +545,7 @@ dp(i,i+1)=(S_i==S_j)</script></p>
   
 
   <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/18/interview-ntes/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/18/test-ntes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lmy">
@@ -567,7 +567,7 @@ dp(i,i+1)=(S_i==S_j)</script></p>
           
             
                 
-                <a class="post-title-link" href="/%E7%AE%97%E6%B3%95/2018/09/18/interview-ntes/" itemprop="url">
+                <a class="post-title-link" href="/%E7%AE%97%E6%B3%95/2018/09/18/test-ntes/" itemprop="url">
                 网易2018校招编程合集
               </a>
             
@@ -664,7 +664,7 @@ dp(i,i+1)=(S_i==S_j)</script></p>
 
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/%E7%AE%97%E6%B3%95/2018/09/18/interview-ntes/#" rel="contents">
+            <a class="btn" href="/%E7%AE%97%E6%B3%95/2018/09/18/test-ntes/#" rel="contents">
               阅读全文 »
             </a>
           </div>
@@ -835,7 +835,7 @@ dp(i,i+1)=(S_i==S_j)</script></p>
   <li>开启网络线程到发出一个完整的http请求</li>
   <li>从服务器接收到请求到对应后台接收到请求</li>
   <li>后台和前台的http交互</li>
-  <li>缓存问题，<a href="http://localhost:4000/http/2018/08/18/http-huancun/">http的缓存</a>
+  <li>缓存问题，<a href="http://localhost:4000/http/2018/08/18/http-cache/">http的缓存</a>
 </li>
   <li>解析页面流程</li>
   <li>CSS的可视化格式模型</li>
@@ -1424,7 +1424,7 @@ n&lt;=39</p>
 </div>
 <h3 id="跳台阶">跳台阶</h3>
 <p>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。<br>
-递归公式<code class="highlighter-rouge">f(n)=f(n-1)+f(n-2)</code></p>
+递归公式 $f(n)=f(n-1)+f(n-2)$</p>
 <div class="language-javascript highlighter-rouge">
 <div class="highlight"><table style="margin: 0px"><tbody><tr>
 <td class="gutter"><pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13</pre></td>
@@ -2351,7 +2351,7 @@ n&lt;=39</p>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2373,7 +2373,7 @@ n&lt;=39</p>
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

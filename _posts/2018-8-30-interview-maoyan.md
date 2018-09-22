@@ -121,6 +121,9 @@ nums.forEach(function(item,index,arr){
 ````
 
 ### 两个有序数组，一升一降，返回第k大
+#### 思路  
+最开始考虑的是两个数组合并为一个有序数组，通过数组下标index取得第k大，但空间复杂度较高。
+可以采用原地置换的方法，空间复杂$O(1)$。
 ````javascript
 function findMax(a,b,k){
 	var maxK,n=0;
@@ -145,6 +148,9 @@ function findMax(a,b,k){
 ````
 
 ### 字符串压缩 aaabbcaadd---a3b2c1a2d2
+#### 思路
+这个题很简单了，遍历字符串记录前后相同字符出现的次数。 :smile:
+
 ````javascript
 function compress(str){
 	if(!str||str.length==0){
