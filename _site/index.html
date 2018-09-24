@@ -2053,7 +2053,7 @@ n&lt;=39</p>
   
 
   <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/08/20/interview-ali/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/http/2018/08/29/http-tcp-ip/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lmy">
@@ -2075,8 +2075,8 @@ n&lt;=39</p>
           
             
                 
-                <a class="post-title-link" href="/%E9%9D%A2%E8%AF%95/2018/08/20/interview-ali/" itemprop="url">
-                阿里面经
+                <a class="post-title-link" href="/http/2018/08/29/http-tcp-ip/" itemprop="url">
+                网络基础TCP/IP
               </a>
             
           
@@ -2092,8 +2092,8 @@ n&lt;=39</p>
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-20T00:00:00+08:00">
-                2018-08-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-29T00:00:00+08:00">
+                2018-08-29
               </time>
             
 
@@ -2116,8 +2116,8 @@ n&lt;=39</p>
               
                 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/category/#/%E9%9D%A2%E8%AF%95" itemprop="url" rel="index">
-                    <span itemprop="name">面试</span>
+                  <a href="/category/#/Http" itemprop="url" rel="index">
+                    <span itemprop="name">Http</span>
                   </a>
                 </span>
 
@@ -2166,100 +2166,26 @@ n&lt;=39</p>
 
 
 
-  <h3 id="两栏布局">两栏布局</h3>
-<ol>
-  <li>
-<strong>float+margin-left</strong>
-    <div class="language-css highlighter-rouge">
-<div class="highlight"><table style="margin: 0px"><tbody><tr>
-<td class="gutter"><pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10</pre></td>
-<td class="code"><pre class="highlight"><code><span class="nt">aside</span><span class="p">{</span>
- <span class="nl">background</span><span class="p">:</span> <span class="no">yellow</span><span class="p">;</span>
- <span class="nl">width</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
- <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">div</span><span class="p">{</span>
- <span class="nl">margin-left</span><span class="p">:</span> <span class="m">210px</span><span class="p">;</span><span class="c">/*大于aside的宽度*/</span>
- <span class="nl">width</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
- <span class="nl">background</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td>
-</tr></tbody></table></div>
-    </div>
-  </li>
-  <li>
-<strong>float+overflow：hidden（形成BFC）</strong>
-    <div class="language-css highlighter-rouge">
-<div class="highlight"><table style="margin: 0px"><tbody><tr>
-<td class="gutter"><pre>1<br>2<br>3<br>4<br>5<br>6</pre></td>
-<td class="code"><pre class="highlight"><code><span class="nt">div</span><span class="p">{</span>
- <span class="nl">overflow</span><span class="p">:</span><span class="nb">hidden</span><span class="p">;</span>
- <span class="nl">width</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
- <span class="nl">background</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
- <span class="nl">height</span><span class="p">:</span> <span class="m">400px</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td>
-</tr></tbody></table></div>
-    </div>
-  </li>
-  <li>
-<strong>flex</strong>
-    <div class="language-css highlighter-rouge">
-<div class="highlight"><table style="margin: 0px"><tbody><tr>
-<td class="gutter"><pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11</pre></td>
-<td class="code"><pre class="highlight"><code><span class="nt">body</span><span class="p">{</span>
- <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">aside</span><span class="p">{</span>
- <span class="nl">background</span><span class="p">:</span> <span class="no">yellow</span><span class="p">;</span>
- <span class="nl">flex</span><span class="p">:</span><span class="m">0</span> <span class="m">0</span> <span class="m">200px</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">div</span><span class="p">{</span>
- <span class="nl">flex</span><span class="p">:</span><span class="m">1</span> <span class="m">1</span> <span class="nb">auto</span><span class="p">;</span>
- <span class="nl">background</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td>
-</tr></tbody></table></div>
-    </div>
-  </li>
-  <li>
-<strong>grid</strong>
-    <div class="language-css highlighter-rouge">
-<div class="highlight"><table style="margin: 0px"><tbody><tr>
-<td class="gutter"><pre>1<br>2<br>3<br>4</pre></td>
-<td class="code"><pre class="highlight"><code><span class="nt">body</span><span class="p">{</span>
-  <span class="nl">display</span><span class="p">:</span> <span class="n">grid</span><span class="p">;</span>
-  <span class="py">grid-template-columns</span><span class="p">:</span> <span class="m">200px</span> <span class="nb">auto</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td>
-</tr></tbody></table></div>
-    </div>
-  </li>
-  <li>
-<strong>table</strong>
-    <div class="language-css highlighter-rouge">
-<div class="highlight"><table style="margin: 0px"><tbody><tr>
-<td class="gutter"><pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9</pre></td>
-<td class="code"><pre class="highlight"><code><span class="nt">aside</span><span class="p">{</span>
-   <span class="nl">width</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
-   <span class="nl">display</span><span class="p">:</span> <span class="nb">table-cell</span><span class="p">;</span>
-   <span class="nl">background</span><span class="p">:</span> <span class="no">yellow</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">div</span><span class="p">{</span>
- <span class="nl">display</span><span class="p">:</span> <span class="nb">table-cell</span><span class="p">;</span>
- <span class="nl">background</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td>
-</tr></tbody></table></div>
-    </div>
-  </li>
-</ol>
+  <h3 id="tcpip协议族">TCP/IP协议族</h3>
+<p>TCP/IP 是互联网相关的各类协议族的总称<br>
+<img src="http://www.ituring.com.cn/figures/2014/PIC%20HTTP/05.d01z.005.png" alt=""></p>
+<h3 id="tcpip-的分层管理">TCP/IP 的分层管理</h3>
+<p>TCP/IP 协议族按层次分别分为以下4层：<strong>应用层</strong>、<strong>传输层</strong>、<strong>网络层</strong>和<strong>数据链路层</strong>。<br>
+TCP/IP 协议族各层的作用如下。</p>
+<h4 id="应用层">应用层</h4>
+<p>应用层决定了向用户提供应用服务时通信的活动。<br>
+TCP/IP 协议族内预存了各类通用的应用服务。比如<br>
+<strong>FTP</strong>（File Transfer Protocol，文件传输协议)<br>
+<strong>DNS</strong>（Domain Name System，域名系统）
+<strong>Telent</strong>（远程终端协议)<br>
+<strong>SMTP</strong>（Simple Mail Transfer Protocol，简单邮件传输协议）<br>
+<strong>HTTP</strong>（HyperText Transfer Protocal，超文本传输协议）</p>
 
 
 
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/%E9%9D%A2%E8%AF%95/2018/08/20/interview-ali/#" rel="contents">
+            <a class="btn" href="/http/2018/08/29/http-tcp-ip/#" rel="contents">
               阅读全文 »
             </a>
           </div>
@@ -2351,7 +2277,7 @@ n&lt;=39</p>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

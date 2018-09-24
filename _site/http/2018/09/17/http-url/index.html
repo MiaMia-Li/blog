@@ -69,7 +69,7 @@
 <link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="计算机通识,">
+  <meta name="keywords" content="TCP,IP,Dom,">
 
 
 
@@ -98,7 +98,7 @@
 
 
 <meta name="description" content="前言 经典面试题，但方方面面的很多东西，要答好也不简单。通过对这道题的分析，希望梳理出一个前端向的知识体系 :dancers: :dancers: :dancers: 主要包括： 从浏览器接收url到开启网络请求线程 开启网络线程到发出一个完整的http请求 从服务器接收到请求到对应后台接收到请求 后台和前台的http交互 缓存问题，http的缓存 解析页面流程 CSS的可视化格式模型 JS引擎解析过程">
-<meta name="keywords" content="计算机通识">
+<meta name="keywords" content="TCP, IP, Dom">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从输入URL到页面加载的过程">
 <meta property="og:url" content="http://localhost:4000/http/2018/09/17/http-url/">
@@ -108,6 +108,9 @@
 <meta property="og:image" content="http://localhost:4000/assets/images/2018-9-17-http-url/MacProcesses.jpg">
 <meta property="og:image" content="http://localhost:4000/assets/images/2018-9-17-http-url/chromePro.png">
 <meta property="og:image" content="https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_inner_thread.png">
+<meta property="og:image" content="https://note.youdao.com/yws/public/resource/8601eea9a832e259223ef938bc4a5928/xmlnote/89A21F677AF3469DB7E56D94EFE6F660/74">
+<meta property="og:image" content="https://note.youdao.com/yws/public/resource/8601eea9a832e259223ef938bc4a5928/xmlnote/EA7A8241C5B64AA494ABCC7466D43C99/76">
+<meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz/VUGnGjllRE5vZcld02bjOjWPPBRXYdhLcm8TfMjvKvXwbzXTbpUaahYNVFpXh8fIMgqcmbIeEBqFTt7ibiaewMicg/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从输入URL到页面加载的过程">
 <meta name="twitter:description" content="前言 经典面试题，但方方面面的很多东西，要答好也不简单。通过对这道题的分析，希望梳理出一个前端向的知识体系 :dancers: :dancers: :dancers: 主要包括： 从浏览器接收url到开启网络请求线程 开启网络线程到发出一个完整的http请求 从服务器接收到请求到对应后台接收到请求 后台和前台的http交互 缓存问题，http的缓存 解析页面流程 CSS的可视化格式模型 JS引擎解析过程">
@@ -513,8 +516,55 @@ setInterval与setTimeout所在线程，W3C在HTML标准中规定，规定要求s
 因此为了防止渲染出现不可预期的结果，浏览器设置GUI渲染线程与JavaScript引擎为互斥的关系，当JavaScript引擎执行时GUI线程会被挂起，GUI更新会被保存在一个队列中等到引擎线程空闲时立即被执行。</p>
 
 <h2 id="开启网络线程到发出一个完整的http请求">开启网络线程到发出一个完整的http请求</h2>
+<h3 id="dns查询得到ip">DNS查询得到IP</h3>
+<ol>
+  <li>如果输入的是域名，需要进行DNS解析成IP，查询步骤：</li>
+  <li>浏览器缓存</li>
+  <li>本机缓存</li>
+  <li>hosts文件</li>
+  <li>路由器缓存</li>
+  <li>ISP DNS缓存</li>
+  <li>DNS递归查询（可能存在负载均衡导致每次IP不一样）
+    <h3 id="tcpip请求">TCP/IP请求</h3>
+    <h4 id="tcp三次握手">TCP三次握手</h4>
+    <p><img src="https://note.youdao.com/yws/public/resource/8601eea9a832e259223ef938bc4a5928/xmlnote/89A21F677AF3469DB7E56D94EFE6F660/74" alt=""></p>
+  </li>
+</ol>
+
+<p>总结三次握手过程：</p>
+<ul>
+  <li>第一次握手：起初两端都处于CLOSED关闭状态，Client将标志位SYN置为1，随机产生一个值seq=x，并将该数据包发送给Server，Client进入SYN-SENT状态，等待Server确认；</li>
+  <li>第二次握手：Server收到数据包后由标志位SYN=1得知Client请求建立连接，Server将标志位SYN和ACK都置为1，ack=x+1，随机产生一个值seq=y，并将该数据包发送给Client以确认连接请求，Server进入SYN-RCVD状态，此时操作系统为该TCP连接分配TCP缓存和变量；</li>
+  <li>第三次握手：Client收到确认后，检查ack是否为x+1，ACK是否为1，如果正确则将标志位ACK置为1，ack=y+1，并且此时操作系统为该TCP连接分配TCP缓存和变量，并将该数据包发送给Server，Server检查ack是否为y+1，ACK是否为1，如果正确则连接建立成功，Client和Server进入ESTABLISHED状态，完成三次握手，随后Client和Server就可以开始传输数据。</li>
+</ul>
+
+<h4 id="tcp四次挥手">TCP四次挥手</h4>
+<p><img src="https://note.youdao.com/yws/public/resource/8601eea9a832e259223ef938bc4a5928/xmlnote/EA7A8241C5B64AA494ABCC7466D43C99/76" alt=""></p>
+
+<p>总结四次挥手过程：<br>
+起初A和B处于ESTABLISHED状态——A发出连接释放报文段并处于FIN-WAIT-1状态——B发出确认报文段且进入CLOSE-WAIT状态——A收到确认后，进入FIN-WAIT-2状态，等待B的连接释放报文段——B没有要向A发出的数据，B发出连接释放报文段且进入LAST-ACK状态——A发出确认报文段且进入TIME-WAIT状态——B收到确认报文段后进入CLOSED状态——A经过等待计时器时间2MSL后，进入CLOSED状态。</p>
+
+<h4 id="getpost区别">GET,POST区别</h4>
+<p>GET和POST本质上就是TCP链接，并无差别。但是由于HTTP的规定和浏览器/服务器的限制，导致他们在应用过程中体现出一些不同。<br>
+<strong>GET产生一个TCP数据包,POST产生两个TCP数据包。</strong><br>
+对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据） <br>
+而对于POST，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）</p>
+
+<p><img src="http://mmbiz.qpic.cn/mmbiz/VUGnGjllRE5vZcld02bjOjWPPBRXYdhLcm8TfMjvKvXwbzXTbpUaahYNVFpXh8fIMgqcmbIeEBqFTt7ibiaewMicg/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt=""></p>
+<h3 id="tcpip协议栈"><a href="http://localhost:4000/http/2018/08/29/tcp-ip/">TCP/IP协议栈</a></h3>
+
 <h2 id="从服务器接收到请求到对应后台接收到请求">从服务器接收到请求到对应后台接收到请求</h2>
+<h3 id="负载均衡">负载均衡</h3>
+<p>用户发起的请求都指向调度服务器（反向代理服务器，譬如安装了nginx控制负载均衡），然后调度服务器根据实际的调度算法，分配不同的请求给对应集群中的服务器执行，然后调度器等待实际服务器的HTTP响应，并将它反馈给用户。</p>
+<h3 id="后台的处理">后台的处理🐒</h3>
+<ul>
+  <li>后端是有统一的验证的，如安全拦截，跨域验证等。如不符合规则，直接返回相应的http报文（如拒绝请求等）</li>
+  <li>当验证通过后，进入实际的后台代码，此时是程序接收到请求，然后执行（譬如查询数据库，大量计算等等）</li>
+  <li>等程序执行完毕后，就会返回一个http响应包（会经过多层封装）,将这个包从后端发送到前端，完成交互</li>
+</ul>
+
 <h2 id="后台和前台的http交互">后台和前台的http交互</h2>
+<h3 id="http报文结构">HTTP报文结构</h3>
 <h2 id="缓存问题">缓存问题</h2>
 <h2 id="解析页面流程">解析页面流程</h2>
 <h2 id="css的可视化格式模型">CSS的可视化格式模型</h2>
@@ -525,6 +575,7 @@ setInterval与setTimeout所在线程，W3C在HTML标准中规定，规定要求s
   <li><a href="http://www.dailichun.com/2018/03/12/whenyouenteraurl.html">http://www.dailichun.com/2018/03/12/whenyouenteraurl.html</a></li>
   <li><a href="http://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_procs.html">http://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_procs.html</a></li>
   <li><a href="http://www.imweb.io/topic/58e3bfa845e5c13468f567d5">http://www.imweb.io/topic/58e3bfa845e5c13468f567d5</a></li>
+  <li><a href="https://blog.csdn.net/sh435367384/article/details/79652159">https://blog.csdn.net/sh435367384/article/details/79652159</a></li>
 </ul>
 
 
@@ -573,7 +624,13 @@ setInterval与setTimeout所在线程，W3C在HTML标准中规定，规定要求s
         <div class="post-tags">
           
             
-            <a href="/tag/#/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%80%9A%E8%AF%86" rel="tag"># 计算机通识</a>
+            <a href="/tag/#/TCP" rel="tag"># TCP</a>
+          
+            
+            <a href="/tag/#/IP" rel="tag"># IP</a>
+          
+            
+            <a href="/tag/#/Dom" rel="tag"># Dom</a>
           
         </div>
       
@@ -680,7 +737,7 @@ setInterval与setTimeout所在线程，W3C在HTML标准中规定，规定要求s
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -802,7 +859,7 @@ setInterval与setTimeout所在线程，W3C在HTML标准中规定，规定要求s
             
               <div class="post-toc-content">
     <ol class="nav">
-      <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E5%89%8D%E8%A8%80"> <span class="nav-number">1</span> <span class="nav-text">前言</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8E%A5%E6%94%B6url%E5%88%B0%E5%BC%80%E5%90%AF%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2</span> <span class="nav-text">从浏览器接收url到开启网络请求线程</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B"> <span class="nav-number">2.1</span> <span class="nav-text">线程与进程</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E4%BD%9C%E4%B8%BA%E6%88%BF%E5%AD%90"> <span class="nav-number">2.1.1</span> <span class="nav-text">作为房子</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E5%8D%95%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.1.2</span> <span class="nav-text">单线程</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.1.3</span> <span class="nav-text">多线程</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E5%9B%9E%E5%88%B0%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B"> <span class="nav-number">2.1.4</span> <span class="nav-text">回到线程与进程</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%AF%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%9A%84"> <span class="nav-number">2.2</span> <span class="nav-text">浏览器是多进程的</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E6%98%AF%E5%A4%9A%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.3</span> <span class="nav-text">浏览器内核是多线程</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8"> <span class="nav-number">2.3.1</span> <span class="nav-text">浏览器内核</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#gui-%E6%B8%B2%E6%9F%93%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.3.2</span> <span class="nav-text">GUI 渲染线程</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#javascript%E5%BC%95%E6%93%8E%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.3.3</span> <span class="nav-text">JavaScript引擎线程</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#javascript%E6%98%AF%E5%8D%95%E7%BA%BF%E7%A8%8B%E7%9A%84"> <span class="nav-number">2.3.4</span> <span class="nav-text">Javascript是单线程的</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E8%A7%A6%E5%8F%91%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.3.5</span> <span class="nav-text">事件触发线程</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E5%AE%9A%E6%97%B6%E8%A7%A6%E5%8F%91%E5%99%A8%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.3.6</span> <span class="nav-text">定时触发器线程</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E5%BC%82%E6%AD%A5http%E8%AF%B7%E6%B1%82%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.3.7</span> <span class="nav-text">异步http请求线程</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#gui-%E6%B8%B2%E6%9F%93%E7%BA%BF%E7%A8%8B-%E4%B8%8E-javascript%E5%BC%95%E6%93%8E%E7%BA%BF%E7%A8%8B%E4%BA%92%E6%96%A5"> <span class="nav-number">2.3.8</span> <span class="nav-text">GUI 渲染线程 与 JavaScript引擎线程互斥</span> </a> </li> </ol> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E5%BC%80%E5%90%AF%E7%BD%91%E7%BB%9C%E7%BA%BF%E7%A8%8B%E5%88%B0%E5%8F%91%E5%87%BA%E4%B8%80%E4%B8%AA%E5%AE%8C%E6%95%B4%E7%9A%84http%E8%AF%B7%E6%B1%82"> <span class="nav-number">3</span> <span class="nav-text">开启网络线程到发出一个完整的http请求</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A5%E6%94%B6%E5%88%B0%E8%AF%B7%E6%B1%82%E5%88%B0%E5%AF%B9%E5%BA%94%E5%90%8E%E5%8F%B0%E6%8E%A5%E6%94%B6%E5%88%B0%E8%AF%B7%E6%B1%82"> <span class="nav-number">4</span> <span class="nav-text">从服务器接收到请求到对应后台接收到请求</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E5%90%8E%E5%8F%B0%E5%92%8C%E5%89%8D%E5%8F%B0%E7%9A%84http%E4%BA%A4%E4%BA%92"> <span class="nav-number">5</span> <span class="nav-text">后台和前台的http交互</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98"> <span class="nav-number">6</span> <span class="nav-text">缓存问题</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E9%A1%B5%E9%9D%A2%E6%B5%81%E7%A8%8B"> <span class="nav-number">7</span> <span class="nav-text">解析页面流程</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#css%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E6%A0%BC%E5%BC%8F%E6%A8%A1%E5%9E%8B"> <span class="nav-number">8</span> <span class="nav-text">CSS的可视化格式模型</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#js%E5%BC%95%E6%93%8E%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B"> <span class="nav-number">9</span> <span class="nav-text">JS引擎解析过程</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E5%8F%82%E8%80%83"> <span class="nav-number">10</span> <span class="nav-text">参考</span> </a> </li>
+      <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E5%89%8D%E8%A8%80"> <span class="nav-number">1</span> <span class="nav-text">前言</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8E%A5%E6%94%B6url%E5%88%B0%E5%BC%80%E5%90%AF%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2</span> <span class="nav-text">从浏览器接收url到开启网络请求线程</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B"> <span class="nav-number">2.1</span> <span class="nav-text">线程与进程</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E4%BD%9C%E4%B8%BA%E6%88%BF%E5%AD%90"> <span class="nav-number">2.1.1</span> <span class="nav-text">作为房子</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E5%8D%95%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.1.2</span> <span class="nav-text">单线程</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.1.3</span> <span class="nav-text">多线程</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E5%9B%9E%E5%88%B0%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B"> <span class="nav-number">2.1.4</span> <span class="nav-text">回到线程与进程</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%AF%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%9A%84"> <span class="nav-number">2.2</span> <span class="nav-text">浏览器是多进程的</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E6%98%AF%E5%A4%9A%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.3</span> <span class="nav-text">浏览器内核是多线程</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8"> <span class="nav-number">2.3.1</span> <span class="nav-text">浏览器内核</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#gui-%E6%B8%B2%E6%9F%93%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.3.2</span> <span class="nav-text">GUI 渲染线程</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#javascript%E5%BC%95%E6%93%8E%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.3.3</span> <span class="nav-text">JavaScript引擎线程</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#javascript%E6%98%AF%E5%8D%95%E7%BA%BF%E7%A8%8B%E7%9A%84"> <span class="nav-number">2.3.4</span> <span class="nav-text">Javascript是单线程的</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E8%A7%A6%E5%8F%91%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.3.5</span> <span class="nav-text">事件触发线程</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E5%AE%9A%E6%97%B6%E8%A7%A6%E5%8F%91%E5%99%A8%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.3.6</span> <span class="nav-text">定时触发器线程</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#%E5%BC%82%E6%AD%A5http%E8%AF%B7%E6%B1%82%E7%BA%BF%E7%A8%8B"> <span class="nav-number">2.3.7</span> <span class="nav-text">异步http请求线程</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#gui-%E6%B8%B2%E6%9F%93%E7%BA%BF%E7%A8%8B-%E4%B8%8E-javascript%E5%BC%95%E6%93%8E%E7%BA%BF%E7%A8%8B%E4%BA%92%E6%96%A5"> <span class="nav-number">2.3.8</span> <span class="nav-text">GUI 渲染线程 与 JavaScript引擎线程互斥</span> </a> </li> </ol> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E5%BC%80%E5%90%AF%E7%BD%91%E7%BB%9C%E7%BA%BF%E7%A8%8B%E5%88%B0%E5%8F%91%E5%87%BA%E4%B8%80%E4%B8%AA%E5%AE%8C%E6%95%B4%E7%9A%84http%E8%AF%B7%E6%B1%82"> <span class="nav-number">3</span> <span class="nav-text">开启网络线程到发出一个完整的http请求</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#dns%E6%9F%A5%E8%AF%A2%E5%BE%97%E5%88%B0ip"> <span class="nav-number">3.1</span> <span class="nav-text">DNS查询得到IP</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#tcpip%E8%AF%B7%E6%B1%82"> <span class="nav-number">3.2</span> <span class="nav-text">TCP/IP请求</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#tcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"> <span class="nav-number">3.2.1</span> <span class="nav-text">TCP三次握手</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#tcp%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"> <span class="nav-number">3.2.2</span> <span class="nav-text">TCP四次挥手</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#getpost%E5%8C%BA%E5%88%AB"> <span class="nav-number">3.2.3</span> <span class="nav-text">GET,POST区别</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#tcpip%E5%8D%8F%E8%AE%AE%E6%A0%88"> <span class="nav-number">3.3</span> <span class="nav-text">TCP/IP协议栈</span></a>  </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A5%E6%94%B6%E5%88%B0%E8%AF%B7%E6%B1%82%E5%88%B0%E5%AF%B9%E5%BA%94%E5%90%8E%E5%8F%B0%E6%8E%A5%E6%94%B6%E5%88%B0%E8%AF%B7%E6%B1%82"> <span class="nav-number">4</span> <span class="nav-text">从服务器接收到请求到对应后台接收到请求</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"> <span class="nav-number">4.1</span> <span class="nav-text">负载均衡</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#%E5%90%8E%E5%8F%B0%E7%9A%84%E5%A4%84%E7%90%86"> <span class="nav-number">4.2</span> <span class="nav-text">后台的处理🐒</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E5%90%8E%E5%8F%B0%E5%92%8C%E5%89%8D%E5%8F%B0%E7%9A%84http%E4%BA%A4%E4%BA%92"> <span class="nav-number">5</span> <span class="nav-text">后台和前台的http交互</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#http%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84"> <span class="nav-number">5.1</span> <span class="nav-text">HTTP报文结构</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98"> <span class="nav-number">6</span> <span class="nav-text">缓存问题</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E9%A1%B5%E9%9D%A2%E6%B5%81%E7%A8%8B"> <span class="nav-number">7</span> <span class="nav-text">解析页面流程</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#css%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E6%A0%BC%E5%BC%8F%E6%A8%A1%E5%9E%8B"> <span class="nav-number">8</span> <span class="nav-text">CSS的可视化格式模型</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#js%E5%BC%95%E6%93%8E%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B"> <span class="nav-number">9</span> <span class="nav-text">JS引擎解析过程</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#%E5%8F%82%E8%80%83"> <span class="nav-number">10</span> <span class="nav-text">参考</span> </a> </li>
     </ol>
   </div>
             

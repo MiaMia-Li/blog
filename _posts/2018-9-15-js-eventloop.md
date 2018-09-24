@@ -2,7 +2,7 @@
 title: JavaScript 运行机制详解——Event Loop
 description:
 categories: JS基础
-tags: JS
+tags: 
 ---
 ### JavaScript是非阻塞单线程语言  
 JavaScript的单线程，与它的用途有关。

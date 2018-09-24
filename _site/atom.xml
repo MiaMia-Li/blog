@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.2">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-09-22T17:20:27+08:00</updated><id>http://localhost:4000/</id><title type="html">Lemon</title><subtitle>对社会有所创造，为他人付出过，完善自己。</subtitle><author><name>Lmy</name></author><entry><title type="html">leetcode5 最长回文子串</title><link href="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/21/leetcode5/" rel="alternate" type="text/html" title="leetcode5 最长回文子串" /><published>2018-09-21T00:00:00+08:00</published><updated>2018-09-21T00:00:00+08:00</updated><id>http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/21/leetcode5</id><content type="html" xml:base="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/21/leetcode5/">&lt;h3 id=&quot;题目&quot;&gt;题目&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.2">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-09-22T20:04:15+08:00</updated><id>http://localhost:4000/</id><title type="html">Lemon</title><subtitle>对社会有所创造，为他人付出过，完善自己。</subtitle><author><name>Lmy</name></author><entry><title type="html">leetcode5 最长回文子串</title><link href="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/21/leetcode5/" rel="alternate" type="text/html" title="leetcode5 最长回文子串" /><published>2018-09-21T00:00:00+08:00</published><updated>2018-09-21T00:00:00+08:00</updated><id>http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/21/leetcode5</id><content type="html" xml:base="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/21/leetcode5/">&lt;h3 id=&quot;题目&quot;&gt;题目&lt;/h3&gt;
 &lt;p&gt;给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为1000。&lt;br /&gt;
 示例 1：&lt;br /&gt;
 输入: “babad” &lt;br /&gt;
@@ -497,8 +497,55 @@ setInterval与setTimeout所在线程，W3C在HTML标准中规定，规定要求s
 因此为了防止渲染出现不可预期的结果，浏览器设置GUI渲染线程与JavaScript引擎为互斥的关系，当JavaScript引擎执行时GUI线程会被挂起，GUI更新会被保存在一个队列中等到引擎线程空闲时立即被执行。&lt;/p&gt;
 
 &lt;h2 id=&quot;开启网络线程到发出一个完整的http请求&quot;&gt;开启网络线程到发出一个完整的http请求&lt;/h2&gt;
+&lt;h3 id=&quot;dns查询得到ip&quot;&gt;DNS查询得到IP&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;如果输入的是域名，需要进行DNS解析成IP，查询步骤：&lt;/li&gt;
+  &lt;li&gt;浏览器缓存&lt;/li&gt;
+  &lt;li&gt;本机缓存&lt;/li&gt;
+  &lt;li&gt;hosts文件&lt;/li&gt;
+  &lt;li&gt;路由器缓存&lt;/li&gt;
+  &lt;li&gt;ISP DNS缓存&lt;/li&gt;
+  &lt;li&gt;DNS递归查询（可能存在负载均衡导致每次IP不一样）
+    &lt;h3 id=&quot;tcpip请求&quot;&gt;TCP/IP请求&lt;/h3&gt;
+    &lt;h4 id=&quot;tcp三次握手&quot;&gt;TCP三次握手&lt;/h4&gt;
+    &lt;p&gt;&lt;img src=&quot;https://note.youdao.com/yws/public/resource/8601eea9a832e259223ef938bc4a5928/xmlnote/89A21F677AF3469DB7E56D94EFE6F660/74&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;总结三次握手过程：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;第一次握手：起初两端都处于CLOSED关闭状态，Client将标志位SYN置为1，随机产生一个值seq=x，并将该数据包发送给Server，Client进入SYN-SENT状态，等待Server确认；&lt;/li&gt;
+  &lt;li&gt;第二次握手：Server收到数据包后由标志位SYN=1得知Client请求建立连接，Server将标志位SYN和ACK都置为1，ack=x+1，随机产生一个值seq=y，并将该数据包发送给Client以确认连接请求，Server进入SYN-RCVD状态，此时操作系统为该TCP连接分配TCP缓存和变量；&lt;/li&gt;
+  &lt;li&gt;第三次握手：Client收到确认后，检查ack是否为x+1，ACK是否为1，如果正确则将标志位ACK置为1，ack=y+1，并且此时操作系统为该TCP连接分配TCP缓存和变量，并将该数据包发送给Server，Server检查ack是否为y+1，ACK是否为1，如果正确则连接建立成功，Client和Server进入ESTABLISHED状态，完成三次握手，随后Client和Server就可以开始传输数据。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;tcp四次挥手&quot;&gt;TCP四次挥手&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;https://note.youdao.com/yws/public/resource/8601eea9a832e259223ef938bc4a5928/xmlnote/EA7A8241C5B64AA494ABCC7466D43C99/76&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;总结四次挥手过程：&lt;br /&gt;
+起初A和B处于ESTABLISHED状态——A发出连接释放报文段并处于FIN-WAIT-1状态——B发出确认报文段且进入CLOSE-WAIT状态——A收到确认后，进入FIN-WAIT-2状态，等待B的连接释放报文段——B没有要向A发出的数据，B发出连接释放报文段且进入LAST-ACK状态——A发出确认报文段且进入TIME-WAIT状态——B收到确认报文段后进入CLOSED状态——A经过等待计时器时间2MSL后，进入CLOSED状态。&lt;/p&gt;
+
+&lt;h4 id=&quot;getpost区别&quot;&gt;GET,POST区别&lt;/h4&gt;
+&lt;p&gt;GET和POST本质上就是TCP链接，并无差别。但是由于HTTP的规定和浏览器/服务器的限制，导致他们在应用过程中体现出一些不同。&lt;br /&gt;
+&lt;strong&gt;GET产生一个TCP数据包,POST产生两个TCP数据包。&lt;/strong&gt;&lt;br /&gt;
+对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据） &lt;br /&gt;
+而对于POST，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://mmbiz.qpic.cn/mmbiz/VUGnGjllRE5vZcld02bjOjWPPBRXYdhLcm8TfMjvKvXwbzXTbpUaahYNVFpXh8fIMgqcmbIeEBqFTt7ibiaewMicg/640?wx_fmt=png&amp;amp;wxfrom=5&amp;amp;wx_lazy=1&amp;amp;wx_co=1&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;tcpip协议栈&quot;&gt;&lt;a href=&quot;http://localhost:4000/http/2018/08/29/tcp-ip/&quot;&gt;TCP/IP协议栈&lt;/a&gt;&lt;/h3&gt;
+
 &lt;h2 id=&quot;从服务器接收到请求到对应后台接收到请求&quot;&gt;从服务器接收到请求到对应后台接收到请求&lt;/h2&gt;
+&lt;h3 id=&quot;负载均衡&quot;&gt;负载均衡&lt;/h3&gt;
+&lt;p&gt;用户发起的请求都指向调度服务器（反向代理服务器，譬如安装了nginx控制负载均衡），然后调度服务器根据实际的调度算法，分配不同的请求给对应集群中的服务器执行，然后调度器等待实际服务器的HTTP响应，并将它反馈给用户。&lt;/p&gt;
+&lt;h3 id=&quot;后台的处理&quot;&gt;后台的处理🐒&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;后端是有统一的验证的，如安全拦截，跨域验证等。如不符合规则，直接返回相应的http报文（如拒绝请求等）&lt;/li&gt;
+  &lt;li&gt;当验证通过后，进入实际的后台代码，此时是程序接收到请求，然后执行（譬如查询数据库，大量计算等等）&lt;/li&gt;
+  &lt;li&gt;等程序执行完毕后，就会返回一个http响应包（会经过多层封装）,将这个包从后端发送到前端，完成交互&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h2 id=&quot;后台和前台的http交互&quot;&gt;后台和前台的http交互&lt;/h2&gt;
+&lt;h3 id=&quot;http报文结构&quot;&gt;HTTP报文结构&lt;/h3&gt;
 &lt;h2 id=&quot;缓存问题&quot;&gt;缓存问题&lt;/h2&gt;
 &lt;h2 id=&quot;解析页面流程&quot;&gt;解析页面流程&lt;/h2&gt;
 &lt;h2 id=&quot;css的可视化格式模型&quot;&gt;CSS的可视化格式模型&lt;/h2&gt;
@@ -509,7 +556,8 @@ setInterval与setTimeout所在线程，W3C在HTML标准中规定，规定要求s
   &lt;li&gt;&lt;a href=&quot;http://www.dailichun.com/2018/03/12/whenyouenteraurl.html&quot;&gt;http://www.dailichun.com/2018/03/12/whenyouenteraurl.html&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_procs.html&quot;&gt;http://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_procs.html&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.imweb.io/topic/58e3bfa845e5c13468f567d5&quot;&gt;http://www.imweb.io/topic/58e3bfa845e5c13468f567d5&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Lmy</name></author><category term="计算机通识" /><summary type="html">前言 经典面试题，但方方面面的很多东西，要答好也不简单。通过对这道题的分析，希望梳理出一个前端向的知识体系 :dancers: :dancers: :dancers: 主要包括： 从浏览器接收url到开启网络请求线程 开启网络线程到发出一个完整的http请求 从服务器接收到请求到对应后台接收到请求 后台和前台的http交互 缓存问题，http的缓存 解析页面流程 CSS的可视化格式模型 JS引擎解析过程</summary></entry><entry><title type="html">ES6-箭头函数及定时器this指向</title><link href="http://localhost:4000/es6/2018/09/16/ES6-func/" rel="alternate" type="text/html" title="ES6-箭头函数及定时器this指向" /><published>2018-09-16T00:00:00+08:00</published><updated>2018-09-16T00:00:00+08:00</updated><id>http://localhost:4000/es6/2018/09/16/ES6-func</id><content type="html" xml:base="http://localhost:4000/es6/2018/09/16/ES6-func/">&lt;h3 id=&quot;箭头函数&quot;&gt;箭头函数&lt;/h3&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/sh435367384/article/details/79652159&quot;&gt;https://blog.csdn.net/sh435367384/article/details/79652159&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Lmy</name></author><category term="TCP" /><category term="IP" /><category term="Dom" /><summary type="html">前言 经典面试题，但方方面面的很多东西，要答好也不简单。通过对这道题的分析，希望梳理出一个前端向的知识体系 :dancers: :dancers: :dancers: 主要包括： 从浏览器接收url到开启网络请求线程 开启网络线程到发出一个完整的http请求 从服务器接收到请求到对应后台接收到请求 后台和前台的http交互 缓存问题，http的缓存 解析页面流程 CSS的可视化格式模型 JS引擎解析过程</summary></entry><entry><title type="html">ES6-箭头函数及定时器this指向</title><link href="http://localhost:4000/es6/2018/09/16/ES6-func/" rel="alternate" type="text/html" title="ES6-箭头函数及定时器this指向" /><published>2018-09-16T00:00:00+08:00</published><updated>2018-09-16T00:00:00+08:00</updated><id>http://localhost:4000/es6/2018/09/16/ES6-func</id><content type="html" xml:base="http://localhost:4000/es6/2018/09/16/ES6-func/">&lt;h3 id=&quot;箭头函数&quot;&gt;箭头函数&lt;/h3&gt;
 &lt;h4 id=&quot;注意点&quot;&gt;注意点&lt;/h4&gt;
 &lt;ol&gt;
   &lt;li&gt;函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。&lt;/li&gt;
@@ -737,7 +785,7 @@ micro-task队列包含任务: b1, b2 , b3&lt;br /&gt;
 &lt;h3 id=&quot;参考&quot;&gt;参考&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2014/10/event-loop.html&quot;&gt;JavaScript 运行机制详解：再谈Event Loop(阮一峰)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Lmy</name></author><category term="JS" /><summary type="html">JavaScript是非阻塞单线程语言 JavaScript的单线程，与它的用途有关。 作为浏览器脚本语言，JavaScript的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。 比如，假定JavaScript同时有两个线程，一个线程在某个DOM节点上添加内容，另一个线程删除了这个节点.这时浏览器应该以哪个线程为准？</summary></entry><entry><title type="html">斐波那契数列</title><link href="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/14/jianzhi-fb/" rel="alternate" type="text/html" title="斐波那契数列" /><published>2018-09-14T00:00:00+08:00</published><updated>2018-09-14T00:00:00+08:00</updated><id>http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/14/jianzhi-fb</id><content type="html" xml:base="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/14/jianzhi-fb/">&lt;h3 id=&quot;斐波那契数列&quot;&gt;斐波那契数列&lt;/h3&gt;
+&lt;/ul&gt;</content><author><name>Lmy</name></author><summary type="html">JavaScript是非阻塞单线程语言 JavaScript的单线程，与它的用途有关。 作为浏览器脚本语言，JavaScript的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。 比如，假定JavaScript同时有两个线程，一个线程在某个DOM节点上添加内容，另一个线程删除了这个节点.这时浏览器应该以哪个线程为准？</summary></entry><entry><title type="html">斐波那契数列</title><link href="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/14/jianzhi-fb/" rel="alternate" type="text/html" title="斐波那契数列" /><published>2018-09-14T00:00:00+08:00</published><updated>2018-09-14T00:00:00+08:00</updated><id>http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/14/jianzhi-fb</id><content type="html" xml:base="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/14/jianzhi-fb/">&lt;h3 id=&quot;斐波那契数列&quot;&gt;斐波那契数列&lt;/h3&gt;
 &lt;p&gt;大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项（从0开始，第0项为0）。
 n&amp;lt;=39&lt;/p&gt;
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Fibonacci&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -1147,321 +1195,55 @@ right部分的最后一个数字是右子树的根他也比左子树所有值大
 	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;marks&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>Lmy</name></author><category term="CSS布局" /><category term="DOM操作" /><category term="数组方法" /><category term="字符串" /><summary type="html">水平垂直居中布局 flex .box{ display: flex; align-items: center; /*垂直*/ justify-content: center; /*水平*/ height: 100vh; /*视口高度*/ } table .box{ display: table; /* 让div以表格的形式渲染 */ width: 100%; height: 100vh; } .content{ display: table-cell; /* 让子元素以表格的单元格形式渲染 */ text-align: center; vertical-align: middle; }</summary></entry><entry><title type="html">阿里面经</title><link href="http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/08/20/interview-ali/" rel="alternate" type="text/html" title="阿里面经" /><published>2018-08-20T00:00:00+08:00</published><updated>2018-08-20T00:00:00+08:00</updated><id>http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/08/20/interview-ali</id><content type="html" xml:base="http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/08/20/interview-ali/">&lt;h3 id=&quot;两栏布局&quot;&gt;两栏布局&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;float+margin-left&lt;/strong&gt;
-    &lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;aside&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
- &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;yellow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
- &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
- &lt;span class=&quot;nl&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
- &lt;span class=&quot;nl&quot;&gt;margin-left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;210px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;/*大于aside的宽度*/&lt;/span&gt;
- &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;auto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
- &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;float+overflow：hidden（形成BFC）&lt;/strong&gt;
-    &lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
- &lt;span class=&quot;nl&quot;&gt;overflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;hidden&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
- &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;auto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
- &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
- &lt;span class=&quot;nl&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;400px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;flex&lt;/strong&gt;
-    &lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
- &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;aside&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
- &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;yellow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
- &lt;span class=&quot;nl&quot;&gt;flex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
- &lt;span class=&quot;nl&quot;&gt;flex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;auto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
- &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;grid&lt;/strong&gt;
-    &lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;py&quot;&gt;grid-template-columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;auto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;table&lt;/strong&gt;
-    &lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;aside&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-   &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;table-cell&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-   &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;yellow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
- &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;table-cell&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
- &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
+&lt;/div&gt;</content><author><name>Lmy</name></author><category term="CSS布局" /><category term="DOM操作" /><category term="数组方法" /><category term="字符串" /><summary type="html">水平垂直居中布局 flex .box{ display: flex; align-items: center; /*垂直*/ justify-content: center; /*水平*/ height: 100vh; /*视口高度*/ } table .box{ display: table; /* 让div以表格的形式渲染 */ width: 100%; height: 100vh; } .content{ display: table-cell; /* 让子元素以表格的单元格形式渲染 */ text-align: center; vertical-align: middle; }</summary></entry><entry><title type="html">网络基础TCP/IP</title><link href="http://localhost:4000/http/2018/08/29/http-tcp-ip/" rel="alternate" type="text/html" title="网络基础TCP/IP" /><published>2018-08-29T00:00:00+08:00</published><updated>2018-08-29T00:00:00+08:00</updated><id>http://localhost:4000/http/2018/08/29/http-tcp-ip</id><content type="html" xml:base="http://localhost:4000/http/2018/08/29/http-tcp-ip/">&lt;h3 id=&quot;tcpip协议族&quot;&gt;TCP/IP协议族&lt;/h3&gt;
+&lt;p&gt;TCP/IP 是互联网相关的各类协议族的总称&lt;br /&gt;
+&lt;img src=&quot;http://www.ituring.com.cn/figures/2014/PIC%20HTTP/05.d01z.005.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;tcpip-的分层管理&quot;&gt;TCP/IP 的分层管理&lt;/h3&gt;
+&lt;p&gt;TCP/IP 协议族按层次分别分为以下4层：&lt;strong&gt;应用层&lt;/strong&gt;、&lt;strong&gt;传输层&lt;/strong&gt;、&lt;strong&gt;网络层&lt;/strong&gt;和&lt;strong&gt;数据链路层&lt;/strong&gt;。&lt;br /&gt;
+TCP/IP 协议族各层的作用如下。&lt;/p&gt;
+&lt;h4 id=&quot;应用层&quot;&gt;应用层&lt;/h4&gt;
+&lt;p&gt;应用层决定了向用户提供应用服务时通信的活动。&lt;br /&gt;
+TCP/IP 协议族内预存了各类通用的应用服务。比如&lt;br /&gt;
+&lt;strong&gt;FTP&lt;/strong&gt;（File Transfer Protocol，文件传输协议)&lt;br /&gt;
+&lt;strong&gt;DNS&lt;/strong&gt;（Domain Name System，域名系统）
+&lt;strong&gt;Telent&lt;/strong&gt;（远程终端协议)&lt;br /&gt;
+&lt;strong&gt;SMTP&lt;/strong&gt;（Simple Mail Transfer Protocol，简单邮件传输协议）&lt;br /&gt;
+&lt;strong&gt;HTTP&lt;/strong&gt;（HyperText Transfer Protocal，超文本传输协议）&lt;/p&gt;
 
-&lt;h3 id=&quot;meta标签&quot;&gt;meta标签&lt;/h3&gt;
-&lt;meta /&gt;
-&lt;p&gt;元素可提供有关页面的元信息（meta-information）&lt;/p&gt;
+&lt;h4 id=&quot;传输层&quot;&gt;传输层&lt;/h4&gt;
+&lt;p&gt;传输层对上层应用层，提供处于网络连接中的两台计算机之间的数据传输。&lt;br /&gt;
+在传输层有两个性质不同的协议：&lt;br /&gt;
+&lt;strong&gt;TCP&lt;/strong&gt;（Transmission Control Protocol，传输控制协议）&lt;br /&gt;
+&lt;strong&gt;UDP&lt;/strong&gt;（User Data Protocol，用户数据报协议）。&lt;/p&gt;
+&lt;h5 id=&quot;tcp&quot;&gt;TCP&lt;/h5&gt;
+&lt;p&gt;TCP为两台主机提供高可靠性的数据通信。它所做的工作包括把应用程序交给它的数据分成合适的小块交给下面的网络层，确认接收到的分组，设置发送最后确认分组的超时时钟等。
+由于运输层提供了高可靠性的端到端的通信，因此应用层可以忽略所有这些细节。为了提供可靠的服务，TCP采用了超时重传、发送和接收端到端的确认分组等机制。&lt;/p&gt;
+&lt;h5 id=&quot;udp&quot;&gt;UDP&lt;/h5&gt;
+&lt;p&gt;UDP则为应用层提供一种非常简单的服务。它只是把称作数据报的分组从一台主机发送到另一台主机，但并不保证该数据报能到达另一端。
+一个数据报是指从发送方传输到接收方的一个信息单元（例如，发送方指定的一定字节数的信息）。UDP协议任何必需的可靠性必须由应用层来提供。&lt;/p&gt;
 
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;属性&lt;/th&gt;
-      &lt;th&gt;值&lt;/th&gt;
-      &lt;th&gt;描述&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;charset（#）&lt;/td&gt;
-      &lt;td&gt;character_set&lt;/td&gt;
-      &lt;td&gt;定义文档的字符编码。&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;content&lt;/td&gt;
-      &lt;td&gt;text&lt;/td&gt;
-      &lt;td&gt;定义与 http-equiv 或 name 属性相关的元信息。&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;http-equiv&lt;/td&gt;
-      &lt;td&gt;content-typ edefault-style refresh&lt;/td&gt;
-      &lt;td&gt;把 content 属性关联到 HTTP 头部。&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;name&lt;/td&gt;
-      &lt;td&gt;application-nam eauthor description generator keywords&lt;/td&gt;
-      &lt;td&gt;把 content 属性关联到一个名称。&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;scheme&lt;/td&gt;
-      &lt;td&gt;format/URI&lt;/td&gt;
-      &lt;td&gt;HTML5不支持。定义用于翻译 content 属性值的格式。&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;h4 id=&quot;网络层又名网络互连层&quot;&gt;网络层（又名网络互连层）&lt;/h4&gt;
+&lt;p&gt;网络层用来处理在网络上流动的数据包。数据包是网络传输的最小数据单位。该层规定了通过怎样的路径（所谓的传输路线）到达对方计算机，并把数据包传送给对方。&lt;br /&gt;
+与对方计算机之间通过多台计算机或网络设备进行传输时，网络层所起的作用就是在众多的选项内选择一条传输路线。在网络层有&lt;br /&gt;
+&lt;strong&gt;IP&lt;/strong&gt;协议 &lt;br /&gt;
+&lt;strong&gt;ICMP&lt;/strong&gt;（Internet Control Message Protocol，Internet控制报文协议）&lt;br /&gt;
+&lt;strong&gt;ARP&lt;/strong&gt;（Address Resolution Protocol，地址解析协议）
+&lt;strong&gt;RARP&lt;/strong&gt;（Reverse Address Resolution Protocol，反向地址转换协议）&lt;br /&gt;
+&lt;strong&gt;BOOTP&lt;/strong&gt;（Bootstrap Protocol，引导程序协议）&lt;/p&gt;
 
-&lt;h4 id=&quot;name属性&quot;&gt;name属性&lt;/h4&gt;
-&lt;p&gt;name属性主要用于描述网页，与之对应的属性值为content，content中的内容主要是便于搜索引擎机器人查找信息和分类信息用的。&lt;br /&gt;
-meta标签的name属性语法格式是：&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;meta name=&quot;参数&quot; content=&quot;具体的参数值&quot;&amp;gt;。&lt;/code&gt;&lt;br /&gt;
-其中name属性主要有以下几种参数：&lt;/p&gt;
-&lt;h5 id=&quot;keywords关键字&quot;&gt;Keywords（关键字）&lt;/h5&gt;
-&lt;p&gt;说明：keywords用来告诉搜索引擎你网页的关键字是什么。&lt;br /&gt;
-举例 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;meta name =&quot;keywords&quot; content=&quot;science human culture&quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
-&lt;h5 id=&quot;description网站内容描述&quot;&gt;description（网站内容描述)&lt;/h5&gt;
-&lt;p&gt;说明：description用来告诉搜索引擎你的网站主要内容。 &lt;br /&gt;
-网站内容描述（description）的设计要点:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;网页描述为自然语言而不是罗列关键词（与keywords设计正好相反）；&lt;/li&gt;
-  &lt;li&gt;尽可能准确地描述网页的核心内容，通常为网页内容的摘要信息，也就是希望搜索引擎在检索结果中展示的摘要信息；&lt;/li&gt;
-  &lt;li&gt;网页描述中含有有效关键词；&lt;/li&gt;
-  &lt;li&gt;网页描述内容与网页标题内容有高度相关性；&lt;/li&gt;
-  &lt;li&gt;网页描述内容与网页主体内容有高度相关性；&lt;/li&gt;
-  &lt;li&gt;网页描述的文字不必太多，一般不超过搜索引擎检索结果摘要信息的最多字数（通常在100中文字之内，不同搜索引擎略有差异）。&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h4 id=&quot;链路层又名数据链路层网络接口层&quot;&gt;链路层（又名数据链路层，网络接口层）&lt;/h4&gt;
+&lt;p&gt;用来处理连接网络的硬件部分。包括控制操作系统、硬件的设备驱动、NIC（Network Interface Card，网络适配器，即网卡），及光纤等物理可见部分（还包括连接器等一切传输媒介）。硬件上的范畴均在链路层的作用范围之内。&lt;/p&gt;
 
-&lt;h5 id=&quot;robots机器人向导&quot;&gt;robots（机器人向导）&lt;/h5&gt;
-&lt;p&gt;说明：robots用来告诉搜索机器人哪些页面需要索引，哪些页面不需要索引。content的参数有all,none,index,noindex,follow,nofollow。默认是all。&lt;br /&gt;
-举例 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;meta name=&quot;robots&quot; content=&quot;none&quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;tcpip-通信传输流&quot;&gt;TCP/IP 通信传输流&lt;/h3&gt;
+&lt;p&gt;利用 TCP/IP 协议族进行网络通信时，会通过分层顺序与对方进行通信。发送端从应用层往下走，接收端则从链路层往上走。
+&lt;img src=&quot;http://www.ituring.com.cn/figures/2014/PIC%20HTTP/05.d01z.006.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;h5 id=&quot;author作者&quot;&gt;author（作者）&lt;/h5&gt;
-&lt;p&gt;说明：标注网页的作者&lt;/p&gt;
+&lt;p&gt;发送端在层与层之间传输数据时，每经过一层时必定会被打上一个该层所属的首部信息。反之，接收端在层与层传输数据时，每经过一层时会把对应的首部消去。&lt;br /&gt;
+这种把数据信息包装起来的做法称为封装（encapsulate
+&lt;img src=&quot;http://www.ituring.com.cn/download/021jVNia3uoL&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;http-equiv属性&quot;&gt;http-equiv属性&lt;/h4&gt;
-&lt;p&gt;http-equiv顾名思义，相当于http的文件头作用，它可以向浏览器传回一些有用的信息，以帮助正确和精确地显示网页内容，与之对应的属性值为content，content中的内容其实就是各个参数的变量值。&lt;br /&gt;
-meta标签的http-equiv属性语法格式是：&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;meta http-equiv=&quot;参数&quot; content=&quot;参数变量值&quot;&amp;gt; &lt;/code&gt;&lt;br /&gt;
-其中http-equiv属性主要有以下几种参数：&lt;/p&gt;
-
-&lt;h5 id=&quot;expires期限&quot;&gt;Expires（期限）&lt;/h5&gt;
-&lt;p&gt;说明：可以用于设定网页的到期时间。一旦网页过期，必须到服务器上重新传输。&lt;br /&gt;
-用法：&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;meta http-equiv=&quot;expires&quot; content=&quot;Fri,12 Jan 2001 18:18:18 GMT&quot;&amp;gt;&lt;/code&gt;&lt;br /&gt;
-注意：必须使用GMT的时间格式。&lt;/p&gt;
-&lt;h5 id=&quot;pragmacache模式&quot;&gt;Pragma(cache模式）&lt;/h5&gt;
-&lt;p&gt;说明：禁止浏览器从本地计算机的缓存中访问页面内容。&lt;br /&gt;
-用法：&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;meta http-equiv=&quot;Pragma&quot; content=&quot;no-cache&quot;&amp;gt;&lt;/code&gt;&lt;br /&gt;
-注意：这样设定，访问者将无法脱机浏览。&lt;/p&gt;
-&lt;h5 id=&quot;refresh刷新&quot;&gt;Refresh（刷新）&lt;/h5&gt;
-&lt;p&gt;说明：自动刷新并转到新页面。&lt;br /&gt;
-用法：&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;meta http-equiv=&quot;Refresh&quot; content=&quot;2;URL&quot;&amp;gt;&lt;/code&gt;（注意后面的分号，分别在秒数的前面和网址的后面，URL可为空）&lt;br /&gt;
-注意：其中的2是指停留2秒钟后自动刷新到URL网址。&lt;/p&gt;
-&lt;h5 id=&quot;set-cookiecookie设定&quot;&gt;Set-Cookie(cookie设定）&lt;/h5&gt;
-&lt;p&gt;说明：如果网页过期，那么存盘的cookie将被删除。&lt;br /&gt;
-用法：&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;meta http-equiv=&quot;Set-Cookie&quot; content=&quot;cookievalue=xxx; expires=Friday,12-Jan-2001 18:18:18 GMT; path=/&quot;&amp;gt;&lt;/code&gt;&lt;br /&gt;
-注意：必须使用GMT的时间格式。&lt;/p&gt;
-&lt;h5 id=&quot;window-target显示窗口的设定&quot;&gt;Window-target（显示窗口的设定）&lt;/h5&gt;
-&lt;p&gt;说明：强制页面在当前窗口以独立页面显示。&lt;br /&gt;
-用法：&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;meta http-equiv=&quot;Window-target&quot; content=&quot;_top&quot;&amp;gt;&lt;/code&gt;&lt;br /&gt;
-注意：用来防止别人在框架里调用自己的页面。&lt;/p&gt;
-&lt;h5 id=&quot;content-type显示字符集的设定&quot;&gt;content-Type（显示字符集的设定）&lt;/h5&gt;
-&lt;p&gt;说明：设定页面使用的字符集。&lt;br /&gt;
-用法：&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;meta http-equiv=&quot;content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
-&lt;h5 id=&quot;content-language显示语言的设定&quot;&gt;content-Language（显示语言的设定）&lt;/h5&gt;
-&lt;p&gt;用法：&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;meta http-equiv=&quot;Content-Language&quot; content=&quot;zh-cn&quot; /&amp;gt;&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;功能&quot;&gt;功能&lt;/h4&gt;
+&lt;h3 id=&quot;参考&quot;&gt;参考&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;帮助主页被各大搜索引擎登录&lt;/li&gt;
-  &lt;li&gt;定义页面的使用语言&lt;/li&gt;
-  &lt;li&gt;自动刷新并指向新的页面&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;putpost区别&quot;&gt;put/post区别&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;最根本的区别就是：POST方法不是幂等的，而PUT方法则有幂等性。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;一个幂等操作的特点就是其任意多次执行所产生的影响均与依次一次执行的影响相同。
-POST在请求的时候，服务器会每次都创建一个文件，但是在PUT方法的时候只是简单地更新，而不是去重新创建。因此PUT是幂等的。&lt;/p&gt;
-
-&lt;p&gt;假如我们发送两个/blog/post/Sample请求，服务器端是什么样的行为？如果产生了两个博客帖子，那就说明这个服务不是idempotent的，因为多次使用产生了副作用了嘛；如果后一个请求把第一个请求覆盖掉了，那这个服务就是idempotent的。前一种情况，每次返回结果不一样的时候，应该使用POST方法，后一种情况，应该使用PUT方法。&lt;/p&gt;
-
-&lt;h3 id=&quot;http状态码&quot;&gt;http状态码&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;202&lt;/strong&gt;状态码：服务器已接受请求，但尚未处理；&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;301&lt;/strong&gt;状态码：被请求的资源已永久移动到新位置。服务器返回此响应（对 GET 或 HEAD 请求的响应）时，会自动将请求者转到新位置。永久重定向&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;302&lt;/strong&gt;状态码：请求的资源临时从不同的URI响应请求，但请求者应继续使用原有位置来进行以后的请求。暂时重定向&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;304&lt;/strong&gt;自从上次请求后，请求的网页未修改过。服务器返回此响应时，不会返回网页内容。 如果网页自请求者上次请求后再也没有更改过，您应将服务器配置为返回此响应(称为 If-Modified-Since HTTP 标头)。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;401&lt;/strong&gt;状态码：请求要求身份验证。 对于需要登录的网页，服务器可能返回此响应。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;403&lt;/strong&gt;状态码：服务器已经理解请求，但是拒绝执行它。与401响应不同的是，身份验证并不能提供任何帮助，而且这个请求也不应该被重复提交。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;404&lt;/strong&gt;状态码：请求失败，请求所希望得到的资源未被在服务器上发现。没有信息能够告诉用户这个状况到底是暂时的还是永久的。假如服务器知道情况的话，应当使用410状态码来告知旧资源因为某些内部的配置机制问题，已经永久的不可用，而且没有任何可以跳转的地址。404这个状态码被广泛应用于当服务器不想揭示到底为何请求被拒绝或者没有其他适合的响应可用的情况下。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;500&lt;/strong&gt;状态码：服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理。一般来说，这个问题都会在服务器的程序码出错时出现。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;503&lt;/strong&gt;状态码：由于临时的服务器维护或者过载，服务器当前无法处理请求。通常，这个是暂时状态，一段时间会恢复。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;跨域&quot;&gt;跨域&lt;/h3&gt;
-
-&lt;h4 id=&quot;jsonp&quot;&gt;JSONP&lt;/h4&gt;
-&lt;p&gt;利用&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;script&amp;gt;&lt;/code&gt;标签没有跨域限制的漏洞，通过&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;script&amp;gt;&lt;/code&gt;标签指向一个需要访问的地址并提供一个回调函数来接收数据当需要通讯时。JSONP 使用简单且兼容性不错，但是只限于 get 请求。&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;script src=&quot;http://domain/api?param1=a&amp;amp;param2=b&amp;amp;callback=jsonp&quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt; &lt;br /&gt;
-在开发中可能会遇到多个 JSONP 请求的回调函数名是相同的，这时候就需要自己 封装一个 JSONP，以下是简单实现。&lt;/p&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jsonp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jsonpCallback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;script&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;jsonpCallback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;nx&quot;&gt;success&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-	&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;jsonp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-	&lt;span class=&quot;s2&quot;&gt;&quot;http://xxx&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-	&lt;span class=&quot;s2&quot;&gt;&quot;callback&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-	&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;h4 id=&quot;cors&quot;&gt;CORS&lt;/h4&gt;
-&lt;p&gt;浏览器会自动进行 CORS 通信，实现CORS通信的关键是后端。只要后端实现了 CORS，就实现了跨域。 &lt;br /&gt;
-服务端设置 Access-Control-Allow-Origin 就可以开启 CORS。 该属性表示哪些 域名可以访问资源，如果设置通配符则表示所有网站都可以访问资源。&lt;/p&gt;
-
-&lt;h4 id=&quot;documentdomain&quot;&gt;document.domain&lt;/h4&gt;
-&lt;p&gt;该方式只能用于二级域名相同的情况下，比如 a.test.com 和 b.test.com 适用于 该方式。 
-只需要给页面添加 document.domain = ‘test.com’ 表示二级域名都相同就可以实现跨域&lt;/p&gt;
-
-&lt;h4 id=&quot;postmessage&quot;&gt;postMessage&lt;/h4&gt;
-&lt;p&gt;这种方式通常用于获取嵌入页面中的第三方页面数据。一个页面发送消息，另一个页面判断来源并接收消息 。&lt;/p&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 发送消息端&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;postMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'message'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'http://test.com'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
-&lt;span class=&quot;c1&quot;&gt;// 接收消息端&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MessageChannel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; 
-&lt;span class=&quot;nx&quot;&gt;mc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'message'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
-	&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;origin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;origin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;originalEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;origin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;origin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'http://test.com'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'验证通过'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt; 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;h3 id=&quot;数组去重&quot;&gt;数组去重&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;新建一新数组，遍历传入数组，值不在新数组就push进该新数组中（IE8以下不支持数组的indexOf方法）
-    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;uniq1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
- &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;indexOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-         &lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;对象键值对&lt;br /&gt;
-该方法执行的速度比其他任何方法都快， 就是占用的内存大一些。
-&lt;strong&gt;注意点&lt;/strong&gt;：判断是否为js对象键时，会自动对传入的键执行&lt;code class=&quot;highlighter-rouge&quot;&gt;toString()&lt;/code&gt;
-    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;uniq2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
- &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-     &lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-     &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]){&lt;/span&gt;
-         &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-         &lt;span class=&quot;nx&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;indexOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-         &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-         &lt;span class=&quot;nx&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
- &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;ES6数组去重（无法判断对象重复）&lt;br /&gt;
-向 Set 加入值的时候，不会发生类型转换，所以 5 和 ‘5’ 是两个不同的值。 Set 内部判断两个值是否相同，使用的算法是 “Same-value equality”，它类似于精确相等运算符（===）。主要的区别是 NaN等于自身，而精确运算符认为 NaN 不等于自身。两个对象总是不相等的，所以无法达到对象重复去重
-    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;uniq3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;排序后遍历数组
-    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;uniq4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
- &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]];&lt;/span&gt;
- &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
- &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]){&lt;/span&gt;
-         &lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;map 值-值
-    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;uniq5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
- &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-     &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;has&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)){&lt;/span&gt;
-         &lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-         &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
- &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()];&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-    &lt;h3 id=&quot;es6-generate&quot;&gt;ES6 Generate&lt;/h3&gt;
-    &lt;h3 id=&quot;vue双向绑定&quot;&gt;vue双向绑定&lt;/h3&gt;
-    &lt;h3 id=&quot;vue生命周期&quot;&gt;vue生命周期&lt;/h3&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Lmy</name></author><category term="CSS布局" /><category term="Http" /><category term="数组方法" /><category term="ES6" /><category term="Vue" /><summary type="html">两栏布局 float+margin-left aside{ background: yellow; width: 200px; float: left; } div{ margin-left: 210px;/*大于aside的宽度*/ width: auto; background: red; } float+overflow：hidden（形成BFC） div{ overflow:hidden; width: auto; background: red; height: 400px; } flex body{ display: flex; } aside{ background: yellow; flex:0 0 200px; } div{ flex:1 1 auto; background: red; } grid body{ display: grid; grid-template-columns: 200px auto; } table aside{ width: 200px; display: table-cell; background: yellow; } div{ display: table-cell; background: red; }</summary></entry></feed>
+  &lt;li&gt;&lt;a href=&quot;http://www.ituring.com.cn/book/1229&quot;&gt;图解HTTP&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.jianshu.com/p/c1d6a294d3c0&quot;&gt;一次完整的HTTP请求与响应涉及了哪些知识&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Lmy</name></author><category term="TCP" /><category term="IP" /><summary type="html">TCP/IP协议族 TCP/IP 是互联网相关的各类协议族的总称 TCP/IP 的分层管理 TCP/IP 协议族按层次分别分为以下4层：应用层、传输层、网络层和数据链路层。 TCP/IP 协议族各层的作用如下。 应用层 应用层决定了向用户提供应用服务时通信的活动。 TCP/IP 协议族内预存了各类通用的应用服务。比如 FTP（File Transfer Protocol，文件传输协议) DNS（Domain Name System，域名系统） Telent（远程终端协议) SMTP（Simple Mail Transfer Protocol，简单邮件传输协议） HTTP（HyperText Transfer Protocal，超文本传输协议）</summary></entry></feed>
