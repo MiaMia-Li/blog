@@ -111,17 +111,29 @@
 
 
 
-<meta name="description" content="">
+<meta name="description" content="前言 接上一篇从输入URL到页面加载的过程中， http的缓存问题，这部分内容很重要，便来温习梳理一遍。">
 <meta name="keywords" content="FE, Lemon, 前端, 面经">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Http缓存总结">
 <meta property="og:url" content="http://localhost:4000/http/2018/08/18/http-cache/">
 <meta property="og:site_name" content="Lemon">
-<meta property="og:description" content="">
+<meta property="og:description" content="前言 接上一篇从输入URL到页面加载的过程中， http的缓存问题，这部分内容很重要，便来温习梳理一遍。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://image-static.segmentfault.com/308/881/308881798-5993d33171421_articlex">
+<meta property="og:image" content="http://localhost:4000/assets/images/2018-9-17-http-url/disk-cache.png">
+<meta property="og:image" content="http://localhost:4000/assets/images/2018-9-17-http-url/max-age.png">
+<meta property="og:image" content="http://localhost:4000/assets/images/2018-9-17-http-url/cache200.png">
+<meta property="og:image" content="http://localhost:4000/assets/images/2018-9-17-http-url/cache304.png">
+<meta property="og:image" content="http://localhost:4000/assets/images/2018-9-17-http-url/last-modified.png">
+<meta property="og:image" content="http://localhost:4000/assets/images/2018-9-17-http-url/if-modified-since.png">
+<meta property="og:image" content="http://localhost:4000/assets/images/2018-9-17-http-url/etag.png">
+<meta property="og:image" content="http://localhost:4000/assets/images/2018-9-17-http-url/if-none-match.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/632130/201702/632130-20170210142134291-1976923079.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/632130/201702/632130-20170210141453338-1263276228.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Http缓存总结">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="前言 接上一篇从输入URL到页面加载的过程中， http的缓存问题，这部分内容很重要，便来温习梳理一遍。">
+<meta name="twitter:image" content="https://image-static.segmentfault.com/308/881/308881798-5993d33171421_articlex">
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -422,7 +434,136 @@
 
 
 
-  
+  <h2 id="前言">前言</h2>
+<p>接上一篇<a href="http://localhost:4000/http/2018/09/17/http-url/">从输入URL到页面加载的过程</a>中，
+http的缓存问题，这部分内容很重要，便来温习梳理一遍。</p>
+
+<h2 id="简单介绍http报文">简单介绍HTTP报文</h2>
+<p>HTTP报文就是浏览器和服务器间通信时发送及响应的数据块。<br />
+浏览器向服务器请求数据，发送请求(request)报文；服务器向浏览器返回数据，返回响应(response)报文。
+报文信息主要分为两部分</p>
+<ol>
+  <li>包含属性的首部(header)  附加信息（cookie，缓存信息等）<strong>与缓存相关的规则信息，均包含在header中</strong></li>
+  <li>包含数据的主体部分(body)  HTTP请求真正想要传输的部分</li>
+</ol>
+
+<h2 id="http缓存规则">http缓存规则</h2>
+<p>HTTP缓存有多种规则，根据是否需要重新向服务器发起请求来分类，可以将其分为两大类(强制缓存，对比缓存)，强制缓存如果生效，不需要再和服务器发生交互，而对比缓存不管是否生效，都需要与服务端发生交互。<br />
+两类缓存规则可以同时存在，强制缓存优先级高于对比缓存，也就是说，当执行强制缓存的规则时，如果缓存生效，直接使用缓存，不再执行对比缓存规则。<br />
+下图是http缓存流程<br />
+<img src="https://image-static.segmentfault.com/308/881/308881798-5993d33171421_articlex" alt="" /></p>
+
+<h3 id="强制缓存">强制缓存</h3>
+<p>强制缓存，在缓存数据未失效的情况下，可以直接使用缓存数据，那么浏览器是如何判断缓存数据是否失效呢？<br />
+在没有缓存数据的时候，浏览器向服务器请求数据时，服务器会将数据和缓存规则一并返回，<strong>缓存规则信息包含在响应header中</strong>。<br />
+对于强制缓存来说，响应header中会有两个字段来标明失效规则（<strong>Expires/Cache-Control</strong>） 
+如图，Google开发者工具中，可看到对于强制缓存生效时，网络请求的情况。
+<img src="http://localhost:4000/assets/images/2018-9-17-http-url/disk-cache.png" alt="" /></p>
+
+<h4 id="expires">Expires</h4>
+<p>Expires的值为服务端返回的到期时间，即下一次请求时，请求时间小于服务端返回的到期时间，直接使用缓存数据。<br />
+不过Expires 是HTTP 1.0的东西，现在默认浏览器均默认使用HTTP 1.1，所以它的作用基本忽略。
+另一个问题是，到期时间是由服务端生成的，但是客户端时间可能跟服务端时间有误差，这就会导致缓存命中的误差。
+所以HTTP 1.1 的版本，使用Cache-Control替代。</p>
+<h4 id="cache-control">Cache-Control</h4>
+<p>Cache-Control 是最重要的规则。常见的取值有private、public、no-cache、max-age，no-store，默认为private。<br />
+参考<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cache-Control">MDN Cache-Control</a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>值</th>
+      <th>含义</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>private</td>
+      <td>表明响应只能被单个用户缓存，不能作为共享缓存（即代理服务器不能缓存它）,可以缓存响应内容</td>
+    </tr>
+    <tr>
+      <td>public</td>
+      <td>表明响应可以被任何对象（包括：发送请求的客户端，代理服务器，等等）缓存</td>
+    </tr>
+    <tr>
+      <td>max-age=xxx</td>
+      <td>设置缓存存储的最大周期，超过这个时间缓存被认为过期(单位秒)。与Expires相反，时间是相对于请求的时间</td>
+    </tr>
+    <tr>
+      <td>no-cache</td>
+      <td>在释放缓存副本之前，强制高速缓存将请求提交给原始服务器进行验证</td>
+    </tr>
+    <tr>
+      <td>no-store</td>
+      <td>缓存不应存储有关客户端请求或服务器响应的任何内容</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>一个例子:
+<img src="http://localhost:4000/assets/images/2018-9-17-http-url/max-age.png" alt="" />
+图中Cache-Control仅指定了max-age，所以默认为private，缓存时间为2592000秒（30天）
+也就是说，在30天内再次请求这条数据，都会直接获取缓存数据库中的数据，直接使用。</p>
+<h5 id="memory-cache-和-disk-cache">memory cache 和 disk cache</h5>
+<p><strong>from memory cache</strong> 字面理解是从内存中，这个资源是直接从内存中拿到的，不会请求服务器一般已经加载过该资源且缓存在了内存当中，当关闭该页面时，此资源就被内存释放掉了，再次重新打开相同页面时不会出现from memory cache的情况 <br />
+一般脚本、字体、图片会存在内存当中</p>
+
+<p><strong>from disk cache</strong> 同上类似，此资源是从磁盘当中取出的，也是在已经在之前的某个时间加载过该资源，不会请求服务器但是此资源不会随着该页面的关闭而释放掉，因为是存在硬盘当中的，下次打开仍会from disk cache<br />
+一般非脚本会存在内存当中，如css等</p>
+
+<h3 id="对比缓存协商缓存">对比缓存(协商缓存)</h3>
+<p>对比缓存，顾名思义，需要进行比较判断是否可以使用缓存。<br />
+浏览器第一次请求数据时，服务器会将缓存标识与数据一起返回给客户端，客户端将二者备份至缓存数据库中。<br />
+再次请求数据时，客户端将备份的缓存标识发送给服务器，服务器根据缓存标识进行判断，判断成功后，返回304状态码，通知客户端比较成功，可以使用缓存数据。<br />
+第一次请求<br />
+<img src="http://localhost:4000/assets/images/2018-9-17-http-url/cache200.png" alt="" /> <br />
+第二次请求<br />
+<img src="http://localhost:4000/assets/images/2018-9-17-http-url/cache304.png" alt="" /></p>
+
+<p>通过两图的对比，我们可以很清楚的发现，在对比缓存生效时，状态码为304，并且报文大小和请求时间大大减少。
+原因是，服务端在进行标识比较后，只返回header部分，通过状态码通知客户端使用缓存，不再需要将报文主体部分返回给客户端。</p>
+
+<h4 id="last-modified--if-modified-since">Last-Modified / If-Modified-Since</h4>
+<h5 id="last-modified">Last-Modified</h5>
+<p>服务器在响应请求时，告诉浏览器资源的最后修改时间。<br />
+<img src="http://localhost:4000/assets/images/2018-9-17-http-url/last-modified.png" alt="" /></p>
+
+<h5 id="if-modified-since">If-Modified-Since</h5>
+<p>再次请求服务器时，通过此字段通知服务器上次请求时，服务器返回的资源最后修改时间。<br />
+服务器收到请求后发现有头If-Modified-Since 则与被请求资源的最后修改时间进行比对。<br />
+若资源的最后修改时间大于If-Modified-Since，说明资源又被改动过，则响应整片资源内容，返回状态码200；<br />
+若资源的最后修改时间小于或等于If-Modified-Since，说明资源无新修改，则响应HTTP 304，告知浏览器继续使用所保存的cache。<br />
+<img src="http://localhost:4000/assets/images/2018-9-17-http-url/if-modified-since.png" alt="" /></p>
+
+<h4 id="etag--if-none-match">Etag / If-None-Match</h4>
+<p>优先级<strong>高于</strong>Last-Modified / If-Modified-Since</p>
+<h5 id="etag">Etag</h5>
+<p>服务器响应请求时，告诉浏览器当前资源在服务器的唯一标识（生成规则由服务器决定）。<br />
+<img src="http://localhost:4000/assets/images/2018-9-17-http-url/etag.png" alt="" /></p>
+
+<h5 id="if-none-match">If-None-Match</h5>
+<p>再次请求服务器时，通过此字段通知服务器客户段缓存数据的唯一标识。<br />
+服务器收到请求后发现有头If-None-Match 则与被请求资源的唯一标识进行比对，<br />
+不同，说明资源又被改动过，则响应整片资源内容，返回状态码200；<br />
+相同，说明资源无新修改，则响应HTTP 304，告知浏览器继续使用所保存的cache。<br />
+<img src="http://localhost:4000/assets/images/2018-9-17-http-url/if-none-match.png" alt="" /></p>
+
+<h2 id="总结">总结</h2>
+<p>对于强制缓存，服务器通知浏览器一个缓存时间，在缓存时间内，下次请求，直接用缓存，不在时间内，执行比较缓存策略。<br />
+对于比较缓存，将缓存信息中的Etag和Last-Modified通过请求发送给服务器，由服务器校验，返回304状态码时，浏览器直接使用缓存。</p>
+
+<p>第一次请求时
+<img src="https://images2015.cnblogs.com/blog/632130/201702/632130-20170210142134291-1976923079.png" alt="" /></p>
+
+<p>再次请求时<br />
+<img src="https://images2015.cnblogs.com/blog/632130/201702/632130-20170210141453338-1263276228.png" alt="" /></p>
+
+<h2 id="参考">参考</h2>
+<ul>
+  <li><a href="https://www.cnblogs.com/chenqf/p/6386163.html">彻底弄懂HTTP缓存机制及原理</a></li>
+  <li><a href="https://segmentfault.com/a/1190000010690320">http协议缓存机制</a></li>
+  <li><a href="http://www.dailichun.com/2018/03/12/whenyouenteraurl.html">从输入URL到页面加载的过程</a></li>
+</ul>
 
 
       
@@ -547,8 +688,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/assets/images/avatar.jpg"
@@ -563,7 +713,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -574,7 +724,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -585,7 +735,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -665,6 +815,34 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-2"> <a class="nav-link" href="#前言"> <span class="nav-number">1</span> <span class="nav-text">前言</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#简单介绍http报文"> <span class="nav-number">2</span> <span class="nav-text">简单介绍HTTP报文</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#http缓存规则"> <span class="nav-number">3</span> <span class="nav-text">http缓存规则</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#强制缓存"> <span class="nav-number">3.1</span> <span class="nav-text">强制缓存</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#expires"> <span class="nav-number">3.1.1</span> <span class="nav-text">Expires</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#cache-control"> <span class="nav-number">3.1.2</span> <span class="nav-text">Cache-Control</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-5"> <a class="nav-link" href="#memory-cache-和-disk-cache"> <span class="nav-number">3.1.2.1</span> <span class="nav-text">memory cache 和 disk cache</span> </a> </li> </ol> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#对比缓存协商缓存"> <span class="nav-number">3.2</span> <span class="nav-text">对比缓存(协商缓存)</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#last-modified--if-modified-since"> <span class="nav-number">3.2.1</span> <span class="nav-text">Last-Modified / If-Modified-Since</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-5"> <a class="nav-link" href="#last-modified"> <span class="nav-number">3.2.1.1</span> <span class="nav-text">Last-Modified</span> </a> </li> <li class="nav-item nav-level-5"> <a class="nav-link" href="#if-modified-since"> <span class="nav-number">3.2.1.2</span> <span class="nav-text">If-Modified-Since</span> </a> </li> </ol> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#etag--if-none-match"> <span class="nav-number">3.2.2</span> <span class="nav-text">Etag / If-None-Match</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-5"> <a class="nav-link" href="#etag"> <span class="nav-number">3.2.2.1</span> <span class="nav-text">Etag</span> </a> </li> <li class="nav-item nav-level-5"> <a class="nav-link" href="#if-none-match"> <span class="nav-number">3.2.2.2</span> <span class="nav-text">If-None-Match</span> </a> </li> </ol> </li> </ol> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#总结"> <span class="nav-number">4</span> <span class="nav-text">总结</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#参考"> <span class="nav-number">5</span> <span class="nav-text">参考</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
