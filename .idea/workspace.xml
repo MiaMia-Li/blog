@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="034d3156-c3eb-4e33-8c20-0c94a1ba1307" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/_posts/2018-9-23-test-week.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/2018-9-17-http-url/cache200.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/2018-9-17-http-url/cache304.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/2018-9-17-http-url/etag.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/2018-9-17-http-url/if-modified-since.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/2018-9-17-http-url/if-none-match.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/2018-9-17-http-url/last-modified.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/2018-10-12-binarytree-traversal.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2018-8-18-http-cache.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2018-8-18-http-cache.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2018-9-17-http-url.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2018-9-17-http-url.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2018-9-14-jianzhi-2cs.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2018-9-14-jianzhi-binarytree.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2018-9-25-js-carryout.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2018-9-25-js-carryout.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/about/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/about/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/archives/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/archives/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/_site/assets/css/main.css" afterDir="false" />
@@ -34,8 +28,9 @@
       <change beforePath="$PROJECT_DIR$/_site/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/sitemap.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/tag/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tag/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/tags/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tags/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/笔试/2018/09/23/test-week/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/笔试/2018/09/23/test-week/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/算法/2018/09/13/leetcode3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/算法/2018/09/13/leetcode3/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/算法/2018/09/14/jianzhi-2cs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/算法/2018/09/14/jianzhi-2cs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/算法/2018/09/14/jianzhi-2cs/index.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/算法/2018/09/14/jianzhi-fb/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/算法/2018/09/14/jianzhi-fb/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/算法/2018/09/18/test-ntes/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/算法/2018/09/18/test-ntes/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/算法/2018/09/21/leetcode5/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/算法/2018/09/21/leetcode5/index.html" afterDir="false" />
@@ -56,132 +51,48 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="2018-9-17-http-url.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/2018-9-17-http-url.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="1659">
-                <caret line="453" column="37" selection-start-line="453" selection-start-column="37" selection-end-line="453" selection-end-column="37" />
-                <folding>
-                  <element signature="e#364#387#0" />
-                  <element signature="e#4968#4990#0" />
-                </folding>
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2018-9-25-js-carryout.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="2018-9-25-js-carryout.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/_posts/2018-9-25-js-carryout.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="120">
-                <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+              <first_editor relative-caret-position="2448">
+                <caret line="102" column="6" selection-start-line="102" selection-start-column="6" selection-end-line="102" selection-end-column="6" />
               </first_editor>
               <second_editor />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2018-9-23-test-week.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/2018-9-23-test-week.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="259">
-                <caret line="91" column="62" selection-start-line="91" selection-start-column="62" selection-end-line="91" selection-end-column="62" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2018-9-21-leetcode5.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/2018-9-21-leetcode5.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="1344">
-                <caret line="56" column="24" selection-start-line="56" selection-start-column="24" selection-end-line="56" selection-end-column="24" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2018-9-18-test-ntes.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/2018-9-18-test-ntes.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="6600">
-                <caret line="275" selection-start-line="275" selection-end-line="275" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2018-8-18-http-cache.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="2018-8-18-http-cache.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_posts/2018-8-18-http-cache.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="126">
-                <caret line="101" column="93" selection-start-line="101" selection-start-column="4" selection-end-line="101" selection-end-column="93" />
+              <first_editor relative-caret-position="2400">
+                <caret line="100" column="6" selection-start-line="100" selection-start-column="6" selection-end-line="100" selection-end-column="6" />
               </first_editor>
               <second_editor />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2018-8-29-http-tcp-ip.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/2018-8-29-http-tcp-ip.md">
+      <file leaf-file-name="2018-10-12-binarytree-traversal.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_posts/2018-10-12-binarytree-traversal.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="712">
-                <caret line="38" column="10" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
+              <first_editor relative-caret-position="3096">
+                <caret line="135" column="10" selection-start-line="135" selection-start-column="10" selection-end-line="135" selection-end-column="10" />
               </first_editor>
               <second_editor />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2018-8-30-interview-maoyan.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/2018-8-30-interview-maoyan.md">
+      <file leaf-file-name="2018-9-14-jianzhi-binarytree.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_posts/2018-9-14-jianzhi-binarytree.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="24">
-                <caret line="56" selection-start-line="56" selection-end-line="56" />
-                <folding>
-                  <element signature="n#!!doc" expanded="true" />
-                </folding>
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2018-9-15-js-eventloop.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/2018-9-15-js-eventloop.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="1704">
-                <caret line="71" column="43" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="43" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2018-9-14-jianzhi-2cs.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/2018-9-14-jianzhi-2cs.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="24">
-                <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-                <folding>
-                  <element signature="n#!!doc" expanded="true" />
-                  <element signature="n#!!doc" expanded="true" />
-                  <element signature="n#!!doc" expanded="true" />
-                </folding>
+              <first_editor relative-caret-position="216">
+                <caret line="9" selection-end-line="9" />
               </first_editor>
               <second_editor />
             </state>
@@ -223,10 +134,12 @@
         <option value="$PROJECT_DIR$/_posts/2018-9-15-js-eventloop.md" />
         <option value="$PROJECT_DIR$/_posts/2018-8-29-http-tcp-ip.md" />
         <option value="$PROJECT_DIR$/about/index.md" />
-        <option value="$PROJECT_DIR$/_posts/2018-9-25-js-carryout.md" />
         <option value="$PROJECT_DIR$/_posts/2018-8-18-http-cache.md" />
         <option value="$PROJECT_DIR$/_posts/2018-9-23-test-week.md" />
         <option value="$PROJECT_DIR$/_posts/2018-9-17-http-url.md" />
+        <option value="$PROJECT_DIR$/_posts/2018-10-12-tree-traversal.md" />
+        <option value="$PROJECT_DIR$/_posts/2018-10-12-binarytree-traversal.md" />
+        <option value="$PROJECT_DIR$/_posts/2018-9-25-js-carryout.md" />
       </list>
     </option>
   </component>
@@ -239,18 +152,15 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="156" />
-    <option name="y" value="107" />
-    <option name="width" value="1393" />
-    <option name="height" value="795" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -277,6 +187,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -324,26 +235,30 @@
       <workItem from="1537804060086" duration="9180000" />
       <workItem from="1537892489761" duration="1225000" />
       <workItem from="1537932283238" duration="5166000" />
-      <workItem from="1538028381316" duration="7820000" />
+      <workItem from="1538028381316" duration="8231000" />
+      <workItem from="1538189460460" duration="407000" />
+      <workItem from="1539330543589" duration="7370000" />
+      <workItem from="1539585164002" duration="1848000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74943000" />
+    <option name="totallyTimeSpent" value="84979000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="156" y="107" width="1393" height="795" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20116618" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19450317" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5010571" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5024665" side_tool="true" weight="0.17818181" />
       <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.4989429" visible="true" weight="0.21060172" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49753347" weight="0.72848487" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -356,19 +271,19 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26004228" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4989429" weight="0.3295129" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5010571" side_tool="true" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
@@ -379,49 +294,41 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/about/index.md">
+    <entry file="file://$PROJECT_DIR$/_posts/2018-9-25-js-carryout.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2018-8-20-interview-ali.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="1872">
-            <caret line="78" selection-start-line="78" selection-end-line="78" />
+          <first_editor relative-caret-position="2784">
+            <caret line="116" column="17" selection-start-line="116" selection-start-column="17" selection-end-line="116" selection-end-column="17" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2018-9-16-ES6-func.md">
+    <entry file="file://$PROJECT_DIR$/_posts/2018-8-18-http-cache.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="696">
-            <caret line="29" column="7" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
+          <first_editor relative-caret-position="2400">
+            <caret line="100" column="6" selection-start-line="100" selection-start-column="6" selection-end-line="100" selection-end-column="6" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2018-9-14-jianzhi-fb.md">
+    <entry file="file://$PROJECT_DIR$/_posts/2018-10-12-binarytree-traversal.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="48">
-            <caret line="2" column="13" selection-start-line="2" selection-end-line="2" selection-end-column="13" />
+          <first_editor relative-caret-position="3240">
+            <caret line="135" column="17" selection-start-line="135" selection-start-column="17" selection-end-line="135" selection-end-column="17" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2018-9-16-ES6-func.md">
+    <entry file="file://$PROJECT_DIR$/_posts/2018-9-14-jianzhi-binarytree.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="696">
-            <caret line="29" column="7" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
+          <first_editor relative-caret-position="216">
+            <caret line="9" selection-end-line="9" />
           </first_editor>
           <second_editor />
         </state>
@@ -467,7 +374,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2018-9-14-jianzhi-2cs.md">
+    <entry file="file://$PROJECT_DIR$/_posts/2018-9-14-jianzhi-binarytree.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="192">
@@ -553,7 +460,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2018-9-14-jianzhi-2cs.md">
+    <entry file="file://$PROJECT_DIR$/_posts/2018-9-14-jianzhi-binarytree.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="264">
@@ -706,31 +613,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/images/2018-9-17-http-url/cache200.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/images/2018-9-17-http-url/cache304.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2018-9-14-jianzhi-2cs.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="24">
-            <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-            <folding>
-              <element signature="n#!!doc" expanded="true" />
-              <element signature="n#!!doc" expanded="true" />
-              <element signature="n#!!doc" expanded="true" />
-            </folding>
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_posts/2018-8-29-http-tcp-ip.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="712">
+          <first_editor relative-caret-position="912">
             <caret line="38" column="10" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
           </first_editor>
           <second_editor />
@@ -740,11 +626,8 @@
     <entry file="file://$PROJECT_DIR$/_posts/2018-8-30-interview-maoyan.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="24">
+          <first_editor relative-caret-position="1344">
             <caret line="56" selection-start-line="56" selection-end-line="56" />
-            <folding>
-              <element signature="n#!!doc" expanded="true" />
-            </folding>
           </first_editor>
           <second_editor />
         </state>
@@ -770,16 +653,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2018-9-25-js-carryout.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="120">
-            <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_posts/2018-9-21-leetcode5.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -793,7 +666,7 @@
     <entry file="file://$PROJECT_DIR$/_posts/2018-9-23-test-week.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="259">
+          <first_editor relative-caret-position="2184">
             <caret line="91" column="62" selection-start-line="91" selection-start-column="62" selection-end-line="91" selection-end-column="62" />
           </first_editor>
           <second_editor />
@@ -803,12 +676,8 @@
     <entry file="file://$PROJECT_DIR$/_posts/2018-9-17-http-url.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="1659">
+          <first_editor relative-caret-position="8904">
             <caret line="453" column="37" selection-start-line="453" selection-start-column="37" selection-end-line="453" selection-end-column="37" />
-            <folding>
-              <element signature="e#364#387#0" />
-              <element signature="e#4968#4990#0" />
-            </folding>
           </first_editor>
           <second_editor />
         </state>
@@ -817,8 +686,38 @@
     <entry file="file://$PROJECT_DIR$/_posts/2018-8-18-http-cache.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="126">
-            <caret line="101" column="93" selection-start-line="101" selection-start-column="4" selection-end-line="101" selection-end-column="93" />
+          <first_editor relative-caret-position="2400">
+            <caret line="100" column="6" selection-start-line="100" selection-start-column="6" selection-end-line="100" selection-end-column="6" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/2018-9-14-jianzhi-binarytree.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="216">
+            <caret line="9" selection-end-line="9" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/2018-10-12-binarytree-traversal.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="3096">
+            <caret line="135" column="10" selection-start-line="135" selection-start-column="10" selection-end-line="135" selection-end-column="10" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/2018-9-25-js-carryout.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="2448">
+            <caret line="102" column="6" selection-start-line="102" selection-start-column="6" selection-end-line="102" selection-end-column="6" />
           </first_editor>
           <second_editor />
         </state>
