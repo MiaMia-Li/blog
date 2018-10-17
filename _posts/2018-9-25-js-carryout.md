@@ -5,7 +5,7 @@ categories: JS基础
 tags:
 --- 
  
-![](https://segmentfault.com/img/bVbe2UQ?w=1744&h=782)
+![](https://image-static.segmentfault.com/760/146/760146142-5b6b8f9449021_articlex)
 ### 全局代码处理过程
 #### 预解析阶段 
 1. 读取整个源代码

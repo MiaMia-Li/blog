@@ -5,7 +5,19 @@ categories: Http
 tags:
 - TCP
 - IP
----
+---  
+### OSI七层网络模型  
+|OSI七层模型|	作用	|对应协议|对应设备|
+|---|---|---|---|
+|应用层|	它是计算机用户，以及各种应用程序和网络之间的接口|	HTTP, FTP, SMTP, POP3	|计算机设备|
+|表示层|	信息的语法语义以及它们的关系，如加密解密、转换翻译、压缩解压缩|IPX, LPP, XDP||
+|会话层|	建立、维护、管理应用程序之间的会话|	SSL, TLS, DAP, LDAP||
+|传输层|	服务点编址，分段与重组、连接控制、流量控制、差错控制|	TCP, UDP	|防火墙|
+|网络层|	为网络设备提供逻辑地址，进行路由选择、分组转发|	IP ARP RARP ICMP IGMP	|路由器|
+|数据链路层|	物理寻址，同时将原始比特流转变为逻辑传输路线|	PPTP, ARP, RARP	|交换机|
+|物理层|	机械、电子、定时接口通道信道上的原始比特流传输|	IEEE 802.2, Ethernet v.2, Internetwork	|网卡|  
+参考： [一张非常强大的OSI七层模型图解](https://www.cnblogs.com/lemo-/p/6391095.html)  
+
 ### TCP/IP协议族
 TCP/IP 是互联网相关的各类协议族的总称  
 ![](http://www.ituring.com.cn/figures/2014/PIC%20HTTP/05.d01z.005.png)  
