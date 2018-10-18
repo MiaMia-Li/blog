@@ -307,6 +307,386 @@
   
 
   <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/14/jianzhi-fb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lemon">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+                
+                <a class="post-title-link" href="/%E7%AE%97%E6%B3%95/2018/09/14/jianzhi-fb/" itemprop="url">
+                斐波那契数列
+              </a>
+            
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-14T00:00:00+08:00">
+                2018-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/%E7%AE%97%E6%B3%95" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <h3 id="斐波那契数列">斐波那契数列</h3>
+<p>大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项（从0开始，第0项为0）。
+n&lt;=39</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16</pre></td><td class="code"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">n</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">n</span><span class="o">==</span><span class="mi">1</span><span class="o">||</span><span class="nx">n</span><span class="o">==</span><span class="mi">2</span><span class="p">){</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">var</span> <span class="nx">f1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="nx">f2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="nx">f3</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;=</span><span class="nx">n</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="nx">f3</span><span class="o">=</span><span class="nx">f1</span><span class="o">+</span><span class="nx">f2</span><span class="p">;</span>
+        <span class="nx">f1</span><span class="o">=</span><span class="nx">f2</span><span class="p">;</span>
+        <span class="nx">f2</span><span class="o">=</span><span class="nx">f3</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">f3</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+</div>
+<h3 id="跳台阶">跳台阶</h3>
+<p>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。<br />
+递归公式 $f(n)=f(n-1)+f(n-2)$</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13</pre></td><td class="code"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">jumpFloor</span><span class="p">(</span><span class="nx">number</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">number</span><span class="o">&lt;=</span><span class="mi">3</span><span class="p">){</span>
+        <span class="k">return</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">var</span> <span class="nx">f1</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="nx">f2</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="nx">f3</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;=</span><span class="nx">number</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="nx">f3</span><span class="o">=</span><span class="nx">f1</span><span class="o">+</span><span class="nx">f2</span><span class="p">;</span>
+        <span class="nx">f1</span><span class="o">=</span><span class="nx">f2</span><span class="p">;</span>
+        <span class="nx">f2</span><span class="o">=</span><span class="nx">f3</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">f3</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+</div>
+
+
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/%E7%AE%97%E6%B3%95/2018/09/14/jianzhi-fb/#" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+        
+        
+        
+        
+          <div class="post-eof"></div>
+        
+      
+    </footer>
+  </article>
+
+  
+    
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/14/jianzhi-binarytree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lemon">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+                
+                <a class="post-title-link" href="/%E7%AE%97%E6%B3%95/2018/09/14/jianzhi-binarytree/" itemprop="url">
+                二叉树相关
+              </a>
+            
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-14T00:00:00+08:00">
+                2018-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/%E7%AE%97%E6%B3%95" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <h3 id="思路">思路</h3>
+<ol>
+  <li>二叉树多用递归思想，确定边界条件。</li>
+  <li>二叉树相关性质。</li>
+</ol>
+
+
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/%E7%AE%97%E6%B3%95/2018/09/14/jianzhi-binarytree/#" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+        
+        
+        
+        
+          <div class="post-eof"></div>
+        
+      
+    </footer>
+  </article>
+
+  
+    
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/13/leetcode3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -791,20 +1171,64 @@
 
 
 
-  <h3 id="tcpip协议族">TCP/IP协议族</h3>
-<p>TCP/IP 是互联网相关的各类协议族的总称<br />
-<img src="http://www.ituring.com.cn/figures/2014/PIC%20HTTP/05.d01z.005.png" alt="" /></p>
-<h3 id="tcpip-的分层管理">TCP/IP 的分层管理</h3>
-<p>TCP/IP 协议族按层次分别分为以下4层：<strong>应用层</strong>、<strong>传输层</strong>、<strong>网络层</strong>和<strong>数据链路层</strong>。<br />
-TCP/IP 协议族各层的作用如下。</p>
-<h4 id="应用层">应用层</h4>
-<p>应用层决定了向用户提供应用服务时通信的活动。<br />
-TCP/IP 协议族内预存了各类通用的应用服务。比如<br />
-<strong>FTP</strong>（File Transfer Protocol，文件传输协议)<br />
-<strong>DNS</strong>（Domain Name System，域名系统）
-<strong>Telent</strong>（远程终端协议)<br />
-<strong>SMTP</strong>（Simple Mail Transfer Protocol，简单邮件传输协议）<br />
-<strong>HTTP</strong>（HyperText Transfer Protocal，超文本传输协议）</p>
+  <h3 id="osi七层网络模型">OSI七层网络模型</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>OSI七层模型</th>
+      <th>作用</th>
+      <th>对应协议</th>
+      <th>对应设备</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>应用层</td>
+      <td>它是计算机用户，以及各种应用程序和网络之间的接口</td>
+      <td>HTTP, FTP, SMTP, POP3</td>
+      <td>计算机设备</td>
+    </tr>
+    <tr>
+      <td>表示层</td>
+      <td>信息的语法语义以及它们的关系，如加密解密、转换翻译、压缩解压缩</td>
+      <td>IPX, LPP, XDP</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>会话层</td>
+      <td>建立、维护、管理应用程序之间的会话</td>
+      <td>SSL, TLS, DAP, LDAP</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>传输层</td>
+      <td>服务点编址，分段与重组、连接控制、流量控制、差错控制</td>
+      <td>TCP, UDP</td>
+      <td>防火墙</td>
+    </tr>
+    <tr>
+      <td>网络层</td>
+      <td>为网络设备提供逻辑地址，进行路由选择、分组转发</td>
+      <td>IP ARP RARP ICMP IGMP</td>
+      <td>路由器</td>
+    </tr>
+    <tr>
+      <td>数据链路层</td>
+      <td>物理寻址，同时将原始比特流转变为逻辑传输路线</td>
+      <td>PPTP, ARP, RARP</td>
+      <td>交换机</td>
+    </tr>
+    <tr>
+      <td>物理层</td>
+      <td>机械、电子、定时接口通道信道上的原始比特流传输</td>
+      <td>IEEE 802.2, Ethernet v.2, Internetwork</td>
+      <td>网卡</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>参考： <a href="https://www.cnblogs.com/lemo-/p/6391095.html">一张非常强大的OSI七层模型图解</a></p>
 
 
 
@@ -1801,8 +2225,6 @@ http的缓存问题，这部分内容很重要，便来温习梳理一遍。</p>
         
         
         
-          <div class="post-eof"></div>
-        
       
     </footer>
   </article>
@@ -1864,7 +2286,7 @@ http的缓存问题，这部分内容很重要，便来温习梳理一遍。</p>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1886,7 +2308,7 @@ http的缓存问题，这部分内容很重要，便来温习梳理一遍。</p>
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

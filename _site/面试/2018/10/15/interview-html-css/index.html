@@ -1,0 +1,1319 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CSS布局," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Lemon" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="HTML部分 什么是&amp;lt;!DOCTYPE&amp;gt;？ DOCTYPE是html5标准网页声明，且必须声明在HTML文档的第一行。来告知浏览器的解析器用什么文档标准解析这个文档。 文档解析类型有： BackCompat：怪异模式，浏览器使用自己的怪异模式解析渲染页面。（如果没有声明DOCTYPE，默认就是这个模式） CSS1Compat：标准模式，浏览器使用W3C的标准解析渲染页面。 块级元素 行内元素 块级元素 内容">
+<meta name="keywords" content="CSS布局">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端面试HTML+CSS总结">
+<meta property="og:url" content="http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/10/15/interview-html-css/">
+<meta property="og:site_name" content="Lemon">
+<meta property="og:description" content="HTML部分 什么是&amp;lt;!DOCTYPE&amp;gt;？ DOCTYPE是html5标准网页声明，且必须声明在HTML文档的第一行。来告知浏览器的解析器用什么文档标准解析这个文档。 文档解析类型有： BackCompat：怪异模式，浏览器使用自己的怪异模式解析渲染页面。（如果没有声明DOCTYPE，默认就是这个模式） CSS1Compat：标准模式，浏览器使用W3C的标准解析渲染页面。 块级元素 行内元素 块级元素 内容">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端面试HTML+CSS总结">
+<meta name="twitter:description" content="HTML部分 什么是&amp;lt;!DOCTYPE&amp;gt;？ DOCTYPE是html5标准网页声明，且必须声明在HTML文档的第一行。来告知浏览器的解析器用什么文档标准解析这个文档。 文档解析类型有： BackCompat：怪异模式，浏览器使用自己的怪异模式解析渲染页面。（如果没有声明DOCTYPE，默认就是这个模式） CSS1Compat：标准模式，浏览器使用W3C的标准解析渲染页面。 块级元素 行内元素 块级元素 内容">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/"/>
+
+
+
+
+
+  <title>前端面试HTML+CSS总结 | Lemon</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lemon</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">前端学习的总结～</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/10/15/interview-html-css/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lemon">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            前端面试HTML+CSS总结
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-15T00:00:00+08:00">
+                2018-10-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/%E9%9D%A2%E8%AF%95" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 id="html部分">HTML部分</h2>
+<h3 id="什么是doctype">什么是&lt;!DOCTYPE&gt;？</h3>
+<p>DOCTYPE是html5标准网页声明，且必须声明在HTML文档的第一行。来告知浏览器的解析器用什么文档标准解析这个文档。<br />
+文档解析类型有：</p>
+<ul>
+  <li><code class="highlighter-rouge">BackCompat</code>：怪异模式，浏览器使用自己的怪异模式解析渲染页面。（如果没有声明DOCTYPE，默认就是这个模式）</li>
+  <li><code class="highlighter-rouge">CSS1Compat</code>：标准模式，浏览器使用W3C的标准解析渲染页面。</li>
+</ul>
+
+<h3 id="块级元素-行内元素">块级元素 行内元素</h3>
+<h4 id="块级元素">块级元素</h4>
+<h5 id="内容">内容</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th>标签</th>
+      <th>含义</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>h1-h6</td>
+      <td>标题</td>
+    </tr>
+    <tr>
+      <td>ul ol li</td>
+      <td>列表</td>
+    </tr>
+    <tr>
+      <td>p</td>
+      <td>段落</td>
+    </tr>
+    <tr>
+      <td>table</td>
+      <td>表格</td>
+    </tr>
+    <tr>
+      <td>form</td>
+      <td>表单</td>
+    </tr>
+    <tr>
+      <td>address</td>
+      <td>地址</td>
+    </tr>
+    <tr>
+      <td>blockquote</td>
+      <td>块引用</td>
+    </tr>
+    <tr>
+      <td>center</td>
+      <td>居中对齐</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="特性">特性</h5>
+<p>1.在新一行开始，而且其后的元素也必须另起一行显示  <br />
+2.宽度(width)、高度(height)、内边距(padding)和外边距(margin)都可控制<br />
+3.宽度没有设置时，默认为100%<br />
+4.块级元素可以容纳行内元素和其他块级元素</p>
+
+<h4 id="行内元素">行内元素</h4>
+<h5 id="内容-1">内容</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th>标签</th>
+      <th>含义</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>a</td>
+      <td>锚点</td>
+    </tr>
+    <tr>
+      <td>b</td>
+      <td>粗体</td>
+    </tr>
+    <tr>
+      <td>br</td>
+      <td>换行</td>
+    </tr>
+    <tr>
+      <td>cite</td>
+      <td>引用</td>
+    </tr>
+    <tr>
+      <td>code</td>
+      <td>代码</td>
+    </tr>
+    <tr>
+      <td>em</td>
+      <td>强调</td>
+    </tr>
+    <tr>
+      <td>img</td>
+      <td>图片</td>
+    </tr>
+    <tr>
+      <td>input</td>
+      <td>输入框</td>
+    </tr>
+    <tr>
+      <td>label</td>
+      <td>表格标签</td>
+    </tr>
+    <tr>
+      <td>q</td>
+      <td>短引用</td>
+    </tr>
+    <tr>
+      <td>select</td>
+      <td>项目选择</td>
+    </tr>
+    <tr>
+      <td>small</td>
+      <td>小字体文本</td>
+    </tr>
+    <tr>
+      <td>span</td>
+      <td>常用内联容器，定义文本内区块</td>
+    </tr>
+    <tr>
+      <td>strong</td>
+      <td>粗体强调</td>
+    </tr>
+    <tr>
+      <td>sub</td>
+      <td>下标</td>
+    </tr>
+    <tr>
+      <td>sup</td>
+      <td>上标</td>
+    </tr>
+    <tr>
+      <td>textarea</td>
+      <td>多行文本输入框</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="特性-1">特性</h5>
+<p>1.内联元素允许其他内联元素与其位于同一行 <br />
+2.行内元素不可以设置宽高<br />
+3.行内元素水平方向的 margin 和 padding 可以生效。但竖直方向的 margin 和 padding 不能生效<br />
+4.行内元素只能包含数据和其他行内元素</p>
+
+<h3 id="html5离线储存">HTML5离线储存</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>特性</th>
+      <th>cookie</th>
+      <th>localStorage</th>
+      <th>sessionStorage</th>
+      <th>indexDB</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>数据生命周期</td>
+      <td>一般由服务器生成，可以设置过期时间</td>
+      <td>除非被清理，否则一直存在</td>
+      <td>页面关闭就清理</td>
+      <td>除非被清理，否则一直存在</td>
+    </tr>
+    <tr>
+      <td>数据存储大小</td>
+      <td>4K</td>
+      <td>5M</td>
+      <td>5M</td>
+      <td>无限</td>
+    </tr>
+    <tr>
+      <td>与服务端通信</td>
+      <td>每次都会携带在 header 中，对于请求性能影响</td>
+      <td>不参与</td>
+      <td>不参与</td>
+      <td>不参与</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>从上表可以看到，cookie 已经不建议用于存储。如果没有大量数据存储需求的话，可以使用 localStorage 和 sessionStorage 。
+对于不怎么改变的数据尽量使用 localStorage 存储，否则可以用 sessionStorage 存储。</p>
+
+<h4 id="常用api">常用API</h4>
+<p><code class="highlighter-rouge">setItem(key,value)</code>: 设置由参数定义的键值对。如果该键已经存在，那么对应值更新为参数中的值。<br />
+<code class="highlighter-rouge">getItem(key)</code>: 获取参数中键对应的键值对<br />
+<code class="highlighter-rouge">removeItem(key)</code>: 删除参数中对应的键值对<br />
+<code class="highlighter-rouge">key(n)</code>: 返回索引对应的键名<br />
+<code class="highlighter-rouge">clear</code>: 删除所有的键值对<br />
+<code class="highlighter-rouge">length</code>: 提供存储列表中键值对的数量</p>
+
+<p>🌰 对用户访问页面的次数进行计数</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11</pre></td><td class="code"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text/javascript"</span><span class="o">&gt;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">pagecount</span><span class="p">)</span>
+  <span class="p">{</span>
+  <span class="nx">localStorage</span><span class="p">.</span><span class="nx">pagecount</span><span class="o">=</span><span class="nb">Number</span><span class="p">(</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">pagecount</span><span class="p">)</span> <span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="k">else</span>
+  <span class="p">{</span>
+  <span class="nx">localStorage</span><span class="p">.</span><span class="nx">pagecount</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">"Visits "</span><span class="o">+</span> <span class="nx">localStorage</span><span class="p">.</span><span class="nx">pagecount</span> <span class="o">+</span> <span class="s2">" time(s)."</span><span class="p">);</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre></td></tr></tbody></table></div>
+</div>
+
+<h3 id="浏览器内核">浏览器内核</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>浏览器</th>
+      <th>内核</th>
+      <th>兼容性前缀</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>IEtrident</td>
+      <td>-ms-</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>chrome</td>
+      <td>webkit</td>
+      <td>-webkit-</td>
+    </tr>
+    <tr>
+      <td>safari</td>
+      <td>webkit</td>
+      <td>-webkit-</td>
+    </tr>
+    <tr>
+      <td>firefox</td>
+      <td>gecko</td>
+      <td>-moz-</td>
+    </tr>
+    <tr>
+      <td>opera</td>
+      <td>blink</td>
+      <td>-o-</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="meta标签">meta标签</h3>
+<p>meta标签：提供给页面的一些元信息（名称/值对）， 比如针对搜索引擎和更新频度的描述和关键词。</p>
+<ul>
+  <li>name：名称/值对中的名称。常用的有author、description、keywords、generator、revised、others。 把 content 属性关联到一个名称。</li>
+  <li>http-equiv：没有name时，会采用这个属性的值。常用的有content-type、expires、refresh、set-cookie。把content属性关联到http头部。</li>
+  <li>content： 名称/值对中的值， 可以是任何有效的字符串。 始终要和 name 属性或 http-equiv 属性一起使用。</li>
+  <li>scheme： 用于指定要用来翻译属性值的方案。</li>
+</ul>
+
+<h2 id="css部分">CSS部分</h2>
+<h3 id="css哪些属性可以继承">css哪些属性可以继承</h3>
+<ul>
+  <li>字体相关：line-height, font-family, font-size, font-style, font-variant, font-weight, font</li>
+  <li>文本相关： letter-spacing, text-align, text-indent, text-transform, word-spacing</li>
+  <li>列表相关：list-style-image, list-style-position, list-style-type, list-style</li>
+  <li>颜色：color</li>
+</ul>
+
+<h3 id="css3有哪些新属性">css3有哪些新属性</h3>
+<ol>
+  <li>边框
+    <ul>
+      <li>border-radius：圆角边框，border-radius:25px;</li>
+      <li>box-shadow：边框阴影，box-shadow: 10px 10px 5px #888888;</li>
+      <li>border-image：边框图片，border-image:url(border.png) 30 30 round;</li>
+    </ul>
+  </li>
+  <li>背景：
+    <ul>
+      <li>background-size：规定背景图片的尺寸，background-size:63px 100px;</li>
+      <li>background-origin：规定背景图片的定位区域，背景图片可以放置于 content-box、padding-box 或 border-box 区域。background-origin:content-box;</li>
+      <li>CSS3 允许您为元素使用多个背景图像。background-image:url(bg_flower.gif),url(bg_flower_2.gif);</li>
+    </ul>
+  </li>
+  <li>文本效果：
+    <ul>
+      <li>text-shadow：向文本应用阴影，可以规定水平阴影、垂直阴影、模糊距离，以及阴影的颜色。text-shadow: 5px 5px 5px #FF0000;</li>
+      <li>word-wrap：允许文本进行换行。word-wrap:break-word;</li>
+    </ul>
+  </li>
+  <li>字体：CSS3 @font-face 规则可以自定义字体。</li>
+  <li>2D 转换（transform）
+    <ul>
+      <li>translate()：元素从其当前位置移动，根据给定的 left（x 坐标） 和 top（y 坐标） 位置参数。 transform: translate(50px,100px);</li>
+      <li>rotate()：元素顺时针旋转给定的角度。允许负值，元素将逆时针旋转。transform: rotate(30deg);</li>
+      <li>scale()：元素的尺寸会增加或减少，根据给定的宽度（X 轴）和高度（Y 轴）参数。transform: scale(2,4);</li>
+      <li>skew()：元素翻转给定的角度，根据给定的水平线（X 轴）和垂直线（Y 轴）参数。transform: skew(30deg,20deg);</li>
+      <li>matrix()： 把所有 2D 转换方法组合在一起，需要六个参数，包含数学函数，允许您：旋转、缩放、移动以及倾斜元素。transform:matrix(0.866,0.5,-0.5,0.866,0,0);</li>
+    </ul>
+  </li>
+  <li>3D 转换
+    <ul>
+      <li>rotateX()：元素围绕其 X 轴以给定的度数进行旋转。transform: rotateX(120deg);</li>
+      <li>rotateY()：元素围绕其 Y 轴以给定的度数进行旋转。transform: rotateY(130deg);</li>
+    </ul>
+  </li>
+  <li>transition：过渡效果，使页面变化更平滑
+    <ul>
+      <li>transition-property：执行动画对应的属性，例如 color，background 等，可以使用 all 来指定所有的属性。</li>
+      <li>transition-duration：过渡动画的一个持续时间。</li>
+      <li>transition-timing-function：在延续时间段，动画变化的速率，常见的有：ease / linear / ease-in / ease-out / ease-in-out / cubic-bezier</li>
+      <li>transition-delay：延迟多久后开始动画。<br />
+简写为：transition: <code class="highlighter-rouge">[&lt;transition-property&gt; || &lt;transition-duration&gt; || &lt;transition-timing-function&gt; || &lt;transition-delay&gt;]</code>;</li>
+    </ul>
+  </li>
+  <li>animation：动画<br />
+使用CSS3 @keyframes 规则。
+    <ul>
+      <li>animation-name: 定义动画名称</li>
+      <li>animation-duration: 指定元素播放动画所持续的时间长</li>
+      <li>animation-timing-function:ease / linear / ease-in / ease-out / ease-in-out / cubic-bezier(<code class="highlighter-rouge">&lt;number&gt;, &lt;number&gt;, &lt;number&gt;, &lt;number&gt;</code>)： 指元素根据时间的推进来改变属性值的变换速率，说得简单点就是动画的播放方式。</li>
+      <li>animation-delay: 指定元素动画开始时间</li>
+      <li>animation-iteration-count:infinite  <number>：指定元素播放动画的循环次</number></li>
+      <li>animation-direction: normal / alternate： 指定元素动画播放的方向，其只有两个值，默认值为normal，如果设置为normal时，动画的每次循环都是向前播放；另一个值是alternate，他的作用是，动画播放在第偶数次向前播放，第奇数次向反方向播放。</li>
+      <li>animation-play-state:running | paused：控制元素动画的播放状态。<br />
+简写为：animation:<code class="highlighter-rouge">[&lt;animation-name&gt; || &lt;animation-duration&gt; || &lt;animation-timing-function&gt; || &lt;animation-delay&gt; || &lt;animation-iteration-count&gt; || &lt;animation-direction&gt;]</code></li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="pxemrempt的区别">px，em，rem，pt的区别</h3>
+<p>1）px实际上就是像素，用px设置字体大小时，比较稳定和精确 <br />
+但是这种方法存在一个问题，当用户在浏览器中浏览我们制作的web页面时，如果对浏览器进行了缩放，这时会使我们的web页面布局被打破。因此，这时就提出了使用“em”来定义web页面的字体。<br />
+2）em就是根据基准来缩放字体的大小 <br />
+em是相对于其父元素来设置字体大小的，这样就会存在一个问题，进行任何元素设置，都有可能需要知道他父元素的大小<br />
+3）rem是相对于根元素字体大小来显示的  <br />
+rem是相对于根元素&lt;html&gt;，这样就意味着，我们只需要在根元素确定一个参考值<br />
+4）pt的大小等于1英寸的1/72磅：他是作为文字的一种计量单位<br />
+这种度量方式来源于打印-设计背景，最适合于媒体，但同样广泛应用于显示器</p>
+
+<h3 id="css3新增伪类">css3新增伪类</h3>
+<p>p:first-of-type 选择属于其父元素的首个 &lt;p&gt; 元素的每个 &lt;p&gt; 元素。<br />
+ p:last-of-type  选择属于其父元素的最后 &lt;p&gt; 元素的每个 &lt;p&gt; 元素。<br />
+ p:only-of-type  选择属于其父元素唯一的 &lt;p&gt; 元素的每个 &lt;p&gt; 元素。<br />
+ p:only-child        选择属于其父元素的唯一子元素的每个 &lt;p&gt; 元素。<br />
+ p:nth-child(2)  选择属于其父元素的第二个子元素的每个 &lt;p&gt; 元素。<br />
+ :after          在元素之前添加内容,也可以用来做清除浮动。<br />
+ :before         在元素之后添加内容<br />
+ :enabled      <br />
+ :disabled       控制表单控件的禁用状态。<br />
+ :checked        单选框或复选框被选中。</p>
+
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/assets/images/alipay-reward-image.jpg" alt="Lmy Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/CSS%E5%B8%83%E5%B1%80" rel="tag"># CSS布局</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/%E7%AE%97%E6%B3%95/2018/10/17/sort/" rel="next" title="排序算法的JavaScript实现">
+                <i class="fa fa-chevron-left"></i> 排序算法的JavaScript实现
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/%E7%AE%97%E6%B3%95/2018/10/12/binarytree-traversal/" rel="prev" title="二叉树的前中后序层次遍历">
+                二叉树的前中后序层次遍历 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/avatar.jpg"
+               alt="Lmy" />
+          <p class="site-author-name" itemprop="name">Lmy</p>
+           
+              <p class="site-description motion-element" itemprop="description">对社会有所创造，为他人付出过，完善自己。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://github.com/supersui" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/cherry" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2887635897" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/xue-xiao-yao" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-link"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-2"> <a class="nav-link" href="#html部分"> <span class="nav-number">1</span> <span class="nav-text">HTML部分</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#什么是doctype"> <span class="nav-number">1.1</span> <span class="nav-text">什么是&lt;!DOCTYPE&gt;？</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#块级元素-行内元素"> <span class="nav-number">1.2</span> <span class="nav-text">块级元素 行内元素</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#块级元素"> <span class="nav-number">1.2.1</span> <span class="nav-text">块级元素</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-5"> <a class="nav-link" href="#内容"> <span class="nav-number">1.2.1.1</span> <span class="nav-text">内容</span> </a> </li> <li class="nav-item nav-level-5"> <a class="nav-link" href="#特性"> <span class="nav-number">1.2.1.2</span> <span class="nav-text">特性</span> </a> </li> </ol> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#行内元素"> <span class="nav-number">1.2.2</span> <span class="nav-text">行内元素</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-5"> <a class="nav-link" href="#内容-1"> <span class="nav-number">1.2.2.1</span> <span class="nav-text">内容</span> </a> </li> <li class="nav-item nav-level-5"> <a class="nav-link" href="#特性-1"> <span class="nav-number">1.2.2.2</span> <span class="nav-text">特性</span> </a> </li> </ol> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#html5离线储存"> <span class="nav-number">1.3</span> <span class="nav-text">HTML5离线储存</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#常用api"> <span class="nav-number">1.3.1</span> <span class="nav-text">常用API</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#浏览器内核"> <span class="nav-number">1.4</span> <span class="nav-text">浏览器内核</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#meta标签"> <span class="nav-number">1.5</span> <span class="nav-text">meta标签</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#css部分"> <span class="nav-number">2</span> <span class="nav-text">CSS部分</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#css哪些属性可以继承"> <span class="nav-number">2.1</span> <span class="nav-text">css哪些属性可以继承</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#css3有哪些新属性"> <span class="nav-number">2.2</span> <span class="nav-text">css3有哪些新属性</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#pxemrempt的区别"> <span class="nav-number">2.3</span> <span class="nav-text">px，em，rem，pt的区别</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#css3新增伪类"> <span class="nav-number">2.4</span> <span class="nav-text">css3新增伪类</span> </a> </li> </ol> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lmy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://jekyllrb.com">Jekyll</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+

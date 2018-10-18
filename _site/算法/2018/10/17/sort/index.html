@@ -1,0 +1,1224 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="排序,JS基础," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Lemon" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="常见排序算法">
+<meta name="keywords" content="排序, JS基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序算法的JavaScript实现">
+<meta property="og:url" content="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/10/17/sort/">
+<meta property="og:site_name" content="Lemon">
+<meta property="og:description" content="常见排序算法">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/1024555/201612/1024555-20161217182750011-675658660.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="排序算法的JavaScript实现">
+<meta name="twitter:description" content="常见排序算法">
+<meta name="twitter:image" content="https://images2015.cnblogs.com/blog/1024555/201612/1024555-20161217182750011-675658660.png">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/"/>
+
+
+
+
+
+  <title>排序算法的JavaScript实现 | Lemon</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lemon</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">前端学习的总结～</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/10/17/sort/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lemon">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            排序算法的JavaScript实现
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-17T00:00:00+08:00">
+                2018-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/%E7%AE%97%E6%B3%95" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <h3 id="常见排序算法">常见排序算法</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>排序方法</th>
+      <th>平均情况</th>
+      <th>最好情况</th>
+      <th>最坏情况</th>
+      <th>辅助空间</th>
+      <th>稳定性</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>冒泡排序</td>
+      <td>$O(n^2)$</td>
+      <td>$O(n)$</td>
+      <td>$O(n^2)$</td>
+      <td>$O(1)$</td>
+      <td>稳定</td>
+    </tr>
+    <tr>
+      <td>插入排序</td>
+      <td>$O(n^2)$</td>
+      <td>$O(n)$</td>
+      <td>$O(n^2)$</td>
+      <td>$O(1)$</td>
+      <td>稳定</td>
+    </tr>
+    <tr>
+      <td>希尔排序</td>
+      <td>$O(nlog_2n)–O(n^2)$</td>
+      <td>$O(n^{1.3})$</td>
+      <td>$O(n^2)$</td>
+      <td>$O(1)$</td>
+      <td>不稳定</td>
+    </tr>
+    <tr>
+      <td>选择排序</td>
+      <td>$O(n^2)$</td>
+      <td>$O(n^2)$</td>
+      <td>$O(n^2)$</td>
+      <td>$O(1)$</td>
+      <td>不稳定</td>
+    </tr>
+    <tr>
+      <td>快速排序</td>
+      <td>$O(nlog_2n)$</td>
+      <td>$O(nlog_2n)$</td>
+      <td>$O(n^2)$</td>
+      <td>$O(log_2n)–O(n)$</td>
+      <td>不稳定</td>
+    </tr>
+    <tr>
+      <td>堆排序</td>
+      <td>$O(nlog_2n)$</td>
+      <td>$O(nlog_2n)$</td>
+      <td>$O(nlog_2n)$</td>
+      <td>$O(1)$</td>
+      <td>不稳定</td>
+    </tr>
+    <tr>
+      <td>归并排序</td>
+      <td>$O(nlog_2n)$</td>
+      <td>$O(nlog_2n)$</td>
+      <td>$O(nlog_2n)$</td>
+      <td>$O(n)$</td>
+      <td>稳定</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="冒泡排序">冒泡排序</h3>
+<h4 id="思路">思路</h4>
+<p>1.依次比较相邻的两个数，如果第一个比第二个小，不变。如果第一个比第二个大，调换顺序。<strong>一轮下来，最后一个是最大的数</strong>。<br />
+2.对除了最后一个之外的数重复第一步，直到只剩一个数</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12</pre></td><td class="code"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">BubbleSort</span><span class="p">(</span><span class="nx">arr</span><span class="p">){</span>
+	<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">j</span><span class="o">&lt;</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="nx">i</span><span class="p">;</span><span class="nx">j</span><span class="o">++</span><span class="p">){</span>
+			<span class="k">if</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span><span class="o">&gt;</span><span class="nx">arr</span><span class="p">[</span><span class="nx">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]){</span>
+				<span class="kd">var</span> <span class="nx">temp</span><span class="o">=</span><span class="nx">arr</span><span class="p">[</span><span class="nx">j</span><span class="p">];</span>
+				<span class="nx">arr</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span><span class="o">=</span><span class="nx">arr</span><span class="p">[</span><span class="nx">j</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+				<span class="nx">arr</span><span class="p">[</span><span class="nx">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="nx">temp</span><span class="p">;</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">arr</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+</div>
+<h3 id="插入排序">插入排序</h3>
+<h4 id="思路-1">思路</h4>
+<p>1.把数组分为<strong>已排序</strong>和<strong>未排序</strong>两部分,第一个数为已排序，其余为未排序。    <br />
+2.从未排序取第一个数，和已排序部分比较，插入到合适的位置</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10</pre></td><td class="code"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">InsertSort</span><span class="p">(</span><span class="nx">arr</span><span class="p">){</span>
+	<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>  <span class="c1">//从未排序部分开始</span>
+		<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">j</span><span class="o">=</span><span class="nx">i</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="nx">j</span><span class="o">&gt;=</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span><span class="o">&gt;</span><span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span><span class="nx">j</span><span class="o">--</span><span class="p">){</span>  <span class="c1">//和已排序部分依次比较</span>
+			<span class="kd">var</span> <span class="nx">temp</span><span class="o">=</span><span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="p">];</span>
+			<span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span><span class="o">=</span><span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+			<span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="nx">temp</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">arr</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+</div>
+<h3 id="希尔排序">希尔排序</h3>
+<h4 id="思路-2">思路</h4>
+<p>希尔排序是插入排序的一种更高效率的实现，核心在于间隔序列的设定。既可以提前设定好间隔序列，也可以动态定义间隔序列。</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12</pre></td><td class="code"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">ShellSort</span><span class="p">(</span><span class="nx">arr</span><span class="p">){</span>
+	<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">gap</span><span class="o">=</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span><span class="nx">gap</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">;</span><span class="nx">gap</span><span class="o">=</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">gap</span><span class="o">/</span><span class="mi">2</span><span class="p">)){</span>
+		<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="nx">gap</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+			<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">j</span><span class="o">=</span><span class="nx">i</span><span class="o">-</span><span class="nx">gap</span><span class="p">;</span><span class="nx">j</span><span class="o">&gt;=</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span><span class="o">&gt;</span><span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="o">+</span><span class="nx">gap</span><span class="p">];</span><span class="nx">j</span><span class="o">-=</span><span class="nx">gap</span><span class="p">){</span>
+				<span class="kd">var</span> <span class="nx">temp</span><span class="o">=</span><span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="p">];</span>
+				<span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span><span class="o">=</span><span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="o">+</span><span class="nx">gap</span><span class="p">];</span>
+				<span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="o">+</span><span class="nx">gap</span><span class="p">]</span><span class="o">=</span><span class="nx">temp</span><span class="p">;</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">arr</span><span class="p">;</span>
+<span class="p">}</span>  
+</code></pre></td></tr></tbody></table></div>
+</div>
+
+<h3 id="选择排序">选择排序</h3>
+<h4 id="思路-3">思路</h4>
+<p>1.找出最小的数，和第一个交换位置。<br />
+2.在剩下的数中，找出最二小的数，放在第二个。<br />
+3.依次类推，排出顺序。</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14</pre></td><td class="code"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">SelectSort</span><span class="p">(</span><span class="nx">arr</span><span class="p">){</span>
+	<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="kd">var</span> <span class="nx">minIndex</span><span class="o">=</span><span class="nx">i</span><span class="p">;</span>
+		<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">j</span><span class="o">=</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="nx">j</span><span class="o">&lt;</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">j</span><span class="o">++</span><span class="p">){</span>
+			<span class="k">if</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span><span class="o">&lt;</span><span class="nx">arr</span><span class="p">[</span><span class="nx">minIndex</span><span class="p">]){</span>
+				<span class="nx">minIndex</span><span class="o">=</span><span class="nx">j</span><span class="p">;</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+		<span class="kd">var</span> <span class="nx">temp</span><span class="o">=</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+		<span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="o">=</span><span class="nx">arr</span><span class="p">[</span><span class="nx">minIndex</span><span class="p">];</span>
+		<span class="nx">arr</span><span class="p">[</span><span class="nx">minIndex</span><span class="p">]</span><span class="o">=</span><span class="nx">temp</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">arr</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+</div>
+
+<h3 id="快速排序">快速排序</h3>
+<h4 id="思路-4">思路</h4>
+<p>1.以一个数为基准(中间的数)，比基准小的放到左边，比基准大的放到右边。<br />
+2.再按此方法对这两部分数据分别进行快速排序（递归进行）。<br />
+3.不能再分后退出递归，并重新将数组合并。</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17</pre></td><td class="code"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">QuickSort</span><span class="p">(</span><span class="nx">arr</span><span class="p">){</span>
+	<span class="k">if</span><span class="p">(</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">){</span>
+		<span class="k">return</span> <span class="nx">arr</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="c1">//中间基准值</span>
+	<span class="kd">var</span> <span class="nx">pivotIndex</span><span class="o">=</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+	<span class="kd">var</span> <span class="nx">pivot</span><span class="o">=</span><span class="nx">arr</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">pivotIndex</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+	<span class="kd">var</span> <span class="nx">left</span><span class="o">=</span><span class="p">[],</span><span class="nx">right</span><span class="o">=</span><span class="p">[];</span>
+	<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    	<span class="k">if</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="o">&lt;</span><span class="nx">pivot</span><span class="p">){</span>
+    		<span class="nx">left</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+    	<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+    		<span class="nx">right</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+    	<span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">QuickSort</span><span class="p">(</span><span class="nx">left</span><span class="p">).</span><span class="nx">concat</span><span class="p">([</span><span class="nx">pivot</span><span class="p">],</span><span class="nx">QuickSort</span><span class="p">(</span><span class="nx">right</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+</div>
+<h3 id="堆排序">堆排序</h3>
+<p>堆是具有以下性质的完全二叉树：每个节点的值都大于或者等于其左右节点的值，称为大顶堆；每个节点的值都小于或者等于其左右孩子节点的值，称为小顶堆。如下图<br />
+<img src="https://images2015.cnblogs.com/blog/1024555/201612/1024555-20161217182750011-675658660.png" alt="" /></p>
+
+<p>用公式描述堆的定义<br />
+大顶堆：<code class="highlighter-rouge">arr[i] &gt;= arr[2i+1] &amp;&amp; arr[i] &gt;= arr[2i+2]</code><br />
+小顶堆：<code class="highlighter-rouge">arr[i] &lt;= arr[2i+1] &amp;&amp; arr[i] &lt;= arr[2i+2]</code></p>
+<h4 id="思路-5">思路</h4>
+<p>1.构造初始堆。将给定无序序列构造成一个大顶堆（一般升序采用大顶堆，降序采用小顶堆) <br />
+2.堆顶元素与末尾元素进行交换，使末尾元素最大。然后继续调整堆，再将堆顶元素与末尾元素交换，得到第二大元素。如此反复进行交换、重建、交换。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31<br/>32<br/>33<br/>34</pre></td><td class="code"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">HeapSort</span><span class="p">(</span><span class="nx">arr</span><span class="p">){</span>
+	<span class="c1">//从第一个非叶子节点从下至上，从右至左调整结构</span>
+	<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="nx">i</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">--</span><span class="p">){</span>
+		<span class="nx">adjustHeap</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span><span class="nx">k</span><span class="p">,</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">j</span><span class="o">=</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="nx">j</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">;</span><span class="nx">j</span><span class="o">--</span><span class="p">){</span>
+		<span class="c1">//交换栈顶元素与末尾元素</span>
+		<span class="kd">var</span> <span class="nx">temp</span><span class="o">=</span><span class="nx">arr</span><span class="p">[</span><span class="nx">j</span><span class="p">];</span>
+		<span class="nx">arr</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span><span class="o">=</span><span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+		<span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="nx">temp</span><span class="p">;</span>
+		<span class="nx">adjustHeap</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nx">j</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">arr</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">adjustHeap</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span><span class="nx">i</span><span class="p">,</span><span class="nx">length</span><span class="p">){</span>
+	<span class="c1">//取出当前元素</span>
+	<span class="kd">var</span> <span class="nx">current</span><span class="o">=</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+	<span class="c1">//从i结点的左子结点开始，也就是2i+1处开始</span>
+	<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">k</span><span class="o">=</span><span class="nx">i</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="nx">k</span><span class="o">&lt;</span><span class="nx">length</span><span class="p">;</span><span class="nx">k</span><span class="o">=</span><span class="nx">k</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">){</span>
+		<span class="c1">//如果左子结点小于右子结点，k指向右子结点</span>
+		<span class="k">if</span><span class="p">(</span><span class="nx">k</span><span class="o">+</span><span class="mi">1</span><span class="o">&lt;</span><span class="nx">length</span><span class="o">&amp;&amp;</span><span class="nx">arr</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span><span class="o">&lt;</span><span class="nx">arr</span><span class="p">[</span><span class="nx">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]){</span>
+			<span class="nx">k</span><span class="o">++</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="c1">//如果子节点大于父节点，将子节点值赋给父节点（不用进行交换）</span>
+		<span class="k">if</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span><span class="o">&gt;</span><span class="nx">current</span><span class="p">){</span>
+			<span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="o">=</span><span class="nx">arr</span><span class="p">[</span><span class="nx">k</span><span class="p">];</span>
+			<span class="nx">i</span><span class="o">=</span><span class="nx">k</span><span class="p">;</span>
+		<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="o">=</span><span class="nx">current</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+</div>
+<h3 id="归并排序">归并排序</h3>
+<h4 id="思路-6">思路</h4>
+<p>1.不断将数组对半分，直到每个数组只有一个。<br />
+2.将分出来的部分重新合并。<br />
+3.合并的时候按顺序排列。</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30</pre></td><td class="code"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">MergeSort</span><span class="p">(</span><span class="nx">arr</span><span class="p">){</span>
+	<span class="k">if</span><span class="p">(</span><span class="nx">arr</span><span class="p">.</span><span class="nx">lenth</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">){</span>
+		<span class="k">return</span> <span class="nx">arr</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="kd">var</span> <span class="nx">mid</span><span class="o">=</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+	<span class="kd">var</span> <span class="nx">left</span><span class="o">=</span><span class="nx">arr</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nx">mid</span><span class="p">);</span>
+	<span class="kd">var</span> <span class="nx">right</span><span class="o">=</span><span class="nx">arr</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">mid</span><span class="p">);</span>
+	<span class="k">return</span> <span class="nx">mergeArray</span><span class="p">(</span><span class="nx">MergeSort</span><span class="p">(</span><span class="nx">left</span><span class="p">),</span><span class="nx">mergeArray</span><span class="p">(</span><span class="nx">right</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="c1">//合并左右数组</span>
+<span class="kd">function</span> <span class="nx">mergeArray</span><span class="p">(</span><span class="nx">l</span><span class="p">,</span><span class="nx">r</span><span class="p">){</span>
+	<span class="kd">var</span> <span class="nx">res</span><span class="o">=</span><span class="p">[];</span>
+	<span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nx">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+	<span class="k">while</span><span class="p">(</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">l</span><span class="p">.</span><span class="nx">length</span><span class="o">&amp;&amp;</span><span class="nx">j</span><span class="o">&lt;</span><span class="nx">r</span><span class="p">.</span><span class="nx">length</span><span class="p">){</span>
+		<span class="k">if</span><span class="p">(</span><span class="nx">l</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="o">&lt;</span><span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]){</span>
+			<span class="nx">res</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">l</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+			<span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+		<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+			<span class="nx">res</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">r</span><span class="p">[</span><span class="nx">j</span><span class="p">]);</span>
+			<span class="nx">j</span><span class="o">++</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">if</span><span class="p">(</span><span class="nx">i</span><span class="o">==</span><span class="nx">l</span><span class="p">.</span><span class="nx">length</span><span class="p">){</span>
+		<span class="nx">res</span><span class="o">=</span><span class="nx">res</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">j</span><span class="p">));</span>
+	<span class="p">}</span>
+	<span class="k">if</span><span class="p">(</span><span class="nx">j</span><span class="o">==</span><span class="nx">r</span><span class="p">.</span><span class="nx">length</span><span class="p">){</span>
+		<span class="nx">res</span><span class="o">=</span><span class="nx">res</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">l</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">i</span><span class="p">));</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">res</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+</div>
+
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/assets/images/alipay-reward-image.jpg" alt="Lmy Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/%E6%8E%92%E5%BA%8F" rel="tag"># 排序</a>
+          
+            
+            <a href="/tag/#/JS%E5%9F%BA%E7%A1%80" rel="tag"># JS基础</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/%E9%9D%A2%E8%AF%95/2018/10/15/interview-html-css/" rel="prev" title="前端面试HTML+CSS总结">
+                前端面试HTML+CSS总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/avatar.jpg"
+               alt="Lmy" />
+          <p class="site-author-name" itemprop="name">Lmy</p>
+           
+              <p class="site-description motion-element" itemprop="description">对社会有所创造，为他人付出过，完善自己。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://github.com/supersui" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/cherry" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2887635897" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/xue-xiao-yao" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-link"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-3"> <a class="nav-link" href="#常见排序算法"> <span class="nav-number">1</span> <span class="nav-text">常见排序算法</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#冒泡排序"> <span class="nav-number">2</span> <span class="nav-text">冒泡排序</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#思路"> <span class="nav-number">2.1</span> <span class="nav-text">思路</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#插入排序"> <span class="nav-number">3</span> <span class="nav-text">插入排序</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#思路-1"> <span class="nav-number">3.1</span> <span class="nav-text">思路</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#希尔排序"> <span class="nav-number">4</span> <span class="nav-text">希尔排序</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#思路-2"> <span class="nav-number">4.1</span> <span class="nav-text">思路</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#选择排序"> <span class="nav-number">5</span> <span class="nav-text">选择排序</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#思路-3"> <span class="nav-number">5.1</span> <span class="nav-text">思路</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#快速排序"> <span class="nav-number">6</span> <span class="nav-text">快速排序</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#思路-4"> <span class="nav-number">6.1</span> <span class="nav-text">思路</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#堆排序"> <span class="nav-number">7</span> <span class="nav-text">堆排序</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#思路-5"> <span class="nav-number">7.1</span> <span class="nav-text">思路</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#归并排序"> <span class="nav-number">8</span> <span class="nav-text">归并排序</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#思路-6"> <span class="nav-number">8.1</span> <span class="nav-text">思路</span> </a> </li> </ol> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lmy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://jekyllrb.com">Jekyll</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+
