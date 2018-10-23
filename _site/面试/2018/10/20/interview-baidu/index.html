@@ -1,0 +1,1119 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CSS布局,Http,ES6,Vue,闭包,作用域链," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Lemon" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="写在前面 百度是三面技术，题目还是挺基础的，重点是要抓住面试官想问你什么，哪个知识点， 抽象出来就很好回答了～⛽️">
+<meta name="keywords" content="CSS布局, Http, ES6, Vue, 闭包, 作用域链">
+<meta property="og:type" content="article">
+<meta property="og:title" content="百度面经">
+<meta property="og:url" content="http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/10/20/interview-baidu/">
+<meta property="og:site_name" content="Lemon">
+<meta property="og:description" content="写在前面 百度是三面技术，题目还是挺基础的，重点是要抓住面试官想问你什么，哪个知识点， 抽象出来就很好回答了～⛽️">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="百度面经">
+<meta name="twitter:description" content="写在前面 百度是三面技术，题目还是挺基础的，重点是要抓住面试官想问你什么，哪个知识点， 抽象出来就很好回答了～⛽️">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/"/>
+
+
+
+
+
+  <title>百度面经 | Lemon</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lemon</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">前端学习的总结～</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/10/20/interview-baidu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lemon">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            百度面经
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-20T00:00:00+08:00">
+                2018-10-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/%E9%9D%A2%E8%AF%95" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <h3 id="写在前面">写在前面</h3>
+<p>百度是三面技术，题目还是挺基础的，重点是要抓住面试官想问你什么，哪个知识点，
+抽象出来就很好回答了～⛽️</p>
+
+<h3 id="闭包">闭包</h3>
+<h4 id="题目">题目</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4</pre></td><td class="code"><pre class="highlight"><code>    <span class="kd">var</span> <span class="nx">makeAdd</span><span class="p">;</span>
+    <span class="c1">//完成makeAdd函数</span>
+    <span class="kd">var</span> <span class="nx">add</span><span class="o">=</span><span class="nx">makeAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span> <span class="c1">//3</span>
+</code></pre></td></tr></tbody></table></div>
+</div>
+<p>自己写成函数科里化了😓…面试官提醒其实就个闭包的应用，<code class="highlighter-rouge">makeAdd</code>是一个函数，
+返回值也是一个函数，两个参数相加就ok了～<br />
+ps:这是<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures">闭包 MDN</a>的原题</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7</pre></td><td class="code"><pre class="highlight"><code>	<span class="kd">var</span> <span class="nx">makeAdd</span><span class="o">=</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">){</span>
+		<span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">y</span><span class="p">){</span>
+			<span class="k">return</span> <span class="nx">x</span><span class="o">+</span><span class="nx">y</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="kd">var</span> <span class="nx">add</span><span class="o">=</span><span class="nx">makeAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+</code></pre></td></tr></tbody></table></div>
+</div>
+<h4 id="扩展">扩展</h4>
+<h5 id="写一个闭包">写一个闭包</h5>
+<p>闭包就是能够读取其他函数内部变量的函数。例如在javascript中，只有函数内部的子函数才能读取局部变量，所以闭包可以理解成<strong>定义在一个函数内部的函数</strong>。<br />
+在本质上，闭包是将函数内部和函数外部连接起来的桥梁</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9</pre></td><td class="code"><pre class="highlight"><code><span class="err">　　</span><span class="kd">function</span> <span class="nx">f1</span><span class="p">(){</span>
+<span class="err">　　　　</span><span class="kd">var</span> <span class="nx">n</span><span class="o">=</span><span class="mi">999</span><span class="p">;</span>
+<span class="err">　　　　</span><span class="kd">function</span> <span class="nx">f2</span><span class="p">(){</span>
+<span class="err">　　　　　　</span><span class="nx">alert</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span> 
+<span class="err">　　　　</span><span class="p">}</span>
+<span class="err">　　　　</span><span class="k">return</span> <span class="nx">f2</span><span class="p">;</span>
+<span class="err">　　</span><span class="p">}</span>
+<span class="err">　　</span><span class="kd">var</span> <span class="nx">result</span><span class="o">=</span><span class="nx">f1</span><span class="p">();</span>
+<span class="err">　　</span><span class="nx">result</span><span class="p">();</span> <span class="c1">// 999</span>
+</code></pre></td></tr></tbody></table></div>
+</div>
+<h5 id="闭包的用途">闭包的用途</h5>
+<p>一个是可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中。  <br />
+举🌰🌰🌰</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27</pre></td><td class="code"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">makeCounter</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">privateCounter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kd">function</span> <span class="nx">changeBy</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">privateCounter</span> <span class="o">+=</span> <span class="nx">val</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">increment</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">changeBy</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="na">decrement</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">changeBy</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="na">value</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">privateCounter</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>  
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">Counter1</span> <span class="o">=</span> <span class="nx">makeCounter</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">Counter2</span> <span class="o">=</span> <span class="nx">makeCounter</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Counter1</span><span class="p">.</span><span class="nx">value</span><span class="p">());</span> <span class="cm">/* logs 0 */</span>
+<span class="nx">Counter1</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span>
+<span class="nx">Counter1</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Counter1</span><span class="p">.</span><span class="nx">value</span><span class="p">());</span> <span class="cm">/* logs 2 */</span>
+<span class="nx">Counter1</span><span class="p">.</span><span class="nx">decrement</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Counter1</span><span class="p">.</span><span class="nx">value</span><span class="p">());</span> <span class="cm">/* logs 1 */</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Counter2</span><span class="p">.</span><span class="nx">value</span><span class="p">());</span> <span class="cm">/* logs 0 */</span>
+</code></pre></td></tr></tbody></table></div>
+</div>
+<p>两个计数器 counter1 和 counter2 是如何维护它们各自的独立性的。每个闭包都是引用自己词法作用域内的变量 privateCounter 。<br />
+每次调用其中一个计数器时，通过改变这个变量的值，会改变这个闭包的词法环境。然而在一个闭包内对变量的修改，不会影响到另外一个闭包中的变量。</p>
+<h5 id="在循环中创建闭包">在循环中创建闭包</h5>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19</pre></td><td class="code"><pre class="highlight"><code><span class="c1">//包裹在立即执行的函数里</span>
+<span class="kd">var</span> <span class="nx">btns</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"button"</span><span class="p">)</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">btns</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+	<span class="nx">btns</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">onclick</span><span class="o">=</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+		<span class="k">return</span> <span class="kd">function</span><span class="p">(){</span>
+			<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"我是第"</span> <span class="o">+</span> <span class="p">(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"个按钮"</span><span class="p">)</span>
+		<span class="p">}</span>
+	<span class="p">}(</span><span class="nx">i</span><span class="p">))</span>
+<span class="p">}</span> 
+
+<span class="c1">//ES6 let关键字  </span>
+<span class="kd">var</span> <span class="nx">btns</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"button"</span><span class="p">)</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">btns</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+	<span class="nx">btns</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">onclick</span><span class="o">=</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+		<span class="k">return</span> <span class="kd">function</span><span class="p">(){</span>
+			<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"我是第"</span> <span class="o">+</span> <span class="p">(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"个按钮"</span><span class="p">)</span>
+		<span class="p">}</span>
+	<span class="p">}(</span><span class="nx">i</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+</div>
+<h3 id="flex布局">flex布局</h3>
+<p>左右宽度固定，中间自适应的三栏布局</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17</pre></td><td class="code"><pre class="highlight"><code>	<span class="nc">.wrapper</span><span class="p">{</span>
+		<span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+		<span class="nl">min-height</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="nc">.left</span><span class="p">{</span>
+		<span class="nl">background</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+		<span class="nl">flex</span><span class="p">:</span><span class="m">0</span> <span class="m">0</span> <span class="m">200px</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="nc">.center</span><span class="p">{</span>
+		<span class="nl">background</span><span class="p">:</span> <span class="no">yellow</span><span class="p">;</span>
+		<span class="nl">flex</span><span class="p">:</span><span class="m">0</span> <span class="m">1</span> <span class="nb">auto</span><span class="p">;</span>
+		<span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="nc">.right</span><span class="p">{</span>
+		<span class="nl">background</span><span class="p">:</span> <span class="no">blue</span><span class="p">;</span>
+		<span class="nl">flex</span><span class="p">:</span><span class="m">0</span> <span class="m">0</span> <span class="m">200px</span><span class="p">;</span>
+	<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+</div>
+
+<h3 id="原生js实现给定标签添加class">原生JS实现给定标签添加class</h3>
+<p>面试官提示可以用新属性<code class="highlighter-rouge">classList</code>,自己之前没有了解到的</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6</pre></td><td class="code"><pre class="highlight"><code>	<span class="kd">function</span> <span class="nx">addClass</span><span class="p">(){</span>
+		<span class="kd">var</span> <span class="nx">args</span><span class="o">=</span><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+		<span class="kd">var</span> <span class="nx">ele</span><span class="o">=</span><span class="nx">args</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
+		<span class="kd">var</span> <span class="nx">cla</span><span class="o">=</span><span class="nx">args</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">' '</span><span class="p">);</span>
+		<span class="nx">ele</span><span class="p">.</span><span class="nx">classList</span><span class="o">=</span><span class="nx">cla</span><span class="p">;</span>
+	<span class="p">}</span>
+</code></pre></td></tr></tbody></table></div>
+</div>
+
+<h3 id="写在最后">写在最后</h3>
+<h5 id="高频题"><strong>高频题</strong>👏👏👏</h5>
+<p><a href="http://localhost:4000/面试/2018/08/20/interview-ali/#数组去重">数组去重</a><br />
+<a href="http://localhost:4000/面试/2018/08/17/interview-yfd/#获得url中key对应的val值">获得URL中key对应的val值</a><br />
+<a href="http://localhost:4000/面试/2018/08/30/interview-maoyan/#盒模型">盒模型</a><br />
+<a href="http://localhost:4000/面试/2018/08/30/interview-maoyan/#CSS-position">position的值</a></p>
+
+<h3 id="参考">参考</h3>
+<ul>
+  <li><a href="http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html">学习Javascript闭包（Closure</a></li>
+  <li><a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/00143449934543461c9d5dfeeb848f5b72bd012e1113d15000">闭包-廖雪峰</a></li>
+  <li><a href="https://segmentfault.com/p/1210000009077868/read">破解前端面试（80% 应聘者不及格系列）：从闭包说起</a></li>
+  <li><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">Flex 布局教程：语法篇</a></li>
+</ul>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/assets/images/alipay-reward-image.jpg" alt="Lmy Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/CSS%E5%B8%83%E5%B1%80" rel="tag"># CSS布局</a>
+          
+            
+            <a href="/tag/#/Http" rel="tag"># Http</a>
+          
+            
+            <a href="/tag/#/ES6" rel="tag"># ES6</a>
+          
+            
+            <a href="/tag/#/Vue" rel="tag"># Vue</a>
+          
+            
+            <a href="/tag/#/%E9%97%AD%E5%8C%85" rel="tag"># 闭包</a>
+          
+            
+            <a href="/tag/#/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE" rel="tag"># 作用域链</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/%E7%AE%97%E6%B3%95/2018/10/17/sort/" rel="prev" title="排序算法的JavaScript实现">
+                排序算法的JavaScript实现 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/avatar.jpg"
+               alt="Lmy" />
+          <p class="site-author-name" itemprop="name">Lmy</p>
+           
+              <p class="site-description motion-element" itemprop="description">对社会有所创造，为他人付出过，完善自己。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://github.com/supersui" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/cherry" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2887635897" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/xue-xiao-yao" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-link"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-3"> <a class="nav-link" href="#写在前面"> <span class="nav-number">1</span> <span class="nav-text">写在前面</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#闭包"> <span class="nav-number">2</span> <span class="nav-text">闭包</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#题目"> <span class="nav-number">2.1</span> <span class="nav-text">题目</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#扩展"> <span class="nav-number">2.2</span> <span class="nav-text">扩展</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-5"> <a class="nav-link" href="#写一个闭包"> <span class="nav-number">2.2.1</span> <span class="nav-text">写一个闭包</span> </a> </li> <li class="nav-item nav-level-5"> <a class="nav-link" href="#闭包的用途"> <span class="nav-number">2.2.2</span> <span class="nav-text">闭包的用途</span> </a> </li> <li class="nav-item nav-level-5"> <a class="nav-link" href="#在循环中创建闭包"> <span class="nav-number">2.2.3</span> <span class="nav-text">在循环中创建闭包</span> </a> </li> </ol> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#flex布局"> <span class="nav-number">3</span> <span class="nav-text">flex布局</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#原生js实现给定标签添加class"> <span class="nav-number">4</span> <span class="nav-text">原生JS实现给定标签添加class</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#写在最后"> <span class="nav-number">5</span> <span class="nav-text">写在最后</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-5"> <a class="nav-link" href="#高频题"> <span class="nav-number">5.1</span> <span class="nav-text">高频题👏👏👏</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#参考"> <span class="nav-number">6</span> <span class="nav-text">参考</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lmy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://jekyllrb.com">Jekyll</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+
