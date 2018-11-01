@@ -1,4 +1,205 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.2">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-23T15:26:01+08:00</updated><id>http://localhost:4000/</id><title type="html">Lemon</title><subtitle>对社会有所创造，为他人付出过，完善自己。</subtitle><author><name>Lmy</name></author><entry><title type="html">百度面经</title><link href="http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/10/20/interview-baidu/" rel="alternate" type="text/html" title="百度面经" /><published>2018-10-20T00:00:00+08:00</published><updated>2018-10-20T00:00:00+08:00</updated><id>http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/10/20/interview-baidu</id><content type="html" xml:base="http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/10/20/interview-baidu/">&lt;h3 id=&quot;写在前面&quot;&gt;写在前面&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.2">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-11-01T18:11:39+08:00</updated><id>http://localhost:4000/</id><title type="html">Lemon</title><subtitle>对社会有所创造，为他人付出过，完善自己。</subtitle><author><name>Lmy</name></author><entry><title type="html">数组降维</title><link href="http://localhost:4000/js%E5%9F%BA%E7%A1%80/2018/11/01/flattenDeep-arr/" rel="alternate" type="text/html" title="数组降维" /><published>2018-11-01T00:00:00+08:00</published><updated>2018-11-01T00:00:00+08:00</updated><id>http://localhost:4000/js%E5%9F%BA%E7%A1%80/2018/11/01/flattenDeep-arr</id><content type="html" xml:base="http://localhost:4000/js%E5%9F%BA%E7%A1%80/2018/11/01/flattenDeep-arr/">&lt;h3 id=&quot;reduce方法&quot;&gt;reduce方法&lt;/h3&gt;
+&lt;p&gt;参考&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce&quot;&gt;MDN Array.prototype.reduce()&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;arr.reduce(callback,[initialValue])&lt;/code&gt; &lt;br /&gt;
+reduce为数组中的每一个元素依次执行callback函数，不包括数组中被删除或从未被赋值的元素，接受四个参数：&lt;br /&gt;
+&lt;strong&gt;accumulator&lt;/strong&gt; 累计器&lt;br /&gt;
+&lt;strong&gt;currentValue&lt;/strong&gt; 当前值&lt;br /&gt;
+&lt;strong&gt;currentIndex&lt;/strong&gt; 当前索引&lt;br /&gt;
+&lt;strong&gt;array&lt;/strong&gt; 数组&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;flattenDeep&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isArray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	  &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reduce&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;flattenDeep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[])&lt;/span&gt;
+	  &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;… 展开操作符 
+允许一个表达式在某处展开，用于存在多个参数（函数调用）、多个元素（数组）、多个变量（解构赋值)&lt;br /&gt;
+把数组自动展开为单个值&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//[1,2,3]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;tostring方法&quot;&gt;toString方法&lt;/h3&gt;
+&lt;p&gt;eval() 函数可计算某个字符串，并执行其中的的 JavaScript 代码&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;flattenDeep2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;','&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//1,2,3,4,5&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+	    &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;eval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;递归方法&quot;&gt;递归方法&lt;/h3&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;flattenDeep3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isArray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)){&lt;/span&gt;
+			&lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;flattenDeep3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;//处理递归调用的返回值&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name>Lmy</name></author><category term="数组方法" /><category term="ES6" /><summary type="html">reduce方法 参考MDN Array.prototype.reduce() arr.reduce(callback,[initialValue]) reduce为数组中的每一个元素依次执行callback函数，不包括数组中被删除或从未被赋值的元素，接受四个参数： accumulator 累计器 currentValue 当前值 currentIndex 当前索引 array 数组 const flattenDeep = (arr) =&amp;gt; Array.isArray(arr) ? arr.reduce( (a, b) =&amp;gt; [...a, ...flattenDeep(b)] , []) : [arr] … 展开操作符 允许一个表达式在某处展开，用于存在多个参数（函数调用）、多个元素（数组）、多个变量（解构赋值) 把数组自动展开为单个值 var arr=[]; arr.push(...[1,2,3])//[1,2,3] toString方法 eval() 函数可计算某个字符串，并执行其中的的 JavaScript 代码 const flattenDeep2=(arr)=&amp;gt;{ var arr=arr.toString().split(','); //1,2,3,4,5 var res=[]; for(var i=0;i&amp;lt;arr.length;i++){ res[i]=eval(arr[i]); } return res; }</summary></entry><entry><title type="html">ES6-Promise</title><link href="http://localhost:4000/es6/2018/10/30/promise/" rel="alternate" type="text/html" title="ES6-Promise" /><published>2018-10-30T00:00:00+08:00</published><updated>2018-10-30T00:00:00+08:00</updated><id>http://localhost:4000/es6/2018/10/30/promise</id><content type="html" xml:base="http://localhost:4000/es6/2018/10/30/promise/">&lt;h3 id=&quot;什么是promise&quot;&gt;什么是Promise&lt;/h3&gt;
+&lt;p&gt;Promise是异步编程的一种解决方案，它有三种状态，分别是&lt;strong&gt;pending-进行中&lt;/strong&gt;、&lt;strong&gt;resolved-已完成&lt;/strong&gt;、&lt;strong&gt;rejected-已失败&lt;/strong&gt;&lt;br /&gt;
+当Promise的状态又pending转变为resolved或rejected时，会执行相应的方法，并且状态一旦改变，就无法再次改变状态，这也是它名字promise-承诺的由来&lt;/p&gt;
+
+&lt;h3 id=&quot;promise的基本用法&quot;&gt;Promise的基本用法&lt;/h3&gt;
+&lt;p&gt;Promise构造函数接受一个函数作为参数，该函数的两个参数分别是resolve和reject。它们是两个函数，由 JavaScript 引擎提供，不用自己部署。&lt;br /&gt;
+resolve函数的作用是，将Promise对象的状态从“未完成”变为“成功”（即从 pending 变为 resolved），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；reject函数的作用是，将Promise对象的状态从“未完成”变为“失败”（即从 pending 变为 rejected），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。&lt;br /&gt;
+Promise实例生成以后，可以用then方法分别指定resolved状态和rejected状态的回调函数&lt;br /&gt;
+&lt;strong&gt;注意：实例化的Promise对象会立即执行&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;promise&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// ... some code&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;cm&quot;&gt;/* 异步操作成功 */&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;reject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+ 
+&lt;span class=&quot;nx&quot;&gt;promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// success&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// failure&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h4 id=&quot;异步加载图片&quot;&gt;异步加载图片&lt;/h4&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//异步加载图片&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;loadImageAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;image&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onload&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onerror&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;reject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'error'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h4 id=&quot;实现-ajax-操作&quot;&gt;实现 Ajax 操作&lt;/h4&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getJSON&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;promise&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;readyState&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;reject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;statusText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;XMLHttpRequest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;GET&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onreadystatechange&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;responseType&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setRequestHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Accept&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;application/json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;getJSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/posts.json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Contents: '&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'出错了'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;关于promise应用的面试题&quot;&gt;关于Promise应用的面试题&lt;/h3&gt;
+&lt;h4 id=&quot;红绿灯循环交替&quot;&gt;红绿灯循环交替&lt;/h4&gt;
+&lt;p&gt;题目:红灯三秒亮一次，绿灯一秒亮一次，黄灯2秒亮一次；如何让三个灯不断交替重复亮灯？（用Promise实现）三个亮灯函数已经存在：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function red(){
+    console.log('red');
+}
+function green(){
+    console.log('green');
+}
+function yellow(){
+    console.log('yellow');
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;首先我们需要一个函数来实现时间控制，这道题的第二个考查点就是setTimeout相关的异步队列会挂起知道主进程空闲。
+如果使用while无限循环，主进程永远不会空闲，setTimeout的函数永远不会执行！采用递归&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;c1&quot;&gt;//时间控制函数&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;lightUp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;timmer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+			&lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+				&lt;span class=&quot;nx&quot;&gt;cb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+				&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+			&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;timmer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;//利用promise编写，链式调用&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+		&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+		&lt;span class=&quot;nx&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;lightUp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;lightUp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;green&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;lightUp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;yellow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+			&lt;span class=&quot;nx&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;异步获取数字&quot;&gt;异步获取数字&lt;/h4&gt;
+&lt;p&gt;题目: getNumber函数用来异步获取一个数字，2秒后执行完成，如果数字小于等于5，我们认为是“成功”了，调用resolve修改Promise的状态。否则我们认为是“失败”了，调用reject并传递一个参数，作为失败的原因。&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getNum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+			&lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+				&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ceil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+				&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+					&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+				&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+					&lt;span class=&quot;nx&quot;&gt;reject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'数字太大了'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+				&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+			&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;getNum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+		&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'resolved'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reason&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+		&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'reject'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reason&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;promise的作用&quot;&gt;Promise的作用&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Promise&lt;/code&gt;的出现主要是解决地狱回调的问题，比如你需要结果需要请求很多个接口，这些接口的参数需要另外那个的接口返回的数据作为依赖，这样就需要我们一层嵌套一层，但是有了Promise 我们就无需嵌套&lt;/p&gt;
+
+&lt;h3 id=&quot;参考&quot;&gt;参考&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014345008539155e93fc16046d4bb7854943814c4f9dc2000&quot;&gt;廖雪峰&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise&quot;&gt;MDN-Promise&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://javascript.ruanyifeng.com/advanced/promise.html&quot;&gt;Promise 对象&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://web.jobbole.com/86150/&quot;&gt;一道关于Promise应用的面试题&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.imooc.com/article/257372&quot;&gt;关于 ES6 中 Promise 的面试题&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Lmy</name></author><summary type="html">什么是Promise Promise是异步编程的一种解决方案，它有三种状态，分别是pending-进行中、resolved-已完成、rejected-已失败 当Promise的状态又pending转变为resolved或rejected时，会执行相应的方法，并且状态一旦改变，就无法再次改变状态，这也是它名字promise-承诺的由来</summary></entry><entry><title type="html">百度面经</title><link href="http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/10/20/interview-baidu/" rel="alternate" type="text/html" title="百度面经" /><published>2018-10-20T00:00:00+08:00</published><updated>2018-10-20T00:00:00+08:00</updated><id>http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/10/20/interview-baidu</id><content type="html" xml:base="http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/10/20/interview-baidu/">&lt;h3 id=&quot;写在前面&quot;&gt;写在前面&lt;/h3&gt;
 &lt;p&gt;百度是三面技术，题目还是挺基础的，重点是要抓住面试官想问你什么，哪个知识点，
 抽象出来就很好回答了～⛽️&lt;/p&gt;
 
@@ -396,7 +597,7 @@ ps:这是&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/JavaScrip
 	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>Lmy</name></author><category term="排序" /><category term="JS基础" /><summary type="html">常见排序算法对比</summary></entry><entry><title type="html">前端面试HTML+CSS总结</title><link href="http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/10/15/interview-html-css/" rel="alternate" type="text/html" title="前端面试HTML+CSS总结" /><published>2018-10-15T00:00:00+08:00</published><updated>2018-10-15T00:00:00+08:00</updated><id>http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/10/15/interview-html-css</id><content type="html" xml:base="http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/10/15/interview-html-css/">&lt;h2 id=&quot;html部分&quot;&gt;HTML部分&lt;/h2&gt;
+&lt;/div&gt;</content><author><name>Lmy</name></author><category term="排序" /><summary type="html">常见排序算法对比</summary></entry><entry><title type="html">前端面试HTML+CSS总结</title><link href="http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/10/15/interview-html-css/" rel="alternate" type="text/html" title="前端面试HTML+CSS总结" /><published>2018-10-15T00:00:00+08:00</published><updated>2018-10-15T00:00:00+08:00</updated><id>http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/10/15/interview-html-css</id><content type="html" xml:base="http://localhost:4000/%E9%9D%A2%E8%AF%95/2018/10/15/interview-html-css/">&lt;h2 id=&quot;html部分&quot;&gt;HTML部分&lt;/h2&gt;
 &lt;h3 id=&quot;什么是doctype&quot;&gt;什么是&amp;lt;!DOCTYPE&amp;gt;？&lt;/h3&gt;
 &lt;p&gt;DOCTYPE是html5标准网页声明，且必须声明在HTML文档的第一行。来告知浏览器的解析器用什么文档标准解析这个文档。&lt;br /&gt;
 文档解析类型有：&lt;/p&gt;
@@ -1167,7 +1368,7 @@ fooContext.Scope = [
 &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;person2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//tom&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>Lmy</name></author><category term="JS基础" /><category term="算法" /><summary type="html">创建100个宽高100px的div，div按红黄蓝绿背景色排列，页面实现10*10布局。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;&amp;lt;/title&amp;gt; &amp;lt;style type=&quot;text/css&quot;&amp;gt; body{ display: grid; grid-template-rows: repeat(10,100px); grid-template-columns: repeat(10,100px); } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;script type=&quot;text/javascript&quot;&amp;gt; var fragment=document.createDocumentFragment(); for(var i=1;i&amp;lt;=100;i++){ var div=document.createElement('div'); if(i%4==1){ div.style.backgroundColor='red'; } if(i%4==2){ div.style.backgroundColor='yellow'; } if(i%4==3){ div.style.backgroundColor='blue'; } if(i%4==0){ div.style.backgroundColor='green'; } div.appendChild(document.createTextNode(''+i)); fragment.appendChild(div); } document.body.appendChild(fragment); &amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;</summary></entry><entry><title type="html">leetcode5 最长回文子串</title><link href="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/21/leetcode5/" rel="alternate" type="text/html" title="leetcode5 最长回文子串" /><published>2018-09-21T00:00:00+08:00</published><updated>2018-09-21T00:00:00+08:00</updated><id>http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/21/leetcode5</id><content type="html" xml:base="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/21/leetcode5/">&lt;h3 id=&quot;题目&quot;&gt;题目&lt;/h3&gt;
+&lt;/div&gt;</content><author><name>Lmy</name></author><category term="算法" /><summary type="html">创建100个宽高100px的div，div按红黄蓝绿背景色排列，页面实现10*10布局。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;&amp;lt;/title&amp;gt; &amp;lt;style type=&quot;text/css&quot;&amp;gt; body{ display: grid; grid-template-rows: repeat(10,100px); grid-template-columns: repeat(10,100px); } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;script type=&quot;text/javascript&quot;&amp;gt; var fragment=document.createDocumentFragment(); for(var i=1;i&amp;lt;=100;i++){ var div=document.createElement('div'); if(i%4==1){ div.style.backgroundColor='red'; } if(i%4==2){ div.style.backgroundColor='yellow'; } if(i%4==3){ div.style.backgroundColor='blue'; } if(i%4==0){ div.style.backgroundColor='green'; } div.appendChild(document.createTextNode(''+i)); fragment.appendChild(div); } document.body.appendChild(fragment); &amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;</summary></entry><entry><title type="html">leetcode5 最长回文子串</title><link href="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/21/leetcode5/" rel="alternate" type="text/html" title="leetcode5 最长回文子串" /><published>2018-09-21T00:00:00+08:00</published><updated>2018-09-21T00:00:00+08:00</updated><id>http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/21/leetcode5</id><content type="html" xml:base="http://localhost:4000/%E7%AE%97%E6%B3%95/2018/09/21/leetcode5/">&lt;h3 id=&quot;题目&quot;&gt;题目&lt;/h3&gt;
 &lt;p&gt;给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为1000。&lt;br /&gt;
 示例 1：&lt;br /&gt;
 输入: “babad” &lt;br /&gt;
@@ -1567,652 +1768,4 @@ $dp[i][i-1]=$ 对所有k求$min(dp[i-1][k] + abs(arr[i] - arr[k]))$ 其中（$0&
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;挖个坑&quot;&gt;挖个坑&lt;/h3&gt;
-&lt;p&gt;后两道感觉挺难的，呜呜呜先参考大神思路，代码再再补上。:sob: :sob: :sob:&lt;/p&gt;</content><author><name>Lmy</name></author><category term="网易" /><category term="动态规划" /><category term="leetcode" /><summary type="html">题目来源于牛客网，网易2018校园招聘编程题真题集合。</summary></entry><entry><title type="html">从输入URL到页面加载的过程</title><link href="http://localhost:4000/http/2018/09/17/http-url/" rel="alternate" type="text/html" title="从输入URL到页面加载的过程" /><published>2018-09-17T00:00:00+08:00</published><updated>2018-09-17T00:00:00+08:00</updated><id>http://localhost:4000/http/2018/09/17/http-url</id><content type="html" xml:base="http://localhost:4000/http/2018/09/17/http-url/">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
-&lt;p&gt;经典面试题，但方方面面的很多东西，要答好也不简单。通过对这道题的分析，希望梳理出一个前端向的知识体系 :dancers: :dancers: :dancers:&lt;br /&gt;
-主要包括：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;从浏览器接收url到开启网络请求线程&lt;/li&gt;
-  &lt;li&gt;开启网络线程到发出一个完整的http请求&lt;/li&gt;
-  &lt;li&gt;从服务器接收到请求到对应后台接收到请求&lt;/li&gt;
-  &lt;li&gt;后台和前台的http交互&lt;/li&gt;
-  &lt;li&gt;缓存问题，&lt;a href=&quot;http://localhost:4000/http/2018/08/18/http-cache/&quot;&gt;http缓存总结&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;解析页面流程&lt;/li&gt;
-  &lt;li&gt;CSS的可视化格式模型&lt;/li&gt;
-  &lt;li&gt;JS引擎解析过程&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;从浏览器接收url到开启网络请求线程&quot;&gt;从浏览器接收url到开启网络请求线程&lt;/h2&gt;
-&lt;h3 id=&quot;线程与进程&quot;&gt;线程与进程&lt;/h3&gt;
-&lt;p&gt;进程和线程的对比网上大多是概念性的解释，要真正理解进程与线程中的时间片和其他精彩的“调度概念”之前，
-建立一个类比，首先来说明线程和进程是如何工作的。&lt;/p&gt;
-&lt;h4 id=&quot;作为房子&quot;&gt;作为房子&lt;/h4&gt;
-&lt;p&gt;使用常规的日常对象 - 房子来对进程和线程进行类比。&lt;br /&gt;
-房子实际上是一个容器，具有某些属性（例如占地面积，卧室数量等）。房子本身并没有主动做 任何事情 - 这是一个被动的对象。这实际上是一个进程。  &lt;br /&gt;
-住在房子里的人是活跃的对象 - 他们是使用各种房间，看电视，做饭，洗澡等等。线程的行为方式。&lt;/p&gt;
-&lt;h4 id=&quot;单线程&quot;&gt;单线程&lt;/h4&gt;
-&lt;p&gt;如果你住在自己的房子里，那么你可以在任何时间做任何事，因为房子里没有其他人。
-你可以打开电视，使用洗手间，吃晚餐等等，只需要继续操作即可。&lt;/p&gt;
-&lt;h4 id=&quot;多线程&quot;&gt;多线程&lt;/h4&gt;
-&lt;p&gt;当把另一个人加入房子时，你不能在任何一个点上进入洗手间，你需要先检查一下，洗手间有没有人。&lt;br /&gt;
-如果有两个负责任的成年人住在一个​​房子里，一般来说可以合理地对“安全”松懈，你知道另一个成年人会尊重你的空间，不会让厨房着火等等。
-现在，把几个孩子扔进去，事情变得更加复杂。&lt;/p&gt;
-&lt;h4 id=&quot;回到线程与进程&quot;&gt;回到线程与进程&lt;/h4&gt;
-&lt;p&gt;在macOS系统中，可以打开活动监视器查看后台进程与线程，和内存资源信息和CPU占有率。&lt;br /&gt;
-&lt;img src=&quot;http://localhost:4000/assets/images/2018-9-17-http-url/MacProcesses.jpg&quot; alt=&quot;&quot; /&gt;&lt;br /&gt;
-&lt;strong&gt;进程&lt;/strong&gt;&lt;br /&gt;
-进程是一个具有一定独立功能的程序在一个数据集上的一次动态执行的过程，是操作系统进行资源分配和调度的一个独立单位，是应用程序运行的载体。&lt;br /&gt;
-&lt;strong&gt;线程&lt;/strong&gt;&lt;br /&gt;
-由于进程对于CPU的使用是轮流的，那么就存在进程的切换，但是由于现在的程序都比较大，切换的开销很大会浪费CPU的资源，于是就发明了线程，把一个大的进程分解成多个线程共同执行。&lt;br /&gt;
-&lt;strong&gt;区别&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;进程是操作系统分配资源的最小单位，线程是程序执行的最小单位。&lt;/li&gt;
-  &lt;li&gt;一个进程由一个或多个线程组成，线程是一个进程中代码的不同执行路线；&lt;/li&gt;
-  &lt;li&gt;进程之间相互独立，但同一进程下的各个线程之间共享程序的内存空间(包括代码段、数据集、堆等)及一些进程级的资源(如打开文件和信号)。&lt;/li&gt;
-  &lt;li&gt;调度和切换：线程上下文切换比进程上下文切换要快得多。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;浏览器是多进程的&quot;&gt;浏览器是多进程的&lt;/h3&gt;
-&lt;p&gt;浏览器是多进程的，有一个主控进程，以及每一个tab页面都会新开一个进程（某些情况下多个tab会合并进程）。
-如图，查看chrome任务管理器。
-&lt;img src=&quot;http://localhost:4000/assets/images/2018-9-17-http-url/chromePro.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;浏览器进程包括&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Browser进程：浏览器的主进程（负责协调、主控），只有一个&lt;/li&gt;
-  &lt;li&gt;第三方插件进程：每种类型的插件对应一个进程，仅当使用该插件时才创建&lt;/li&gt;
-  &lt;li&gt;GPU进程：最多一个，用于3D绘制&lt;/li&gt;
-  &lt;li&gt;浏览器渲染进程（内核）：默认每个Tab页面一个进程，互不影响，控制页面渲染，脚本执行，事件处理等（有时候会优化，如多个空白tab会合并成一个进程）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;浏览器内核是多线程&quot;&gt;浏览器内核是多线程&lt;/h3&gt;
-&lt;h4 id=&quot;浏览器内核&quot;&gt;浏览器内核&lt;/h4&gt;
-&lt;p&gt;简单来说浏览器内核是通过取得页面内容、整理信息（应用CSS）、计算和组合最终输出可视化的图像结果，通常也被称为渲染引擎。
-从上面我们可以知道，Chrome浏览器为每个tab页面单独启用进程，因此每个tab网页都有由其独立的渲染引擎实例。&lt;br /&gt;
-浏览器内核是多线程，在内核控制下各线程相互配合以保持同步，一个浏览器通常由以下常驻线程组成：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;GUI 渲染线程（图形用户界面）&lt;/li&gt;
-  &lt;li&gt;JavaScript引擎线程&lt;/li&gt;
-  &lt;li&gt;事件触发线程&lt;/li&gt;
-  &lt;li&gt;定时触发器线程&lt;/li&gt;
-  &lt;li&gt;异步http请求线程&lt;br /&gt;
-&lt;img src=&quot;https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_inner_thread.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;gui-渲染线程&quot;&gt;GUI 渲染线程&lt;/h4&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GUI渲染线程&lt;/code&gt;负责渲染浏览器界面，解析HTML，CSS，构建DOM树和RenderObject树，布局和绘制等。
-当界面需要重绘(Repaint)或由于某种操作引发回流(reflow)时,该线程就会执行。&lt;br /&gt;
-&lt;strong&gt;GUI渲染线程与JS引擎线程是互斥的&lt;/strong&gt; 在Javascript引擎运行脚本期间,GUI渲染线程都是处于挂起状态的,也就是说被”冻结”了.&lt;/p&gt;
-&lt;h4 id=&quot;javascript引擎线程&quot;&gt;JavaScript引擎线程&lt;/h4&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Javascript引擎&lt;/code&gt;可以称为JS内核，主要负责处理Javascript脚本程序，例如V8引擎。Javascript引擎线程理所当然是负责解析Javascript脚本，运行代码。&lt;br /&gt;
-一个Tab页（renderer进程）中无论什么时候都只有一个JS线程在运行JS程序。&lt;/p&gt;
-&lt;h4 id=&quot;javascript是单线程的&quot;&gt;Javascript是单线程的&lt;/h4&gt;
-&lt;p&gt;Javascript是单线程的, 那么为什么Javascript要是单线程的？
-这是因为Javascript这门脚本语言诞生的使命所致：JavaScript为处理页面中用户的交互，以及操作DOM树、CSS样式树来给用户呈现一份动态而丰富的交互体验和服务器逻辑的交互处理。
-如果JavaScript是多线程的方式来操作这些UI DOM，则可能出现UI操作的冲突； 如果Javascript是多线程的话，在多线程的交互下，处于UI中的DOM节点就可能成为一个临界资源，
-假设存在两个线程同时操作一个DOM，一个负责修改一个负责删除，那么这个时候就需要浏览器来裁决如何生效哪个线程的执行结果。
-当然我们可以通过锁来解决上面的问题。但为了避免因为引入了锁而带来更大的复杂性，Javascript在最初就选择了单线程执行。&lt;/p&gt;
-&lt;h4 id=&quot;事件触发线程&quot;&gt;事件触发线程&lt;/h4&gt;
-&lt;p&gt;当一个事件被触发时该线程会把事件添加到待处理队列的队尾，等待JS引擎的处理。这些事件可以是当前执行的代码块如定时任务、
-也可来自浏览器内核的其他线程如鼠标点击、AJAX异步请求等，但由于JS的单线程关系所有这些事件都得排队等待JS引擎处理。&lt;/p&gt;
-&lt;h4 id=&quot;定时触发器线程&quot;&gt;定时触发器线程&lt;/h4&gt;
-&lt;p&gt;浏览器定时计数器并不是由JavaScript引擎计数的, 因为JavaScript引擎是单线程的, 
-如果处于阻塞线程状态就会影响记计时的准确, 因此通过单独线程来计时并触发定时是更为合理的方案。&lt;br /&gt;
-setInterval与setTimeout所在线程，W3C在HTML标准中规定，规定要求setTimeout中低于4ms的时间间隔算为4ms。&lt;/p&gt;
-&lt;h4 id=&quot;异步http请求线程&quot;&gt;异步http请求线程&lt;/h4&gt;
-&lt;p&gt;在XMLHttpRequest在连接后是通过浏览器新开一个线程请求， 将检测到状态变更时，如果设置有回调函数，异步线程就产生状态变更事件放到 JavaScript引擎的处理队列中等待处理。&lt;/p&gt;
-
-&lt;h4 id=&quot;gui-渲染线程-与-javascript引擎线程互斥&quot;&gt;GUI 渲染线程 与 JavaScript引擎线程互斥&lt;/h4&gt;
-&lt;p&gt;由于JavaScript是可操纵DOM的，如果在修改这些元素属性同时渲染界面（即JavaScript线程和UI线程同时运行），那么渲染线程前后获得的元素数据就可能不一致了。
-因此为了防止渲染出现不可预期的结果，浏览器设置GUI渲染线程与JavaScript引擎为互斥的关系，当JavaScript引擎执行时GUI线程会被挂起，GUI更新会被保存在一个队列中等到引擎线程空闲时立即被执行。&lt;/p&gt;
-
-&lt;h2 id=&quot;开启网络线程到发出一个完整的http请求&quot;&gt;开启网络线程到发出一个完整的http请求&lt;/h2&gt;
-&lt;h3 id=&quot;dns查询得到ip&quot;&gt;DNS查询得到IP&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;如果输入的是域名，需要进行DNS解析成IP，查询步骤：&lt;/li&gt;
-  &lt;li&gt;浏览器缓存&lt;/li&gt;
-  &lt;li&gt;本机缓存&lt;/li&gt;
-  &lt;li&gt;hosts文件&lt;/li&gt;
-  &lt;li&gt;路由器缓存&lt;/li&gt;
-  &lt;li&gt;ISP DNS缓存&lt;/li&gt;
-  &lt;li&gt;DNS递归查询（可能存在负载均衡导致每次IP不一样）
-    &lt;h3 id=&quot;tcpip请求&quot;&gt;TCP/IP请求&lt;/h3&gt;
-    &lt;h4 id=&quot;tcp三次握手&quot;&gt;TCP三次握手&lt;/h4&gt;
-    &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/2018-9-17-http-url/thirdhand.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;总结三次握手过程：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;第一次握手：起初两端都处于CLOSED关闭状态，Client将标志位SYN置为1，随机产生一个值seq=x，并将该数据包发送给Server，Client进入SYN-SENT状态，等待Server确认；&lt;/li&gt;
-  &lt;li&gt;第二次握手：Server收到数据包后由标志位SYN=1得知Client请求建立连接，Server将标志位SYN和ACK都置为1，ack=x+1，随机产生一个值seq=y，并将该数据包发送给Client以确认连接请求，Server进入SYN-RCVD状态，此时操作系统为该TCP连接分配TCP缓存和变量；&lt;/li&gt;
-  &lt;li&gt;第三次握手：Client收到确认后，检查ack是否为x+1，ACK是否为1，如果正确则将标志位ACK置为1，ack=y+1，并且此时操作系统为该TCP连接分配TCP缓存和变量，并将该数据包发送给Server，Server检查ack是否为y+1，ACK是否为1，如果正确则连接建立成功，Client和Server进入ESTABLISHED状态，完成三次握手，随后Client和Server就可以开始传输数据。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;tcp四次挥手&quot;&gt;TCP四次挥手&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/2018-9-17-http-url/fourhand.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;总结四次挥手过程：&lt;br /&gt;
-起初A和B处于ESTABLISHED状态——A发出连接释放报文段并处于FIN-WAIT-1状态——B发出确认报文段且进入CLOSE-WAIT状态——A收到确认后，进入FIN-WAIT-2状态，等待B的连接释放报文段——B没有要向A发出的数据，B发出连接释放报文段且进入LAST-ACK状态——A发出确认报文段且进入TIME-WAIT状态——B收到确认报文段后进入CLOSED状态——A经过等待计时器时间2MSL后，进入CLOSED状态。&lt;/p&gt;
-
-&lt;h4 id=&quot;getpost区别&quot;&gt;GET,POST区别&lt;/h4&gt;
-&lt;p&gt;GET和POST本质上就是TCP链接，并无差别。但是由于HTTP的规定和浏览器/服务器的限制，导致他们在应用过程中体现出一些不同。&lt;br /&gt;
-&lt;strong&gt;GET产生一个TCP数据包,POST产生两个TCP数据包。&lt;/strong&gt;&lt;br /&gt;
-对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据） &lt;br /&gt;
-而对于POST，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://mmbiz.qpic.cn/mmbiz/VUGnGjllRE5vZcld02bjOjWPPBRXYdhLcm8TfMjvKvXwbzXTbpUaahYNVFpXh8fIMgqcmbIeEBqFTt7ibiaewMicg/640?wx_fmt=png&amp;amp;wxfrom=5&amp;amp;wx_lazy=1&amp;amp;wx_co=1&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;h3 id=&quot;tcpip协议栈&quot;&gt;&lt;a href=&quot;http://localhost:4000/http/2018/08/29/http-tcp-ip/&quot;&gt;TCP/IP协议栈&lt;/a&gt;&lt;/h3&gt;
-
-&lt;h2 id=&quot;从服务器接收到请求到对应后台接收到请求&quot;&gt;从服务器接收到请求到对应后台接收到请求&lt;/h2&gt;
-&lt;h3 id=&quot;负载均衡&quot;&gt;负载均衡&lt;/h3&gt;
-&lt;p&gt;用户发起的请求都指向调度服务器（反向代理服务器，譬如安装了nginx控制负载均衡），然后调度服务器根据实际的调度算法，分配不同的请求给对应集群中的服务器执行，然后调度器等待实际服务器的HTTP响应，并将它反馈给用户。&lt;/p&gt;
-&lt;h3 id=&quot;后台的处理&quot;&gt;后台的处理&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;后端是有统一的验证的，如安全拦截，跨域验证等。如不符合规则，直接返回相应的http报文（如拒绝请求等）&lt;/li&gt;
-  &lt;li&gt;当验证通过后，进入实际的后台代码，此时是程序接收到请求，然后执行（譬如查询数据库，大量计算等等）&lt;/li&gt;
-  &lt;li&gt;等程序执行完毕后，就会返回一个http响应包（会经过多层封装）,将这个包从后端发送到前端，完成交互&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;后台和前台的http交互&quot;&gt;后台和前台的http交互&lt;/h2&gt;
-&lt;h3 id=&quot;http报文结构&quot;&gt;HTTP报文结构&lt;/h3&gt;
-&lt;p&gt;包括：&lt;strong&gt;报文首部 空行（CR+LF）报文主体&lt;/strong&gt; 。通常，不一定要有报文主体。&lt;/p&gt;
-&lt;h4 id=&quot;请求报文的报文首部&quot;&gt;请求报文的报文首部&lt;/h4&gt;
-&lt;p&gt;包括：&lt;strong&gt;请求行 请求首部字段 通用首部字段 实体首部字段 其他&lt;/strong&gt;&lt;/p&gt;
-&lt;h5 id=&quot;请求行&quot;&gt;请求行&lt;/h5&gt;
-&lt;p&gt;包含请求方法、请求URI和HTTP版本（还应该以回车换行符CRLF结尾），如：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;GET /index.html HTTP/1.1&lt;/code&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;请求方法&quot;&gt;请求方法：&lt;/h5&gt;
-&lt;ul&gt;
-  &lt;li&gt;GET：最常见，向服务器请求某个资源&lt;/li&gt;
-  &lt;li&gt;POST：起初用于向服务器输入数据。实际上，通常用于HTML表单数据的提交&lt;/li&gt;
-  &lt;li&gt;HEAD：与GET的行为类似，但服务器返回的响应中只包含首部，不会返回主体部分&lt;/li&gt;
-  &lt;li&gt;PUT：向服务器写入文档&lt;/li&gt;
-  &lt;li&gt;DELETE：删除指定资源&lt;/li&gt;
-  &lt;li&gt;TRACE：服务器回送收到的请求信息给客户端，主要用于诊断&lt;/li&gt;
-  &lt;li&gt;CONNECT&lt;/li&gt;
-  &lt;li&gt;OPTIONS：查询服务器支持的方法（通用或针对指定资源）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;响应报文的报文首部&quot;&gt;响应报文的报文首部&lt;/h4&gt;
-&lt;p&gt;包括：&lt;strong&gt;状态行 响应首部字段 通用首部字段 实体首部字段 其他&lt;/strong&gt;&lt;/p&gt;
-&lt;h5 id=&quot;状态行&quot;&gt;状态行&lt;/h5&gt;
-&lt;p&gt;包含表明响应结果的状态码、原因短语和HTTP版本，如：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;HTTP/1.1 200 OK&lt;/code&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;状态码常见&quot;&gt;状态码（常见）：&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;1×× Informational 信息性状态码&lt;br /&gt;
-100 Continue&lt;br /&gt;
-101 Switching Protocols&lt;/li&gt;
-  &lt;li&gt;2×× Success 成功状态码&lt;br /&gt;
-200 OK 成功&lt;br /&gt;
-204 No Content 成功，但不返回任何实体的主体部分&lt;br /&gt;
-206 Partial Content 成功执行了一个范围（Range）请求&lt;/li&gt;
-  &lt;li&gt;3×× Redirection 重定向状态码&lt;br /&gt;
-301 Moved Permanently 永久性重定向，响应报文的Location首部应该有该资源的新URL&lt;br /&gt;
-302 Found 临时性重定向，响应报文的Location首部给出的URL用来临时定位资源&lt;br /&gt;
-303 See Other 请求的资源存在着另一个URI，客户端应使用GET方法定向获取请求的资源&lt;br /&gt;
-304 Not Modified 客户端发送附带条件的请求（请求首部中包含如If-Modified-Since等指定首部）时，服务端有可能返回304，此时，响应报文中不包含任何报文主体。&lt;br /&gt;
-307 Temporary Redirect 临时重定向。与302 Found含义一样。302禁止POST变换为GET，但实际使用时并不一定，307则更多浏览器可能会遵循这一标准，但也依赖于浏览器具体实现。&lt;/li&gt;
-  &lt;li&gt;4×× Client Error 客户端错误状态码&lt;br /&gt;
-400 Bad Request 请求报文中存在语法错误&lt;br /&gt;
-401 Unauthorized需要认证，会有适当的首部一同返回&lt;br /&gt;
-404 Not Found 服务器上无法找到请求的资源&lt;/li&gt;
-  &lt;li&gt;5×× Server Error 服务器错误状态码&lt;br /&gt;
-500 Internel Server Error 服务端在执行请求时发生了错误&lt;br /&gt;
-503 Service Unavailable 服务器暂时无法提供服务，可以包含Retry-After首部&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;首部字段&quot;&gt;首部字段&lt;/h4&gt;
-&lt;p&gt;HTTP首部字段按照实际用途被分为&lt;strong&gt;通用首部字段（General Header Fields）、请求首部字段（Request Header Fields）、响应首部字段（Response Header Fields）和实体首部字段（Entity Header Fields）&lt;/strong&gt;。     &lt;br /&gt;
-按照首部字段在有代理时的不同行为，首部字段又可以分为&lt;strong&gt;端到端首部（End-to-end Header）和逐跳首部（Hop-by-hop Header）&lt;/strong&gt;。
-逐跳首部只对单次转发有效，经过缓存或代理后不再转发，HTTP/1.1和之后的版本中，要使用逐跳首部时需提供Connection首部字段。端到端首部则会一直发送给最终接收目标。&lt;/p&gt;
-&lt;h5 id=&quot;通用头部&quot;&gt;通用头部&lt;/h5&gt;
-
-&lt;p&gt;Request Url: 请求的web服务器地址&lt;br /&gt;
-Request Method: 请求方式（Get、POST、OPTIONS、PUT、HEAD、DELETE、CONNECT、TRACE）&lt;br /&gt;
-Status Code: 请求的返回状态码，如200代表成功&lt;br /&gt;
-Remote Address: 请求的远程服务器地址（会转为IP）&lt;/p&gt;
-&lt;h5 id=&quot;常用的请求头部&quot;&gt;常用的请求头部&lt;/h5&gt;
-&lt;p&gt;Accept: 接收类型，表示浏览器支持的MIME类型（对标服务端返回的Content-Type）&lt;br /&gt;
-Accept-Encoding：浏览器支持的压缩类型,如gzip等,超出类型不能接收&lt;br /&gt;
-Content-Type：客户端发送出去实体内容的类型&lt;br /&gt;
-Cache-Control: 指定请求和响应遵循的缓存机制，如no-cache&lt;br /&gt;
-If-Modified-Since：对应服务端的Last-Modified，用来匹配看文件是否变动，只能精确到1s之内，http1.0中&lt;br /&gt;
-Expires：缓存控制，在这个时间内不会请求，直接使用缓存，http1.0，而且是服务端时间&lt;br /&gt;
-Max-age：代表资源在本地缓存多少秒，有效时间内不会请求，而是使用缓存，http1.1中&lt;br /&gt;
-If-None-Match：对应服务端的ETag，用来匹配文件内容是否改变（非常精确），http1.1中&lt;br /&gt;
-Cookie: 有cookie并且同域访问时会自动带上&lt;br /&gt;
-Connection: 当浏览器与服务器通信时对于长连接如何进行处理,如keep-alive&lt;br /&gt;
-Host：请求的服务器URL&lt;br /&gt;
-Origin：最初的请求是从哪里发起的（只会精确到端口）,Origin比Referer更尊重隐私&lt;br /&gt;
-Referer：该页面的来源URL(适用于所有类型的请求，会精确到详细页面地址，csrf拦截常用到这个字段)&lt;br /&gt;
-User-Agent：用户客户端的一些必要信息，如UA头部等&lt;/p&gt;
-&lt;h5 id=&quot;常用的响应头部&quot;&gt;常用的响应头部&lt;/h5&gt;
-&lt;p&gt;Access-Control-Allow-Headers: 服务器端允许的请求Headers&lt;br /&gt;
-Access-Control-Allow-Methods: 服务器端允许的请求方法&lt;br /&gt;
-Access-Control-Allow-Origin: 服务器端允许的请求Origin头部（譬如为*）&lt;br /&gt;
-Content-Type：服务端返回的实体内容的类型&lt;br /&gt;
-Date：数据从服务器发送的时间&lt;br /&gt;
-Cache-Control：告诉浏览器或其他客户，什么环境可以安全的缓存文档&lt;br /&gt;
-Last-Modified：请求资源的最后修改时间&lt;br /&gt;
-Expires：应该在什么时候认为文档已经过期,从而不再缓存它&lt;br /&gt;
-Max-age：客户端的本地资源应该缓存多少秒，开启了Cache-Control后有效&lt;br /&gt;
-ETag：请求变量的实体标签的当前值&lt;br /&gt;
-Set-Cookie：设置和页面关联的cookie，服务器通过这个头部把cookie传给客户端&lt;br /&gt;
-Keep-Alive：如果客户端有keep-alive，服务端也会有响应（如timeout=38）&lt;br /&gt;
-Server：服务器的一些相关信息&lt;/p&gt;
-&lt;h3 id=&quot;cookie及其优化&quot;&gt;cookie及其优化&lt;/h3&gt;
-&lt;p&gt;cookie是浏览器的一种本地存储方式，一般用来帮助客户端和服务端通信的，常用来进行身份校验，结合服务端的session使用。&lt;br /&gt;
-&lt;img src=&quot;http://jbcdn2.b0.upaiyun.com/2016/11/11d67997f06077bc4f83b8eaafb89131.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;h4 id=&quot;cookie的作用&quot;&gt;Cookie的作用&lt;/h4&gt;
-&lt;ol&gt;
-  &lt;li&gt;解决了认证（登录）后，下次访问还需要认证（登录）的重复认证问题。&lt;/li&gt;
-  &lt;li&gt;可以记住用户名和密码，增强用户体验。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&quot;cookie的缺点&quot;&gt;Cookie的缺点&lt;/h4&gt;
-&lt;ol&gt;
-  &lt;li&gt;安全问题
-cookie数据保存在客户端，有可能被篡改或盗取。&lt;br /&gt;
-Cookie 数据可以被访问到，就像我们前面通过 Firefox 的插件 HttpFox 可以看到所有的 Cookie 值。不仅可以查看 Cookie，甚至可以通过 Firecookie 插件添加、修改 Cookie，所以 Cookie 的安全性受到了很大的挑战。&lt;br /&gt;
-相比较而言 Session 的安全性要高很多，因为 Session 是将数据保存在服务端，只是通过 Cookie 传递一个 SessionID 而已，所以 Session 更适合存储用户隐私和重要的数据。&lt;/li&gt;
-  &lt;li&gt;数据传输量大的问题
-cookie 可以让服务端程序跟踪每个客户端的访问，但是每次客户端的访问都必须传回这些 cookie，如果 cookie 很多，这无形地增加了客户端与服务端的数据传输量，而 Session 的出现正是为了解决这个问题。&lt;br /&gt;
-浏览器会附带具有相同域名的所有cookie，如果是二级域名，顶级域名的cookie也会一起附带。&lt;br /&gt;
-同一个客户端每次和服务端交互时，不需要每次都传回所有的 Cookie 值，而是只要传回一个 ID，这个 ID 是客户端第一次访问服务器的时候生成的，而且每个客户端是唯一的。这样每个客户端就有了一个唯一的 ID，客户端只要传回这个 ID 就行了，这个 ID 通常是 NANE 为 JSESIONID 的一个 Cookie。&lt;/li&gt;
-  &lt;li&gt;浏览器对cookie的数量和大小有限制&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;http10-http11-http20-https&quot;&gt;http1.0 http1.1 http2.0 https&lt;/h3&gt;
-&lt;h4 id=&quot;http10-http-11主要区别&quot;&gt;HTTP1.0 HTTP 1.1主要区别&lt;/h4&gt;
-&lt;h5 id=&quot;长连接&quot;&gt;长连接&lt;/h5&gt;
-&lt;p&gt;HTTP 1.0需要使用keep-alive参数来告知服务器端要建立一个长连接，而HTTP1.1默认支持长连接。&lt;code class=&quot;highlighter-rouge&quot;&gt;Connection: keep-alive&lt;/code&gt;&lt;br /&gt;
-HTTP是基于TCP/IP协议的，创建一个TCP连接是需要经过三次握手的,有一定的开销，如果每次通讯都要重新建立连接的话，对性能有影响。因此最好能维持一个长连接，可以用个长连接来发多个请求。&lt;/p&gt;
-&lt;h5 id=&quot;节约带宽&quot;&gt;节约带宽&lt;/h5&gt;
-&lt;p&gt;HTTP 1.1支持只发送header信息(不带任何body信息)，如果服务器认为客户端有权限请求服务器，则返回100，否则返回401。客户端如果接受到100，才开始把请求body发送到服务器。
-这样当服务器返回401的时候，客户端就可以不用发送请求body了，节约了带宽。&lt;br /&gt;
-另外HTTP还支持传送内容的一部分。这样当客户端已经有一部分的资源后，只需要跟服务器请求另外的部分资源即可。这是支持文件断点续传的基础。&lt;/p&gt;
-&lt;h5 id=&quot;host域&quot;&gt;HOST域&lt;/h5&gt;
-&lt;p&gt;现在可以web server例如tomat，设置虚拟站点是非常常见的，也即是说，web server上的多个虚拟站点可以共享同一个ip和端口。&lt;br /&gt;
-HTTP1.0是没有host域的，HTTP1.1才支持这个参数。&lt;/p&gt;
-&lt;h4 id=&quot;http11-http-20主要区别&quot;&gt;HTTP1.1 HTTP 2.0主要区别&lt;/h4&gt;
-&lt;h5 id=&quot;多路复用&quot;&gt;多路复用&lt;/h5&gt;
-&lt;p&gt;HTTP2.0使用了多路复用的技术，做到同一个连接并发处理多个请求，而且并发请求的数量比HTTP1.1大了好几个数量级。
-当然HTTP1.1也可以多建立几个TCP连接，来支持处理更多并发的请求，但是创建TCP连接本身也是有开销的。&lt;br /&gt;
-TCP连接有一个预热和保护的过程，先检查数据是否传送成功，一旦成功过，则慢慢加大传输速度。因此对应瞬时并发的连接，服务器的响应就会变慢。所以最好能使用一个建立好的连接，并且这个连接可以支持瞬时并发的请求。&lt;br /&gt;
-关于多路复用，可以参看&lt;a href=&quot;https://www.jianshu.com/p/db5da880154a&quot;&gt;学习NIO&lt;/a&gt; 。&lt;/p&gt;
-&lt;h5 id=&quot;数据压缩&quot;&gt;数据压缩&lt;/h5&gt;
-&lt;p&gt;HTTP1.1不支持header数据的压缩，HTTP2.0使用HPACK算法对header的数据进行压缩，这样数据体积小了，在网络上传输就会更快。&lt;/p&gt;
-&lt;h5 id=&quot;服务器推送&quot;&gt;服务器推送&lt;/h5&gt;
-&lt;p&gt;意思是说，当我们对支持HTTP2.0的web server请求数据的时候，服务器会顺便把一些客户端需要的资源一起推送到客户端，免得客户端再次创建连接发送请求到服务器端获取。这种方式非常合适加载静态资源。&lt;br /&gt;
-服务器端推送的这些资源其实存在客户端的某处地方，客户端直接从本地加载这些资源就可以了，不用走网络，速度自然是快很多的。&lt;/p&gt;
-&lt;h4 id=&quot;http-https&quot;&gt;HTTP HTTPS&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;HTTP&lt;/strong&gt;全称是HyperText Transfer Protocal，即：超文本传输协议，HTTP连接最显著的特点是客户端发送的每次请求都需要服务器回送响应，在请求结束后，会主动释放连接。从建立连接到关闭连接的过程称为“一次连接”。&lt;/p&gt;
-&lt;h5 id=&quot;https通信原理&quot;&gt;HTTPS通信原理&lt;/h5&gt;
-&lt;p&gt;HTTPS（Secure Hypertext Transfer Protocol）安全超文本传输协议 它是一个安全通信通道&lt;br /&gt;
-HTTPS是HTTP over SSL/TLS，HTTP是应用层协议，TCP是传输层协议，在应用层和传输层之间，增加了一个安全套接层SSL/TLS：
-SSL (Secure Socket Layer，安全套接字层)
-TLS (Transport Layer Security，传输层安全协议)
-SSL使用40 位关键字作为RC4流加密算法&lt;/p&gt;
-&lt;h5 id=&quot;https的作用&quot;&gt;Https的作用&lt;/h5&gt;
-&lt;ul&gt;
-  &lt;li&gt;内容加密 建立一个信息安全通道，来保证数据传输的安全；&lt;/li&gt;
-  &lt;li&gt;身份认证 确认网站的真实性&lt;/li&gt;
-  &lt;li&gt;数据完整性 防止内容被第三方冒充或者篡改&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;https和http的区别&quot;&gt;Https和Http的区别&lt;/h5&gt;
-&lt;ul&gt;
-  &lt;li&gt;https协议需要到CA申请证书。&lt;/li&gt;
-  &lt;li&gt;http是超文本传输协议，信息是明文传输；https 则是具有安全性的ssl加密传输协议。&lt;/li&gt;
-  &lt;li&gt;http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。&lt;/li&gt;
-  &lt;li&gt;http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。&lt;/li&gt;
-  &lt;li&gt;http默认使用80端口，https默认使用443端口&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;缓存问题&quot;&gt;缓存问题&lt;/h2&gt;
-&lt;p&gt;另开一篇，&lt;a href=&quot;http://localhost:4000/http/2018/08/18/http-cache/&quot;&gt;http缓存总结&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;解析页面流程&quot;&gt;解析页面流程&lt;/h2&gt;
-&lt;h3 id=&quot;渲染机制&quot;&gt;渲染机制&lt;/h3&gt;
-&lt;p&gt;浏览器内核拿到内容后，渲染步骤大致可以分为以下几步：&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;解析HTML，构建DOM树&lt;/li&gt;
-  &lt;li&gt;解析CSS，生成CSS规则树&lt;/li&gt;
-  &lt;li&gt;合并DOM树和CSS规则，生成render树&lt;/li&gt;
-  &lt;li&gt;布局render树（Layout/reflow），负责各元素尺寸、位置的计算&lt;/li&gt;
-  &lt;li&gt;绘制render树（paint），绘制页面像素信息&lt;/li&gt;
-  &lt;li&gt;浏览器会将各层的信息发送给GPU，GPU会将各层合成（composite），显示在屏幕上&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_rending.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;在构建 CSSOM 树时，会阻塞渲染，直至 CSSOM 树构建完成。并且构建 CSSOM 树是一个十分消耗性能的过程，所以应该尽量保证层级扁平，减少过度层叠，越是具体的 CSS 选择器，执行速度越慢。&lt;br /&gt;
-当 HTML 解析到 script 标签时，会暂停构建 DOM，完成后才会从暂停的地方重新开始。也就是说，如果你想首屏渲染的越快，就越不应该在首屏就加载 JS 文件。
-并且 CSS 也会影响 JS 的执行，只有当解析完样式表才会执行 JS，所以也可以认为这种情况下，CSS 也会暂停构建 DOM。&lt;/p&gt;
-&lt;h3 id=&quot;load-和-domcontentloaded-区别&quot;&gt;Load 和 DOMContentLoaded 区别&lt;/h3&gt;
-&lt;p&gt;Load 事件触发代表页面中的 DOM，CSS，JS，图片已经全部加载完毕。&lt;br /&gt;
-DOMContentLoaded 事件触发代表初始的 HTML 被完全加载和解析，不需要等待 CSS，JS，图片加载。&lt;/p&gt;
-&lt;h3 id=&quot;图层&quot;&gt;图层&lt;/h3&gt;
-&lt;p&gt;一般来说，可以把普通文档流看成一个图层。特定的属性可以生成一个新的图层。不同的图层渲染互不影响，所以对于某些频繁需要渲染的建议单独生成一个新图层，提高性能。但也不能生成过多的图层，会引起反作用。
-通过以下几个常用属性可以生成新图层&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;3D 变换：translate3d、translateZ&lt;/li&gt;
-  &lt;li&gt;will-change&lt;/li&gt;
-  &lt;li&gt;video、iframe 标签&lt;/li&gt;
-  &lt;li&gt;通过动画实现的 opacity 动画转换&lt;/li&gt;
-  &lt;li&gt;position: fixed&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;更多可参考&lt;a href=&quot;https://segmentfault.com/a/1190000012925872#articleHeader16&quot;&gt;简单图层与复合图层&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;重绘repaint和回流reflow&quot;&gt;重绘（Repaint）和回流（Reflow）&lt;/h3&gt;
-&lt;p&gt;重绘和回流是渲染步骤中的一小节，但是这两个步骤对于性能影响很大。&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;重绘是当节点需要更改外观而不会影响布局的，比如改变 color 就叫称为重绘&lt;/li&gt;
-  &lt;li&gt;回流是布局或者几何属性需要改变就称为回流。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;回流必定会发生重绘，重绘不一定会引发回流。回流所需的成本比重绘高的多，改变深层次的节点很可能导致父节点的一系列回流。&lt;/p&gt;
-&lt;h3 id=&quot;什么会引起回流&quot;&gt;什么会引起回流&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;页面渲染初始化&lt;/li&gt;
-  &lt;li&gt;DOM结构改变，比如删除了某个节点&lt;/li&gt;
-  &lt;li&gt;render树变化，比如减少了padding&lt;/li&gt;
-  &lt;li&gt;窗口resize&lt;/li&gt;
-  &lt;li&gt;最复杂的一种：获取某些属性，引发回流&lt;br /&gt;
-很多浏览器会对回流做优化，会等到数量足够时做一次批处理回流，
-但是除了render树的直接变化，当获取一些属性时，浏览器为了获得正确的值也会触发回流，这样使得浏览器优化无效，包括
-    &lt;ul&gt;
-      &lt;li&gt;offset(Top/Left/Width/Height)&lt;/li&gt;
-      &lt;li&gt;scroll(Top/Left/Width/Height)&lt;/li&gt;
-      &lt;li&gt;cilent(Top/Left/Width/Height)&lt;/li&gt;
-      &lt;li&gt;width,height&lt;/li&gt;
-      &lt;li&gt;调用了getComputedStyle()或者IE的currentStyle&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;减少重绘和回流&quot;&gt;减少重绘和回流&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;使用 translate 替代 top&lt;/li&gt;
-  &lt;li&gt;使用 visibility 替换 display: none ，因为前者只会引起重绘，后者会引发回流（改变了布局）&lt;/li&gt;
-  &lt;li&gt;把 DOM 离线后修改，比如：先把 DOM 给 display:none (有一次 Reflow)，然后你修改100次，然后再把它显示出来&lt;/li&gt;
-  &lt;li&gt;不要把 DOM 结点的属性值放在一个循环里当成循环里的变量&lt;/li&gt;
-  &lt;li&gt;不要使用 table 布局，可能很小的一个小改动会造成整个 table 的重新布局&lt;/li&gt;
-  &lt;li&gt;动画实现的速度的选择，动画速度越快，回流次数越多，也可以选择使用 requestAnimationFrame&lt;/li&gt;
-  &lt;li&gt;CSS 选择符从右往左匹配查找，避免 DOM 深度过深&lt;/li&gt;
-  &lt;li&gt;将频繁运行的动画变为图层，图层能够阻止该节点回流影响别的元素。比如对于 video 标签，浏览器会自动将该节点变为图层。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;css的可视化格式模型&quot;&gt;CSS的可视化格式模型&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;CSS的可视化格式模型就是规定了浏览器在页面中如何处理文档树&lt;/strong&gt;  &lt;br /&gt;
-CSS中规定每一个元素都有自己的盒子模型（相当一规定了这个元素如何显示），
-然后可视化格式模型则是把这些盒子模型按照规则摆放到页面上，也就是如何布局，
-换句话说，盒子模型规定了怎么在页面上摆放盒子，盒子的相互作用等等。&lt;/p&gt;
-&lt;h3 id=&quot;定位机制&quot;&gt;定位机制&lt;/h3&gt;
-&lt;p&gt;CSS三种定位机制：普通流、浮动流、绝对定位&lt;/p&gt;
-&lt;h3 id=&quot;包含块containing-block&quot;&gt;包含块（Containing Block）&lt;/h3&gt;
-&lt;p&gt;一个元素的box的定位和尺寸，会与某一矩形框有关，这个框就称之为包含块。&lt;br /&gt;
-元素会为它的子孙元素创建包含块，但是，并不是说元素的包含块就是它的父元素，元素的包含块与它的祖先元素的样式等有关系&lt;br /&gt;
-譬如：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;根元素是最顶端的元素，他没有父节点，它的包含块就是初始化包含块；&lt;/li&gt;
-  &lt;li&gt;static和relative的包含块由他最近的块级、单元格或者行内块祖先元素的内容框（content）创建；&lt;/li&gt;
-  &lt;li&gt;fixed的包含块就是当前可视窗口；&lt;/li&gt;
-  &lt;li&gt;absolute的包含块由他最近的position属性值不为static的祖先元素创建：
-    &lt;ul&gt;
-      &lt;li&gt;如果其祖先元素是行内元素，则包含块取决于其祖先元素的direction特性；&lt;/li&gt;
-      &lt;li&gt;如果祖先元素不是行内元素，那么包含块的区域应该是祖先元素的内边距边界。&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;控制框controlling-box&quot;&gt;控制框（Controlling Box）&lt;/h3&gt;
-&lt;p&gt;块级元素和块框以及行内元素和行框的相关概念&lt;/p&gt;
-&lt;h4 id=&quot;块框&quot;&gt;块框&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;块级元素会生成一个块框（Block Box），块框会占据一整行，用来包含子box和生成的内容&lt;/li&gt;
-  &lt;li&gt;块框同时也是一个块包含框（Containing Box），里面要么只包含块框，要么只包含行内框（不能混杂）&lt;/li&gt;
-  &lt;li&gt;如果块框内部有块级元素也有行内元素，那么行内元素会被匿名块框包围&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;如果一个块框在其中包含另外一个块框，那么我们强迫它只能包含块框，因此其它文本内容生成出来的都是匿名块框（而不是匿名行内框）&lt;/strong&gt;&lt;/p&gt;
-&lt;h4 id=&quot;行内框&quot;&gt;行内框&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;一个行内元素生成一个行内框&lt;/li&gt;
-  &lt;li&gt;行内元素能排在一行，允许左右有其它元素&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;display属性的影响&quot;&gt;display属性的影响&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;block，元素生成一个块框；&lt;/li&gt;
-  &lt;li&gt;inline，元素产生一个或多个的行内框；&lt;/li&gt;
-  &lt;li&gt;inline-block，元素产生一个行内级块框，行内块框的内部会被当做块框来格式化，而此元素本身会被当作行内级框来格式化（这也是为什么会产生BFC）；&lt;/li&gt;
-  &lt;li&gt;none，不生成框，不再格式化结构中，而另一个visibility：hidden则会产生一个不可见的框&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;总结&quot;&gt;总结&lt;/h4&gt;
-&lt;p&gt;如果一个框里，有一个块级元素，那么这个框里的内容都会被当作块框来进行格式化，因为只要出现了块级元素，就会将里面的内容分成几块，每一块独占一行（出现行内可以用匿名块框解决）&lt;br /&gt;
-如果一个框里，没有任何块级元素，那么这个框里的内容会被当成行内框来格式化，因为里面的内容时按照顺序成行的排列。&lt;/p&gt;
-&lt;h3 id=&quot;fcformatting-context&quot;&gt;FC（Formatting Context）&lt;/h3&gt;
-&lt;p&gt;FC即格式化上下文，它定义框内部的元素渲染规则，比较抽象，譬如：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;FC就像是一个大箱子，里面装有很多元素；&lt;/li&gt;
-  &lt;li&gt;箱子可以隔开里面的元素和外面的元素（所以外部并不会影响FC内部的渲染）&lt;/li&gt;
-  &lt;li&gt;内部的规则可以是：如何定位、宽高计算、margin折叠等等&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;不同类型的框参与的FC类型不同，譬如块级框对应BFC，行内框对应IFC&lt;br /&gt;
-注意：并不是说所有的框都会产生FC，而是符合特定的条件才会产生，只有产生了对应的FC后才会应用对应的FC渲染规则&lt;/p&gt;
-&lt;h3 id=&quot;bfc规则&quot;&gt;BFC规则&lt;/h3&gt;
-&lt;p&gt;在块格式化上下文中，每一个元素左外边与包含块的左边解除（对于从右到左的格式化，右外边接触右边），即使存在浮动也是如此（所以浮动元素正常会直接贴近它的包含块的左边，与普通元素重合），除非这个元素也创建了一个新的BFC；&lt;/p&gt;
-&lt;h4 id=&quot;bfc特点&quot;&gt;BFC特点&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;内部box在垂直方向，一个接一个的放置；&lt;/li&gt;
-  &lt;li&gt;box的垂直方向由margin决定，属于同一个BFC的两个box间的margin会重叠&lt;/li&gt;
-  &lt;li&gt;BFC区域不会与float box重叠（可用于排版）&lt;/li&gt;
-  &lt;li&gt;BFC就是页面上的一个隔离的独立容器，容器里的子元素不会影响到外面的元素，反之也是如此&lt;/li&gt;
-  &lt;li&gt;计算BFC的高度时，浮动元素也参与计算（不会浮动塌陷如overflow：hidden清除浮动就是这个原理）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;如何触发bfc&quot;&gt;如何触发BFC&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;根元素；&lt;/li&gt;
-  &lt;li&gt;float属性不为none&lt;/li&gt;
-  &lt;li&gt;position为absolute或fixed&lt;/li&gt;
-  &lt;li&gt;display为inline-block、flex、inline-flex、table、table-cell、table-caption&lt;/li&gt;
-  &lt;li&gt;overflow不为visible&lt;/li&gt;
-  &lt;li&gt;display：table，本身不会产生BFC，但是他会产生匿名框（包含display：table-cell的框），而这个匿名框产生BFC。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;ifc规则&quot;&gt;IFC规则&lt;/h3&gt;
-&lt;p&gt;在行内格式化上下文中，框一个接一个地水平排列，起点是包含块的顶部。水平方向上的margin，border和padding在框之间得到保留，框在垂直方向上可以以不同的方式对齐；
-它们的顶部或底部对齐，或根据其中文字的基线对齐&lt;/p&gt;
-&lt;h4 id=&quot;行框&quot;&gt;行框&lt;/h4&gt;
-&lt;p&gt;包含那些框的长方形区域，会形成一行，叫做行框。行框的宽度有它的包含块和其中的浮动元素决定，高度的确定由行高度计算规则决定；&lt;/p&gt;
-&lt;h4 id=&quot;行框的规则&quot;&gt;行框的规则&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;如果几个行内框在水平方向上无法放入一个行框内，它们可以分配在两个或多个垂直堆叠的行框中（即行内框的分割）&lt;/li&gt;
-  &lt;li&gt;行框在堆叠是没有垂直方向上的分割且永远不重叠；&lt;/li&gt;
-  &lt;li&gt;行框的高度总是足够容纳所包含的所有框，不过他可能高于他包含的最高的框（例如，框对齐会引起基线对齐）&lt;/li&gt;
-  &lt;li&gt;行框的左边接触到其包含块的左边，右边接触到其包含块的右边。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;总结-1&quot;&gt;总结&lt;/h4&gt;
-&lt;ol&gt;
-  &lt;li&gt;行内元素总是会应用IFC渲染规则；&lt;/li&gt;
-  &lt;li&gt;行内元素会应用IFC规则渲染，譬如text-align可以用来居中等；&lt;/li&gt;
-  &lt;li&gt;块框内部对于文本这类的匿名元素，会产生匿名行框包围，而行框内部就应用IFC渲染规则&lt;/li&gt;
-  &lt;li&gt;行内框内部，对于那些行内元素，一样应用IFC渲染规则；&lt;/li&gt;
-  &lt;li&gt;另外，inline-block，会在元素外层产生IFC（所以这个元素可以通过text-align水平居中），当然，它的内部则按照BFC规则渲染&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;js引擎解析过程&quot;&gt;JS引擎解析过程&lt;/h2&gt;
-&lt;p&gt;另开一篇，
-&lt;a href=&quot;http://localhost:4000/js基础/2018/09/25/js-carryout&quot;&gt;JS解析与执行过程&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;http://localhost:4000/js/2018/09/15/js-eventloop/&quot;&gt;JavaScript 运行机制详解——Event Loop&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;写在最后&quot;&gt;写在最后&lt;/h2&gt;
-&lt;p&gt;这篇大概写了一个礼拜，对基础问题的深挖更能弥补自身的不足，前端学习知识繁杂，只靠碎片化的知识而自己不加消化和理解，
-很难形成知识体系。通过对主干大方向的把握，在填充具体知识点。受益良多～✋✋&lt;/p&gt;
-
-&lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.dailichun.com/2018/03/12/whenyouenteraurl.html&quot;&gt;从输入URL到页面加载的过程？如何由一道题完善自己的前端知识体系！&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_procs.html&quot;&gt;http://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_procs.html&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.imweb.io/topic/58e3bfa845e5c13468f567d5&quot;&gt;浏览器进程？线程？傻傻分不清楚！&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/sh435367384/article/details/79652159&quot;&gt;从开启网络线程到发出一个完整的http请求&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000004093321?_ea=487081&quot;&gt;HTTP报文&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/shijianchuzhenzhi/p/6387013.html&quot;&gt;http请求+cookie的交互流程&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/linsongbin1/article/details/54980801&quot;&gt;HTTP1.0 HTTP 1.1 HTTP 2.0主要区别&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://taligarsiel.com/Projects/howbrowserswork1.htm&quot;&gt;how browers work&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.ituring.com.cn/book/1229&quot;&gt;图解http&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000014872270&quot;&gt;CSS的可视化格式模型&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Lmy</name></author><category term="TCP" /><category term="IP" /><category term="Dom" /><summary type="html">前言 经典面试题，但方方面面的很多东西，要答好也不简单。通过对这道题的分析，希望梳理出一个前端向的知识体系 :dancers: :dancers: :dancers: 主要包括： 从浏览器接收url到开启网络请求线程 开启网络线程到发出一个完整的http请求 从服务器接收到请求到对应后台接收到请求 后台和前台的http交互 缓存问题，http缓存总结 解析页面流程 CSS的可视化格式模型 JS引擎解析过程</summary></entry><entry><title type="html">ES6-箭头函数及定时器this指向</title><link href="http://localhost:4000/es6/2018/09/16/ES6-func/" rel="alternate" type="text/html" title="ES6-箭头函数及定时器this指向" /><published>2018-09-16T00:00:00+08:00</published><updated>2018-09-16T00:00:00+08:00</updated><id>http://localhost:4000/es6/2018/09/16/ES6-func</id><content type="html" xml:base="http://localhost:4000/es6/2018/09/16/ES6-func/">&lt;h3 id=&quot;箭头函数&quot;&gt;箭头函数&lt;/h3&gt;
-&lt;h4 id=&quot;注意点&quot;&gt;注意点&lt;/h4&gt;
-&lt;ol&gt;
-  &lt;li&gt;函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。&lt;/li&gt;
-  &lt;li&gt;不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。&lt;/li&gt;
-  &lt;li&gt;不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。&lt;/li&gt;
-  &lt;li&gt;不可以使用yield命令，因此箭头函数不能用作 Generator 函数。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&quot;this&quot;&gt;this&lt;/h4&gt;
-&lt;ol&gt;
-  &lt;li&gt;this对象的指向是可变的，但在箭头函数中，是固定的。绑定定义时所在的作用域，而不是指向运行时所在的作用域。
-    &lt;ul&gt;
-      &lt;li&gt;非箭头函数的this指向运行时调用它的对象，即foo。
-        &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;say&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;say&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//22;  &lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-        &lt;/div&gt;
-      &lt;/li&gt;
-      &lt;li&gt;箭头函数的this是继承自父执行上下文中的this。箭头函数say本身在对象foo中，而foo的执行上下文this指向全局window。
-        &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;say&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;say&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//11; &lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-        &lt;/div&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;实际原因是箭头函数根本没有自己的this，导致内部的this就是外层代码块的this。正是因为它没有this，所以也就不能用作构造函数。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// ES6&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'id:'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// ES5&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_this&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'id:'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;定时器&quot;&gt;定时器&lt;/h3&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getNum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getNumLater&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getNum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//22&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getNumLater&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//11&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;问题原因&quot;&gt;问题原因&lt;/h4&gt;
-&lt;p&gt;setTimeout中函数内的this是指向了window对象，这是由于setTimeout()调用的代码运行在与所在函数完全分离的执行环境上。
-参考 &lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/API/Window/setTimeout&quot;&gt;MDN setTimeout&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;解决方法&quot;&gt;解决方法&lt;/h4&gt;
-&lt;ol&gt;
-  &lt;li&gt;将当前this保存为一个变量
-    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
- &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getNum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-     &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getNumLater&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-     &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-         &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-     &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getNum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//22&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getNumLater&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//22&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;使用箭头函数，箭头函数的this指向外层（父级）调用者，也就是F();
-    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getNum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-     &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getNumLater&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-     &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-         &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-     &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getNum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//22&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getNumLater&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//22&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;利用bind。当被绑定函数执行时，bind方法会创建一个新函数，并将第一个参数作为新函数运行时的this。
-参考&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind&quot;&gt;MDN bind&lt;/a&gt;
-    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getNum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-     &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getNumLater&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-     &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-         &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-     &lt;span class=&quot;p&quot;&gt;}.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getNum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//22&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getNumLater&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//22&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Lmy</name></author><category term="ES6" /><category term="箭头函数" /><category term="定时器" /><summary type="html">箭头函数 注意点 函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。 不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。 不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。 不可以使用yield命令，因此箭头函数不能用作 Generator 函数。 this this对象的指向是可变的，但在箭头函数中，是固定的。绑定定义时所在的作用域，而不是指向运行时所在的作用域。 非箭头函数的this指向运行时调用它的对象，即foo。 var a=11; var foo={ a:22, say:function(){ console.log(this.a) } } foo.say();//22; 箭头函数的this是继承自父执行上下文中的this。箭头函数say本身在对象foo中，而foo的执行上下文this指向全局window。 var a=11; var foo={ a:22, say:()=&amp;gt;{ console.log(this.a) } } foo.say();//11;</summary></entry></feed>
+&lt;p&gt;后两道感觉挺难的，呜呜呜先参考大神思路，代码再再补上。:sob: :sob: :sob:&lt;/p&gt;</content><author><name>Lmy</name></author><category term="网易" /><category term="动态规划" /><category term="leetcode" /><summary type="html">题目来源于牛客网，网易2018校园招聘编程题真题集合。</summary></entry></feed>

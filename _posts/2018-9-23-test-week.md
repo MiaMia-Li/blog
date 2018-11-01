@@ -3,7 +3,6 @@ title: 一周笔试总结
 description: 作业帮 ihandy 百度
 categories: 笔试
 tags:
-- JS基础
 - 算法
 --- 
 ### 创建100个宽高100px的div，div按红黄蓝绿背景色排列，页面实现10*10布局。  

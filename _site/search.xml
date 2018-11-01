@@ -2,6 +2,40 @@
 <search>
   
     <entry>
+      <title><![CDATA[数组降维]]></title>
+      <url>/js%E5%9F%BA%E7%A1%80/2018/11/01/flattenDeep-arr/</url>
+      <content type="text"><![CDATA[reduce方法参考MDN Array.prototype.reduce()arr.reduce(callback,[initialValue]) reduce为数组中的每一个元素依次执行callback函数，不包括数组中被删除或从未被赋值的元素，接受四个参数：accumulator 累计器currentValue 当前值currentIndex 当前索引array 数组const flattenDeep = (arr) =&gt; Array.isArray(arr)	  ? arr.reduce( (a, b) =&gt; [...a, ...flattenDeep(b)] , [])	  : [arr]… 展开操作符 允许一个表达式在某处展开，用于存在多个参数（函数调用）、多个元素（数组）、多个变量（解构赋值)把数组自动展开为单个值var arr=[];arr.push(...[1,2,3])//[1,2,3]toString方法eval() 函数可计算某个字符串，并执行其中的的 JavaScript 代码const flattenDeep2=(arr)=&gt;{    var arr=arr.toString().split(','); //1,2,3,4,5	var res=[];	for(var i=0;i&lt;arr.length;i++){	    res[i]=eval(arr[i]);	}	return res;}递归方法const flattenDeep3=(arr)=&gt;{	var res=[];	arr.forEach((val,ind)=&gt;{		if(Array.isArray(val)){			res.push.apply(res,flattenDeep3(val));  //处理递归调用的返回值		}else{			res.push(val);		}	})	return res;}]]></content>
+      <categories>
+        
+          <category> JS基础 </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> 数组方法 </tag>
+        
+          <tag> ES6 </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
+      <title><![CDATA[ES6-Promise]]></title>
+      <url>/es6/2018/10/30/promise/</url>
+      <content type="text"><![CDATA[什么是PromisePromise是异步编程的一种解决方案，它有三种状态，分别是pending-进行中、resolved-已完成、rejected-已失败当Promise的状态又pending转变为resolved或rejected时，会执行相应的方法，并且状态一旦改变，就无法再次改变状态，这也是它名字promise-承诺的由来Promise的基本用法Promise构造函数接受一个函数作为参数，该函数的两个参数分别是resolve和reject。它们是两个函数，由 JavaScript 引擎提供，不用自己部署。resolve函数的作用是，将Promise对象的状态从“未完成”变为“成功”（即从 pending 变为 resolved），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；reject函数的作用是，将Promise对象的状态从“未完成”变为“失败”（即从 pending 变为 rejected），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。Promise实例生成以后，可以用then方法分别指定resolved状态和rejected状态的回调函数注意：实例化的Promise对象会立即执行const promise = new Promise(function(resolve, reject) {  // ... some code  if (/* 异步操作成功 */){    resolve(value);  } else {    reject(error);  }}); promise.then(function(value) {  // success}, function(error) {  // failure});异步加载图片//异步加载图片function loadImageAsync(url){    return new Promise(function(resolve,reject){        const image = new Image();        image.onload = function(){            resolve(image);        };        image.onerror = function(){            reject(new Error('error');        };        image.src = url;    });}实现 Ajax 操作const getJSON = function(url) {  const promise = new Promise(function(resolve, reject){    const handler = function() {      if (this.readyState !== 4) {        return;      }      if (this.status === 200) {        resolve(this.response);      } else {        reject(new Error(this.statusText));      }    };    const client = new XMLHttpRequest();    client.open("GET", url);    client.onreadystatechange = handler;    client.responseType = "json";    client.setRequestHeader("Accept", "application/json");    client.send();  });  return promise;};getJSON("/posts.json").then(function(json) {  console.log('Contents: ' + json);}, function(error) {  console.error('出错了', error);});关于Promise应用的面试题红绿灯循环交替题目:红灯三秒亮一次，绿灯一秒亮一次，黄灯2秒亮一次；如何让三个灯不断交替重复亮灯？（用Promise实现）三个亮灯函数已经存在：function red(){    console.log('red');}function green(){    console.log('green');}function yellow(){    console.log('yellow');}首先我们需要一个函数来实现时间控制，这道题的第二个考查点就是setTimeout相关的异步队列会挂起知道主进程空闲。如果使用while无限循环，主进程永远不会空闲，setTimeout的函数永远不会执行！采用递归    //时间控制函数	var lightUp=function(timmer,cb){		return new Promise(function(resolve,reject){			setTimeout(function(){				cb();				resolve();			},timmer);		})	}	//利用promise编写，链式调用	var p=new Promise(function(resolve,reject){		resolve();	})	var step=function(def){		def.then(function(){			return lightUp(3000,red);		}).then(function(){			return lightUp(2000,green);		}).then(function(){			return lightUp(1000,yellow);		}).then(function(){			step(p);		})	}	step(p);异步获取数字题目: getNumber函数用来异步获取一个数字，2秒后执行完成，如果数字小于等于5，我们认为是“成功”了，调用resolve修改Promise的状态。否则我们认为是“失败”了，调用reject并传递一个参数，作为失败的原因。	var getNum=function(){		return new Promise(function(resolve,reject){			setTimeout(function(){				var num=Math.ceil(Math.random()*10);				if(num&lt;=5){					resolve(num);				}else{					reject('数字太大了')				}			},2000)		})	}	getNum().then(function(data){		console.log('resolved');		console.log(data);	},function(reason){		console.log('reject');		console.log(reason);	})Promise的作用Promise的出现主要是解决地狱回调的问题，比如你需要结果需要请求很多个接口，这些接口的参数需要另外那个的接口返回的数据作为依赖，这样就需要我们一层嵌套一层，但是有了Promise 我们就无需嵌套参考  廖雪峰  MDN-Promise  Promise 对象  一道关于Promise应用的面试题  关于 ES6 中 Promise 的面试题]]></content>
+      <categories>
+        
+          <category> ES6 </category>
+        
+      </categories>
+      <tags>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
       <title><![CDATA[百度面经]]></title>
       <url>/%E9%9D%A2%E8%AF%95/2018/10/20/interview-baidu/</url>
       <content type="text"><![CDATA[写在前面百度是三面技术，题目还是挺基础的，重点是要抓住面试官想问你什么，哪个知识点，抽象出来就很好回答了～⛽️闭包题目    var makeAdd;    //完成makeAdd函数    var add=makeAdd(1);    console.log(add(2)); //3自己写成函数科里化了😓…面试官提醒其实就个闭包的应用，makeAdd是一个函数，返回值也是一个函数，两个参数相加就ok了～ps:这是闭包 MDN的原题	var makeAdd=function(x){		return function(y){			return x+y;		}	}	var add=makeAdd(1);	console.log(add(2));扩展写一个闭包闭包就是能够读取其他函数内部变量的函数。例如在javascript中，只有函数内部的子函数才能读取局部变量，所以闭包可以理解成定义在一个函数内部的函数。在本质上，闭包是将函数内部和函数外部连接起来的桥梁　　function f1(){　　　　var n=999;　　　　function f2(){　　　　　　alert(n); 　　　　}　　　　return f2;　　}　　var result=f1();　　result(); // 999闭包的用途一个是可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中。  举🌰🌰🌰var makeCounter = function() {  var privateCounter = 0;  function changeBy(val) {    privateCounter += val;  }  return {    increment: function() {      changeBy(1);    },    decrement: function() {      changeBy(-1);    },    value: function() {      return privateCounter;    }  }  };var Counter1 = makeCounter();var Counter2 = makeCounter();console.log(Counter1.value()); /* logs 0 */Counter1.increment();Counter1.increment();console.log(Counter1.value()); /* logs 2 */Counter1.decrement();console.log(Counter1.value()); /* logs 1 */console.log(Counter2.value()); /* logs 0 */两个计数器 counter1 和 counter2 是如何维护它们各自的独立性的。每个闭包都是引用自己词法作用域内的变量 privateCounter 。每次调用其中一个计数器时，通过改变这个变量的值，会改变这个闭包的词法环境。然而在一个闭包内对变量的修改，不会影响到另外一个闭包中的变量。在循环中创建闭包//包裹在立即执行的函数里var btns=document.getElementsByTagName("button")for(var i=0;i&lt;btns.length;i++){	btns[i].onclick=(function(){		return function(){			console.log("我是第" + (i+1) + "个按钮")		}	}(i))} //ES6 let关键字  var btns=document.getElementsByTagName("button")for(let i=0;i&lt;btns.length;i++){	btns[i].onclick=(function(){		return function(){			console.log("我是第" + (i+1) + "个按钮")		}	}(i))}flex布局左右宽度固定，中间自适应的三栏布局	.wrapper{		display: flex;		min-height: 200px;	}	.left{		background: red;		flex:0 0 200px;	}	.center{		background: yellow;		flex:0 1 auto;		width: 100%;	}	.right{		background: blue;		flex:0 0 200px;	}原生JS实现给定标签添加class面试官提示可以用新属性classList,自己之前没有了解到的	function addClass(){		var args=Array.prototype.slice.call(arguments);		var ele=args.shift();		var cla=args.join(' ');		ele.classList=cla;	}写在最后高频题👏👏👏数组去重获得URL中key对应的val值盒模型position的值参考  学习Javascript闭包（Closure  闭包-廖雪峰  破解前端面试（80% 应聘者不及格系列）：从闭包说起  Flex 布局教程：语法篇]]></content>
@@ -40,8 +74,6 @@
       <tags>
         
           <tag> 排序 </tag>
-        
-          <tag> JS基础 </tag>
         
       </tags>
       <tags></tags>
@@ -110,8 +142,6 @@
         
       </categories>
       <tags>
-        
-          <tag> JS基础 </tag>
         
           <tag> 算法 </tag>
         
@@ -314,7 +344,7 @@
     <entry>
       <title><![CDATA[防抖与节流]]></title>
       <url>/js%E5%9F%BA%E7%A1%80/2018/08/28/js-debounce-throttle/</url>
-      <content type="text"><![CDATA[函数防抖(debounce)在事件被触发n秒后再执行回调，如果在这n秒内又被触发，则重新计时。  给按钮加函数防抖防止表单多次提交。  对于输入框连续输入进行AJAX验证时，用函数防抖能有效减少请求次数。  判断scroll是否滑到底部，滚动事件+函数防抖总的来说，适合多次事件一次响应的情况function debounce(fn, wait) {  var timer = null;  return function () {      var context = this      var args = arguments      if (timer) {          clearTimeout(timer);          timer = null;      }      timer = setTimeout(function () {          fn.apply(context, args)      }, wait)  }}函数节流(throttle)规定一个单位时间，在这个单位时间内，只能有一次触发事件的回调函数执行，如果在同一个单位时间内某事件被触发多次，只有一次能生效。  游戏中的刷新率  DOM元素拖拽  Canvas画笔功能总的来说，适合大量事件按时间做平均分配触发。function throttle(fn, gapTime) {  let _lastTime = null;  return function () {    let _nowTime = + new Date()    if (_nowTime - _lastTime &gt; gapTime || !_lastTime) {      fn();      _lastTime = _nowTime    }  }}]]></content>
+      <content type="text"><![CDATA[函数防抖(debounce)在事件被触发n秒后再执行回调，如果在这n秒内又被触发，则重新计时。  给按钮加函数防抖防止表单多次提交。  对于输入框连续输入进行AJAX验证时，用函数防抖能有效减少请求次数。  判断scroll是否滑到底部，滚动事件+函数防抖总的来说，适合多次事件一次响应的情况// func是用户传入需要防抖的函数// wait是等待时间function debounce(fn, wait) {  var timer = null;  return function () {      var context = this      var args = arguments      if (timer) {          clearTimeout(timer);          timer = null;      }      timer = setTimeout(function () {          fn.apply(context, args)      }, wait)  }}//如果用户调用该函数的间隔小于wait的情况下，上一次的时间还未到就被清除了，并不会执行函数函数节流(throttle)规定一个单位时间，在这个单位时间内，只能有一次触发事件的回调函数执行，如果在同一个单位时间内某事件被触发多次，只有一次能生效。  游戏中的刷新率  DOM元素拖拽  Canvas画笔功能总的来说，适合大量事件按时间做平均分配触发。function throttle(fn, gapTime) {  let _lastTime = null  return function () {    let _nowTime = + new Date()    if (_nowTime - _lastTime &gt; gapTime || !_lastTime) {      fn();      _lastTime = _nowTime    }  }}]]></content>
       <categories>
         
           <category> JS基础 </category>

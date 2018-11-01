@@ -12,6 +12,8 @@ tags:
  
 总的来说，**适合多次事件一次响应的情况**
 ````javascript
+// func是用户传入需要防抖的函数
+// wait是等待时间
 function debounce(fn, wait) {
   var timer = null;
   return function () {
@@ -26,6 +28,7 @@ function debounce(fn, wait) {
       }, wait)
   }
 }
+//如果用户调用该函数的间隔小于wait的情况下，上一次的时间还未到就被清除了，并不会执行函数
 ````
 
 ### 函数节流(throttle)
@@ -37,7 +40,7 @@ function debounce(fn, wait) {
 总的来说，**适合大量事件按时间做平均分配触发**。
 ````javascript
 function throttle(fn, gapTime) {
-  let _lastTime = null;
+  let _lastTime = null
   return function () {
     let _nowTime = + new Date()
     if (_nowTime - _lastTime > gapTime || !_lastTime) {
